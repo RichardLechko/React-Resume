@@ -1,13 +1,113 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .linkMain {
+    @apply bg-black m-6 flex-auto text-center p-5 rounded-2xl min-w-32;
+  }
+
+  .links {
+    @apply text-lg no-underline text-white block p-3 hover:text-red-600;
+  }
+
+  .life-text p,
+  .edu-text p,
+  .pub-text p {
+    @apply text-darkviolet mb-6 text-2xl leading-10 font-semibold;
+  }
+
+  .main-content {
+    @apply p-4;
+  }
+
+  .sidebar-icon {
+    @apply flex items-center justify-center w-16 h-16 bg-gray-800 text-white hover:bg-gray-700 transition-colors duration-300 relative;
+  }
+
+  .sidebar-tooltip {
+    @apply absolute left-16 top-1/2 transform -translate-y-1/2 bg-black text-white text-sm font-bold rounded p-2 opacity-0 transition-opacity duration-300;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  #buttons {
+    @apply my-4 mx-auto text-2xl p-4 rounded-xl w-52 border-none inline-block;
+  }
+
+  .smallText p {
+    @apply text-xl leading-relaxed;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media (max-width: 768px) {
+  .text-4xl {
+    @apply text-2xl;
+  }
+
+  .text-2xl {
+    @apply text-lg;
+  }
+
+  .pl-16 {
+    @apply pl-4;
+  }
+
+  .smallText p {
+    @apply text-base;
+  }
+}
+
+body,
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
+html {
+  background-color: #dff0ff;
+  scroll-behavior: auto;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  overflow-y: auto;
+}
+
+.sidebar {
+  width: 250px; /* Adjust based on your sidebar width */
+}
+
+.sidebar-hidden {
+  width: 0;
+}
+
+/* Ensure footer spans the full width */
+footer {
+  width: 100%;
 }
