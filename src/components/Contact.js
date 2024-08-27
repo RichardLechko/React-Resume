@@ -1,11 +1,14 @@
 import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
-
+import { useScroll } from "./ScrollToTop.js";
 
 const Contact = () => {
+  const { scrollToTop } = useScroll();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    scrollToTop();
+  }, [scrollToTop]);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -66,9 +69,7 @@ const Contact = () => {
   };
 
   return (
-    
-    <section id="contact" style={{overflowY: 'scroll'}}>
-      
+    <section id="contact">
       <section className="text-2xl text-black font-semibold text-center p-24 pb-0 mb-12">
         <p>
           I am currently looking for any projects — big or small. Don't be

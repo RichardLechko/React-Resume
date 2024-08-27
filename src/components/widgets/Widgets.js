@@ -1,14 +1,17 @@
 import { AiFillClockCircle } from "react-icons/ai";
 import { HiSun, HiCurrencyEuro } from "react-icons/hi2";
 import React, { useEffect } from 'react';
+import { useScroll } from "../ScrollToTop.js";
 
 
 
 const Widgets = () => {
+  const { scrollToTop } = useScroll();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  
+    scrollToTop();
+  }, [scrollToTop]);
+
   return (
     <div id="widgets" className="container mx-auto px-4 py-8 mb-24">
       <div className="w-full mt-16 mb-24 mx-auto justify-around py-0 flex flex-wrap gap-4 font-bold text-center">

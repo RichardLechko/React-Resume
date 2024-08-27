@@ -29,7 +29,7 @@ const Personal = () => {
       id="personal"
       className=" container flex flex-col mx-auto p-4  main-content"
     >
-      <div className="mt-32 mx-auto justify-around  px-4 py-0 flex flex-wrap gap-6 ">
+      <div className="mt-24 mx-auto justify-around px-8  py-0 flex flex-wrap gap-6">
         <h1 className="text-4xl mb-4 font-bold fontName">Personal Life:</h1>
         <div className="life-text smallText ">
           <p className="mb-6 leading-relaxed">
@@ -50,7 +50,7 @@ const Personal = () => {
               My other interests other than computers is philosophy. Another big
               interest of mine is Economics.
             </span>
-            <li className="pl-16 pt-6 leading-10 text-black">
+            <li className="pl-16 pt-6 leading-10 text-black" id="personal-item">
               Fun Fact: I have my own section in the{" "}
               <a
                 className="text-blue-900 underline"

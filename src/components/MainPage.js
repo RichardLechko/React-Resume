@@ -5,7 +5,13 @@ import Work from "./Work.js";
 import Education from "./Education.js";
 import Publications from "./Publications.js";
 
-const MainPage = ({ personalRef, skillsRef, workRef, educationRef, publicationsRef }) => {
+const MainPage = ({
+  personalRef,
+  skillsRef,
+  workRef,
+  educationRef,
+  publicationsRef,
+}) => {
   return (
     <div>
       <section ref={personalRef}>
@@ -20,9 +26,9 @@ const MainPage = ({ personalRef, skillsRef, workRef, educationRef, publicationsR
       <section id="education" ref={educationRef}>
         <Education />
       </section>
-      <section id="publications" ref={publicationsRef}>
+      {/* <section id="publications" ref={publicationsRef}>
         <Publications />
-      </section>
+      </section> */}
     </div>
   );
 };

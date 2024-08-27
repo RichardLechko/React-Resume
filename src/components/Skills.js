@@ -34,21 +34,18 @@ import {
 const Skills = () => {
   return (
     <div>
-      <section
-        className="container flex flex-col m-auto main-content"
-        id="skills"
-      >
-        <div className="mt-16 mx-auto justify-around px-16 py-0 pt-16 flex flex-wrap gap-6 ">
+      <section className="container flex flex-col m-auto main-content" id="skills">
+        <div className="mt-16 mx-auto justify-around px-6 py-0 pt-16 flex flex-wrap gap-6">
           <div className="w-full mb-8 text-center life-text smallText">
-            <h1 className="text-4xl mb-4 font-bold">Technical Skills:</h1>
-            <p className="text-center text-xl">
+            <h1 className="text-3xl md:text-4xl mb-4 font-bold">Technical Skills:</h1>
+            <p className="text-center text-base md:text-xl">
               I have given a rating from 1-10, categorizing my understanding and
               expertise of these skills. Hover over the image to see the rating!
             </p>
           </div>
           <Suspense fallback={<div>Loading...</div>}>
             <SkillsCard
-              head={"Object Oriented Programming"}
+              head={"OOP"}
               iconOne={<DiJava size={50} />}
               iconTwo={<DiPython size={50} />}
               iconThree={<DiJavascript1 size={50} className="text-black" />}
@@ -78,7 +75,7 @@ const Skills = () => {
               bgColorThree="#A2AAAD" // Apple gray
             />
             <SkillsCard
-              head={"JS Framework/Environment"}
+              head={"JS Frameworks"}
               iconOne={<DiNodejsSmall size={50} />}
               iconTwo={<DiReact size={50} />}
               iconThree={<DiAngularSimple size={50} />}
@@ -108,7 +105,7 @@ const Skills = () => {
               bgColorThree="#4B4F56" // Systems gray
             />
             <SkillsCard
-              head={"Web Development Life Cycle"}
+              head={"Web Development CI/CD"}
               iconOne={<FaCode size={50} />}
               iconTwo={<BiCodeCurly size={50} />}
               iconThree={<FaPalette size={50} />}
@@ -123,7 +120,7 @@ const Skills = () => {
               bgColorThree="#FBBF24" // UI/UX Design amber
             />
             <SkillsCard
-              head={"Web Development Languages"}
+              head={"Web Dev Languages"}
               iconOne={<DiHtml5 size={50} />}
               iconTwo={<DiCss3 size={50} />}
               iconThree={<DiJavascript1 size={50} className="text-black" />}
@@ -138,7 +135,7 @@ const Skills = () => {
               bgColorThree="#F7DF1E" // JavaScript yellow
             />
             <SkillsCard
-              head={"Other Useful Technical Skills"}
+              head={"Other"}
               iconOne={<SiMicrosoftexcel size={50} />}
               iconTwo={<DiGithubBadge size={50} className="text-white" />}
               iconThree={<PiFileSqlFill size={50} />}
@@ -202,11 +199,11 @@ const Skills = () => {
       </section>
 
       <section className="container flex flex-col m-auto main-content">
-        <div className="mt-16 mx-auto justify-around px-16 py-0 flex flex-wrap gap-6 ">
-          <h1 className="text-4xl mb-4 font-bold text-center">
+        <div className="mt-16 mx-auto justify-around px-6 py-0 flex flex-wrap gap-6">
+          <h1 className="text-3xl md:text-4xl mb-4 font-bold text-center">
             Non-Technical Skills:
           </h1>
-          <div className="w-full my-20 mx-auto flex flex-wrap gap-8 justify-center">
+          <div className="w-full my-20 mx-auto flex flex-wrap gap-6 md:gap-8 justify-center">
             <NonTechSkills text={"Excel in rapidly changing environments"} />
             <NonTechSkills text={"Proficient technical writing"} />
             <NonTechSkills
@@ -219,7 +216,7 @@ const Skills = () => {
             <NonTechSkills text={"Introduce new and creative solutions"} />
             <NonTechSkills text={"Communicate ideas effectively"} />
             <NonTechSkills text={"Proactively take on responsibilities"} />
-          </div>
+            </div>
         </div>
       </section>
     </div>
@@ -244,50 +241,56 @@ const SkillsCard = ({
   const averageRating = ((ratingOne + ratingTwo + ratingThree) / 3).toFixed(1);
 
   return (
-    <div className="relative p-8 bg-gray-800 text-white rounded-xl shadow-lg hover:translate-y-[-15px]  transition-transform duration-200 ease-in group">
+    <div className="relative p-8 bg-gray-800 text-white rounded-xl shadow-lg hover:translate-y-[-15px] transition-transform duration-200 ease-in group">
       <h4 className="text-xl text-center font-bold mb-8">
         <span className="border-b-2 border-white">{head}</span>
       </h4>
-      <div className="flex flex-col flex-wrap justify-around gap-4">
-        {/* Individual skill items */}
-        {[
-          {
-            icon: iconOne,
-            color: bgColorOne,
-            text: iconOneH,
-            rating: ratingOne,
-          },
-          {
-            icon: iconTwo,
-            color: bgColorTwo,
-            text: iconTwoH,
-            rating: ratingTwo,
-          },
-          {
-            icon: iconThree,
-            color: bgColorThree,
-            text: iconThreeH,
-            rating: ratingThree,
-          },
-        ].map(({ icon, color, text, rating }, index) => (
-          <div
-            key={index}
-            className="relative flex flex-col items-center space-y-2 p-2"
-          >
-            <h4 className="text-lg font-semibold">{text}</h4>
+      <div className="flex flex-col items-center">
+        {/* Pyramid layout */}
+        <div className="flex flex-col items-center">
+          {/* Top item */}
+          <div className="flex flex-col items-center mb-4">
             <div
               className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl"
-              style={{ backgroundColor: color }}
+              style={{ backgroundColor: bgColorOne }}
             >
-              {icon}
+              {iconOne}
             </div>
-            <div className="absolute bottom-[-24px] text-sm text-white bg-gray-900 p-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {rating}/10
+            <div className="text-lg font-semibold mt-2">{iconOneH}</div>
+            <div className="text-sm text-white bg-gray-900 p-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">
+              {ratingOne}/10
             </div>
           </div>
-        ))}
+          {/* Bottom items */}
+          <div className="flex flex-col gap-4 md:flex-row md:gap-8">
+            <div className="flex flex-col items-center">
+              <div
+                className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl"
+                style={{ backgroundColor: bgColorTwo }}
+              >
+                {iconTwo}
+              </div>
+              <div className="text-lg font-semibold mt-2">{iconTwoH}</div>
+              <div className="text-sm text-white bg-gray-900 p-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">
+                {ratingTwo}/10
+              </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div
+                className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl"
+                style={{ backgroundColor: bgColorThree }}
+              >
+                {iconThree}
+              </div>
+              <div className="text-lg font-semibold mt-2">{iconThreeH}</div>
+              <div className="text-sm text-white bg-gray-900 p-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">
+                {ratingThree}/10
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="absolute inset-0 bg-gray-800 bg-opacity-75 flex text-center items-center hover:rounded-xl justify-center text-xl text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute inset-0 bg-gray-800 bg-opacity-75 flex text-center items-center justify-center text-xl text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <p>Average Rating: {averageRating}/10</p>
       </div>
     </div>
@@ -296,7 +299,7 @@ const SkillsCard = ({
 
 const NonTechSkills = ({ text }) => {
   return (
-    <div className="p-4 border-solid border-black border-4 bg-[#333] text-white rounded-2xl font-bold text-xl transition-transform duration-200 ease-in hover:translate-y-[-15px]">
+    <div id="non-tech-text" className="p-4 border-solid border-black border-4 bg-[#333] text-white rounded-2xl font-bold text-base md:text-xl transition-transform duration-200 ease-in hover:translate-y-[-10px]">
       <h4>{text}</h4>
     </div>
   );

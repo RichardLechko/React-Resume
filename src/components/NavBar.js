@@ -1,6 +1,6 @@
 // NavBar.js
-import React, { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaUser,
   FaTools,
@@ -12,7 +12,6 @@ import {
 
 const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleNavClick = (sectionId) => {
     if (refs[sectionId] && refs[sectionId].current) {
@@ -30,10 +29,6 @@ const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
   const handleExternalNavClick = (path) => {
     navigate(path, { replace: true });
   };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
 
   return (
     <div

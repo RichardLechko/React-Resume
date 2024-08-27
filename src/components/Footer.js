@@ -40,13 +40,46 @@ const Footer = ({ refs }) => {
             </p>
             <nav id="footer-links">
               <ul className="pb-4 text-gray-400 flex">
-                <FooterLink link="/" linkName="Home" handleClick={handleNavClick} sectionId="personal" />
-                <FooterLink link="/" linkName="Personal Life" handleClick={handleNavClick} sectionId="personal" />
-                <FooterLink link="/" linkName="Skills" handleClick={handleNavClick} sectionId="skills" />
-                <FooterLink link="/" linkName="Work Experience" handleClick={handleNavClick} sectionId="work" />
-                <FooterLink link="/" linkName="Education" handleClick={handleNavClick} sectionId="education" />
-                <FooterLink link="/contact" linkName="Contact" handleClick={handleExternalNavClick} />
-                <FooterLink link="/widgets" linkName="Widgets" handleClick={handleExternalNavClick} />
+                <FooterLink
+                  link="/"
+                  linkName="Home"
+                  handleClick={handleNavClick}
+                  sectionId="personal"
+                />
+                <FooterLink
+                  link="/"
+                  linkName="Personal Life"
+                  handleClick={handleNavClick}
+                  sectionId="personal"
+                />
+                <FooterLink
+                  link="/"
+                  linkName="Skills"
+                  handleClick={handleNavClick}
+                  sectionId="skills"
+                />
+                <FooterLink
+                  link="/"
+                  linkName="Work Experience"
+                  handleClick={handleNavClick}
+                  sectionId="work"
+                />
+                <FooterLink
+                  link="/"
+                  linkName="Education"
+                  handleClick={handleNavClick}
+                  sectionId="education"
+                />
+                <FooterLink
+                  link="/contact"
+                  linkName="Contact"
+                  handleClick={handleExternalNavClick}
+                />
+                <FooterLink
+                  link="/widgets"
+                  linkName="Widgets"
+                  handleClick={handleExternalNavClick}
+                />
               </ul>
             </nav>
           </div>
@@ -82,10 +115,13 @@ const Footer = ({ refs }) => {
 
 const FooterLink = ({ link, linkName, handleClick, sectionId }) => {
   return (
-    <li className="mr-4" onClick={() => sectionId ? handleClick(sectionId) : handleClick(link)}>
-      <a className="text-xl border-b-1 border-b-white border-b hover:text-red-500">
+    <li
+      className="mr-4 cursor-pointer"
+      onClick={() => (sectionId ? handleClick(sectionId) : handleClick(link))}
+    >
+      <button className="text-xl border-b-1 border-b-white border-b hover:text-red-500">
         {linkName}
-      </a>
+      </button>
     </li>
   );
 };

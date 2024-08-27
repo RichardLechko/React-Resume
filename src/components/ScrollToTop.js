@@ -1,17 +1,30 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+// ScrollContext.js
+import React, { createContext, useContext, useRef, useEffect } from 'react';
 
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
+const ScrollContext = createContext();
 
-  useEffect(() => {
-    console.log('ScrollToTop: Pathname changed to', pathname);
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 0); // Ensure window.scrollTo gets called after navigation
-  }, [pathname]);
-
-  return null;
+export const useScroll = () => {
+  return useContext(ScrollContext);
 };
 
-export default ScrollToTop;
+export const ScrollProvider = ({ children }) => {
+  const scrollableContainerRef = useRef(null);
+
+  const scrollToTop = () => {
+    if (scrollableContainerRef.current) {
+      scrollableContainerRef.current.scrollTo(0, 0);
+    }
+  };
+
+  useEffect(() => {
+    // Optionally handle side effects when the context is mounted/unmounted
+  }, []);
+
+  return (
+    <ScrollContext.Provider value={{ scrollToTop, scrollableContainerRef }}>
+      <div ref={scrollableContainerRef} className="scrollable-container">
+        {children}
+      </div>
+    </ScrollContext.Provider>
+  );
+};

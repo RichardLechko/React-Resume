@@ -68,12 +68,24 @@ html {
   scroll-behavior: auto;
 }
 
+.scrollable-container {
+  overflow-y: auto;
+  height: 100vh; /* or any appropriate height */
+}
+
 body,
 html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow-x: hidden;
+  z-index: 0;
+  overflow: auto;
+}
+
+.header {
+  position: relative; /* Change to fixed if needed */
+  z-index: 10; /* Ensure this is lower than the scrollbar's default */
+  width: 100%;
 }
 
 #root {
@@ -94,9 +106,8 @@ header {
 }
 
 main {
-  flex: 1;
-  display: flex;
   overflow-y: auto;
+  height: 100%;
 }
 
 .sidebar {
@@ -111,3 +122,138 @@ main {
 footer {
   width: 100%;
 }
+
+#header-name h1 {
+  @apply mr-8;
+}
+
+/* PERSONAL */
+/* PERSONAL */
+/* PERSONAL */
+
+@media (max-width: 1024px) {
+  #personal .text-4xl {
+    @apply text-2xl;
+  }
+
+  #personal .text-2xl {
+    @apply text-lg;
+  }
+
+  #personal .smallText p {
+    @apply text-base;
+  }
+
+  #personal .mt-32 {
+    @apply mt-8;
+  }
+
+  #personal-item {
+    @apply text-sm;
+  }
+}
+
+@media (max-width: 680px) {
+  #personal .text-4xl {
+    @apply text-xl;
+  }
+
+  #personal .text-2xl {
+    @apply text-base;
+  }
+
+  #personal .smallText p {
+    @apply text-sm;
+  }
+
+  #personal .mt-32 {
+    @apply mt-8;
+  }
+
+  #personal-item {
+    @apply text-xs leading-8;
+  }
+}
+
+/* PERSONAL */
+/* PERSONAL */
+/* PERSONAL */
+
+/* SKILLS */
+/* SKILLS */
+/* SKILLS */
+
+@media (max-width: 768px) {
+  #non-tech-text {
+    @apply text-center;
+  }
+}
+
+/* SKILLS */
+/* SKILLS */
+/* SKILLS */
+
+/* WORK */
+/* WORK */
+/* WORK */
+
+@media (max-width: 1024px) {
+  #workFunction {
+    @apply text-center;
+  }
+
+  #workFunction > div {
+    @apply mb-8;
+  }
+
+  #workText > * {
+    @apply mb-4;
+  }
+
+  #work div h1 {
+    @apply text-3xl;
+  }
+}
+
+/* WORK */
+/* WORK */
+/* WORK */
+
+/* EDUCATION */
+/* EDUCATION */
+/* EDUCATION */
+
+/* index.css or App.css */
+
+/* For screens less than 900px */
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider-item {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.slider-title {
+  font-size: 1.5rem;
+}
+
+.slider-details {
+  font-size: 1rem;
+}
+
+.slider-button {
+  font-size: 1.25rem;
+}
+
+/* EDUCATION */
+/* EDUCATION */
+/* EDUCATION */
