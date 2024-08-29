@@ -1,72 +1,85 @@
-// src/components/Slider.js
-
 import React, { useState } from "react";
+import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import { RxDotFilled } from "react-icons/rx";
 
-const Slider = ({ items }) => {
+const CourseSlider = ({ courses }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? items.length - 1 : prevIndex - 1
-    );
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? courses.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
   };
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === items.length - 1 ? 0 : prevIndex + 1
-    );
+    const isLastSlide = currentIndex === courses.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const goToSlide = (slideIndex) => {
+    setCurrentIndex(slideIndex);
   };
 
   return (
-    <div className="relative w-full overflow-hidden">
-      <div
-        className="flex transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 w-full p-4 md:p-6 lg:p-8 bg-white shadow-lg rounded-xl"
-            style={{
-              backgroundColor: "#b0c4de",
-              color: "#1c3d5a",
-            }}
-          >
-            <h4 className="text-xl md:text-2xl lg:text-3xl text-center font-bold">
-              {item.title}
-            </h4>
-            <ul className="list-disc text-center list-inside mt-2 text-sm md:text-base lg:text-lg">
-              {item.details.map((detail, i) => (
-                <li key={i}>{detail}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-      <button
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
-        onClick={prevSlide}
-      >
-        &#10094;
-      </button>
-      <button
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
-        onClick={nextSlide}
-      >
-        &#10095;
-      </button>
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {items.map((_, index) => (
-          <div
-            key={index}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
-              index === currentIndex ? "bg-gray-800" : "bg-gray-400"
-            }`}
+    <div className="relative max-w-[1400px] h-[450px] w-full m-auto mb-16 py-16 px-4">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl mt-12 sm:mt-16 mb-6 sm:mb-8 font-bold text-center">
+        Relevant Coursework:
+      </h1>
+      <div className="w-full h-full rounded-2xl bg-gray-900 relative overflow-hidden">
+        <div className="flex flex-col justify-center items-center h-full text-center transition-transform duration-500 ease-in-out">
+          <h2 className="text-2xl font-bold text-yellow-400 mb-4">
+            {courses[currentIndex].title}
+          </h2>
+          <ul className="mt-4 text-white">
+            {courses[currentIndex].description.map((item, index) => (
+              <li key={index} className="text-lg">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        {/* Left Arrow */}
+        <div
+          id="bL"
+          className="absolute top-1/2 left-5 transform -translate-y-1/2 text-2xl rounded-full p-2 bg-black/50 text-white cursor-pointer z-10"
+        >
+          <BsChevronCompactLeft
+            className="max-sm:size-6"
+            onClick={prevSlide}
+            size={30}
           />
-        ))}
+        </div>
+        {/* Right Arrow */}
+        <div
+          id="bR"
+          className="absolute top-1/2 right-5 transform -translate-y-1/2 text-2xl rounded-full p-2 bg-black/50 text-white cursor-pointer z-10"
+        >
+          <BsChevronCompactRight
+            className="max-sm:size-6"
+            onClick={nextSlide}
+            size={30}
+          />
+        </div>
+        {/* Dot Indicators */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {courses.map((_, slideIndex) => (
+            <div
+              key={slideIndex}
+              onClick={() => goToSlide(slideIndex)}
+              className={`cursor-pointer text-2xl ${
+                currentIndex === slideIndex
+                  ? "text-yellow-400"
+                  : "text-gray-600"
+              }`}
+            >
+              <RxDotFilled />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default Slider;
+export default CourseSlider;

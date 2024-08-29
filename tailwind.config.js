@@ -1,4 +1,3 @@
-
 module.exports = {
   mode: "jit",
   darkMode: "class",
@@ -25,6 +24,20 @@ module.exports = {
       fontSize: {
         "4xl": "2.4rem",
         "10xl": "4rem",
+      },
+      screens: {
+        xs: "480px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
+      },
+      maxWidth: {
+        "screen-sm": "640px",
+        "screen-md": "768px",
+        "screen-lg": "1024px",
+        "screen-xl": "1280px",
       },
     },
   },

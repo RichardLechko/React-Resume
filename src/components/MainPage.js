@@ -4,6 +4,7 @@ import Skills from "./Skills.js";
 import Work from "./Work.js";
 import Education from "./Education.js";
 import Publications from "./Publications.js";
+import Coursework from "./Coursework.js";
 
 const MainPage = ({
   personalRef,
@@ -25,6 +26,9 @@ const MainPage = ({
       </section>
       <section id="education" ref={educationRef}>
         <Education />
+      </section>
+      <section>
+        <Coursework />
       </section>
       {/* <section id="publications" ref={publicationsRef}>
         <Publications />
