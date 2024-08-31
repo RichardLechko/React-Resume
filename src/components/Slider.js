@@ -42,7 +42,7 @@ const CourseSlider = ({ courses }) => {
         {/* Left Arrow */}
         <div
           id="bL"
-          className="absolute top-1/2 left-5 transform -translate-y-1/2 text-2xl rounded-full p-2 bg-black/50 text-white cursor-pointer z-10"
+          className="absolute top-1/2 left-5 transform -translate-y-1/2 text-2xl rounded-full p-2 bg-black/50 text-white cursor-pointer z-4"
         >
           <BsChevronCompactLeft
             className="max-sm:size-6"
@@ -53,7 +53,7 @@ const CourseSlider = ({ courses }) => {
         {/* Right Arrow */}
         <div
           id="bR"
-          className="absolute top-1/2 right-5 transform -translate-y-1/2 text-2xl rounded-full p-2 bg-black/50 text-white cursor-pointer z-10"
+          className="absolute top-1/2 right-5 transform -translate-y-1/2 text-2xl rounded-full p-2 bg-black/50 text-white cursor-pointer z-4"
         >
           <BsChevronCompactRight
             className="max-sm:size-6"

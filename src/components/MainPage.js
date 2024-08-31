@@ -15,7 +15,7 @@ const MainPage = ({
 }) => {
   return (
     <div>
-      <section ref={personalRef}>
+      <section id="personal" ref={personalRef}>
         <Personal />
       </section>
       <section id="skills" ref={skillsRef}>
@@ -30,9 +30,9 @@ const MainPage = ({
       <section>
         <Coursework />
       </section>
-      {/* <section id="publications" ref={publicationsRef}>
+      <section id="publications" ref={publicationsRef}>
         <Publications />
-      </section> */}
+      </section>
     </div>
   );
 };

@@ -18,11 +18,6 @@ const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
       refs[sectionId].current.scrollIntoView({ behavior: "smooth" });
     } else {
       navigate("/");
-      setTimeout(() => {
-        if (refs[sectionId] && refs[sectionId].current) {
-          refs[sectionId].current.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
     }
   };
 
@@ -38,13 +33,34 @@ const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
     >
       <nav>
         <ul>
-          <NavItem icon={<FaUser size={28} />} onClick={() => handleNavClick('personal')} />
-          <NavItem icon={<FaTools size={28} />} onClick={() => handleNavClick('skills')} />
-          <NavItem icon={<FaBriefcase size={28} />} onClick={() => handleNavClick('work')} />
-          <NavItem icon={<FaGraduationCap size={28} />} onClick={() => handleNavClick('education')} />
-          <NavItem icon={<FaBook size={28} />} onClick={() => handleNavClick('publications')} />
-          <NavItem icon={<FaEnvelope size={28} />} onClick={() => handleExternalNavClick('/contact')} />
-          <NavItem icon={<FaTools size={28} />} onClick={() => handleExternalNavClick('/widgets')} />
+          <NavItem
+            icon={<FaUser size={28} />}
+            onClick={() => handleNavClick("personal")}
+          />
+          <NavItem
+            icon={<FaTools size={28} />}
+            onClick={() => handleNavClick("skills")}
+          />
+          <NavItem
+            icon={<FaBriefcase size={28} />}
+            onClick={() => handleNavClick("work")}
+          />
+          <NavItem
+            icon={<FaGraduationCap size={28} />}
+            onClick={() => handleNavClick("education")}
+          />
+          <NavItem
+            icon={<FaBook size={28} />}
+            onClick={() => handleNavClick("publications")}
+          />
+          <NavItem
+            icon={<FaEnvelope size={28} />}
+            onClick={() => handleExternalNavClick("/contact")}
+          />
+          <NavItem
+            icon={<FaTools size={28} />}
+            onClick={() => handleExternalNavClick("/widgets")}
+          />
         </ul>
       </nav>
     </div>

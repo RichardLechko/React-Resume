@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar.js";
 import Contact from "./components/Contact.js";
 import Widgets from "./components/widgets/Widgets.js";
-/* import Footer from "./components/Footer.js"; */
+import Footer from "./components/Footer.js";
 import Currency from "./components/widgets/Currency.js";
 import Timer from "./components/widgets/Timer.js";
 import Weather from "./components/widgets/Weather.js";
@@ -88,6 +88,7 @@ function App() {
                   <Route path="/widgets/timer" element={<Timer />} />
                   <Route path="/widgets/weather" element={<Weather />} />
                 </Routes>
+                <Footer refs={refs} />
               </main>
             </div>
           </div>

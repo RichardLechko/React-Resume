@@ -1,9 +1,7 @@
 import { AiFillClockCircle } from "react-icons/ai";
 import { HiSun, HiCurrencyEuro } from "react-icons/hi2";
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useScroll } from "../ScrollToTop.js";
-
-
 
 const Widgets = () => {
   const { scrollToTop } = useScroll();

@@ -218,3 +218,106 @@ footer {
 /* WORK */
 /* WORK */
 /* WORK */
+
+/* FOOTER */
+/* FOOTER */
+/* FOOTER */
+
+.link-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust spacing between items */
+  justify-content: center; /* Center items horizontally */
+  padding: 0;
+  margin: 0;
+  margin-bottom: 2em;
+  list-style: none;
+}
+
+.link-container li {
+  flex: 1 1 calc(100% / 7 - 50px); /* Default: 7 items in a row */
+  max-width: calc(
+    100% / 7 - 10px
+  ); /* Ensure items don't exceed calculated width */
+  box-sizing: border-box; /* Include padding and border in the width */
+}
+
+.link-container li button:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.link-container li button:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.link-container li button {
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+}
+
+@media (max-width: 830px) {
+  #footer-h1 {
+    font-size: 2.25em;
+  }
+
+  #copyright {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 1300px) {
+  .link-container li {
+    flex: 1 1 calc(100% / 4 - 10px);
+    max-width: calc(100% / 4 - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .link-container li {
+    flex: 1 1 calc(100% / 3 - 10px);
+    max-width: calc(100% / 3 - 10px);
+  }
+
+  #icon-links > * {
+    font-size: 3em;
+  }
+}
+
+@media (max-width: 665px) {
+  .link-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust as needed */
+    justify-content: center; /* Center items horizontally */
+  }
+
+  .link-container li {
+    flex: 1 1 calc(50% - 10px); /* 2 items per row */
+    max-width: calc(50% - 10px); /* Adjust width to fit 2 items per row */
+  }
+}
+
+.link-container button {
+  width: 100%; /* Full width of list item */
+  padding: 10px; /* Adjust padding */
+  font-size: 16px; /* Adjust font size */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+/* FOOTER */
+/* FOOTER */
+/* FOOTER */

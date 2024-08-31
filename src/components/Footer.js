@@ -25,67 +25,67 @@ const Footer = ({ refs }) => {
 
   return (
     <footer className="bg-[#002240] text-[#fff] p-8 w-full">
-      <div className="w-full my-6 mx-auto py-0 px-12 gap-4">
-        <div className="w-full">
-          <h1 className="font-mono text-5xl text-center font-bold pb-8">
-            About Me ~ Richard Lechko
-          </h1>
-          <div className="flex m-auto justify-center mb-6">
-            <p className="pb-4 text-gray-400 text-xl">
-              &copy;{" "}
-              <script>
-                var today = new Date(); document.write(today.getFullYear());
-              </script>
-              Richard Lechko | All Rights Reserved&nbsp;|&nbsp;
-            </p>
-            <nav id="footer-links">
-              <ul className="pb-4 text-gray-400 flex">
-                <FooterLink
-                  link="/"
-                  linkName="Home"
-                  handleClick={handleNavClick}
-                  sectionId="personal"
-                />
-                <FooterLink
-                  link="/"
-                  linkName="Personal Life"
-                  handleClick={handleNavClick}
-                  sectionId="personal"
-                />
-                <FooterLink
-                  link="/"
-                  linkName="Skills"
-                  handleClick={handleNavClick}
-                  sectionId="skills"
-                />
-                <FooterLink
-                  link="/"
-                  linkName="Work Experience"
-                  handleClick={handleNavClick}
-                  sectionId="work"
-                />
-                <FooterLink
-                  link="/"
-                  linkName="Education"
-                  handleClick={handleNavClick}
-                  sectionId="education"
-                />
-                <FooterLink
-                  link="/contact"
-                  linkName="Contact"
-                  handleClick={handleExternalNavClick}
-                />
-                <FooterLink
-                  link="/widgets"
-                  linkName="Widgets"
-                  handleClick={handleExternalNavClick}
-                />
-              </ul>
-            </nav>
-          </div>
-        </div>
+      <div className="max-w-screen-xl mx-auto">
+        <h1
+          id="footer-h1"
+          className="font-mono text-5xl text-center font-bold pb-8"
+        >
+          About Me ~ Richard Lechko
+        </h1>
 
-        <div className="flex gap-16 m-auto justify-center">
+        <p
+          id="copyright"
+          className="pb-4 text-gray-400 text-xl text-center mb-6"
+        >
+          &copy; {new Date().getFullYear()} Richard Lechko | All Rights Reserved
+        </p>
+
+        <nav id="nav-link">
+          <ul className="link-container">
+            <FooterLink
+              link="/"
+              linkName="Home"
+              handleClick={handleNavClick}
+              sectionId="personal"
+            />
+            <FooterLink
+              link="/"
+              linkName="Personal"
+              handleClick={handleNavClick}
+              sectionId="personal"
+            />
+            <FooterLink
+              link="/"
+              linkName="Skills"
+              handleClick={handleNavClick}
+              sectionId="skills"
+            />
+            <FooterLink
+              link="/"
+              linkName="Work"
+              handleClick={handleNavClick}
+              sectionId="work"
+            />
+            <FooterLink
+              link="/"
+              linkName="Education"
+              handleClick={handleNavClick}
+              sectionId="education"
+            />
+            <FooterLink
+              link="/contact"
+              linkName="Contact"
+              handleClick={handleExternalNavClick}
+            />
+            <FooterLink
+              link="/widgets"
+              linkName="Widgets"
+              handleClick={handleExternalNavClick}
+            />
+          </ul>
+        </nav>
+
+        <div id="icon-links" className="flex justify-center gap-4 mb-6">
           <IconLink
             link="https://github.com/RichardLechko"
             img={<DiGithubBadge />}
@@ -106,25 +106,23 @@ const Footer = ({ refs }) => {
             img={<FaSoundcloud />}
             hover="#ff7700"
           />
-          <LastModified />
         </div>
+
+        <LastModified />
       </div>
     </footer>
   );
 };
 
-const FooterLink = ({ link, linkName, handleClick, sectionId }) => {
-  return (
-    <li
-      className="mr-4 cursor-pointer"
+const FooterLink = ({ link, linkName, handleClick, sectionId }) => (
+  <li>
+    <button
       onClick={() => (sectionId ? handleClick(sectionId) : handleClick(link))}
     >
-      <button className="text-xl border-b-1 border-b-white border-b hover:text-red-500">
-        {linkName}
-      </button>
-    </li>
-  );
-};
+      <span>{linkName}</span>
+    </button>
+  </li>
+);
 
 const IconLink = ({ link, img, hover }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -132,7 +130,9 @@ const IconLink = ({ link, img, hover }) => {
   return (
     <a
       href={link}
-      className={`text-6xl relative`}
+      target="_blank"
+      rel="noreferrer"
+      className="text-4xl"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{ color: isHovered ? hover : "inherit" }}
@@ -148,7 +148,7 @@ const LastModified = () => {
     lastModified.getMonth() + 1
   }/${lastModified.getDate()}/${lastModified.getFullYear()}`;
   return (
-    <div id="lastModifiedText" className="mt-4 text-gray-400">
+    <div className="text-center text-gray-400 mt-4">
       <p>Last Modified: {formattedDate}</p>
     </div>
   );
