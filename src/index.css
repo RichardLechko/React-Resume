@@ -298,6 +298,14 @@ footer {
 }
 
 @media (max-width: 665px) {
+  #footer-h1 {
+    font-size: 1.8em;
+  }
+
+  #copyright {
+    font-size: 0.825em;
+  }
+
   .link-container {
     display: flex;
     flex-wrap: wrap;
@@ -308,6 +316,10 @@ footer {
   .link-container li {
     flex: 1 1 calc(50% - 10px); /* 2 items per row */
     max-width: calc(50% - 10px); /* Adjust width to fit 2 items per row */
+  }
+
+  .link-container li button {
+    font-size: 0.8em;
   }
 }
 
