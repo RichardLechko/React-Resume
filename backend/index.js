@@ -18,10 +18,21 @@ dotenv.config({ path: envPath });
 const app = express();
 const port = 5000;
 
-// CORS configuration
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://www.richardlechko.com",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:3000", // Replace with your frontend origin
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
