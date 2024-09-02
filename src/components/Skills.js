@@ -13,6 +13,8 @@ import {
   DiHtml5,
   DiCss3,
   DiGithubBadge,
+} from "react-icons/di";
+import {
   FaSitemap,
   FaDesktop,
   FaCode,
@@ -21,23 +23,26 @@ import {
   FaMicrochip,
   FaUsers,
   FaMap,
-  BiCodeCurly,
-  SiMicrosoftexcel,
-  PiFileSqlFill,
-  BsFillLockFill,
-  MdCable,
-  MdTerminal,
-  MdDashboardCustomize,
   FaSync,
-} from "./LazyIcons.js"; // Adjust path if necessary
+} from "react-icons/fa";
+import { BiCodeCurly } from "react-icons/bi";
+import { SiMicrosoftexcel } from "react-icons/si";
+import { PiFileSqlFill } from "react-icons/pi";
+import { BsFillLockFill } from "react-icons/bs";
+import { MdCable, MdTerminal, MdDashboardCustomize } from "react-icons/md";
 
 const Skills = () => {
   return (
     <div>
-      <section className="container flex flex-col m-auto main-content" id="skills">
+      <section
+        className="container flex flex-col m-auto main-content"
+        id="skills"
+      >
         <div className="mt-16 mx-auto justify-around px-6 py-0 pt-16 flex flex-wrap gap-6">
           <div className="w-full mb-8 text-center life-text smallText">
-            <h1 className="text-3xl md:text-4xl mb-4 font-bold">Technical Skills:</h1>
+            <h1 className="text-3xl md:text-4xl mb-4 font-bold">
+              Technical Skills:
+            </h1>
             <p className="text-center text-base md:text-xl">
               I have given a rating from 1-10, categorizing my understanding and
               expertise of these skills. Hover over the image to see the rating!
@@ -216,7 +221,7 @@ const Skills = () => {
             <NonTechSkills text={"Introduce new and creative solutions"} />
             <NonTechSkills text={"Communicate ideas effectively"} />
             <NonTechSkills text={"Proactively take on responsibilities"} />
-            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -299,7 +304,10 @@ const SkillsCard = ({
 
 const NonTechSkills = ({ text }) => {
   return (
-    <div id="non-tech-text" className="p-4 border-solid border-black border-4 bg-[#333] text-white rounded-2xl font-bold text-base md:text-xl transition-transform duration-200 ease-in hover:translate-y-[-10px]">
+    <div
+      id="non-tech-text"
+      className="p-4 border-solid border-black border-4 bg-[#333] text-white rounded-2xl font-bold text-base md:text-xl transition-transform duration-200 ease-in hover:translate-y-[-10px]"
+    >
       <h4>{text}</h4>
     </div>
   );
