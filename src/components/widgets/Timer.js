@@ -13,9 +13,9 @@ const Timer = () => {
   const timeInputRef = useRef(null);
   const updateButtonRef = useRef(null);
   const stopButtonRef = useRef(null);
-  const pressStartTime = useRef(null); // Track the start time of the press
-  const isHolding = useRef(false); // Track if the button is currently being held
-  const resetTimeoutRef = useRef(null); // Track the reset timeout
+  const pressStartTime = useRef(null);
+  const isHolding = useRef(false);
+  const resetTimeoutRef = useRef(null);
 
   const updateClock = useCallback(() => {
     const timeInputValue = timeInputRef.current.value;
@@ -36,16 +36,16 @@ const Timer = () => {
 
   const resetTimer = useCallback(() => {
     clearInterval(timer);
-    setRemainingTime(initialTime); // Reset to initial time
+    setRemainingTime(initialTime);
     setIsPaused(false);
-    setIsRunning(false); // Set to false when the timer is reset
-    setTimer(null); // Clear the existing timer
+    setIsRunning(false);
+    setTimer(null);
   }, [initialTime, timer]);
 
   const startTimer = useCallback(() => {
     clearInterval(timer);
     setIsPaused(false);
-    setIsRunning(true); // Set to true when the timer starts
+    setIsRunning(true);
 
     const newTimer = setInterval(() => {
       setRemainingTime((prevTime) => {
@@ -63,7 +63,6 @@ const Timer = () => {
 
   const handleStopButtonClick = useCallback(() => {
     if (isPaused) {
-      // Resume the timer
       const newTimer = setInterval(() => {
         setRemainingTime((prevTime) => {
           if (prevTime <= 0) {
@@ -75,7 +74,6 @@ const Timer = () => {
       }, 1000);
       setTimer(newTimer);
     } else {
-      // Pause the timer
       clearInterval(timer);
       setTimer(null);
     }
@@ -84,28 +82,26 @@ const Timer = () => {
 
   const handleResetButtonMouseUp = useCallback(() => {
     if (isHolding.current) {
-      // Check if button was being held
-      isHolding.current = false; // Indicate button is no longer held
-      clearTimeout(resetTimeoutRef.current); // Clear the 3-second timeout
+      isHolding.current = false;
+      clearTimeout(resetTimeoutRef.current);
     }
-    document.removeEventListener("mouseup", handleResetButtonMouseUp); // Remove event listeners
+    document.removeEventListener("mouseup", handleResetButtonMouseUp);
     document.removeEventListener("mouseleave", handleResetButtonMouseUp);
   }, []);
 
   const handleResetButtonMouseDown = useCallback(() => {
-    pressStartTime.current = Date.now(); // Record the start time of the press
-    isHolding.current = true; // Indicate that the button is being held
+    pressStartTime.current = Date.now();
+    isHolding.current = true;
 
     resetTimeoutRef.current = setTimeout(() => {
       if (isHolding.current) {
-        // Check if button is still held
-        resetTimer(); // Perform the reset action
-        updateButtonRef.current.textContent = "Start"; // Update button text
+        resetTimer();
+        updateButtonRef.current.textContent = "Start";
       }
     }, 1000); // 3 seconds
 
-    document.addEventListener("mouseup", handleResetButtonMouseUp); // Add event listener for mouse up
-    document.addEventListener("mouseleave", handleResetButtonMouseUp); // Add event listener for mouse leave
+    document.addEventListener("mouseup", handleResetButtonMouseUp);
+    document.addEventListener("mouseleave", handleResetButtonMouseUp);
   }, [resetTimer, handleResetButtonMouseUp]);
 
   useEffect(() => {
@@ -157,9 +153,9 @@ const Timer = () => {
               updateButtonRef.current.textContent = "Reset";
             }
           }}
-          onMouseDown={handleResetButtonMouseDown} // Start 3-second timeout on mouse down
-          onMouseUp={handleResetButtonMouseUp} // Clear timeout if released early
-          onMouseLeave={handleResetButtonMouseUp} // Clear timeout if mouse leaves
+          onMouseDown={handleResetButtonMouseDown}
+          onMouseUp={handleResetButtonMouseUp}
+          onMouseLeave={handleResetButtonMouseUp}
         >
           {isRunning ? "Reset" : "Start"}
         </button>

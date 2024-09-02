@@ -35,7 +35,6 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
       const result = await response.json();
-      // Assuming your backend returns a success message and possibly links
       setFeedback(
         <div>
           <p className="text-green-600 font-bold mb-4">

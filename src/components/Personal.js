@@ -98,8 +98,6 @@ const Personal = () => {
           </p>
         </div>
       </div>
-
-      {/* Scroll to Top Button */}
       {showScrollToTop && (
         <button
           onClick={handleScrollToTop}

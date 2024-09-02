@@ -57,9 +57,9 @@ const Skills = () => {
               iconOneH={"Java"}
               iconTwoH={"Python"}
               iconThreeH={"JavaScript"}
-              bgColorOne="#FF6F61" // Coral for Java
-              bgColorTwo="#4CAF50" // Green for Python
-              bgColorThree="#F7DF1E" // Yellow for JavaScript
+              bgColorOne="#FF6F61"
+              bgColorTwo="#4CAF50"
+              bgColorThree="#F7DF1E"
               ratingOne={8}
               ratingTwo={9}
               ratingThree={10}
@@ -75,9 +75,9 @@ const Skills = () => {
               ratingOne={10}
               ratingTwo={10}
               ratingThree={10}
-              bgColorOne="#0078D4" // Windows blue
-              bgColorTwo="#FCC624" // Linux yellow
-              bgColorThree="#A2AAAD" // Apple gray
+              bgColorOne="#0078D4"
+              bgColorTwo="#FCC624"
+              bgColorThree="#A2AAAD"
             />
             <SkillsCard
               head={"JS Frameworks"}
@@ -90,9 +90,9 @@ const Skills = () => {
               ratingOne={10}
               ratingTwo={9}
               ratingThree={7}
-              bgColorOne="#8CC84B" // Node.js green
-              bgColorTwo="#61DAFB" // React blue
-              bgColorThree="#DD0031" // Angular red
+              bgColorOne="#8CC84B"
+              bgColorTwo="#61DAFB"
+              bgColorThree="#DD0031"
             />
             <SkillsCard
               head={"Computer Science"}
@@ -105,9 +105,9 @@ const Skills = () => {
               ratingOne={8}
               ratingTwo={8}
               ratingThree={8}
-              bgColorOne="#009B77" // Networking teal
-              bgColorTwo="#F6C91D" // Data Structures yellow
-              bgColorThree="#4B4F56" // Systems gray
+              bgColorOne="#009B77"
+              bgColorTwo="#F6C91D"
+              bgColorThree="#4B4F56"
             />
             <SkillsCard
               head={"Web Development CI/CD"}
@@ -120,9 +120,9 @@ const Skills = () => {
               ratingOne={10}
               ratingTwo={10}
               ratingThree={10}
-              bgColorOne="#FF6F61" // FE Development coral
-              bgColorTwo="#3B82F6" // BE Development blue
-              bgColorThree="#FBBF24" // UI/UX Design amber
+              bgColorOne="#FF6F61"
+              bgColorTwo="#3B82F6"
+              bgColorThree="#FBBF24"
             />
             <SkillsCard
               head={"Web Dev Languages"}
@@ -135,9 +135,9 @@ const Skills = () => {
               ratingOne={10}
               ratingTwo={10}
               ratingThree={10}
-              bgColorOne="#E34F26" // HTML5 red
-              bgColorTwo="#1572B6" // CSS3 blue
-              bgColorThree="#F7DF1E" // JavaScript yellow
+              bgColorOne="#E34F26"
+              bgColorTwo="#1572B6"
+              bgColorThree="#F7DF1E"
             />
             <SkillsCard
               head={"Other"}
@@ -150,9 +150,9 @@ const Skills = () => {
               ratingOne={9}
               ratingTwo={10}
               ratingThree={9}
-              bgColorOne="#217346" // Excel green
-              bgColorTwo="#181717" // GitHub black
-              bgColorThree="#003B57" // SQL dark blue
+              bgColorOne="#217346"
+              bgColorTwo="#181717"
+              bgColorThree="#003B57"
             />
             <SkillsCard
               head={"Open Source Tools"}
@@ -165,9 +165,9 @@ const Skills = () => {
               ratingOne={9}
               ratingTwo={9}
               ratingThree={8}
-              bgColorOne="#FF5A5F" // Caddy red
-              bgColorTwo="#0D6EFD" // Rsync blue
-              bgColorThree="#2D2D2D" // GNU Emacs dark gray
+              bgColorOne="#FF5A5F"
+              bgColorTwo="#0D6EFD"
+              bgColorThree="#2D2D2D"
             />
             <SkillsCard
               head={"AWS"}
@@ -177,9 +177,9 @@ const Skills = () => {
               iconOneH={"EC2"}
               iconTwoH={"Route 53"}
               iconThreeH={"Direct Connect"}
-              bgColorOne="#FF9900" // EC2 orange
-              bgColorTwo="#232F3E" // Route 53 dark blue
-              bgColorThree="#7D3F8C" // Direct Connect purple
+              bgColorOne="#FF9900"
+              bgColorTwo="#232F3E"
+              bgColorThree="#7D3F8C"
               ratingOne={10}
               ratingTwo={10}
               ratingThree={10}
@@ -192,9 +192,9 @@ const Skills = () => {
               iconOneH={"Bash (Scripting)"}
               iconTwoH={"Agile Development"}
               iconThreeH={"Microsoft Teams"}
-              bgColorOne="#2D2D2D" // Bash black
-              bgColorTwo="#00BFAE" // Agile teal
-              bgColorThree="#6264A7" // Teams purple
+              bgColorOne="#2D2D2D"
+              bgColorTwo="#00BFAE"
+              bgColorThree="#6264A7"
               ratingOne={8}
               ratingTwo={9}
               ratingThree={10}
@@ -251,9 +251,7 @@ const SkillsCard = ({
         <span className="border-b-2 border-white">{head}</span>
       </h4>
       <div className="flex flex-col items-center">
-        {/* Pyramid layout */}
         <div className="flex flex-col items-center">
-          {/* Top item */}
           <div className="flex flex-col items-center mb-4">
             <div
               className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl"
@@ -266,7 +264,6 @@ const SkillsCard = ({
               {ratingOne}/10
             </div>
           </div>
-          {/* Bottom items */}
           <div className="flex flex-col gap-4 md:flex-row md:gap-8">
             <div className="flex flex-col items-center">
               <div

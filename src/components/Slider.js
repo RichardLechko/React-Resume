@@ -39,7 +39,6 @@ const CourseSlider = ({ courses }) => {
             ))}
           </ul>
         </div>
-        {/* Left Arrow */}
         <div
           id="bL"
           className="absolute top-1/2 left-5 transform -translate-y-1/2 text-2xl rounded-full p-2 bg-black/50 text-white cursor-pointer z-4"
@@ -50,7 +49,6 @@ const CourseSlider = ({ courses }) => {
             size={30}
           />
         </div>
-        {/* Right Arrow */}
         <div
           id="bR"
           className="absolute top-1/2 right-5 transform -translate-y-1/2 text-2xl rounded-full p-2 bg-black/50 text-white cursor-pointer z-4"
@@ -61,7 +59,6 @@ const CourseSlider = ({ courses }) => {
             size={30}
           />
         </div>
-        {/* Dot Indicators */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
           {courses.map((_, slideIndex) => (
             <div

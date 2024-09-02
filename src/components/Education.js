@@ -2,9 +2,7 @@ import React from "react";
 
 const Education = () => {
   return (
-    /* <section className="container flex flex-col m-auto main-content" id="skills"> */
     <div id="education" className="container flex flex-col m-auto main-content">
-      {/* Education Section */}
       <section className="container mx-auto flex flex-col items-center mt-16">
         <h1 className="text-3xl sm:text-4xl md:text-5xl mt-12 sm:mt-16 mb-6 sm:mb-8 font-bold text-center">
           Education

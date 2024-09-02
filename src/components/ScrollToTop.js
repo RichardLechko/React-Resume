@@ -1,4 +1,3 @@
-// ScrollContext.js
 import React, { createContext, useContext, useRef, useEffect } from "react";
 
 const ScrollContext = createContext();
@@ -16,9 +15,7 @@ export const ScrollProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    // Optionally handle side effects when the context is mounted/unmounted
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <ScrollContext.Provider value={{ scrollToTop, scrollableContainerRef }}>
