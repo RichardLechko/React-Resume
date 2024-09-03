@@ -27,7 +27,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/submit", {
+      const response = await fetch("https://www.richardlechko.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,21 +74,24 @@ const Contact = () => {
           I am currently looking for any projects — big or small. Don't be
           afraid to reach out. Whether that be a job opportunity, a freelance
           opportunity, or a simple project. If you want, you can also check out
-          my resume:
+          my resume:&nbsp;
           <a
-            href="../Richard_Lechko_Resume_May_29_2024.docx"
+            href="/resumes/Richard_Lechko_Resume.docx"
+            download
             target="_blank"
             rel="noopener noreferrer"
           >
-            DocX
+            <span className="text-blue-500 underline font-bold">DocX</span>
+            &nbsp;
           </a>
-          or
+          or&nbsp;
           <a
-            href="../Richard_Lechko_Resume_May_29_2024.pdf"
+            href="/resumes/Richard_Lechko_Resume.pdf"
+            download
             target="_blank"
             rel="noopener noreferrer"
           >
-            PDF
+            <span className="text-red-500 underline font-bold">PDF</span>
           </a>
           . If you would like to request an unofficial transcript for a career
           opportunity, please use the contact form below. Anything else, still
@@ -192,7 +195,11 @@ const Contact = () => {
             <FaEnvelope />
             <article className="mb-4">
               <h1 className="mb-2 font-bold">Email</h1>
-              <p>richardlechko@gmail.com</p>
+              <p>
+                <a href="mailto:richardlechko@gmail.com" className=" underline">
+                  richardlechko [at] gmail.com
+                </a>
+              </p>
             </article>
           </div>
 

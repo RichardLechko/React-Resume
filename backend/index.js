@@ -41,7 +41,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/api/submit", async (req, res) => {
+app.post("/submit", async (req, res) => {
   const { name, email, subject, message } = req.body;
 
   try {
