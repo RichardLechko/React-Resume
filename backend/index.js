@@ -19,8 +19,9 @@ const app = express();
 const port = 5000;
 
 const allowedOrigins = [
-  "http://localhost:3000",
-  "https://www.richardlechko.com",
+  "http://localhost:3000", // For local development
+  "http://richardlechko.com", // In case your site is accessed via HTTP
+  "https://richardlechko.com", // For your live site using HTTPS
 ];
 
 app.use(

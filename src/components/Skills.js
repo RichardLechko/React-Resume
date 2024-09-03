@@ -13,23 +13,30 @@ import {
   DiHtml5,
   DiCss3,
   DiGithubBadge,
+  DiNginx,
+  DiPostgresql,
+  DiGit,
 } from "react-icons/di";
+
 import {
   FaSitemap,
   FaDesktop,
   FaCode,
   FaPalette,
-  FaFileCode,
   FaMicrochip,
   FaUsers,
   FaMap,
-  FaSync,
+  FaCloud,
 } from "react-icons/fa";
 import { BiCodeCurly } from "react-icons/bi";
 import { SiMicrosoftexcel } from "react-icons/si";
 import { PiFileSqlFill } from "react-icons/pi";
-import { BsFillLockFill } from "react-icons/bs";
-import { MdCable, MdTerminal, MdDashboardCustomize } from "react-icons/md";
+import { MdTerminal, MdDashboardCustomize } from "react-icons/md";
+import {
+  TbBrandTailwind,
+  TbBrandFigma,
+  TbBrandBootstrap,
+} from "react-icons/tb";
 
 const Skills = () => {
   return (
@@ -156,30 +163,30 @@ const Skills = () => {
             />
             <SkillsCard
               head={"Open Source Tools"}
-              iconOne={<BsFillLockFill size={50} />}
-              iconTwo={<FaSync size={50} />}
-              iconThree={<FaFileCode size={50} className="text-white" />}
-              iconOneH={"Caddy"}
-              iconTwoH={"Rsync"}
-              iconThreeH={"GNU Emacs"}
-              ratingOne={9}
-              ratingTwo={9}
-              ratingThree={8}
-              bgColorOne="#FF5A5F"
-              bgColorTwo="#0D6EFD"
-              bgColorThree="#2D2D2D"
+              iconOne={<DiGit size={50} />}
+              iconTwo={<DiPostgresql size={50} />}
+              iconThree={<DiNginx size={50} className="text-white" />}
+              iconOneH={"Git"}
+              iconTwoH={"PostgreSQL"}
+              iconThreeH={"Nginx"}
+              ratingOne={10}
+              ratingTwo={8}
+              ratingThree={9}
+              bgColorOne="#F05032"
+              bgColorTwo="#009639"
+              bgColorThree="#336791"
             />
             <SkillsCard
               head={"AWS"}
               iconOne={<FaMicrochip size={50} />}
               iconTwo={<FaMap size={50} className="text-white" />}
-              iconThree={<MdCable size={50} />}
+              iconThree={<FaCloud size={50} />}
               iconOneH={"EC2"}
               iconTwoH={"Route 53"}
-              iconThreeH={"Direct Connect"}
+              iconThreeH={"AWS Amplify"}
               bgColorOne="#FF9900"
               bgColorTwo="#232F3E"
-              bgColorThree="#7D3F8C"
+              bgColorThree="#FF9900"
               ratingOne={10}
               ratingTwo={10}
               ratingThree={10}
@@ -189,15 +196,30 @@ const Skills = () => {
               iconOne={<MdTerminal size={50} className="text-white" />}
               iconTwo={<MdDashboardCustomize size={50} />}
               iconThree={<FaUsers size={50} />}
-              iconOneH={"Bash (Scripting)"}
-              iconTwoH={"Agile Development"}
-              iconThreeH={"Microsoft Teams"}
+              iconOneH={"Bash"}
+              iconTwoH={"Agile"}
+              iconThreeH={"MS Teams"}
               bgColorOne="#2D2D2D"
               bgColorTwo="#00BFAE"
               bgColorThree="#6264A7"
               ratingOne={8}
               ratingTwo={9}
               ratingThree={10}
+            />
+            <SkillsCard
+              head={"UI/UX Design"}
+              iconOne={<TbBrandTailwind size={50} />}
+              iconTwo={<TbBrandFigma size={50} />}
+              iconThree={<TbBrandBootstrap size={50} />}
+              iconOneH={"TailwindCSS"}
+              iconTwoH={"Figma"}
+              iconThreeH={"Bootstrap"}
+              bgColorOne={"#3B82F6"}
+              bgColorTwo={"#0ACF83"}
+              bgColorThree={"#0D6EFD"}
+              ratingOne={10}
+              ratingTwo={8}
+              ratingThree={9}
             />
           </Suspense>
         </div>
