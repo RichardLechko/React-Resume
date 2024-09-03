@@ -28,6 +28,12 @@
       },
       "api": {
         "contactApi": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1n8a9y8uu96f0",
+          "type": "manual"
+        }
       }
     }
   }
