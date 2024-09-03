@@ -44,8 +44,6 @@
     "webpack-bundle-analyzer": "^4.10.2"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^6.2.0",
-    "aws-amplify": "^6.5.3",
     "my-project": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
