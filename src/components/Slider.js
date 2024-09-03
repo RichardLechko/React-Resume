@@ -26,7 +26,7 @@ const CourseSlider = ({ courses }) => {
       <h1 className="text-3xl sm:text-4xl md:text-5xl mt-12 sm:mt-16 mb-6 sm:mb-8 font-bold text-center">
         Relevant Coursework:
       </h1>
-      <div className="w-full h-full rounded-2xl bg-gray-900 relative overflow-hidden">
+      <div className="w-full h-full rounded-2xl bg-gray-900 relative">
         <div className="flex flex-col justify-center items-center h-full text-center transition-transform duration-500 ease-in-out">
           <h2 className="text-2xl font-bold text-yellow-400 mb-4">
             {courses[currentIndex].title}

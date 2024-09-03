@@ -20,8 +20,7 @@ const port = 5000;
 
 const allowedOrigins = [
   "http://localhost:3000", // For local development
-  "http://richardlechko.com", // In case your site is accessed via HTTP
-  "https://richardlechko.com", // For your live site using HTTPS
+  "https://www.richardlechko.com", // Production URL
 ];
 
 app.use(
@@ -42,7 +41,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/submit", async (req, res) => {
+app.post("/api/submit", async (req, res) => {
   const { name, email, subject, message } = req.body;
 
   try {

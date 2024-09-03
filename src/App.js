@@ -33,7 +33,7 @@ function App() {
     <div>
       <Router>
         <ScrollProvider>
-          <div className="flex min-h-screen overflow-hidden">
+          <div className="flex min-h-screen">
             <NavBar
               isSidebarVisible={isSidebarVisible}
               toggleSidebar={toggleSidebar}
@@ -46,7 +46,7 @@ function App() {
             >
               <header
                 id="header-name"
-                className="flex justify-between items-center p-8 bg-gray-800 text-white w-full top-0 left-0 z-10 transition-all duration-300"
+                className="flex justify-between items-center p-8  bg-gray-800 text-white fixed w-full top-0 left-0 z-10 transition-all duration-300"
               >
                 <h1
                   className={`text-2xl transition-all duration-300 ${
@@ -64,7 +64,7 @@ function App() {
               </header>
               <main
                 id="main-content"
-                className={`flex-1 flex flex-col pt-24 overflow-hidden ${
+                className={`flex-1 flex flex-col pt-24 ${
                   isSidebarVisible ? "ml-20" : "ml-0"
                 }`}
               >
