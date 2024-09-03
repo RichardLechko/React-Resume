@@ -24,16 +24,19 @@ const Contact = () => {
     });
   };
 
+  const contactApiUrl = `${process.env.REACT_APP_API_URL}/submit`;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://www.richardlechko.com/submit", {
+      const response = await fetch(contactApiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
+
       const result = await response.json();
       setFeedback(
         <div>

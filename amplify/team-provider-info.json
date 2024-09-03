@@ -1,0 +1,34 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-myproject-dev-a5ab3-authRole",
+      "UnauthRoleArn": "arn:aws:iam::975049968734:role/amplify-myproject-dev-a5ab3-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::975049968734:role/amplify-myproject-dev-a5ab3-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-myproject-dev-a5ab3-deployment",
+      "UnauthRoleName": "amplify-myproject-dev-a5ab3-unauthRole",
+      "StackName": "amplify-myproject-dev-a5ab3",
+      "StackId": "arn:aws:cloudformation:us-east-1:975049968734:stack/amplify-myproject-dev-a5ab3/f61d7420-6a2e-11ef-9a64-0afffaa49c03",
+      "AmplifyAppId": "d1n8a9y8uu96f0",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-myproject-dev-a5ab3-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "function": {
+        "contactFormHandler": {
+          "gmailPass": "fcgy kjzy psxd uxtr",
+          "gmailUser": "richardlechko@gmail.com",
+          "weatherApiKey": "0988fcb17aee469ad73d8e9669650957",
+          "currencyApiKey": "fca_live_NC9xYJcShxSFEncp89KnHjYDaTOw2oSuKzQYq2iu",
+          "deploymentBucketName": "amplify-myproject-dev-a5ab3-deployment",
+          "s3Key": "amplify-builds/contactFormHandler-4b443754526963764b62-build.zip"
+        }
+      },
+      "auth": {
+        "myproject": {}
+      },
+      "api": {
+        "contactApi": {}
+      }
+    }
+  }
+}

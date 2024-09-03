@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "paths": {
+    "/contact": {
+      "name": "/contact",
+      "lambdaFunction": "contactFormHandler",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create"
+        ]
+      }
+    }
+  }
+}

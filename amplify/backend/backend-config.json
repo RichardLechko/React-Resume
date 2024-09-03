@@ -1,0 +1,102 @@
+{
+  "api": {
+    "contactApi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "contactFormHandler"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "myproject": {
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "managed"
+    }
+  },
+  "function": {
+    "contactFormHandler": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_contactFormHandler_currencyApiKey": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "contactFormHandler"
+        }
+      ]
+    },
+    "AMPLIFY_function_contactFormHandler_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "contactFormHandler"
+        }
+      ]
+    },
+    "AMPLIFY_function_contactFormHandler_gmailPass": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "contactFormHandler"
+        }
+      ]
+    },
+    "AMPLIFY_function_contactFormHandler_gmailUser": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "contactFormHandler"
+        }
+      ]
+    },
+    "AMPLIFY_function_contactFormHandler_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "contactFormHandler"
+        }
+      ]
+    },
+    "AMPLIFY_function_contactFormHandler_weatherApiKey": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "contactFormHandler"
+        }
+      ]
+    }
+  }
+}
