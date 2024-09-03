@@ -27,7 +27,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://www.richardlechko.com/submit", {
+      const response = await fetch("http://localhost:5000/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
