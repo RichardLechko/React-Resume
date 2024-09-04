@@ -9,7 +9,8 @@ import Currency from "./components/widgets/Currency.js";
 import Timer from "./components/widgets/Timer.js";
 import Weather from "./components/widgets/Weather.js";
 import MainPage from "./components/MainPage.js";
-import { ScrollProvider } from "./components/ScrollToTop.js"; // Ensure this is correctly imported
+import { ScrollProvider } from "./components/ScrollToTop.js";
+
 function App() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
