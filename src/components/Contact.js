@@ -162,9 +162,13 @@ const Contact = () => {
           ></textarea>
           <input
             type="submit"
-            className="w-full text-xl p-4 outline-none bg-primaryColor text-white rounded-xl mb-4 border-none font-bold cursor-pointer"
+            className="w-full text-xl p-4 outline-none bg-primaryColor text-white rounded-xl mb-4 border-none font-bold cursor-pointer invisible"
             value="Send Message"
+            readOnly
           />
+          <p className="font-bold text-black underline text-2xl">
+            TODO: Currently under work, check back soon!
+          </p>
         </form>
 
         <div id="formFeedback" className="text-2xl mt-4">

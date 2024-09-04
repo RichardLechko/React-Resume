@@ -1,14 +1,12 @@
-const path = require("path");
+/* const path = require("path");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   webpack: {
     configure: (webpackConfig) => {
-      // Ensure production mode
       webpackConfig.mode = "production";
 
-      // Add an alias for '@components'
       webpackConfig.resolve = {
         ...webpackConfig.resolve,
         alias: {
@@ -17,7 +15,6 @@ module.exports = {
         },
       };
 
-      // Add the BundleAnalyzerPlugin
       webpackConfig.plugins = [
         ...webpackConfig.plugins,
         new BundleAnalyzerPlugin({
@@ -27,17 +24,16 @@ module.exports = {
         }),
       ];
 
-      // Optimize performance
       webpackConfig.optimization = {
         minimize: true,
         minimizer: [
           new TerserPlugin({
             terserOptions: {
               compress: {
-                drop_console: true, // Remove console logs
+                drop_console: true,
               },
             },
-            extractComments: false, // Avoid creating separate files for comments
+            extractComments: false,
           }),
         ],
         splitChunks: {
@@ -49,3 +45,6 @@ module.exports = {
     },
   },
 };
+ */
+
+module.exports = {};
