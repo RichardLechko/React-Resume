@@ -22,7 +22,9 @@ const Weather = () => {
 
   const fetchWeatherData = async (city) => {
     try {
+      // Fetch weather data from your backend
       const response = await fetch(`${apiUrl}?city=${city}`);
+
       if (!response.ok) {
         throw new Error(
           response.status === 404
@@ -30,6 +32,8 @@ const Weather = () => {
             : "Failed to fetch weather data"
         );
       }
+
+      // Parse and use the weather data
       const data = await response.json();
       setWeatherData(data);
       setError(null);

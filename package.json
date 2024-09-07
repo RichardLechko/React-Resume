@@ -5,10 +5,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start": "npm run start:frontend",
     "start:frontend": "craco start --config craco.config.cjs",
-    "start:backend": "cd backend && node index.js",
-    "server": "node backend/index.js",
+    "server": "node api/submit.js",
     "client": "craco start",
     "build": "craco build",
     "test": "craco test",
