@@ -26,8 +26,13 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const apiUrl =
+      process.env.NODE_ENV === "production"
+        ? "https://www.richardlechko.com/submit"
+        : "http://localhost:5000/submit";
+
     try {
-      const response = await fetch("http://localhost:5000/submit", {
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -162,13 +167,9 @@ const Contact = () => {
           ></textarea>
           <input
             type="submit"
-            className="w-full text-xl p-4 outline-none bg-primaryColor text-white rounded-xl mb-4 border-none font-bold cursor-pointer invisible"
+            className="w-full text-xl p-4 outline-none bg-primaryColor text-white rounded-xl mb-4 border-none font-bold cursor-pointer"
             value="Send Message"
-            readOnly
           />
-          <p className="font-bold text-black underline text-2xl">
-            TODO: Currently under work, check back soon!
-          </p>
         </form>
 
         <div id="formFeedback" className="text-2xl mt-4">

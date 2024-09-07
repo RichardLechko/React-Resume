@@ -12,15 +12,19 @@ const Currency = () => {
   const [exchangeRates, setExchangeRates] = useState({});
   const [error, setError] = useState(null);
 
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://www.richardlechko.com/api/currency-key"
+      : "http://localhost:5000/api/currency-key";
+
   useEffect(() => {
     const fetchCurrencyData = async () => {
       try {
-        const response = await fetch("/api/currency-key");
+        const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-
         setExchangeRates(data.rates);
       } catch (error) {
         setError(error.message);
@@ -29,7 +33,7 @@ const Currency = () => {
     };
 
     fetchCurrencyData();
-  }, []);
+  }, [apiUrl]);
 
   const convertCurr = useCallback(() => {
     if (!exchangeRates[startCurrency] || !exchangeRates[endCurrency]) {
@@ -68,15 +72,11 @@ const Currency = () => {
     <div>
       <header className="container justify-center m-auto mt-16 underline">
         <h1 className="text-3xl text-center text-black font-bold">
-          Currency App Widget (underwork)
+          Currency App Widget
         </h1>
       </header>
-      <div className="flex text-center m-auto justify-center mt-16">
-        <p className="font-bold justify-center pb-8 text-black  text-center underline text-2xl">
-          TODO: Currently under work, check back soon!
-        </p>
-      </div>
-      <div className="flex flex-col md:flex-row justify-center items-center mt-10 h-[50vh]">
+
+      <div className="flex flex-col md:flex-row justify-center items-center h-[50vh]">
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-col w-full md:w-auto md:mb-0">
             <form className="flex flex-col">
@@ -88,7 +88,6 @@ const Currency = () => {
                   className="text-lg md:text-xl font-bold text-center p-3 md:p-[15px] border-b-2 md:border-b-0 md:border-r-2 border-black"
                   value={firstCurrVal}
                   onChange={(e) => setFirstCurrVal(e.target.value)}
-                  readOnly
                 />
 
                 <select
@@ -97,7 +96,6 @@ const Currency = () => {
                   id="currency-start"
                   value={startCurrency}
                   onChange={(e) => setStartCurrency(e.target.value)}
-                  readOnly
                 >
                   <option value="USD">United States Dollar</option>
                   <option value="AUD">Australian Dollar</option>

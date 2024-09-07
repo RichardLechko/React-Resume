@@ -15,20 +15,27 @@ const Weather = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://www.richardlechko.com/api/weather"
+      : "http://localhost:5000/api/weather";
+
   const fetchWeatherData = async (city) => {
     try {
-      const response = await fetch(`/api/weather?city=${city}`);
-      const data = await response.json();
-      if (response.status === 404) {
-        setError("City not found");
-        setWeatherData(null);
-      } else {
-        setWeatherData(data);
-        setError(null);
+      const response = await fetch(`${apiUrl}?city=${city}`);
+      if (!response.ok) {
+        throw new Error(
+          response.status === 404
+            ? "City not found"
+            : "Failed to fetch weather data"
+        );
       }
+      const data = await response.json();
+      setWeatherData(data);
+      setError(null);
     } catch (error) {
       console.error("Error fetching weather data:", error);
-      setError("Failed to fetch weather data");
+      setError(error.message);
       setWeatherData(null);
     }
   };
@@ -70,14 +77,11 @@ const Weather = () => {
     <div>
       <header className="container justify-center m-auto mt-16 underline">
         <h1 className="text-3xl text-center text-black font-bold">
-          Weather App Widget (underwork)
+          Weather App Widget
         </h1>
       </header>
       <div className="weather-container container my-16 bg-[#333] rounded-3xl w-full m-auto h-[50vh] justify-center flex">
         <div className="search justify-center m-auto">
-          <p className="font-bold justify-center pb-8 text-white text-center underline text-2xl">
-            TODO: Currently under work, check back soon!
-          </p>
           <input
             type="text"
             placeholder="Enter city name"
@@ -85,12 +89,10 @@ const Weather = () => {
             onChange={(e) => setCity(e.target.value)}
             onKeyDown={handleKeyDown}
             className="text-2xl p-4 font-bold text-black outline-1 outline-black outline-double"
-            readOnly
           />
           <button
             className="bg-green-500 font-bold text-white text-2xl p-4 outline-1 outline-black outline-double"
             onClick={handleSearch}
-            readOnly
           >
             Search
           </button>
