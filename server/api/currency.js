@@ -2,30 +2,29 @@ import fetch from "node-fetch";
 import { Router } from "express";
 import { config } from "dotenv";
 
-// Load environment variables from .env file
 config();
 
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const apiKey = process.env.CURRENCY_API_KEY;
-  const apiUrl = `https://api.exchangerate-api.com/v4/latest/USD`;
+  const apiKey = process.env.CURRENCY_API_KEY; // Ensure this is the correct API key environment variable
+  const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`; // Include the API key in the URL
 
   try {
-    // Including the API key in the URL if required by your API
-    const response = await fetch(`${apiUrl}?apikey=${apiKey}`);
+    const response = await fetch(apiUrl);
 
     if (!response.ok) {
+      // If response is not OK, get the error message and return it
       const data = await response.json();
-      console.error("Currency API Error:", data.message);
-      res.status(response.status).json({ message: data.message });
-      return;
+      return res.status(response.status).json({ message: data.message });
     }
 
+    // If response is OK, return the fetched data
     const data = await response.json();
     res.status(200).json(data);
   } catch (error) {
-    console.error("Error fetching currency data:", error);
+    console.error("Error fetching data:", error);
+    // Return a generic error message if an exception is thrown
     res.status(500).json({ message: "Internal server error" });
   }
 });
