@@ -1,9 +1,13 @@
 import axios from "axios";
+import { Router } from "express";
 import { config } from "dotenv";
 
-config(); // Load environment variables from .env file
+// Load environment variables from .env file
+config();
 
-export default async function handler(req, res) {
+const router = Router();
+
+router.get("/", async (req, res) => {
   if (req.method === "GET") {
     const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
     const city = req.query.city;
@@ -20,4 +24,6 @@ export default async function handler(req, res) {
     res.setHeader("Allow", ["GET"]);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-}
+});
+
+export default router;
