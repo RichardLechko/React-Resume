@@ -5,7 +5,7 @@ import {
   FaCloudRain,
   FaGlassWaterDroplet,
   FaCloud,
-} from "react-icons/fa";
+} from "react-icons/fa6";
 
 const Weather = () => {
   useEffect(() => {
@@ -55,19 +55,21 @@ const Weather = () => {
   const getWeatherIcon = (weatherType) => {
     switch (weatherType) {
       case "Clear":
+        return <FaCloud />;
       case "Clouds":
         return <FaCloud />;
       case "Drizzle":
+        return <FaCloudRain />;
+      case "Humidity":
+        return <FaGlassWaterDroplet />;
       case "Mist":
         return <FaCloudRain />;
       case "Rain":
         return <FaCloudShowersHeavy />;
       case "Snow":
         return <FaRegSnowflake />;
-      case "Humidity":
-        return <FaGlassWaterDroplet />;
       default:
-        return ""; // Default icon
+        return "";
     }
   };
 
