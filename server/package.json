@@ -14,5 +14,8 @@
     "nodemailer": "^6.9.1",
     "server": "file:"
   },
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": "20.x"
+  }
 }
