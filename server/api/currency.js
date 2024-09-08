@@ -8,20 +8,25 @@ config();
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const apiKey = process.env.CURRENCY_API_KEY; // Ensure this is set correctly
-  const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`; // Updated URL
+  console.log("Received request for /api/currency");
+
+  const apiKey = process.env.CURRENCY_API_KEY;
+  console.log("API Key:", apiKey);
+
+  const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`;
+  console.log("API URL:", apiUrl);
 
   try {
     const response = await fetch(apiUrl);
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      return res
-        .status(response.status)
-        .json({ message: errorData.message || "Error fetching data" });
-    }
+    console.log("Response Status:", response.status);
 
     const data = await response.json();
+    console.log("Response Data:", data);
+
+    if (!response.ok) {
+      return res.status(response.status).json({ message: data.message });
+    }
+
     res.status(200).json(data);
   } catch (error) {
     console.error("Error fetching data:", error);
