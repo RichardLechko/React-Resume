@@ -7,11 +7,9 @@ import weatherRoutes from "./api/weather.js";
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Middleware setup
 app.use(cors());
 app.use(express.json());
 
-// Define routes
 app.use("/api/currency", currencyRoutes);
 app.use("/api/submit", submitRoutes);
 app.use("/api/weather", weatherRoutes);
