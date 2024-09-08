@@ -1,23 +1,14 @@
 import express from "express";
 import cors from "cors";
-import { config } from "dotenv";
 import currencyRoutes from "./api/currency.js";
 import submitRoutes from "./api/submit.js";
 import weatherRoutes from "./api/weather.js";
-
-config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware setup
-app.use(
-  cors({
-    origin: "https://richardlechko.com",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 // Define routes
