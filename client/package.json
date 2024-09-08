@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^7.1.0",
     "axios": "^1.4.0",
     "client": "file:",
     "react": "^18.0.0",
@@ -38,5 +37,8 @@
   },
   "engines": {
     "node": "20.x"
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0"
   }
 }
