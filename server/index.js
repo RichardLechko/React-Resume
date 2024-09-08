@@ -5,15 +5,20 @@ import currencyRoutes from "./api/currency.js";
 import submitRoutes from "./api/submit.js";
 import weatherRoutes from "./api/weather.js";
 
-config(); // Load environment variables from .env file
+config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://richardlechko.com",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
-// Define routes
 app.use("/api/currency", currencyRoutes);
 app.use("/api/submit", submitRoutes);
 app.use("/api/weather", weatherRoutes);
