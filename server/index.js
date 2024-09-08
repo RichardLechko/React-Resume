@@ -25,6 +25,12 @@ app.use("/api/currency", currencyRoutes);
 app.use("/api/submit", submitRoutes);
 app.use("/api/weather", weatherRoutes);
 
+// Catch-all for errors
+app.use((err, req, res, next) => {
+  console.error("Unhandled Error:", err);
+  res.status(500).json({ error: "Internal server error" });
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
