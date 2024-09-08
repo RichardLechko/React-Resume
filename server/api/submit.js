@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
 
     const mailOptions = {
       from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER,
+      to: email,
       subject: `New Contact Form Submission: ${subject}`,
       text: `You have received a new message from your contact form:
              \nName: ${name}
