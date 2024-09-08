@@ -5,15 +5,14 @@ import currencyRoutes from "./api/currency.js";
 import submitRoutes from "./api/submit.js";
 import weatherRoutes from "./api/weather.js";
 
-config(); // Load environment variables from .env file
+config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Configure CORS to allow all origins for testing
 app.use(
   cors({
-    origin: "*", // Allow all origins (for testing only)
+    origin: "https://richardlechko.com", // Replace with your frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
   })
