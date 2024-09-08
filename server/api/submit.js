@@ -1,8 +1,7 @@
-import nodemailer from "nodemailer";
+/* import nodemailer from "nodemailer";
 import { Router } from "express";
 import { config } from "dotenv";
 
-// Load environment variables from .env file
 config();
 
 const router = Router();
@@ -86,6 +85,16 @@ router.post("/", async (req, res) => {
       res.status(500).json({ success: false, error: "Failed to send email" });
     }
   }
+});
+
+export default router;
+ */
+
+import { Router } from "express";
+const router = Router();
+
+router.post("/", (req, res) => {
+  res.status(200).json({ message: "Test endpoint working" });
 });
 
 export default router;
