@@ -26,10 +26,8 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const apiUrl =
-      process.env.NODE_ENV === "production"
-        ? "https://www.richardlechko.com/submit"
-        : "http://localhost:5000/submit";
+
+    const apiUrl = `${process.env.REACT_APP_API_URL}/api/submit`; // Ensure this matches your server's route
 
     try {
       const response = await fetch(apiUrl, {
@@ -39,34 +37,13 @@ const Contact = () => {
         },
         body: JSON.stringify(formData),
       });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
       const result = await response.json();
-      setFeedback(
-        <div>
-          <p className="text-green-600 font-bold mb-4">
-            Message sent successfully!
-          </p>
-          {result.links && result.links.length > 0 && (
-            <ul className="list-none p-0 flex flex-wrap gap-4 justify-center my-8">
-              {result.links.map((link, index) => (
-                <li
-                  key={index}
-                  className="mb-2 p-4 outline-1 outline-black outline-double bg-[#333] rounded-2xl"
-                >
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    download={link.download ? true : undefined}
-                    className="text-white font-bold hover:text-blue-500 hover:underline "
-                  >
-                    {link.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      );
+      setFeedback("Message sent successfully!"); // Adjust feedback handling as needed
     } catch (error) {
       setFeedback("Error sending message.");
     }

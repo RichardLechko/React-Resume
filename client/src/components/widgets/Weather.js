@@ -5,24 +5,21 @@ import {
   FaCloudRain,
   FaGlassWaterDroplet,
   FaCloud,
-} from "react-icons/fa6";
+} from "react-icons/fa";
 
 const Weather = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
-  const apiUrl =
-    process.env.NODE_ENV === "production"
-      ? "https://www.richardlechko.com/api/weather"
-      : "http://localhost:5000/api/weather";
+  const apiUrl = `${process.env.REACT_APP_API_URL}/api/weather`;
 
   const fetchWeatherData = async (city) => {
     try {
-      // Fetch weather data from your backend
       const response = await fetch(`${apiUrl}?city=${city}`);
 
       if (!response.ok) {
@@ -33,7 +30,6 @@ const Weather = () => {
         );
       }
 
-      // Parse and use the weather data
       const data = await response.json();
       setWeatherData(data);
       setError(null);
@@ -59,19 +55,17 @@ const Weather = () => {
   const getWeatherIcon = (weatherType) => {
     switch (weatherType) {
       case "Clear":
-        return <FaCloud />;
       case "Clouds":
         return <FaCloud />;
       case "Drizzle":
-        return <FaCloudRain />;
-      case "Humidity":
-        return <FaGlassWaterDroplet />;
       case "Mist":
         return <FaCloudRain />;
       case "Rain":
         return <FaCloudShowersHeavy />;
       case "Snow":
         return <FaRegSnowflake />;
+      case "Humidity":
+        return <FaGlassWaterDroplet />;
       default:
         return ""; // Default icon
     }

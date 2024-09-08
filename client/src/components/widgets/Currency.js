@@ -5,6 +5,7 @@ const Currency = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const [startCurrency, setStartCurrency] = useState("USD");
   const [endCurrency, setEndCurrency] = useState("EUR");
   const [firstCurrVal, setFirstCurrVal] = useState("");
@@ -12,10 +13,7 @@ const Currency = () => {
   const [exchangeRates, setExchangeRates] = useState({});
   const [error, setError] = useState(null);
 
-  const apiUrl =
-    process.env.NODE_ENV === "production"
-      ? "https://www.richardlechko.com/api/currency-key"
-      : "http://localhost:5000/api/currency-key";
+  const apiUrl = `${process.env.REACT_APP_CURRENCY_API_URL}/api/currency-key`;
 
   useEffect(() => {
     const fetchCurrencyData = async () => {
