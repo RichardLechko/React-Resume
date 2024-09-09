@@ -9,16 +9,12 @@ const Contact = () => {
     scrollToTop();
   }, [scrollToTop]);
 
-  const [links, setLinks] = useState([]);
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-
-  const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState("");
 
   const handleChange = (e) => {
@@ -30,10 +26,11 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+
+    const apiUrl = "https://react-resume-api.vercel.app/api/submit";
 
     try {
-      const response = await fetch("/api/submit", {
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,19 +38,16 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-      if (response.ok) {
-        setFeedback(data.message);
-        // Optionally, handle the links response if needed
-        console.log(data.links);
-      } else {
-        setFeedback(data.error || "Something went wrong. Please try again.");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
+
+      const data = await response.json();
+
+      setFeedback(data.message);
+      setLinks(data.links);
     } catch (error) {
-      console.error("Error:", error);
-      setFeedback("Failed to send message. Please try again later.");
-    } finally {
-      setLoading(false);
+      setFeedback("Error sending message.");
     }
   };
 
@@ -159,25 +153,6 @@ const Contact = () => {
 
         <div id="formFeedback" className="text-2xl mt-4">
           {feedback}
-        </div>
-
-        <div id="links" className="mt-4">
-          {links.length > 0 && (
-            <ul>
-              {links.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.url}
-                    download={link.download ? "true" : undefined}
-                    target={link.download ? undefined : "_blank"}
-                    rel={link.download ? undefined : "noopener noreferrer"}
-                  >
-                    {link.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
 
         <div>
