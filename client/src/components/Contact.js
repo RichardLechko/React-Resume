@@ -42,10 +42,7 @@ const Contact = () => {
         throw new Error("Network response was not ok");
       }
 
-      const data = await response.json();
-
-      setFeedback(data.message);
-      setLinks(data.links);
+      setFeedback("Message sent successfully!");
     } catch (error) {
       setFeedback("Error sending message.");
     }
