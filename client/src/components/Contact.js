@@ -157,23 +157,26 @@ const Contact = () => {
 
         {/* Display links if available */}
         {links.length > 0 && (
-          <div className="mt-8">
-            <h2 className="text-3xl font-extrabold mb-4">Useful Links</h2>
-            <ul className="list-none p-0">
+          <div className="mt-12">
+            <h2 className="text-4xl font-extrabold mb-6 text-center">
+              Useful Links
+            </h2>
+            <div className="flex flex-wrap justify-center gap-6">
               {links.map((link, index) => (
-                <li key={index} className="mb-3">
-                  <a
-                    href={link.url}
-                    download={link.download}
-                    className="block text-lg font-semibold text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                <a
+                  key={index}
+                  href={link.url}
+                  download={link.download}
+                  className="flex items-center justify-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 bg-gray-100 hover:bg-gray-200 rounded-lg shadow-md transition-transform transform hover:scale-105"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="text-lg font-semibold text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out">
                     {link.text}
-                  </a>
-                </li>
+                  </span>
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
         )}
 
