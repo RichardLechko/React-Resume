@@ -1,26 +1,30 @@
 import express from "express";
+import cookieParser from "cookie-parser"; // Optional, add if needed
 import cors from "cors";
+import http from "http"; // For creating the HTTP server
+import "dotenv/config"; // For loading environment variables
 import currencyRoutes from "./api/currency.js";
 import submitRoutes from "./api/submit.js";
 import weatherRoutes from "./api/weather.js";
 
+// Initialize express app
 const app = express();
-const port = process.env.PORT || 5000;
 
-const corsOptions = {
-  origin: "https://www.richardlechko.com",
-  methods: "GET,POST,PUT,DELETE,OPTIONS",
-  allowedHeaders: "Content-Type, Authorization",
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
+// Middleware
+app.use(cors()); // Basic CORS setup
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser()); // Optional, remove if not needed
 
+// API routes
 app.use("/api/currency", currencyRoutes);
 app.use("/api/submit", submitRoutes);
 app.use("/api/weather", weatherRoutes);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+// Create and run the server
+const port = process.env.PORT || 5000;
+const server = http.createServer(app);
+
+server.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
