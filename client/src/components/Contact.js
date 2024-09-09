@@ -158,20 +158,20 @@ const Contact = () => {
         {/* Display links if available */}
         {links.length > 0 && (
           <div className="mt-12">
-            <h2 className="text-4xl font-extrabold mb-6 text-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-8 text-center text-gray-900">
               Useful Links
             </h2>
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center gap-8">
               {links.map((link, index) => (
                 <a
                   key={index}
                   href={link.url}
                   download={link.download}
-                  className="flex items-center justify-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 bg-gray-100 hover:bg-gray-200 rounded-lg shadow-md transition-transform transform hover:scale-105"
+                  className="flex items-center justify-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 hover:from-blue-600 hover:via-indigo-600 hover:to-purple-600 rounded-lg shadow-lg transition-transform transform hover:scale-105"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="text-lg font-semibold text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out">
+                  <span className="text-xl md:text-2xl font-bold text-white hover:text-gray-100 transition duration-300 ease-in-out">
                     {link.text}
                   </span>
                 </a>
