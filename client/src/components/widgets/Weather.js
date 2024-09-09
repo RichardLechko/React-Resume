@@ -16,7 +16,7 @@ const Weather = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
-  const apiUrl = `${process.env.REACT_APP_API_URL}/api/weather`;
+  const apiUrl = "https://react-resume-api.vercel.app/api/weather";
 
   const fetchWeatherData = async (city) => {
     try {

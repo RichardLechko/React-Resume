@@ -13,7 +13,7 @@ const Currency = () => {
   const [exchangeRates, setExchangeRates] = useState({});
   const [error, setError] = useState(null);
 
-  const apiUrl = `${process.env.REACT_APP_API_URL}/api/currency`;
+  const apiUrl = "https://react-resume-api.vercel.app/api/currency";
 
   useEffect(() => {
     const fetchCurrencyData = async () => {

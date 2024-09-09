@@ -27,7 +27,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const apiUrl = `${process.env.REACT_APP_API_URL}/api/submit`; // Ensure this matches your server's route
+    const apiUrl = "https://react-resume-api.vercel.app/api/submit";
 
     try {
       const response = await fetch(apiUrl, {
