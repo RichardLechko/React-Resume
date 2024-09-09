@@ -23,7 +23,7 @@ const Currency = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setExchangeRates(data.rates); // Store exchange rates from backend response
+        setExchangeRates(data.conversion_rates); // Store exchange rates from backend response
       } catch (error) {
         setError(error.message); // Handle errors
         console.error("Error fetching currency data:", error);
