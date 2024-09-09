@@ -17,6 +17,8 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+
+  const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState("");
 
   const handleChange = (e) => {
