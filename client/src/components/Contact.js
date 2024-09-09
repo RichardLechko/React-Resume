@@ -157,17 +157,19 @@ const Contact = () => {
 
         {/* Display links if available */}
         {links.length > 0 && (
-          <div className="mt-12 px-4 sm:px-6 lg:px-8">
+          <div className="mt-12 my-8 px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 text-center text-gray-900">
               Useful Links
             </h2>
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+              {" "}
+              {/* Adjusted gap */}
               {links.map((link, index) => (
                 <a
                   key={index}
                   href={link.url}
                   download={link.download}
-                  className="flex items-center justify-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 hover:from-blue-600 hover:via-indigo-600 hover:to-purple-600 rounded-lg shadow-lg transition-transform transform hover:scale-105"
+                  className="flex items-center justify-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 sm:p-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 hover:from-blue-600 hover:via-indigo-600 hover:to-purple-600 rounded-lg shadow-lg transition-transform transform hover:scale-105"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -180,18 +182,18 @@ const Contact = () => {
           </div>
         )}
 
-        <div>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47735.32503472363!2d-87.892340364795!3d41.60261077830801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e3f45afe938e9%3A0xca1b71adb8e82d4b!2sOrland%20Park%2C%20IL!5e0!3m2!1sen!2sus!4v1715926063297!5m2!1sen!2sus"
-            style={{ border: "0" }}
-            loading="lazy"
-            aria-hidden="false"
-            className="w-full h-[500px]"
-            title="google-maps"
-          ></iframe>
-        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47735.32503472363!2d-87.892340364795!3d41.60261077830801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e3f45afe938e9%3A0xca1b71adb8e82d4b!2sOrland%20Park%2C%20IL!5e0!3m2!1sen!2sus!4v1715926063297!5m2!1sen!2sus"
+          style={{ border: "0" }}
+          loading="lazy"
+          aria-hidden="false"
+          className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden"
+          title="google-maps"
+        />
 
-        <div className="flex flex-col text-xl mt-12 mb-20 text-left">
+        <div className="flex flex-col text-xl mt-12 mb-20 text-left px-4">
+          {" "}
+          {/* Added px-4 for padding */}
           <div className="flex items-center gap-4">
             <FaMapMarkerAlt />
             <article className="mb-4">
@@ -199,19 +201,17 @@ const Contact = () => {
               <p>Orland Park, IL</p>
             </article>
           </div>
-
           <div className="flex items-center gap-4">
             <FaEnvelope />
             <article className="mb-4">
               <h1 className="mb-2 font-bold">Email</h1>
               <p>
-                <a href="mailto:richardlechko@gmail.com" className=" underline">
+                <a href="mailto:richardlechko@gmail.com" className="underline">
                   richardlechko [at] gmail.com
                 </a>
               </p>
             </article>
           </div>
-
           <div className="flex items-center gap-4">
             <FaPhoneAlt />
             <article className="mb-4">
