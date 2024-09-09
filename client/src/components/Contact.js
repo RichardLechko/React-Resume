@@ -9,6 +9,8 @@ const Contact = () => {
     scrollToTop();
   }, [scrollToTop]);
 
+  const [links, setLinks] = useState([]);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,11 +28,10 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const apiUrl = "https://react-resume-api.vercel.app/api/submit";
+    setLoading(true);
 
     try {
-      const response = await fetch(apiUrl, {
+      const response = await fetch("/api/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,14 +39,19 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      const data = await response.json();
+      if (response.ok) {
+        setFeedback(data.message);
+        // Optionally, handle the links response if needed
+        console.log(data.links);
+      } else {
+        setFeedback(data.error || "Something went wrong. Please try again.");
       }
-
-      /* const result = await response.json(); */
-      setFeedback("Message sent successfully!"); // Adjust feedback handling as needed
     } catch (error) {
-      setFeedback("Error sending message.");
+      console.error("Error:", error);
+      setFeedback("Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -151,6 +157,25 @@ const Contact = () => {
 
         <div id="formFeedback" className="text-2xl mt-4">
           {feedback}
+        </div>
+
+        <div id="links" className="mt-4">
+          {links.length > 0 && (
+            <ul>
+              {links.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.url}
+                    download={link.download ? "true" : undefined}
+                    target={link.download ? undefined : "_blank"}
+                    rel={link.download ? undefined : "noopener noreferrer"}
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <div>
