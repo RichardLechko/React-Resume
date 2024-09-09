@@ -157,11 +157,11 @@ const Contact = () => {
 
         {/* Display links if available */}
         {links.length > 0 && (
-          <div className="mt-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-8 text-center text-gray-900">
+          <div className="mt-12 px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 text-center text-gray-900">
               Useful Links
             </h2>
-            <div className="flex flex-wrap justify-center gap-8">
+            <div className="flex flex-wrap justify-center gap-6">
               {links.map((link, index) => (
                 <a
                   key={index}
@@ -171,7 +171,7 @@ const Contact = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="text-xl md:text-2xl font-bold text-white hover:text-gray-100 transition duration-300 ease-in-out">
+                  <span className="text-lg sm:text-xl md:text-2xl font-bold text-white hover:text-gray-100 transition duration-300 ease-in-out">
                     {link.text}
                   </span>
                 </a>
