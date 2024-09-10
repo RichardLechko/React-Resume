@@ -1,6 +1,3 @@
-import { DiGithubBadge } from "react-icons/di";
-import { useState } from "react";
-import { FaSoundcloud, FaSpotify, FaLinkedin } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Footer = ({ refs }) => {
@@ -24,23 +21,17 @@ const Footer = ({ refs }) => {
   };
 
   return (
-    <footer className="bg-[#002240] text-[#fff] p-8 w-full">
+    <footer className="bg-[#002240] text-[#fff] p-8 w-full min-w-full">
       <div className="max-w-screen-xl mx-auto">
-        <h1
-          id="footer-h1"
-          className="font-mono text-5xl text-center font-bold pb-8"
-        >
+        <h1 className="font-mono text-3xl text-center font-bold">
           About Me ~ Richard Lechko
         </h1>
 
-        <p
-          id="copyright"
-          className="pb-4 text-gray-400 text-xl text-center mb-6"
-        >
+        <p className="pb-4 text-gray-400 text-lg text-center">
           &copy; {new Date().getFullYear()} Richard Lechko | All Rights Reserved
         </p>
 
-        <nav id="nav-link">
+        <nav>
           <ul className="link-container">
             <FooterLink
               link="/"
@@ -85,29 +76,6 @@ const Footer = ({ refs }) => {
           </ul>
         </nav>
 
-        <div id="icon-links" className="flex justify-center gap-4 mb-6">
-          <IconLink
-            link="https://github.com/RichardLechko"
-            img={<DiGithubBadge />}
-            hover="#333"
-          />
-          <IconLink
-            link="https://www.linkedin.com/in/richard-lechko/"
-            img={<FaLinkedin />}
-            hover="#0077b5"
-          />
-          <IconLink
-            link="https://open.spotify.com/user/22j4lmvcuabn2joznuzxd3pdy?si=be67aa3576934843"
-            img={<FaSpotify />}
-            hover="#1db954"
-          />
-          <IconLink
-            link="https://soundcloud.com/richardlechko"
-            img={<FaSoundcloud />}
-            hover="#ff7700"
-          />
-        </div>
-
         <LastModified />
       </div>
     </footer>
@@ -124,31 +92,13 @@ const FooterLink = ({ link, linkName, handleClick, sectionId }) => (
   </li>
 );
 
-const IconLink = ({ link, img, hover }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <a
-      href={link}
-      target="_blank"
-      rel="noreferrer"
-      className="text-4xl"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      style={{ color: isHovered ? hover : "inherit" }}
-    >
-      {img}
-    </a>
-  );
-};
-
 const LastModified = () => {
   const lastModified = new Date(document.lastModified);
   const formattedDate = `${
     lastModified.getMonth() + 1
   }/${lastModified.getDate()}/${lastModified.getFullYear()}`;
   return (
-    <div className="text-center text-gray-400 mt-4">
+    <div className="text-center text-gray-400">
       <p>Last Modified: {formattedDate}</p>
     </div>
   );

@@ -41,16 +41,13 @@ import {
 const Skills = () => {
   return (
     <div>
-      <section
-        className="container flex flex-col m-auto main-content"
-        id="skills"
-      >
+      <section className="container flex flex-col m-auto" id="skills">
         <div className="mt-16 mx-auto justify-around px-6 py-0 pt-16 flex flex-wrap gap-6">
           <div className="w-full mb-8 text-center life-text smallText">
-            <h1 className="text-3xl md:text-4xl mb-4 font-bold">
+            <h1 className="text-4xl md:text-4xl mb-4 font-bold">
               Technical Skills:
             </h1>
-            <p className="text-center text-base md:text-xl">
+            <p className="text-xl max-[425px]:text-base text-center">
               I have given a rating from 1-10, categorizing my understanding and
               expertise of these skills. Hover over the image to see the rating!
             </p>
@@ -58,9 +55,9 @@ const Skills = () => {
           <Suspense fallback={<div>Loading...</div>}>
             <SkillsCard
               head={"OOP"}
-              iconOne={<DiJava size={50} />}
-              iconTwo={<DiPython size={50} />}
-              iconThree={<DiJavascript1 size={50} className="text-black" />}
+              iconOne={<DiJava className="text-4xl" />}
+              iconTwo={<DiPython className="text-4xl" />}
+              iconThree={<DiJavascript1 className="text-4xl text-black" />}
               iconOneH={"Java"}
               iconTwoH={"Python"}
               iconThreeH={"JavaScript"}
@@ -72,10 +69,10 @@ const Skills = () => {
               ratingThree={10}
             />
             <SkillsCard
-              head={"Operating Systems"}
-              iconOne={<DiWindows size={50} />}
-              iconTwo={<DiLinux size={50} />}
-              iconThree={<DiApple size={50} />}
+              head={"OS"}
+              iconOne={<DiWindows className="text-4xl" />}
+              iconTwo={<DiLinux className="text-4xl" />}
+              iconThree={<DiApple className="text-4xl" />}
               iconOneH={"Windows"}
               iconTwoH={"Linux"}
               iconThreeH={"Apple"}
@@ -88,9 +85,9 @@ const Skills = () => {
             />
             <SkillsCard
               head={"JS Frameworks"}
-              iconOne={<DiNodejsSmall size={50} />}
-              iconTwo={<DiReact size={50} />}
-              iconThree={<DiAngularSimple size={50} />}
+              iconOne={<DiNodejsSmall className="text-4xl" />}
+              iconTwo={<DiReact className="text-4xl" />}
+              iconThree={<DiAngularSimple className="text-4xl" />}
               iconOneH={"Node JS"}
               iconTwoH={"React"}
               iconThreeH={"Angular"}
@@ -102,10 +99,10 @@ const Skills = () => {
               bgColorThree="#DD0031"
             />
             <SkillsCard
-              head={"Computer Science"}
-              iconOne={<FaSitemap size={50} />}
-              iconTwo={<DiDatabase size={50} />}
-              iconThree={<FaDesktop size={50} />}
+              head={"Comp Sci"}
+              iconOne={<FaSitemap className="text-4xl" />}
+              iconTwo={<DiDatabase className="text-4xl" />}
+              iconThree={<FaDesktop className="text-4xl" />}
               iconOneH={"Computer Net."}
               iconTwoH={"Data Structures"}
               iconThreeH={"Computer Systems"}
@@ -117,10 +114,10 @@ const Skills = () => {
               bgColorThree="#4B4F56"
             />
             <SkillsCard
-              head={"Web Development CI/CD"}
-              iconOne={<FaCode size={50} />}
-              iconTwo={<BiCodeCurly size={50} />}
-              iconThree={<FaPalette size={50} />}
+              head={"Web Dev CI/CD"}
+              iconOne={<FaCode className="text-4xl" />}
+              iconTwo={<BiCodeCurly className="text-4xl" />}
+              iconThree={<FaPalette className="text-4xl" />}
               iconOneH={"FE Web Development"}
               iconTwoH={"BE Web Development"}
               iconThreeH={"UI/UX Design"}
@@ -133,9 +130,9 @@ const Skills = () => {
             />
             <SkillsCard
               head={"Web Dev Languages"}
-              iconOne={<DiHtml5 size={50} />}
-              iconTwo={<DiCss3 size={50} />}
-              iconThree={<DiJavascript1 size={50} className="text-black" />}
+              iconOne={<DiHtml5 className="text-4xl" />}
+              iconTwo={<DiCss3 className="text-4xl" />}
+              iconThree={<DiJavascript1 className="text-4xl text-black" />}
               iconOneH={"HTML5"}
               iconTwoH={"CSS3"}
               iconThreeH={"JavaScript"}
@@ -148,9 +145,9 @@ const Skills = () => {
             />
             <SkillsCard
               head={"Other"}
-              iconOne={<SiMicrosoftexcel size={50} />}
-              iconTwo={<DiGithubBadge size={50} className="text-white" />}
-              iconThree={<PiFileSqlFill size={50} />}
+              iconOne={<SiMicrosoftexcel className="text-4xl" />}
+              iconTwo={<DiGithubBadge className="text-4xl text-white" />}
+              iconThree={<PiFileSqlFill className="text-4xl" />}
               iconOneH={"Excel"}
               iconTwoH={"GitHub"}
               iconThreeH={"SQL"}
@@ -163,9 +160,9 @@ const Skills = () => {
             />
             <SkillsCard
               head={"Open Source Tools"}
-              iconOne={<DiGit size={50} />}
-              iconTwo={<DiPostgresql size={50} />}
-              iconThree={<DiNginx size={50} className="text-white" />}
+              iconOne={<DiGit className="text-4xl" />}
+              iconTwo={<DiPostgresql className="text-4xl" />}
+              iconThree={<DiNginx className="text-4xl text-white" />}
               iconOneH={"Git"}
               iconTwoH={"PostgreSQL"}
               iconThreeH={"Nginx"}
@@ -178,9 +175,9 @@ const Skills = () => {
             />
             <SkillsCard
               head={"AWS"}
-              iconOne={<FaMicrochip size={50} />}
-              iconTwo={<FaMap size={50} className="text-white" />}
-              iconThree={<FaCloud size={50} />}
+              iconOne={<FaMicrochip className="text-4xl" />}
+              iconTwo={<FaMap className="text-4xl text-white" />}
+              iconThree={<FaCloud className="text-4xl" />}
               iconOneH={"EC2"}
               iconTwoH={"Route 53"}
               iconThreeH={"AWS Amplify"}
@@ -193,9 +190,9 @@ const Skills = () => {
             />
             <SkillsCard
               head={"DevOps"}
-              iconOne={<MdTerminal size={50} className="text-white" />}
-              iconTwo={<MdDashboardCustomize size={50} />}
-              iconThree={<FaUsers size={50} />}
+              iconOne={<MdTerminal className="text-4xl text-white" />}
+              iconTwo={<MdDashboardCustomize className="text-4xl" />}
+              iconThree={<FaUsers className="text-4xl" />}
               iconOneH={"Bash"}
               iconTwoH={"Agile"}
               iconThreeH={"MS Teams"}
@@ -208,9 +205,9 @@ const Skills = () => {
             />
             <SkillsCard
               head={"UI/UX Design"}
-              iconOne={<TbBrandTailwind size={50} />}
-              iconTwo={<TbBrandFigma size={50} />}
-              iconThree={<TbBrandBootstrap size={50} />}
+              iconOne={<TbBrandTailwind className="text-4xl" />}
+              iconTwo={<TbBrandFigma className="text-4xl" />}
+              iconThree={<TbBrandBootstrap className="text-4xl" />}
               iconOneH={"TailwindCSS"}
               iconTwoH={"Figma"}
               iconThreeH={"Bootstrap"}
@@ -225,9 +222,9 @@ const Skills = () => {
         </div>
       </section>
 
-      <section className="container flex flex-col m-auto main-content">
+      <section className="container flex flex-col m-auto">
         <div className="mt-16 mx-auto justify-around px-6 py-0 flex flex-wrap gap-6">
-          <h1 className="text-3xl md:text-4xl mb-4 font-bold text-center">
+          <h1 className="text-4xl md:text-4xl mb-4 font-bold text-center">
             Non-Technical Skills:
           </h1>
           <div className="w-full my-20 mx-auto flex flex-wrap gap-6 md:gap-8 justify-center">
@@ -268,15 +265,15 @@ const SkillsCard = ({
   const averageRating = ((ratingOne + ratingTwo + ratingThree) / 3).toFixed(1);
 
   return (
-    <div className="relative p-8 bg-gray-800 text-white rounded-xl shadow-lg hover:translate-y-[-15px] transition-transform duration-200 ease-in group">
+    <div className="relative p-8 max-md:p-4 bg-gray-800 text-white rounded-xl shadow-lg hover:translate-y-[-15px] transition-transform duration-200 ease-in group">
       <h4 className="text-xl text-center font-bold mb-8">
         <span className="border-b-2 border-white">{head}</span>
       </h4>
       <div className="flex flex-col items-center">
         <div className="flex flex-col items-center">
-          <div className="flex flex-col items-center mb-4">
+          <div className="flex flex-col items-center mb-4 max-md:mb-0">
             <div
-              className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl"
+              className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl max-md:w-16 max-md:h-16"
               style={{ backgroundColor: bgColorOne }}
             >
               {iconOne}
@@ -286,10 +283,10 @@ const SkillsCard = ({
               {ratingOne}/10
             </div>
           </div>
-          <div className="flex flex-col gap-4 md:flex-row md:gap-8">
+          <div className="flex flex-col gap-4 md:flex-row max-md:gap-0">
             <div className="flex flex-col items-center">
               <div
-                className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl"
+                className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl max-md:w-16 max-md:h-16"
                 style={{ backgroundColor: bgColorTwo }}
               >
                 {iconTwo}
@@ -301,7 +298,7 @@ const SkillsCard = ({
             </div>
             <div className="flex flex-col items-center">
               <div
-                className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl"
+                className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl max-md:w-16 max-md:h-16"
                 style={{ backgroundColor: bgColorThree }}
               >
                 {iconThree}
@@ -323,10 +320,7 @@ const SkillsCard = ({
 
 const NonTechSkills = ({ text }) => {
   return (
-    <div
-      id="non-tech-text"
-      className="p-4 border-solid border-black border-4 bg-[#333] text-white rounded-2xl font-bold text-base md:text-xl transition-transform duration-200 ease-in hover:translate-y-[-10px]"
-    >
+    <div className="p-4 border-solid border-black border-4 bg-[#333] text-white rounded-2xl font-bold text-base md:text-xl max-[768px]:text-center transition-transform duration-200 ease-in hover:translate-y-[-10px]">
       <h4>{text}</h4>
     </div>
   );

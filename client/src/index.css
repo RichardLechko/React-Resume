@@ -2,65 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .linkMain {
-    @apply bg-black m-6 flex-auto text-center p-5 rounded-2xl min-w-32;
-  }
-
-  .links {
-    @apply text-lg no-underline text-white block p-3 hover:text-red-600;
-  }
-
-  .life-text p,
-  .edu-text p,
-  .pub-text p {
-    @apply text-darkviolet mb-6 text-2xl leading-10 font-semibold;
-  }
-
-  .main-content {
-    @apply p-4;
-  }
-
-  .sidebar-icon {
-    @apply flex items-center justify-center w-16 h-16 bg-gray-800 text-white hover:bg-gray-700 transition-colors duration-300 relative;
-  }
-
-  .sidebar-tooltip {
-    @apply absolute left-16 top-1/2 transform -translate-y-1/2 bg-black text-white text-sm font-bold rounded p-2 opacity-0 transition-opacity duration-300;
-    white-space: nowrap;
-    pointer-events: none;
-  }
-
-  #buttons {
-    @apply my-4 mx-auto text-2xl p-4 rounded-xl w-52 border-none inline-block;
-  }
-
-  .smallText p {
-    @apply text-xl leading-relaxed;
-  }
+* {
+  box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
-  .text-4xl {
-    @apply text-2xl;
-  }
-
-  .text-2xl {
-    @apply text-lg;
-  }
-
-  .pl-16 {
-    @apply pl-4;
-  }
-
-  .smallText p {
-    @apply text-base;
-  }
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
 }
 
-body,
-p {
-  font-family: "Montserrat", sans-serif;
+body {
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  position: relative;
 }
 
 html {
@@ -68,33 +22,17 @@ html {
   scroll-behavior: auto;
 }
 
-.scrollable-container {
-  overflow-y: auto;
-  height: 100vh; /* or any appropriate height */
-}
-
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* Hide scrollbars on the body */
-}
-
-.header {
-  position: relative; /* Change to fixed if needed */
-  z-index: 10; /* Ensure this is lower than the scrollbar's default */
-  width: 100%;
+  overflow-x: hidden;
 }
 
 #root {
+  overflow-x: hidden;
   height: 100vh;
-}
-
-#app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 header {
@@ -105,120 +43,10 @@ header {
   flex-shrink: 0;
 }
 
-main {
-  flex: 1; /* Take up remaining space */
-  overflow-y: auto; /* Allow vertical scrolling */
-}
-
-.sidebar {
-  width: 250px; /* Adjust based on your sidebar width */
-}
-
-.sidebar-hidden {
-  width: 0;
-}
-
-/* Ensure footer spans the full width */
 footer {
   width: 100%;
   flex-shrink: 0;
 }
-
-#header-name h1 {
-  @apply mr-8;
-}
-
-/* PERSONAL */
-/* PERSONAL */
-/* PERSONAL */
-
-@media (max-width: 1024px) {
-  #personal .text-4xl {
-    @apply text-2xl;
-  }
-
-  #personal .text-2xl {
-    @apply text-lg;
-  }
-
-  #personal .smallText p {
-    @apply text-base;
-  }
-
-  #personal .mt-32 {
-    @apply mt-8;
-  }
-
-  #personal-item {
-    @apply text-sm;
-  }
-}
-
-@media (max-width: 680px) {
-  #personal .text-4xl {
-    @apply text-xl;
-  }
-
-  #personal .text-2xl {
-    @apply text-base;
-  }
-
-  #personal .smallText p {
-    @apply text-sm;
-  }
-
-  #personal .mt-32 {
-    @apply mt-8;
-  }
-
-  #personal-item {
-    @apply text-xs leading-8;
-  }
-}
-
-/* PERSONAL */
-/* PERSONAL */
-/* PERSONAL */
-
-/* SKILLS */
-/* SKILLS */
-/* SKILLS */
-
-@media (max-width: 768px) {
-  #non-tech-text {
-    @apply text-center;
-  }
-}
-
-/* SKILLS */
-/* SKILLS */
-/* SKILLS */
-
-/* WORK */
-/* WORK */
-/* WORK */
-
-@media (max-width: 1024px) {
-  #workFunction {
-    @apply text-center;
-  }
-
-  #workFunction > div {
-    @apply mb-8;
-  }
-
-  #workText > * {
-    @apply mb-4;
-  }
-
-  #work div h1 {
-    @apply text-3xl;
-  }
-}
-
-/* WORK */
-/* WORK */
-/* WORK */
 
 /* FOOTER */
 /* FOOTER */
@@ -227,36 +55,24 @@ footer {
 .link-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Adjust spacing between items */
-  justify-content: center; /* Center items horizontally */
+  gap: 10px;
+  justify-content: center;
   padding: 0;
   margin: 0;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   list-style: none;
 }
 
 .link-container li {
-  flex: 1 1 calc(100% / 3 - 10px); /* Adjust to 3 items per row */
-  max-width: calc(100% / 3 - 10px); /* Ensure items fit */
-  box-sizing: border-box; /* Include padding and border in the width */
+  flex: 1 1 calc(100% / 3 - 10px);
+  max-width: calc(100% / 3 - 10px);
+  box-sizing: border-box;
 }
 
 @media (max-width: 650px) {
-  .main-content {
-    padding: 2px; /* Reduce padding to fit smaller screens */
-  }
-
   .link-container li {
-    flex: 1 1 calc(100% - 10px); /* 1 item per row */
-    max-width: calc(100% - 10px); /* Ensure full width */
-  }
-
-  .sidebar {
-    width: 100%; /* Full width on smaller screens */
-  }
-
-  .header {
-    width: 100%; /* Full width on smaller screens */
+    flex: 1 1 calc(100% - 10px);
+    max-width: calc(100% - 10px);
   }
 }
 
@@ -283,18 +99,8 @@ footer {
   text-decoration: none;
   letter-spacing: 0.15em;
   display: inline-block;
-  padding: 15px 20px;
+  padding: 1em;
   position: relative;
-}
-
-@media (max-width: 830px) {
-  #footer-h1 {
-    font-size: 2.25em;
-  }
-
-  #copyright {
-    font-size: 1.1em;
-  }
 }
 
 @media (max-width: 1300px) {
@@ -309,31 +115,19 @@ footer {
     flex: 1 1 calc(100% / 3 - 10px);
     max-width: calc(100% / 3 - 10px);
   }
-
-  #icon-links > * {
-    font-size: 3em;
-  }
 }
 
 @media (max-width: 665px) {
-  #footer-h1 {
-    font-size: 1.8em;
-  }
-
-  #copyright {
-    font-size: 0.825em;
-  }
-
   .link-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Adjust as needed */
-    justify-content: center; /* Center items horizontally */
+    gap: 10px;
+    justify-content: center;
   }
 
   .link-container li {
-    flex: 1 1 calc(50% - 10px); /* 2 items per row */
-    max-width: calc(50% - 10px); /* Adjust width to fit 2 items per row */
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(50% - 10px);
   }
 
   .link-container li button {
@@ -342,10 +136,10 @@ footer {
 }
 
 .link-container button {
-  width: 100%; /* Full width of list item */
-  padding: 10px; /* Adjust padding */
-  font-size: 16px; /* Adjust font size */
-  box-sizing: border-box; /* Include padding in width */
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
 /* FOOTER */

@@ -2,12 +2,12 @@ import React from "react";
 
 const Education = () => {
   return (
-    <div id="education" className="container flex flex-col m-auto main-content">
+    <div className="container flex flex-col m-auto">
       <section className="container mx-auto flex flex-col items-center mt-16">
         <h1 className="text-3xl sm:text-4xl md:text-5xl mt-12 sm:mt-16 mb-6 sm:mb-8 font-bold text-center">
           Education
         </h1>
-        <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl md:max-w-4xl">
+        <p className="text-center text-2xl pl-8 pr-8 mb-8 max-[768px]:text-xl max-[425px]:text-base">
           Currently a full-time student at{" "}
           <a
             className="underline font-bold"
@@ -19,12 +19,12 @@ const Education = () => {
           , pursuing a Bachelor's in Science in Information Technology, with a
           concentration in Web Development.
         </p>
-        <p className="text-center text-base sm:text-lg md:text-xl mt-4">
+        <p className="text-center text-2xl mb-8 max-[768px]:text-xl max-[425px]:text-base">
           Major GPA: 3.5/4.0
         </p>
-        <div className="text-center text-base sm:text-lg md:text-xl mt-4 max-w-2xl">
-          <p className="font-bold">Organizations:</p>
-          <ul className="list-disc list-inside">
+        <div className="text-center text-2xl mb-8 max-[768px]:text-xl max-[425px]:text-base">
+          <p className="font-bold mb-4">Organizations:</p>
+          <ul className="list-disc flex flex-col gap-4 list-inside max-[768px]:text-lg max-[640px]:pl-8 max-[640px]:pr-8 max-[425px]:text-base">
             <li>
               Member of{" "}
               <span className="underline">DePaul Computer Science Society</span>
@@ -44,11 +44,11 @@ const Education = () => {
           </ul>
         </div>
 
-        <p className="text-center text-base sm:text-lg md:text-xl mt-4">
+        <p className="text-center text-2xl mb-8 max-[768px]:text-xl max-[425px]:text-base">
           2-time Dean's List student.
         </p>
-        <p className="text-center text-lg sm:text-xl md:text-2xl mt-10 sm:mt-12">
-          <span className="underline">Enrollment: 9/2022 - 6/2026</span>
+        <p className="text-center text-2xl max-[768px]:text-xl max-[425px]:text-base">
+          <span className="underline ">Enrollment: 9/2022 - 6/2026</span>
         </p>
       </section>
     </div>

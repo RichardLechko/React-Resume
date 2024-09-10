@@ -22,49 +22,35 @@ const CourseSlider = ({ courses }) => {
   };
 
   return (
-    <div className="relative max-w-[1400px] h-[450px] w-full m-auto mb-16 py-16 px-4">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl mt-12 sm:mt-16 mb-6 sm:mb-8 font-bold text-center">
+    <div className="relative max-w-4xl mx-auto mb-8 py-4 px-4 max-[1024px]:max-w-2xl">
+      <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-4">
         Relevant Coursework:
       </h1>
-      <div className="w-full h-full rounded-2xl bg-gray-900 relative">
-        <div className="flex flex-col justify-center items-center h-full text-center transition-transform duration-500 ease-in-out">
-          <h2 className="text-2xl font-bold text-yellow-400 mb-4">
+      <div className="w-full h-[300px] rounded-2xl bg-gray-900 relative overflow-hidden">
+        <div className="flex flex-col justify-center items-center h-full text-center px-4">
+          <h2 className="text-base sm:text-lg font-bold text-yellow-400 mb-2">
             {courses[currentIndex].title}
           </h2>
-          <ul className="mt-4 text-white">
+          <ul className="mt-2 text-white text-xs sm:text-sm">
             {courses[currentIndex].description.map((item, index) => (
-              <li key={index} className="text-lg">
+              <li key={index} className="mb-1">
                 {item}
               </li>
             ))}
           </ul>
         </div>
-        <div
-          id="bL"
-          className="absolute top-1/2 left-5 transform -translate-y-1/2 text-2xl rounded-full p-2 bg-black/50 text-white cursor-pointer z-4"
-        >
-          <BsChevronCompactLeft
-            className="max-sm:size-6"
-            onClick={prevSlide}
-            size={30}
-          />
+        <div className="absolute top-1/2 left-2 transform -translate-y-1/2 text-lg rounded-full p-1 bg-black/50 text-white cursor-pointer z-5">
+          <BsChevronCompactLeft onClick={prevSlide} size={20} />
         </div>
-        <div
-          id="bR"
-          className="absolute top-1/2 right-5 transform -translate-y-1/2 text-2xl rounded-full p-2 bg-black/50 text-white cursor-pointer z-4"
-        >
-          <BsChevronCompactRight
-            className="max-sm:size-6"
-            onClick={nextSlide}
-            size={30}
-          />
+        <div className="absolute top-1/2 right-2 transform -translate-y-1/2 text-lg rounded-full p-1 bg-black/50 text-white cursor-pointer z-5">
+          <BsChevronCompactRight onClick={nextSlide} size={20} />
         </div>
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
           {courses.map((_, slideIndex) => (
             <div
               key={slideIndex}
               onClick={() => goToSlide(slideIndex)}
-              className={`cursor-pointer text-2xl ${
+              className={`cursor-pointer text-lg ${
                 currentIndex === slideIndex
                   ? "text-yellow-400"
                   : "text-gray-600"

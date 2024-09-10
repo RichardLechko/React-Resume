@@ -19,7 +19,7 @@ export const ScrollProvider = ({ children }) => {
 
   return (
     <ScrollContext.Provider value={{ scrollToTop, scrollableContainerRef }}>
-      <div ref={scrollableContainerRef} className="scrollable-container">
+      <div ref={scrollableContainerRef} className="overflow-y-auto h-[100vh]">
         {children}
       </div>
     </ScrollContext.Provider>

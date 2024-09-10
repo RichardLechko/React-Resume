@@ -14,7 +14,7 @@ const MainPage = ({
   publicationsRef,
 }) => {
   return (
-    <div>
+    <div className="overflow-x-hidden relative">
       <section id="personal" ref={personalRef}>
         <Personal />
       </section>

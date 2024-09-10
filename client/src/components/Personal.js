@@ -27,11 +27,13 @@ const Personal = () => {
   return (
     <section
       id="personal"
-      className=" container flex flex-col mx-auto p-4  main-content"
+      className="container flex flex-col mx-auto p-4 overflow-x-hidden"
     >
-      <div className="mt-24 mx-auto justify-around px-8  py-0 flex flex-wrap gap-6">
-        <h1 className="text-4xl mb-4 font-bold fontName">Personal Life:</h1>
-        <div className="life-text smallText ">
+      <div className="mt-24 mx-auto justify-around px-8 py-0 flex flex-wrap gap-6">
+        <h1 className="text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
+          Personal Life:
+        </h1>
+        <div className="text-xl max-[425px]:text-base">
           <p className="mb-6 leading-relaxed">
             <span>
               Born and raised in a small suburb in Illinois, with nationality
@@ -50,10 +52,10 @@ const Personal = () => {
               My other interests other than computers is philosophy. Another big
               interest of mine is Economics.
             </span>
-            <li className="pl-16 pt-6 leading-10 text-black" id="personal-item">
+            <li className="pl-16 pt-6 text-black leading-10 max-[640px]:leading-8 max-[425px]:pl-4">
               Fun Fact: I have my own section in the{" "}
               <a
-                className="text-blue-900 underline"
+                className="text-blue-900 font-bold"
                 href="https://www.lewrockwell.com/"
                 target="_blank"
                 rel="noreferrer"
@@ -62,7 +64,7 @@ const Personal = () => {
               </a>
               , about the{" "}
               <a
-                className="text-blue-900 underline"
+                className="text-blue-900 underline font-bold"
                 target="_blank"
                 href="https://www.lewrockwell.com/lrc-blog/is-there-a-right-to-life-in-the-libertarian-philosphy/"
                 rel="noreferrer"
@@ -78,10 +80,9 @@ const Personal = () => {
             <span>
               Another interest of mine is music. Follow me on{" "}
               <a
-                className="text-[#1db954]"
+                className="text-[#1db954] font-bold"
                 href="https://open.spotify.com/user/22j4lmvcuabn2joznuzxd3pdy?si=be67aa3576934843"
                 target="_blank"
-                id="spotify"
                 rel="noreferrer"
               >
                 Spotify

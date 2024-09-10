@@ -138,8 +138,8 @@ const Timer = () => {
           autoComplete="off"
           ref={timeInputRef}
         />
-      </div>
-      <div id="buttons" className="flex justify-center text-black">
+      </div>{" "}
+      <div className=" justify-center text-black my-4 mx-auto text-2xl p-4 rounded-xl w-52 border-none inline-block">
         <button
           id="updateButton"
           className="bg-[#f0f0f0] mb-4 p-4 transition-bg fill-[#4caf50] rounded-xl"

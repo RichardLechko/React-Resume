@@ -1,10 +1,7 @@
 const Work = () => {
   return (
-    <section
-      className="container flex flex-col m-auto main-content mb-24"
-      id="work"
-    >
-      <div className="mt-16 mx-auto justify-around px-4 sm:px-16 py-0 pt-16 flex flex-wrap gap-6 ">
+    <section className="container flex flex-col m-auto mb-24" id="work">
+      <div className="mt-16 mx-auto justify-around px-4 py-0 pt-16 flex flex-wrap gap-6 ">
         <h1 className="text-4xl mb-12 font-bold text-center">
           Work Experience:
         </h1>
@@ -65,44 +62,48 @@ const Work = () => {
 
 const Company = ({
   companyName,
+  position,
   address,
+  startTime,
+  endTime,
   descOne,
   descTwo,
   descThree,
   descFour,
-  startTime,
-  endTime,
-  position,
   link,
 }) => {
   return (
-    <div className="px-4 lg:px-8">
-      <div
-        id="workFunction"
-        className="container flex flex-col lg:flex-row border-b-4 border-black"
-      >
-        {/* Company Info */}
-        <div className="flex flex-col  text-black text-xl leading-10 font-bold w-full lg:w-60 pb-6 max-lg:pb-0 max-lg:mb-0">
-          <h4 className="text-2xl mb-2">{companyName}</h4>
-          <time className="text-lg text-gray-700">
-            {startTime} - {endTime}
-          </time>
-          <address className="text-lg text-gray-600 pt-4">{address}</address>
-          <p className="mt-4">
-            <span className="border-b-2 border-black">{position}</span>
-          </p>
-        </div>
-
-        {/* Work Descriptions */}
-        <div className="text-darkviolet text-xl flex flex-col leading-8 md:leading-10 list-disc container justify-center max-xl:text-lg">
-          <ul id="workText" className="space-y-2 max-2xl:pb-8">
-            {descOne && <li>{descOne}</li>}
-            {descTwo && <li>{descTwo}</li>}
-            {descThree && <li>{descThree}</li>}
-            {descFour && <li>{descFour}</li>}
-          </ul>
-        </div>
+    <div className="bg-white border border-gray-300 p-6 rounded-lg shadow-lg">
+      <div className="max-[640px]:text-center max-[640px]:mb-4 ">
+        <h2 className="text-2xl font-semibold text-gray-800 max-[425px]:text-xl">
+          {companyName}
+        </h2>
+        {position && (
+          <h3 className="text-xl font-medium text-gray-700 max-[425px]:text-lg">
+            {position}
+          </h3>
+        )}
+        <p className="text-gray-500">{address}</p>
+        <p className="text-black">
+          {startTime} - {endTime}
+        </p>
       </div>
+      <ul className="list-disc pl-5 mt-2 text-gray-600">
+        {descOne && <li>{descOne}</li>}
+        {descTwo && <li>{descTwo}</li>}
+        {descThree && <li>{descThree}</li>}
+        {descFour && <li>{descFour}</li>}
+      </ul>
+      {link && (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 underline mt-2 block max-[640px]:text-center max-[640px]:font-bold"
+        >
+          View Project
+        </a>
+      )}
     </div>
   );
 };
