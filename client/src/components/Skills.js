@@ -44,7 +44,7 @@ const Skills = () => {
       <section className="container flex flex-col m-auto" id="skills">
         <div className="mt-16 mx-auto justify-around px-6 py-0 pt-16 flex flex-wrap gap-6">
           <div className="w-full mb-8 text-center life-text smallText">
-            <h1 className="text-4xl md:text-4xl mb-4 font-bold">
+            <h1 className="text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
               Technical Skills:
             </h1>
             <p className="text-xl max-[425px]:text-base text-center">
@@ -224,7 +224,7 @@ const Skills = () => {
 
       <section className="container flex flex-col m-auto">
         <div className="mt-16 mx-auto justify-around px-6 py-0 flex flex-wrap gap-6">
-          <h1 className="text-4xl md:text-4xl mb-4 font-bold text-center">
+          <h1 className="text-center text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
             Non-Technical Skills:
           </h1>
           <div className="w-full my-20 mx-auto flex flex-wrap gap-6 md:gap-8 justify-center">

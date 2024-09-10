@@ -22,22 +22,35 @@ const CourseSlider = ({ courses }) => {
   };
 
   return (
-    <div className="relative max-w-4xl mx-auto mb-8 py-4 px-4 max-[1024px]:max-w-2xl">
-      <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-4">
+    <div
+      id="test"
+      className="container relative max-w-4xl mx-auto mb-8 py-4 px-4 lg:max-w-2xl md:max-w-xl sm:max-w-md xs:max-w-sm transition-all duration-300 max-[480px]:max-w-xs"
+    >
+      <h1 className="text-4xl text-center mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
         Relevant Coursework:
       </h1>
       <div className="w-full h-[300px] rounded-2xl bg-gray-900 relative overflow-hidden">
-        <div className="flex flex-col justify-center items-center h-full text-center px-4">
-          <h2 className="text-base sm:text-lg font-bold text-yellow-400 mb-2">
-            {courses[currentIndex].title}
-          </h2>
-          <ul className="mt-2 text-white text-xs sm:text-sm">
-            {courses[currentIndex].description.map((item, index) => (
-              <li key={index} className="mb-1">
-                {item}
-              </li>
-            ))}
-          </ul>
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {courses.map((course, index) => (
+            <div
+              key={index}
+              className="w-full flex-shrink-0 bg-gray-900 rounded-lg p-4 flex flex-col justify-center items-center text-center"
+            >
+              <h2 className="text-base sm:text-xl font-bold text-yellow-400 mb-2">
+                {course.title}
+              </h2>
+              <ul className=" mt-6 text-white text-xs sm:text-sm">
+                {course.description.map((item, idx) => (
+                  <li key={idx} className="mb-4">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
         <div className="absolute top-1/2 left-2 transform -translate-y-1/2 text-lg rounded-full p-1 bg-black/50 text-white cursor-pointer z-5">
           <BsChevronCompactLeft onClick={prevSlide} size={20} />
@@ -50,7 +63,7 @@ const CourseSlider = ({ courses }) => {
             <div
               key={slideIndex}
               onClick={() => goToSlide(slideIndex)}
-              className={`cursor-pointer text-lg ${
+              className={`cursor-pointer text-lg transition-all duration-300 max-[375px]:text-sm ${
                 currentIndex === slideIndex
                   ? "text-yellow-400"
                   : "text-gray-600"

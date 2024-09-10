@@ -135,6 +135,12 @@ footer {
   }
 }
 
+@media (max-width: 425px) {
+  .link-container li button {
+    font-size: 12px;
+  }
+}
+
 .link-container button {
   width: 100%;
   padding: 10px;
@@ -145,3 +151,9 @@ footer {
 /* FOOTER */
 /* FOOTER */
 /* FOOTER */
+
+@media (max-width: 375px) {
+  #test {
+    max-width: 17rem;
+  }
+}

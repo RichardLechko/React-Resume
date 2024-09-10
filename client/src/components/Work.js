@@ -2,7 +2,7 @@ const Work = () => {
   return (
     <section className="container flex flex-col m-auto mb-24" id="work">
       <div className="mt-16 mx-auto justify-around px-4 py-0 pt-16 flex flex-wrap gap-6 ">
-        <h1 className="text-4xl mb-12 font-bold text-center">
+        <h1 className="text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
           Work Experience:
         </h1>
         <div className="flex flex-col container m-auto gap-8">

@@ -67,25 +67,25 @@ const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
           <div className="mt-8 bg-darkviolet">
             <NavItem
               icon={
-                <DiGithubBadge className="text-4xl hover:text-gray-400 max-[768px]:text-3xl max-[425px]:text-2xl" />
+                <DiGithubBadge className="text-4xl hover:text-gray-400 max-[768px]:text-3xl max-[425px]:text-3xl" />
               }
               link="https://github.com/RichardLechko"
             />
             <NavItem
               icon={
-                <FaLinkedin className="text-4xl hover:text-blue-600 max-[768px]:text-3xl max-[425px]:text-2xl" />
+                <FaLinkedin className="text-4xl hover:text-blue-600 max-[768px]:text-3xl max-[425px]:text-3xl" />
               }
               link="https://www.linkedin.com/in/richard-lechko/"
             />
             <NavItem
               icon={
-                <FaSpotify className="text-4xl hover:text-green-500 max-[768px]:text-3xl max-[425px]:text-2xl" />
+                <FaSpotify className="text-4xl hover:text-green-500 max-[768px]:text-3xl max-[425px]:text-3xl" />
               }
               link="https://open.spotify.com/user/22j4lmvcuabn2joznuzxd3pdy?si=be67aa3576934843"
             />
             <NavItem
               icon={
-                <FaSoundcloud className="text-4xl hover:text-orange-500 max-[768px]:text-3xl max-[425px]:text-2xl" />
+                <FaSoundcloud className="text-4xl hover:text-orange-500 max-[768px]:text-3xl max-[425px]:text-3xl" />
               }
               link="https://soundcloud.com/richardlechko"
             />
@@ -96,12 +96,26 @@ const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
   );
 };
 
-const NavItem = ({ icon, onClick }) => {
+const NavItem = ({ icon, onClick, link }) => {
   return (
-    <li onClick={onClick}>
-      <div className="flex justify-center items-center p-3 hover:bg-gray-700 transition-colors cursor-pointer text-2xl max-[768px]:text-[1.3em] max-[425px]:pr-0 max-[425px]:pl-0">
-        {icon}
-      </div>
+    <li>
+      {link ? (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex justify-center items-center p-3 hover:bg-gray-700 transition-colors cursor-pointer max-[768px]:text-[1.3em] max-[425px]:pr-0 max-[425px]:pl-0"
+        >
+          {icon}
+        </a>
+      ) : (
+        <div
+          onClick={onClick}
+          className="flex justify-center items-center p-3 hover:bg-gray-700 transition-colors cursor-pointer text-2xl max-[768px]:text-[1.3em] max-[425px]:pr-0 max-[425px]:pl-0"
+        >
+          {icon}
+        </div>
+      )}
     </li>
   );
 };

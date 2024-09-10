@@ -125,7 +125,7 @@ const coursework = [
 
 const Coursework = () => {
   return (
-    <div className="mt-0 mb-48">
+    <div className="mt-0 mb-36">
       <CourseSlider courses={coursework} />
     </div>
   );

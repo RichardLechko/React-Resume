@@ -23,11 +23,11 @@ const Footer = ({ refs }) => {
   return (
     <footer className="bg-[#002240] text-[#fff] p-8 w-full min-w-full">
       <div className="max-w-screen-xl mx-auto">
-        <h1 className="font-mono text-3xl text-center font-bold">
+        <h1 className="font-mono text-3xl text-center font-bold max-[640px]:text-2xl max-[425px]:text-xl">
           About Me ~ Richard Lechko
         </h1>
 
-        <p className="pb-4 text-gray-400 text-lg text-center">
+        <p className="pb-4 text-gray-400 text-lg text-center max-[640px]:text-base max-[425px]:text-sm">
           &copy; {new Date().getFullYear()} Richard Lechko | All Rights Reserved
         </p>
 

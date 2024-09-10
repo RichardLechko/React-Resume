@@ -47,7 +47,7 @@ function App() {
             <div
               className={`flex-1 flex flex-col transition-all duration-300 ${
                 isSidebarVisible
-                  ? "max-[768px]:ml-[-1rem] max-[375px]:ml-[-2.5rem]"
+                  ? "max-[768px]:ml-[-1rem] max-[425px]:ml-[-2.5rem]"
                   : "ml-0"
               }`}
             >

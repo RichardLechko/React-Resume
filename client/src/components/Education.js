@@ -3,9 +3,9 @@ import React from "react";
 const Education = () => {
   return (
     <div className="container flex flex-col m-auto">
-      <section className="container mx-auto flex flex-col items-center mt-16">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl mt-12 sm:mt-16 mb-6 sm:mb-8 font-bold text-center">
-          Education
+      <section className="container mx-auto flex flex-col items-center my-16">
+        <h1 className="text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
+          Education:
         </h1>
         <p className="text-center text-2xl pl-8 pr-8 mb-8 max-[768px]:text-xl max-[425px]:text-base">
           Currently a full-time student at{" "}
