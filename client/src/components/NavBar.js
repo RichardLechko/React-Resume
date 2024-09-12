@@ -36,7 +36,7 @@ const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
       }`}
     >
       <nav>
-        <ul className="flex flex-col items-center space-y-4 mt-4">
+        <ul className="flex flex-col items-stretch space-y-4 mt-4">
           <NavItem
             icon={<FaUser className="text-2xl" />}
             onClick={() => handleNavClick("personal")}
@@ -79,14 +79,14 @@ const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
             text="Projects"
             isSidebarVisible={isSidebarVisible}
           />
-          <div className="mt-8 space-y-4">
+          <div className="bg-teal-500 w-full flex flex-col">
             <NavItem
-              icon={<DiGithubBadge className="text-4xl hover:text-gray-900" />}
+              icon={<DiGithubBadge className="text-4xl" />}
               link="https://github.com/RichardLechko"
               isSidebarVisible={isSidebarVisible}
             />
             <NavItem
-              icon={<FaLinkedin className="text-4xl hover:text-blue-500" />}
+              icon={<FaLinkedin className="text-4xl" />}
               link="https://www.linkedin.com/in/richard-lechko/"
               isSidebarVisible={isSidebarVisible}
             />
@@ -99,13 +99,13 @@ const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
 
 const NavItem = ({ icon, onClick, link, text, isSidebarVisible }) => {
   return (
-    <li className="flex flex-col items-center">
+    <li className="w-full">
       {link ? (
         <a
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className={`flex flex-col px-3 py-1 items-center hover:bg-gray-700 transition-colors cursor-pointer ${
+          className={`flex flex-col items-center px-3 py-2 w-full hover:bg-gray-700 transition-colors cursor-pointer ${
             isSidebarVisible ? "justify-center" : "justify-center"
           }`}
         >
@@ -119,7 +119,7 @@ const NavItem = ({ icon, onClick, link, text, isSidebarVisible }) => {
       ) : (
         <div
           onClick={onClick}
-          className={`flex flex-col items-center px-3 py-1 hover:bg-gray-700 transition-colors cursor-pointer ${
+          className={`flex flex-col items-center px-3 py-2 w-full hover:bg-gray-700 transition-colors cursor-pointer ${
             isSidebarVisible ? "justify-center" : "justify-center"
           }`}
         >

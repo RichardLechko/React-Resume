@@ -70,7 +70,7 @@ function App() {
                   </button>
                 </header>
                 <main
-                  className={`flex-1 flex flex-col pt-24 transition-all duration-300 ${
+                  className={`flex-1 flex flex-col pt-24 transition-all duration-300 overflow-x-hidden ${
                     isSidebarVisible ? "ml-20" : "ml-0"
                   }`}
                 >

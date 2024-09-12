@@ -2,54 +2,59 @@ import React from "react";
 
 const Education = () => {
   return (
-    <div className="container flex flex-col m-auto">
-      <section className="container mx-auto flex flex-col items-center my-16">
+    <div className="container flex flex-col m-auto p-8">
+      {/* Hero Section */}
+      <section className="text-center bg-gray-100 py-8 px-4 rounded-lg shadow-lg mb-12">
         <h1 className="text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
-          Education:
+          Education
         </h1>
-        <p className="text-left text-2xl pl-8 pr-8 mb-8 max-[768px]:text-xl max-[425px]:text-base">
-          Currently a full-time student at{" "}
+        <p className="text-xl max-[768px]:text-xl max-[640px]:text-base">
+          Full-time student at{" "}
           <a
             className="underline font-bold"
             href="https://www.depaul.edu/Pages/default.aspx"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <span className="text-red-600">DePaul</span>{" "}
             <span className="text-blue-600">University</span>
           </a>
-          , pursuing a Bachelor's in Science in Information Technology, with a
-          concentration in Web Development.
+          , pursuing a Bachelor's in Information Technology with a concentration
+          in Web Development.
         </p>
-        <p className="text-center text-2xl mb-8 max-[768px]:text-xl max-[425px]:text-base">
-          Major GPA: 3.5/4.0
-        </p>
-        <div className="text-center text-2xl mb-8 max-[768px]:text-xl max-[425px]:text-base">
-          <p className="font-bold mb-4">Organizations:</p>
-          <ul className="list-disc text-left flex flex-col gap-4 list-inside max-[768px]:text-lg max-[640px]:pl-8 max-[640px]:pr-8 max-[425px]:text-base">
-            <li>
-              Member of{" "}
-              <span className="underline">DePaul Computer Science Society</span>
-            </li>
-            <li>
-              Member of <span className="underline">DePaul Math Club</span>
-            </li>
-            <li>
-              Member of <span className="underline">DePaul Chess Club</span>
-            </li>
-            <li>
-              Member of{" "}
-              <span className="underline">
-                DePaul User Experience Association
-              </span>
-            </li>
-          </ul>
+      </section>
+
+      {/* Two-Column Layout */}
+      <section className="grid grid-cols-2 gap-8 max-[768px]:grid-cols-1">
+        {/* Major GPA */}
+        <div className="bg-white p-8 shadow-md rounded-lg text-center">
+          <h2 className="text-2xl font-bold mb-4">Major GPA</h2>
+          <p className="text-xl max-[425px]:text-base">3.5 / 4.0</p>
         </div>
 
-        <p className="text-center text-2xl mb-8 max-[768px]:text-xl max-[425px]:text-base">
-          2-time Dean's List student.
+        {/* Organizations */}
+        <div className="bg-white p-8 shadow-md rounded-lg">
+          <h2 className="text-2xl font-bold mb-4 text-center">Organizations</h2>
+          <ul className="list-disc pl-6 text-left">
+            <li>DePaul Computer Science Society</li>
+            <li>DePaul Math Club</li>
+            <li>DePaul Chess Club</li>
+            <li>DePaul User Experience Association</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Achievements */}
+      <section className="bg-gray-50 py-8 mt-12 text-center rounded-lg shadow-lg">
+        <p className="text-2xl font-bold max-[768px]:text-xl max-[425px]:text-base">
+          2-time Dean's List student
         </p>
-        <p className="text-center text-2xl max-[768px]:text-xl max-[425px]:text-base">
-          <span className="underline ">Expected Graduation: 06/2026</span>
+      </section>
+
+      {/* Graduation */}
+      <section className="bg-white py-8 mt-8 text-center rounded-lg shadow-md">
+        <p className="text-2xl font-bold max-[768px]:text-xl max-[425px]:text-base">
+          Expected Graduation: <span className="underline">06/2026</span>
         </p>
       </section>
     </div>

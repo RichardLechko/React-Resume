@@ -17,8 +17,9 @@ const Widgets = () => {
     <div id="widgets" className="container mx-auto px-4 py-8 mb-24">
       <div className="w-full mt-16 mb-24 mx-auto justify-around py-0 flex flex-wrap gap-4 font-bold text-center">
         <p className="text-2xl text-darkviolet font-bold">
-          To show my understanding of JavaScript and Programming, I have made
-          some widgets that have loads of functionality.
+          To show my understanding of JavaScript, Programming, and in general
+          problem solving. I have inclued a bunch of projects that I have worked
+          on.
         </p>
       </div>
       <section className="flex flex-wrap justify-center gap-8 px-4 ">

@@ -2,7 +2,7 @@
 
 const Footer = ({ refs }) => {
   return (
-    <footer className="bg-[#002240] text-[#fff] p-8 text-center">
+    <footer className="bg-[#002240] text-[#fff] p-8 text-center pl-20 overflow-x-hidden">
       <div className="max-w-screen-xl mx-auto px-4">
         <h1 className="font-mono text-3xl font-bold mb-4 max-[640px]:text-2xl max-[425px]:text-xl">
           About Me ~ Richard Lechko

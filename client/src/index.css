@@ -67,6 +67,6 @@ footer p {
 
 @media (max-width: 375px) {
   #test {
-    max-width: 17rem;
+    max-width: 16rem;
   }
 }
