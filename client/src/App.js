@@ -58,7 +58,7 @@ function App() {
                   <h1
                     className={`text-2xl mr-16 transition-all duration-300 ${
                       isSidebarVisible ? "ml-[5rem]" : "ml-0"
-                    } max-[640px]:text-base max-[425px]:text-sm max-[425px]:ml-14 max-[425px]:text-center max-[375px]:ml-8`}
+                    } max-[640px]:text-base max-[425px]:text-sm max-[425px]:text-center`}
                   >
                     Richard Lechko - IT Student @ DePaul University
                   </h1>

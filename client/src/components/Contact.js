@@ -53,7 +53,7 @@ const Contact = () => {
 
   return (
     <section id="contact">
-      <section className="text-2xl text-black font-semibold text-center p-24 pb-0 mb-12">
+      <section className="text-2xl text-black font-semibold text-center p-24 max-[640px]:p-12 max-[640px]:mb-6 pb-0 mb-12 max-[640px]:text-xl max-[425px]:text-base max-[375px]:pl-6 max-[375px]:pr-6">
         <p>
           I am currently looking for any projects — big or small. Don't be
           afraid to reach out. Whether that be a job opportunity, a freelance
@@ -100,7 +100,7 @@ const Contact = () => {
             id="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm max-[640px]:w-3/4 w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
             placeholder="Your name"
             required
           />
@@ -113,7 +113,7 @@ const Contact = () => {
             id="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm max-[640px]:w-3/4 w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
             placeholder="Your email"
             required
           />
@@ -126,7 +126,7 @@ const Contact = () => {
             id="subject"
             value={formData.subject}
             onChange={handleChange}
-            className="w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm max-[640px]:w-3/4 w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
             placeholder="Subject"
             required
           />
@@ -138,7 +138,7 @@ const Contact = () => {
             id="textarea"
             value={formData.message}
             onChange={handleChange}
-            className="w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm max-[640px]:w-3/4 w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
             cols="30"
             rows="5"
             placeholder="Your message..."
@@ -146,7 +146,7 @@ const Contact = () => {
           ></textarea>
           <input
             type="submit"
-            className="w-full text-xl p-4 outline-none bg-primaryColor text-white rounded-xl mb-4 border-none font-bold cursor-pointer"
+            className="max-[640px]:text-sm max-[640px]:w-3/4 w-full text-xl p-4 outline-none bg-primaryColor text-white rounded-xl mb-4 border-none font-bold cursor-pointer"
             value="Send Message"
           />
         </form>
@@ -192,17 +192,17 @@ const Contact = () => {
         <div className="flex flex-col text-xl mt-12 mb-20 text-left px-4">
           {" "}
           <div className="flex items-center gap-4">
-            <FaMapMarkerAlt />
+            <FaMapMarkerAlt className="text-2xl max-[640px]:text-xl" />
             <article className="mb-4">
               <h1 className="mb-2 font-bold">Location</h1>
-              <p>Orland Park, IL</p>
+              <p className="text-lg max-[640px]:text-base">Orland Park, IL</p>
             </article>
           </div>
           <div className="flex items-center gap-4">
-            <FaEnvelope />
+            <FaEnvelope className="text-2xl max-[640px]:text-xl" />
             <article className="mb-4">
               <h1 className="mb-2 font-bold">Email</h1>
-              <p>
+              <p className="text-lg max-[640px]:text-base">
                 <a href="mailto:richardlechko@gmail.com" className="underline">
                   richardlechko [at] gmail.com
                 </a>
@@ -210,10 +210,10 @@ const Contact = () => {
             </article>
           </div>
           <div className="flex items-center gap-4">
-            <FaPhoneAlt />
+            <FaPhoneAlt className="text-2xl max-[640px]:text-xl" />
             <article className="mb-4">
               <h1 className="mb-2 font-bold">Phone</h1>
-              <p>(708)-262-7174</p>
+              <p className="text-lg max-[640px]:text-base">(708)-262-7174</p>
             </article>
           </div>
         </div>
