@@ -16,7 +16,7 @@ const Contact = () => {
     message: "",
   });
   const [feedback, setFeedback] = useState("");
-  const [links, setLinks] = useState([]); // State to hold the links
+  const [links, setLinks] = useState([]);
 
   const handleChange = (e) => {
     setFormData({
@@ -45,7 +45,7 @@ const Contact = () => {
 
       const data = await response.json();
       setFeedback(data.message);
-      setLinks(data.links); // Update links state
+      setLinks(data.links);
     } catch (error) {
       setFeedback("Error sending message.");
     }
@@ -155,7 +155,6 @@ const Contact = () => {
           {feedback}
         </div>
 
-        {/* Display links if available */}
         {links.length > 0 && (
           <div className="mt-12 my-8 px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 text-center text-gray-900">
@@ -163,7 +162,6 @@ const Contact = () => {
             </h2>
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
               {" "}
-              {/* Adjusted gap */}
               {links.map((link, index) => (
                 <a
                   key={index}
@@ -193,7 +191,6 @@ const Contact = () => {
 
         <div className="flex flex-col text-xl mt-12 mb-20 text-left px-4">
           {" "}
-          {/* Added px-4 for padding */}
           <div className="flex items-center gap-4">
             <FaMapMarkerAlt />
             <article className="mb-4">

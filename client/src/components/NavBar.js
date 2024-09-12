@@ -8,8 +8,7 @@ import {
   FaBook,
   FaEnvelope,
   FaLinkedin,
-  FaSpotify,
-  FaSoundcloud,
+  FaCube,
 } from "react-icons/fa";
 import { DiGithubBadge } from "react-icons/di";
 
@@ -30,64 +29,66 @@ const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
 
   return (
     <div
-      className={`fixed top-0 h-screen ${
-        isSidebarVisible ? "w-20 max-[768px]:w-16 max-[425px]:w-10" : "w-0"
-      } bg-gray-900 text-white shadow-lg transition-all duration-300 z-40`}
+      className={`fixed top-0 h-screen bg-gray-900 text-white shadow-lg transition-all duration-300 z-40 ${
+        isSidebarVisible
+          ? "w-20 max-[768px]:w-16 max-[425px]:w-12 opacity-100"
+          : "w-0 opacity-0 overflow-hidden"
+      }`}
     >
       <nav>
-        <ul>
+        <ul className="flex flex-col items-center space-y-4 mt-4">
           <NavItem
-            icon={<FaUser />}
+            icon={<FaUser className="text-2xl" />}
             onClick={() => handleNavClick("personal")}
+            text="Personal"
+            isSidebarVisible={isSidebarVisible}
           />
           <NavItem
-            icon={<FaTools />}
+            icon={<FaTools className="text-2xl" />}
             onClick={() => handleNavClick("skills")}
+            text="Skills"
+            isSidebarVisible={isSidebarVisible}
           />
           <NavItem
-            icon={<FaBriefcase />}
+            icon={<FaBriefcase className="text-2xl" />}
             onClick={() => handleNavClick("work")}
+            text="Work"
+            isSidebarVisible={isSidebarVisible}
           />
           <NavItem
-            icon={<FaGraduationCap />}
+            icon={<FaGraduationCap className="text-2xl" />}
             onClick={() => handleNavClick("education")}
+            text="School"
+            isSidebarVisible={isSidebarVisible}
           />
           <NavItem
-            icon={<FaBook />}
+            icon={<FaBook className="text-2xl" />}
             onClick={() => handleNavClick("publications")}
+            text="Publishes"
+            isSidebarVisible={isSidebarVisible}
           />
           <NavItem
-            icon={<FaEnvelope />}
+            icon={<FaEnvelope className="text-2xl" />}
             onClick={() => handleExternalNavClick("/contact")}
+            text="Contact"
+            isSidebarVisible={isSidebarVisible}
           />
           <NavItem
-            icon={<FaTools />}
+            icon={<FaCube className="text-2xl" />}
             onClick={() => handleExternalNavClick("/widgets")}
+            text="Projects"
+            isSidebarVisible={isSidebarVisible}
           />
-          <div className="mt-8 bg-darkviolet">
+          <div className="mt-8 space-y-4">
             <NavItem
-              icon={
-                <DiGithubBadge className="text-4xl hover:text-gray-400 max-[768px]:text-3xl max-[425px]:text-3xl" />
-              }
+              icon={<DiGithubBadge className="text-4xl hover:text-gray-900" />}
               link="https://github.com/RichardLechko"
+              isSidebarVisible={isSidebarVisible}
             />
             <NavItem
-              icon={
-                <FaLinkedin className="text-4xl hover:text-blue-600 max-[768px]:text-3xl max-[425px]:text-3xl" />
-              }
+              icon={<FaLinkedin className="text-4xl hover:text-blue-500" />}
               link="https://www.linkedin.com/in/richard-lechko/"
-            />
-            <NavItem
-              icon={
-                <FaSpotify className="text-4xl hover:text-green-500 max-[768px]:text-3xl max-[425px]:text-3xl" />
-              }
-              link="https://open.spotify.com/user/22j4lmvcuabn2joznuzxd3pdy?si=be67aa3576934843"
-            />
-            <NavItem
-              icon={
-                <FaSoundcloud className="text-4xl hover:text-orange-500 max-[768px]:text-3xl max-[425px]:text-3xl" />
-              }
-              link="https://soundcloud.com/richardlechko"
+              isSidebarVisible={isSidebarVisible}
             />
           </div>
         </ul>
@@ -96,24 +97,38 @@ const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
   );
 };
 
-const NavItem = ({ icon, onClick, link }) => {
+const NavItem = ({ icon, onClick, link, text, isSidebarVisible }) => {
   return (
-    <li>
+    <li className="flex flex-col items-center">
       {link ? (
         <a
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex justify-center items-center p-3 hover:bg-gray-700 transition-colors cursor-pointer max-[768px]:text-[1.3em] max-[425px]:pr-0 max-[425px]:pl-0"
+          className={`flex flex-col px-3 py-1 items-center hover:bg-gray-700 transition-colors cursor-pointer ${
+            isSidebarVisible ? "justify-center" : "justify-center"
+          }`}
         >
           {icon}
+          {isSidebarVisible && (
+            <span className="mt-2 text-xs max-[768px]:text-[12px] max-[425px]:text-[10px]">
+              {text}
+            </span>
+          )}
         </a>
       ) : (
         <div
           onClick={onClick}
-          className="flex justify-center items-center p-3 hover:bg-gray-700 transition-colors cursor-pointer text-2xl max-[768px]:text-[1.3em] max-[425px]:pr-0 max-[425px]:pl-0"
+          className={`flex flex-col items-center px-3 py-1 hover:bg-gray-700 transition-colors cursor-pointer ${
+            isSidebarVisible ? "justify-center" : "justify-center"
+          }`}
         >
           {icon}
+          {isSidebarVisible && (
+            <span className="mt-1 text-xs max-[768px]:text-[12px] max-[425px]:text-[10px]">
+              {text}
+            </span>
+          )}
         </div>
       )}
     </li>

@@ -14,7 +14,10 @@ h1 {
 body {
   font-family: "Nunito", sans-serif;
   font-weight: 300;
-  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100%;
 }
 
 html {
@@ -22,17 +25,11 @@ html {
   scroll-behavior: auto;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-x: hidden;
-}
-
 #root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   overflow-x: hidden;
-  height: 100vh;
 }
 
 header {
@@ -44,113 +41,29 @@ header {
 }
 
 footer {
+  background-color: #002240; /* Ensure it has the correct background color */
+  color: #fff;
+  padding: 2rem; /* Adjust as needed */
+  text-align: center;
   width: 100%;
   flex-shrink: 0;
+  margin-top: auto; /* Ensure it's pushed to the bottom */
 }
 
-/* FOOTER */
-/* FOOTER */
-/* FOOTER */
-
-.link-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  padding: 0;
+footer h1,
+footer p {
   margin: 0;
-  margin-bottom: 1em;
-  list-style: none;
 }
 
-.link-container li {
-  flex: 1 1 calc(100% / 3 - 10px);
-  max-width: calc(100% / 3 - 10px);
-  box-sizing: border-box;
-}
-
-@media (max-width: 650px) {
-  .link-container li {
-    flex: 1 1 calc(100% - 10px);
-    max-width: calc(100% - 10px);
-  }
-}
-
-.link-container li button:after {
-  background: none repeat scroll 0 0 transparent;
-  bottom: 0;
-  content: "";
-  display: block;
-  height: 2px;
-  left: 50%;
-  position: absolute;
-  background: #fff;
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-  width: 0;
-}
-
-.link-container li button:hover:after {
-  width: 100%;
-  left: 0;
-}
-
-.link-container li button {
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: 0.15em;
-  display: inline-block;
-  padding: 1em;
-  position: relative;
-}
-
-@media (max-width: 1300px) {
-  .link-container li {
-    flex: 1 1 calc(100% / 4 - 10px);
-    max-width: calc(100% / 4 - 10px);
-  }
-}
-
-@media (max-width: 768px) {
-  .link-container li {
-    flex: 1 1 calc(100% / 3 - 10px);
-    max-width: calc(100% / 3 - 10px);
-  }
-}
-
-@media (max-width: 665px) {
-  .link-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
+@media (max-width: 640px) {
+  footer h1 {
+    font-size: 1.5rem; /* Adjust for responsiveness */
   }
 
-  .link-container li {
-    flex: 1 1 calc(50% - 10px);
-    max-width: calc(50% - 10px);
-  }
-
-  .link-container li button {
-    font-size: 0.8em;
+  footer p {
+    font-size: 0.875rem; /* Adjust for responsiveness */
   }
 }
-
-@media (max-width: 425px) {
-  .link-container li button {
-    font-size: 12px;
-  }
-}
-
-.link-container button {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-/* FOOTER */
-/* FOOTER */
-/* FOOTER */
 
 @media (max-width: 375px) {
   #test {

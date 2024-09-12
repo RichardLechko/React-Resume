@@ -18,14 +18,14 @@ const Currency = () => {
   useEffect(() => {
     const fetchCurrencyData = async () => {
       try {
-        const response = await fetch(apiUrl); // API call to your backend
+        const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setExchangeRates(data.conversion_rates); // Store exchange rates from backend response
+        setExchangeRates(data.conversion_rates);
       } catch (error) {
-        setError(error.message); // Handle errors
+        setError(error.message);
         console.error("Error fetching currency data:", error);
       }
     };

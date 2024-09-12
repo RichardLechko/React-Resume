@@ -7,11 +7,12 @@ const Education = () => {
         <h1 className="text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
           Education:
         </h1>
-        <p className="text-center text-2xl pl-8 pr-8 mb-8 max-[768px]:text-xl max-[425px]:text-base">
+        <p className="text-left text-2xl pl-8 pr-8 mb-8 max-[768px]:text-xl max-[425px]:text-base">
           Currently a full-time student at{" "}
           <a
             className="underline font-bold"
-            href="https://www.richardlechko.com"
+            href="https://www.depaul.edu/Pages/default.aspx"
+            target="_blank"
           >
             <span className="text-red-600">DePaul</span>{" "}
             <span className="text-blue-600">University</span>
@@ -24,7 +25,7 @@ const Education = () => {
         </p>
         <div className="text-center text-2xl mb-8 max-[768px]:text-xl max-[425px]:text-base">
           <p className="font-bold mb-4">Organizations:</p>
-          <ul className="list-disc flex flex-col gap-4 list-inside max-[768px]:text-lg max-[640px]:pl-8 max-[640px]:pr-8 max-[425px]:text-base">
+          <ul className="list-disc text-left flex flex-col gap-4 list-inside max-[768px]:text-lg max-[640px]:pl-8 max-[640px]:pr-8 max-[425px]:text-base">
             <li>
               Member of{" "}
               <span className="underline">DePaul Computer Science Society</span>
@@ -48,7 +49,7 @@ const Education = () => {
           2-time Dean's List student.
         </p>
         <p className="text-center text-2xl max-[768px]:text-xl max-[425px]:text-base">
-          <span className="underline ">Enrollment: 9/2022 - 6/2026</span>
+          <span className="underline ">Expected Graduation: 06/2026</span>
         </p>
       </section>
     </div>

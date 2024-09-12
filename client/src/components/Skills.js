@@ -265,7 +265,7 @@ const SkillsCard = ({
   const averageRating = ((ratingOne + ratingTwo + ratingThree) / 3).toFixed(1);
 
   return (
-    <div className="relative p-8 max-md:p-4 bg-gray-800 text-white rounded-xl shadow-lg hover:translate-y-[-15px] transition-transform duration-200 ease-in group">
+    <div className="relative p-8 max-md:p-4 bg-gray-800 text-white rounded-xl shadow-lg hover:translate-y-[-15px]  transition-transform duration-200 ease-in group">
       <h4 className="text-xl text-center font-bold mb-8">
         <span className="border-b-2 border-white">{head}</span>
       </h4>
@@ -311,7 +311,7 @@ const SkillsCard = ({
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 bg-gray-800 bg-opacity-75 flex text-center items-center justify-center text-xl text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute rounded-xl hover:rounded-xl inset-0 bg-gray-800 bg-opacity-75 flex text-center items-center justify-center text-xl text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <p>Average Rating: {averageRating}/10</p>
       </div>
     </div>
