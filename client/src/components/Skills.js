@@ -71,7 +71,7 @@ const Skills = () => {
             <SkillsCard
               head={"OS"}
               iconOne={<DiWindows className="text-4xl" />}
-              iconTwo={<DiLinux className="text-4xl" />}
+              iconTwo={<DiLinux className="text-4xl text-black" />}
               iconThree={<DiApple className="text-4xl" />}
               iconOneH={"Windows"}
               iconTwoH={"Linux"}
@@ -183,7 +183,7 @@ const Skills = () => {
               iconThreeH={"AWS Amplify"}
               bgColorOne="#FF9900"
               bgColorTwo="#232F3E"
-              bgColorThree="#FF9900"
+              bgColorThree="#00aaff"
               ratingOne={10}
               ratingTwo={10}
               ratingThree={10}

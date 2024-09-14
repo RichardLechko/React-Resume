@@ -13,7 +13,7 @@ import { FaBars } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 
 function App() {
-  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
   const toggleSidebar = () => setIsSidebarVisible(!isSidebarVisible);
 
@@ -54,7 +54,7 @@ function App() {
                     : "ml-0"
                 }`}
               >
-                <header className="flex justify-between items-center p-4 sm:p-6 md:p-8 bg-gray-800 text-white fixed w-full top-0 left-0 z-10 transition-all duration-300">
+                <header className="flex justify-between items-center p-4 sm:p-6 md:p-8 bg-[#1a3a50] text-white fixed w-full top-0 left-0 z-10 transition-all duration-300">
                   <h1
                     className={`text-2xl mr-16 transition-all duration-300 ${
                       isSidebarVisible ? "ml-[5rem]" : "ml-0"
@@ -64,7 +64,7 @@ function App() {
                   </h1>
                   <button
                     onClick={toggleSidebar}
-                    className="px-4 py-3 bg-blue-500 text-white font-bold rounded text-xl max-[1024px]:text-base max-[640px]:p-1 max-[425px]:text-sm max-[640px]:text-sm"
+                    className="px-4 py-3 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded text-xl max-[1024px]:text-base max-[640px]:p-1 max-[425px]:text-sm max-[640px]:text-sm"
                   >
                     {isSidebarVisible ? <FaTimes /> : <FaBars />}
                   </button>

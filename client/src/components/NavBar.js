@@ -79,7 +79,7 @@ const NavBar = ({ isSidebarVisible, refs, toggleSidebar }) => {
             text="Projects"
             isSidebarVisible={isSidebarVisible}
           />
-          <div className="bg-teal-500 w-full flex flex-col">
+          <div className="bg-[#4a5a66] w-full flex flex-col">
             <NavItem
               icon={<DiGithubBadge className="text-4xl" />}
               link="https://github.com/RichardLechko"
@@ -105,7 +105,7 @@ const NavItem = ({ icon, onClick, link, text, isSidebarVisible }) => {
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className={`flex flex-col items-center px-3 py-2 w-full hover:bg-gray-700 transition-colors cursor-pointer ${
+          className={`flex flex-col items-center px-3 py-2 w-full hover:bg-[#89a4ae] transition-colors cursor-pointer ${
             isSidebarVisible ? "justify-center" : "justify-center"
           }`}
         >

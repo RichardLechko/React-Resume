@@ -27,9 +27,9 @@ const Education = () => {
       {/* Two-Column Layout */}
       <section className="grid grid-cols-2 gap-8 max-[768px]:grid-cols-1">
         {/* Major GPA */}
-        <div className="bg-white p-8 shadow-md rounded-lg text-center">
-          <h2 className="text-2xl font-bold mb-4">Major GPA</h2>
-          <p className="text-xl max-[425px]:text-base">3.5 / 4.0</p>
+        <div className="bg-white p-8 shadow-md rounded-lg flex flex-col">
+          <h2 className="text-2xl font-bold m-auto">Major GPA</h2>
+          <p className="text-xl max-[425px]:text-base m-auto">3.5 / 4.0</p>
         </div>
 
         {/* Organizations */}
