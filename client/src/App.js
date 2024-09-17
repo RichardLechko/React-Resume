@@ -9,8 +9,6 @@ import Timer from "./components/widgets/Timer.js";
 import Weather from "./components/widgets/Weather.js";
 import MainPage from "./components/MainPage.js";
 import { ScrollProvider } from "./components/ScrollToTop.js";
-import { FaBars } from "react-icons/fa";
-import { FaTimes } from "react-icons/fa";
 
 function App() {
   const personalRef = useRef(null);
@@ -18,9 +16,6 @@ function App() {
   const workRef = useRef(null);
   const educationRef = useRef(null);
   const publicationsRef = useRef(null);
-  const technicalSkillsRef = useRef(null);
-  const nonTechnicalSkillsRef = useRef(null);
-  const relevantCourseworkRef = useRef(null);
 
   const refs = {
     personal: personalRef,
@@ -28,9 +23,6 @@ function App() {
     work: workRef,
     education: educationRef,
     publications: publicationsRef,
-    technicalSkills: technicalSkillsRef,
-    nonTechnicalSkills: nonTechnicalSkillsRef,
-    relevantCoursework: relevantCourseworkRef,
   };
 
   return (
@@ -58,9 +50,7 @@ function App() {
                           workRef={workRef}
                           educationRef={educationRef}
                           publicationsRef={publicationsRef}
-                          technicalSkillsRef={technicalSkillsRef}
-                          nonTechnicalSkillsRef={nonTechnicalSkillsRef}
-                          relevantCourseworkRef={relevantCourseworkRef}
+                          skillsRef={skillsRef}
                         />
                       }
                     />

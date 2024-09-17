@@ -32,28 +32,6 @@ html {
   overflow-x: hidden;
 }
 
-@media (max-width: 375px) {
-  #test {
-    max-width: 16rem;
-  }
-}
-
-/* Add this in your CSS file */
-.underline-expand {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background-color: #dc2626; /* Tailwind red-700 */
-  transition: width 0.3s ease-in-out;
-  transform: translateX(-50%);
-}
-
-.group:hover .underline-expand {
-  width: 100%;
-}
-
 a {
   font-family: "Roboto Mono", monospace;
   text-decoration: none; /* Optional: remove underline */
@@ -83,12 +61,6 @@ a:hover {
   animation: typing 3s steps(40, end) forwards;
 }
 
-@media (max-width: 1440px) {
-  .name-wrapper {
-    max-width: 400px;
-  }
-}
-
 .cursor-hidden .name-text {
   border-right: none; /* Hide cursor after typing is complete */
 }
@@ -108,5 +80,15 @@ a:hover {
   }
   to {
     width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .name-wrapper {
+    max-width: 100%;
+  }
+
+  .name-text {
+    text-align: center;
   }
 }

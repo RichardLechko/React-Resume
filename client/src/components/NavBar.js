@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaLinkedin, FaChevronDown } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import { DiGithubBadge } from "react-icons/di";
 
 const texts = [
@@ -11,35 +11,40 @@ const texts = [
 ];
 
 const NavBar = ({ refs }) => {
-  const [dropdownOpen, setDropdownOpen] = useState(null);
   const [textIndex, setTextIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [typing, setTyping] = useState(true);
   const [cursorHidden, setCursorHidden] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isScreenSmall, setIsScreenSmall] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Refs in NavBar:", refs);
-  }, [refs]);
+    const handleResize = () => {
+      if (window.innerWidth <= 1024) {
+        setIsScreenSmall(true);
+      } else {
+        setIsScreenSmall(false);
+        setIsSidebarOpen(false); // Close the sidebar when resizing back past 1024px
+      }
+    };
 
-  const dropdownRefs = {
-    personal: useRef(null),
-    work: useRef(null),
-    education: useRef(null),
-    publications: useRef(null),
-    relevantCoursework: useRef(null),
-    skills: useRef(null),
-  };
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initial check on component mount
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const currentText = texts[textIndex];
-    const typingSpeed = 100; // Speed of typing
-    const pauseDuration = 500; // Pause between texts
+    const typingSpeed = 100;
+    const pauseDuration = 500;
 
     if (typing) {
       let currentIndex = 0;
-      setDisplayedText(""); // Reset displayed text
-
+      setDisplayedText("");
       const typingInterval = setInterval(() => {
         if (currentIndex < currentText.length) {
           setDisplayedText(currentText.substring(0, currentIndex + 1));
@@ -47,7 +52,7 @@ const NavBar = ({ refs }) => {
         } else {
           clearInterval(typingInterval);
           setTyping(false);
-          setCursorHidden(true); // Hide cursor when typing is complete
+          setCursorHidden(true);
         }
       }, typingSpeed);
 
@@ -55,8 +60,8 @@ const NavBar = ({ refs }) => {
     } else {
       const flippingInterval = setInterval(() => {
         setTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
-        setTyping(true); // Start typing again with new text
-        setCursorHidden(false); // Show cursor again for new typing
+        setTyping(true);
+        setCursorHidden(false);
       }, pauseDuration + typingSpeed * currentText.length);
 
       return () => clearInterval(flippingInterval);
@@ -64,85 +69,84 @@ const NavBar = ({ refs }) => {
   }, [typing, textIndex]);
 
   const handleNavClick = (sectionId) => {
-    // Check if you're on the MainPage
     if (window.location.pathname === "/") {
-      // Try scrolling to the section
-      console.log(`Trying to scroll to section: ${sectionId}`);
       const targetRef = refs[sectionId]?.current;
 
       if (targetRef) {
-        console.log(`Scrolling to:`, targetRef);
         targetRef.scrollIntoView({ behavior: "smooth" });
-      } else {
-        console.error(`No ref found for ${sectionId}`);
       }
     } else {
-      // If you're on an external page, navigate back to MainPage and scroll
       handleExternalNavClick("/", sectionId);
     }
+    if (isScreenSmall) setIsSidebarOpen(false); // Close sidebar after navigating
   };
 
   const handleExternalNavClick = (path, sectionId) => {
-    // Navigate to the external page (MainPage, Contact, Projects)
     navigate(path);
 
     if (sectionId) {
-      // After navigating, scroll to the section (delay needed to wait for page to load)
       setTimeout(() => {
         const targetRef = refs[sectionId]?.current;
         if (targetRef) {
           targetRef.scrollIntoView({ behavior: "smooth" });
         }
-      }, 100); // Adjust timeout if needed
+      }, 100);
     }
+    if (isScreenSmall) setIsSidebarOpen(false); // Close sidebar after navigating
   };
 
-  const openDropdown = (dropdown) => {
-    setDropdownOpen(dropdown);
-  };
+  const NavItem = ({ sectionId, sectionName }) => (
+    <li>
+      <div
+        className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg"
+        onClick={() => handleNavClick(sectionId)}
+      >
+        {sectionName}
+      </div>
+    </li>
+  );
 
-  const closeDropdown = () => {
-    setDropdownOpen(null);
-  };
+  const NavItemExternal = ({ path, sectionName }) => (
+    <li>
+      <div
+        className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg"
+        onClick={() => handleExternalNavClick(path)}
+      >
+        {sectionName}
+      </div>
+    </li>
+  );
 
-  const handleMouseEnter = (dropdown) => {
-    // Close all other dropdowns
-    closeDropdown();
-    // Open the hovered dropdown
-    openDropdown(dropdown);
-  };
-
-  const handleMouseLeave = (event, dropdown) => {
-    const { clientY } = event;
-    const dropdownElement = dropdownRefs[dropdown]?.current;
-
-    if (
-      dropdownElement &&
-      clientY < dropdownElement.getBoundingClientRect().bottom
-    ) {
-      return;
-    }
-
-    closeDropdown();
-  };
+  const SocialMediaLink = ({ icon, link }) => (
+    <li>
+      <a
+        className="text-2xl max-[1280px]:text-xl max-[1024px]:text-3xl"
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {icon}
+      </a>
+    </li>
+  );
 
   return (
     <div className="relative">
-      {dropdownOpen && (
+      {/* Dimmed background when sidebar is open */}
+      {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30"
-          onClick={closeDropdown}
-        />
+          className="fixed inset-0 bg-black opacity-50 z-40" // Increased z-index of the overlay
+          onClick={() => setIsSidebarOpen(false)}
+        ></div>
       )}
-
-      <nav className="fixed top-0 py-4 left-0 w-full bg-gray-900 text-white z-40 shadow-lg text-xl">
-        <div className="flex flex-row items-center justify-between px-4 py-4">
+      <nav className="fixed top-0 py-4 left-0 w-full bg-gray-900 text-white z-50 shadow-lg">
+        <div className="flex items-center justify-between px-4 py-4">
           <div
             className={`name-wrapper overflow-hidden pr-6 ${
               cursorHidden ? "cursor-hidden" : ""
             }`}
           >
-            <div className="name-text text-xl max-[1440px]:text-lg overflow-hidden">
+            <div className="name-text text-xl overflow-hidden max-[1280px]:text-base max-[425px]:text-sm max-[375px]:text-xs">
               Richard Lechko -{" "}
               <span className="bg-gray-700 text-white px-2 py-1 rounded overflow-hidden">
                 {displayedText}
@@ -150,281 +154,65 @@ const NavBar = ({ refs }) => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center w-full">
-            <ul className="flex flex-wrap justify-center gap-6 items-center text-xl max-lg:gap-4 max-lg:text-lg">
-              {/* Personal with dropdown */}
-              <li
-                className="relative text-center max-xl:mb-2"
-                onMouseEnter={() => handleMouseEnter("personal")}
-                onMouseLeave={(e) => handleMouseLeave(e, "personal")}
-              >
-                <div
-                  className="flex items-center cursor-pointer hover:text-gray-400 hover:border-b-2 border-white"
-                  onMouseEnter={() => handleMouseEnter("personal")}
-                >
-                  Personal <FaChevronDown className="ml-1" />
-                </div>
-                {dropdownOpen === "personal" && (
-                  <div
-                    ref={dropdownRefs.personal}
-                    className="fixed top-24 left-0 right-0 bg-white text-black shadow-lg z-50 px-8 py-6 flex justify-center items-center max-xl:top-28 "
-                    style={{ minHeight: "300px" }}
-                  >
-                    {/* Close Button */}
-                    <button
-                      className="absolute top-6 right-6 text-black text-4xl font-bold z-[60]"
-                      onClick={closeDropdown}
-                    >
-                      &times;
-                    </button>
+          {isScreenSmall && (
+            <div
+              className="text-3xl cursor-pointer"
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            >
+              &#9776;
+            </div>
+          )}
 
-                    <ul className="w-full text-center">
-                      <li
-                        className="w-full px-4 py-8 hover:bg-gray-100 cursor-pointer text-2xl relative group"
-                        onClick={() => handleNavClick("personal")}
-                      >
-                        <span className="relative inline-block font-mono">
-                          Personal
-                          <span className="underline-expand"></span>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </li>
-
-              {/* Skills with dropdown */}
-              <li
-                className="relative text-center max-xl:mb-2"
-                onMouseEnter={() => handleMouseEnter("skills")}
-                onMouseLeave={(e) => handleMouseLeave(e, "skills")}
-              >
-                <div
-                  className="flex items-center cursor-pointer hover:text-gray-400 hover:border-b-2 border-white"
-                  onMouseEnter={() => handleMouseEnter("skills")}
-                >
-                  Skills <FaChevronDown className="ml-1" />
-                </div>
-                {dropdownOpen === "skills" && (
-                  <div
-                    ref={dropdownRefs.skills}
-                    className="fixed top-24 left-0 right-0 bg-white text-black shadow-lg z-50 px-8 py-6 flex justify-center items-center max-xl:top-28 "
-                    style={{ minHeight: "300px" }}
-                  >
-                    {/* Close Button */}
-                    <button
-                      className="absolute top-6 right-6 text-black text-4xl font-bold z-[60]"
-                      onClick={closeDropdown}
-                    >
-                      &times;
-                    </button>
-
-                    <ul className="w-full text-center">
-                      <li
-                        className="w-full px-4 py-8 hover:bg-gray-100 cursor-pointer text-2xl relative group"
-                        onClick={() => handleNavClick("technicalSkills")}
-                      >
-                        <span className="relative inline-block font-mono">
-                          Technical Skills
-                          <span className="underline-expand"></span>
-                        </span>
-                      </li>
-                      <li
-                        className="w-full px-4 py-8 hover:bg-gray-100 cursor-pointer text-2xl relative group"
-                        onClick={() => handleNavClick("nonTechnicalSkills")}
-                      >
-                        <span className="relative inline-block font-mono">
-                          Non-Technical Skills
-                          <span className="underline-expand"></span>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </li>
-
-              {/* Work with dropdown */}
-              <li
-                className="relative text-center max-xl:mb-2"
-                onMouseEnter={() => handleMouseEnter("work")}
-                onMouseLeave={(e) => handleMouseLeave(e, "work")}
-              >
-                <div
-                  className="flex items-center cursor-pointer hover:text-gray-400 hover:border-b-2 border-white"
-                  onMouseEnter={() => handleMouseEnter("work")}
-                >
-                  Work <FaChevronDown className="ml-1" />
-                </div>
-                {dropdownOpen === "work" && (
-                  <div
-                    ref={dropdownRefs.work}
-                    className="fixed top-24 left-0 right-0 bg-white text-black shadow-lg z-50 px-8 py-6 flex justify-center items-center max-xl:top-28"
-                    style={{ minHeight: "300px" }}
-                  >
-                    {/* Close Button */}
-                    <button
-                      className="absolute top-6 right-6 text-black text-4xl font-bold z-[60]"
-                      onClick={closeDropdown}
-                    >
-                      &times;
-                    </button>
-
-                    <ul className="w-full text-center">
-                      <li
-                        className="w-full px-4 py-8 hover:bg-gray-100 cursor-pointer text-2xl relative group"
-                        onClick={() => handleNavClick("work")}
-                      >
-                        <span className="relative inline-block font-mono">
-                          Work
-                          <span className="underline-expand"></span>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </li>
-
-              {/* Education with dropdown */}
-              <li
-                className="relative text-center max-xl:mb-2"
-                onMouseEnter={() => handleMouseEnter("education")}
-                onMouseLeave={(e) => handleMouseLeave(e, "education")}
-              >
-                <div
-                  className="flex items-center cursor-pointer hover:text-gray-400 hover:border-b-2 border-white"
-                  onMouseEnter={() => handleMouseEnter("education")}
-                >
-                  Education <FaChevronDown className="ml-1" />
-                </div>
-                {dropdownOpen === "education" && (
-                  <div
-                    ref={dropdownRefs.education}
-                    className="fixed top-24 left-0 right-0 bg-white text-black shadow-lg z-50 px-8 py-6 flex justify-center items-center max-xl:top-28"
-                    style={{ minHeight: "300px" }}
-                  >
-                    {/* Close Button */}
-                    <button
-                      className="absolute top-6 right-6 text-black text-4xl font-bold z-[60]"
-                      onClick={closeDropdown}
-                    >
-                      &times;
-                    </button>
-
-                    <ul className="w-full text-center">
-                      <li
-                        className="w-full px-4 py-8 hover:bg-gray-100 cursor-pointer text-2xl relative group"
-                        onClick={() => handleNavClick("education")}
-                      >
-                        <span className="relative inline-block font-mono">
-                          Education
-                          <span className="underline-expand"></span>
-                        </span>
-                      </li>
-                      <li
-                        className="w-full px-4 py-8 hover:bg-gray-100 cursor-pointer text-2xl relative group"
-                        onClick={() => handleNavClick("relevantCoursework")}
-                      >
-                        <span className="relative inline-block font-mono">
-                          Relevant Coursework
-                          <span className="underline-expand"></span>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </li>
-
-              {/* Publications with dropdown */}
-              <li
-                className="relative text-center max-xl:mb-2"
-                onMouseEnter={() => handleMouseEnter("publications")}
-                onMouseLeave={(e) => handleMouseLeave(e, "publications")}
-              >
-                <div
-                  className="flex items-center cursor-pointer hover:text-gray-400 hover:border-b-2 border-white"
-                  onMouseEnter={() => handleMouseEnter("publications")}
-                >
-                  Publications <FaChevronDown className="ml-1" />
-                </div>
-                {dropdownOpen === "publications" && (
-                  <div
-                    ref={dropdownRefs.publications}
-                    className="fixed top-24 left-0 right-0 bg-white text-black shadow-lg z-50 px-8 py-6 flex justify-center items-center max-xl:top-28"
-                    style={{ minHeight: "300px" }}
-                  >
-                    {/* Close Button */}
-                    <button
-                      className="absolute top-6 right-6 text-black text-4xl font-bold z-[60]"
-                      onClick={closeDropdown}
-                    >
-                      &times;
-                    </button>
-
-                    <ul className="w-full text-center">
-                      <li
-                        className="w-full px-4 py-8 hover:bg-gray-100 cursor-pointer text-2xl relative group"
-                        onClick={() => handleNavClick("publications")}
-                      >
-                        <span className="relative inline-block font-mono">
-                          Publications
-                          <span className="underline-expand"></span>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </li>
-
-              {/* Contact */}
-              <li className="relative text-center">
-                <div
-                  className="flex items-center cursor-pointer hover:text-gray-400 hover:border-b-2 border-white"
-                  onClick={() => handleExternalNavClick("/contact")}
-                  onMouseEnter={closeDropdown}
-                >
-                  Contact
-                </div>
-              </li>
-
-              {/* Widgets */}
-              <li className="relative text-center">
-                <div
-                  className="flex items-center cursor-pointer hover:text-gray-400 hover:border-b-2 border-white"
-                  onClick={() => handleExternalNavClick("/widgets")}
-                  onMouseEnter={closeDropdown}
-                >
-                  Widgets
-                </div>
-              </li>
-              {/* GitHub */}
-              <li>
-                <a
-                  className=" cursor-pointer hover:text-gray-400"
-                  onMouseEnter={closeDropdown}
-                  href="https://github.com/richardlechko"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <DiGithubBadge size={30} />
-                </a>
-              </li>
-
-              {/* LinkedIn */}
-              <li>
-                <a
-                  className=" cursor-pointer hover:text-gray-400"
-                  onMouseEnter={closeDropdown}
-                  href="https://www.linkedin.com/in/richardlechko"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaLinkedin size={30} />
-                </a>
-              </li>
+          {!isScreenSmall && (
+            <ul className="cursor-pointer flex gap-6 px-4 max-[1280px]:gap-4">
+              <NavItem sectionId="personal" sectionName="Personal" />
+              <NavItem sectionId="skills" sectionName="Skills" />
+              <NavItem sectionId="work" sectionName="Work" />
+              <NavItem sectionId="education" sectionName="Education" />
+              <NavItem sectionId="publications" sectionName="Publications" />
+              <NavItemExternal path="/contact" sectionName="Contact" />
+              <NavItemExternal path="/widgets" sectionName="Projects" />
+              <SocialMediaLink
+                icon={<DiGithubBadge />}
+                link="https://github.com/richardlechko"
+              />
+              <SocialMediaLink
+                icon={<FaLinkedin />}
+                link="https://www.linkedin.com/in/richard-lechko"
+              />
             </ul>
-          </div>
+          )}
         </div>
       </nav>
+
+      {/* Sidebar for small screens */}
+      {isScreenSmall && (
+        <div
+          className={`fixed left-0 top-[100px] h-[calc(100%-64px)] w-[250px] bg-gray-900 z-40 transform ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } transition-transform duration-300`} // Sidebar starts below the header (adjust `top` if the header height changes)
+        >
+          <ul className="cursor-pointer flex flex-col gap-6 px-4 mt-6">
+            <NavItem sectionId="personal" sectionName="Personal" />
+            <NavItem sectionId="skills" sectionName="Skills" />
+            <NavItem sectionId="work" sectionName="Work" />
+            <NavItem sectionId="education" sectionName="Education" />
+            <NavItem sectionId="publications" sectionName="Publications" />
+            <NavItemExternal path="/contact" sectionName="Contact" />
+            <NavItemExternal path="/widgets" sectionName="Projects" />
+            <div className="flex flex-col max-[1024px]:gap-6">
+              <SocialMediaLink
+                icon={<DiGithubBadge className="text-white" />}
+                link="https://github.com/richardlechko"
+              />
+              <SocialMediaLink
+                icon={<FaLinkedin className="text-white" />}
+                link="https://www.linkedin.com/in/richardlechko"
+              />
+            </div>
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

@@ -4,10 +4,10 @@ const Education = () => {
   return (
     <div className="container flex flex-col m-auto p-8 pt-32">
       {/* Hero Section */}
+      <h1 className="text-4xl text-center mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
+        Education:
+      </h1>
       <section className="text-center bg-gray-100 py-8 px-4 rounded-lg shadow-lg mb-12">
-        <h1 className="text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
-          Education
-        </h1>
         <p className="text-xl max-[768px]:text-xl max-[640px]:text-base">
           Full-time student at{" "}
           <a

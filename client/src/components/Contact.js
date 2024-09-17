@@ -180,15 +180,6 @@ const Contact = () => {
           </div>
         )}
 
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47735.32503472363!2d-87.892340364795!3d41.60261077830801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e3f45afe938e9%3A0xca1b71adb8e82d4b!2sOrland%20Park%2C%20IL!5e0!3m2!1sen!2sus!4v1715926063297!5m2!1sen!2sus"
-          style={{ border: "0" }}
-          loading="lazy"
-          aria-hidden="false"
-          className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden"
-          title="google-maps"
-        />
-
         <div className="flex flex-col text-xl mt-12 mb-20 text-left px-4">
           {" "}
           <div className="flex items-center gap-4">
@@ -207,13 +198,6 @@ const Contact = () => {
                   richardlechko [at] gmail.com
                 </a>
               </p>
-            </article>
-          </div>
-          <div className="flex items-center gap-4">
-            <FaPhoneAlt className="text-2xl max-[640px]:text-xl" />
-            <article className="mb-4">
-              <h1 className="mb-2 font-bold">Phone</h1>
-              <p className="text-lg max-[640px]:text-base">(708)-262-7174</p>
             </article>
           </div>
         </div>

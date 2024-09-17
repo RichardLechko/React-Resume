@@ -12,21 +12,17 @@ const MainPage = ({
   workRef,
   educationRef,
   publicationsRef,
-  relevantCourseworkRef,
-  technicalSkillsRef,
-  nonTechnicalSkillsRef,
+  skillsRef,
 }) => {
-  const courseworkRef = useRef(null);
-
   return (
     <div className="overflow-x-hidden relative">
       <section id="personal" ref={personalRef}>
         <Personal />
       </section>
-      <section id="technical-skills" ref={technicalSkillsRef}>
+      <section id="technical-skills" ref={skillsRef}>
         <TechnicalSkills />
       </section>
-      <section id="non-technical-skills" ref={nonTechnicalSkillsRef}>
+      <section id="non-technical-skills">
         <NonTechnicalSkills />
       </section>
       <section id="work" ref={workRef}>
@@ -35,8 +31,8 @@ const MainPage = ({
       <section id="education" ref={educationRef}>
         <Education />
       </section>
-      <section id="relevantCoursework" ref={relevantCourseworkRef}>
-        <Coursework courseworkRef={courseworkRef} />
+      <section id="relevantCoursework">
+        <Coursework />
       </section>
       <section id="publications" ref={publicationsRef}>
         <Publications />
