@@ -379,7 +379,7 @@ const NavBar = ({ refs }) => {
               <li className="relative text-center">
                 <div
                   className="flex items-center cursor-pointer hover:text-gray-400 hover:border-b-2 border-white"
-                  onClick={() => handleNavClick("contact")}
+                  onClick={() => handleExternalNavClick("/contact")}
                   onMouseEnter={closeDropdown}
                 >
                   Contact
@@ -390,7 +390,7 @@ const NavBar = ({ refs }) => {
               <li className="relative text-center">
                 <div
                   className="flex items-center cursor-pointer hover:text-gray-400 hover:border-b-2 border-white"
-                  onClick={() => handleNavClick("widgets")}
+                  onClick={() => handleExternalNavClick("/widgets")}
                   onMouseEnter={closeDropdown}
                 >
                   Widgets
