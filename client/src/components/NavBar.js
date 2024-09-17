@@ -188,7 +188,7 @@ const NavBar = ({ refs }) => {
       {/* Sidebar for small screens */}
       {isScreenSmall && (
         <div
-          className={`fixed left-0 top-[100px] h-[calc(100%-64px)] w-[250px] bg-gray-900 z-40 transform ${
+          className={`fixed left-0 top-[100px] h-[calc(100%-64px)] w-[200px] bg-gray-900 z-40 transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300`} // Sidebar starts below the header (adjust `top` if the header height changes)
         >

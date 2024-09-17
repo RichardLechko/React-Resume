@@ -72,10 +72,13 @@ const Widgets = () => {
           display: false, // Hide the numbers
         },
         pointLabels: {
-          font: {
-            size: 18,
+          font: (ctx) => {
+            let width = ctx.chart.width;
+            let size = Math.round(width / 32); // Dynamic font size based on width
+            size = size > 18 ? 18 : size; // Limit max size to 18
+            return { size };
           },
-          display: true, // Show or hide the skill names (labels)
+          display: true,
         },
       },
     },
@@ -95,15 +98,14 @@ const Widgets = () => {
       <div className="w-full mt-16 mb-8 mx-auto justify-around py-0 flex flex-wrap gap-4 font-bold text-center">
         <p className="text-2xl text-darkviolet font-bold">
           To show my understanding of JavaScript, Programming, and in general
-          problem solving. I have inclued a bunch of projects that I have worked
-          on.
+          problem solving. I have included a bunch of projects that I have
+          worked on.
         </p>
       </div>
       <div className="w-full flex justify-center mb-16">
-        <div className="w-[500px] h-[500px]">
+        <div className="w-full max-w-[600px] aspect-square">
           {" "}
-          {/* Set specific width and height for the chart */}
-          <h2 className="text-center text-lg mb-2"></h2>
+          {/* Responsive size */}
           <Radar data={data} options={options} />
         </div>
       </div>

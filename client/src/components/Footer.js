@@ -2,12 +2,12 @@
 
 const Footer = ({ refs }) => {
   return (
-    <footer className="bg-[#002240] text-[#fff] p-8 text-center pl-20 overflow-x-hidden">
-      <div className="max-w-screen-xl mx-auto px-4">
-        <h1 className="font-mono text-3xl font-bold mb-4 max-[640px]:text-2xl max-[425px]:text-xl">
+    <footer className="bg-[#002240] text-[#fff] py-8 px-4 text-center overflow-x-hidden">
+      <div className="max-w-screen-xl mx-auto">
+        <h1 className="font-mono text-3xl font-bold mb-4 sm:text-2xl xs:text-xl">
           Richard Lechko
         </h1>
-        <p className="pb-4 text-gray-400 text-lg max-[640px]:text-base max-[425px]:text-sm">
+        <p className="pb-4 text-gray-400 text-lg sm:text-base xs:text-sm">
           &copy; {new Date().getFullYear()} Richard Lechko | All Rights Reserved
         </p>
         <LastModified />
