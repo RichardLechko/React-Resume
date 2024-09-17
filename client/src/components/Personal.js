@@ -29,7 +29,7 @@ const Personal = () => {
       id="personal"
       className="container flex flex-col mx-auto p-4 overflow-x-hidden"
     >
-      <div className="mt-24 mx-auto justify-around px-8 py-0 flex flex-wrap gap-6">
+      <div className="pt-24 mx-auto justify-around px-8 py-0 flex flex-wrap gap-6">
         <h1 className="text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
           Personal Life:
         </h1>

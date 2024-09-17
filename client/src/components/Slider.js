@@ -29,6 +29,13 @@ const CourseSlider = ({ courses }) => {
       <h1 className="text-4xl text-center mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
         Relevant Coursework:
       </h1>
+      <div className="container text-xl py-8 w-full text-center max-[425px]:text-base">
+        <p className="mb-6 leading-relaxed">
+          Here is the relevant coursework that I took at DePaul University.
+          These classes are not exclusively related to Web Development, but have
+          shaped my understanding of computers and engineering as a whole.
+        </p>
+      </div>
       <div className="w-full h-[300px] rounded-2xl bg-gray-900 relative overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"

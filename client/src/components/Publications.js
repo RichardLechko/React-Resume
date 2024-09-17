@@ -9,8 +9,8 @@ const Publications = () => {
           Publications:
         </h1>
 
-        <div className="text-xl sm:text-base mb-24 font-semibold">
-          <p className="text-center">
+        <div className="text-xl mb-24 font-semibold max-[425px]:text-base">
+          <p className="text-center text-xl">
             Fractional Reserve Banking and Its Evil Actions: Lechko, Richard,
             Block, Walter: 9798327075924
           </p>

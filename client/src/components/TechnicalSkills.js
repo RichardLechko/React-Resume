@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { useRef, Suspense } from "react";
 import {
   DiJava,
   DiPython,
@@ -38,10 +38,14 @@ import {
   TbBrandBootstrap,
 } from "react-icons/tb";
 
-const Skills = () => {
+const TechnicalSkills = ({ technicalSkillsRef }) => {
   return (
     <div>
-      <section className="container flex flex-col m-auto" id="skills">
+      <section
+        className="container flex flex-col m-auto"
+        id="technical-skills"
+        ref={technicalSkillsRef}
+      >
         <div className="mt-16 mx-auto justify-around px-6 py-0 pt-16 flex flex-wrap gap-6">
           <div className="w-full mb-8 text-center life-text smallText">
             <h1 className="text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
@@ -221,28 +225,6 @@ const Skills = () => {
           </Suspense>
         </div>
       </section>
-
-      <section className="container flex flex-col m-auto">
-        <div className="mt-16 mx-auto justify-around px-6 py-0 flex flex-wrap gap-6">
-          <h1 className="text-center text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
-            Non-Technical Skills:
-          </h1>
-          <div className="w-full my-20 mx-auto flex flex-wrap gap-6 md:gap-8 justify-center">
-            <NonTechSkills text={"Excel in rapidly changing environments"} />
-            <NonTechSkills text={"Proficient technical writing"} />
-            <NonTechSkills
-              text={"Great team collaboration from various backgrounds"}
-            />
-            <NonTechSkills text={"A performance-oriented nature"} />
-            <NonTechSkills text={"Creative conflict resolution"} />
-            <NonTechSkills text={"Maintain an optimistic outlook"} />
-            <NonTechSkills text={"Identify and focus on priorities"} />
-            <NonTechSkills text={"Introduce new and creative solutions"} />
-            <NonTechSkills text={"Communicate ideas effectively"} />
-            <NonTechSkills text={"Proactively take on responsibilities"} />
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
@@ -318,12 +300,4 @@ const SkillsCard = ({
   );
 };
 
-const NonTechSkills = ({ text }) => {
-  return (
-    <div className="p-4 border-solid border-black border-4 bg-[#333] text-white rounded-2xl font-bold text-base md:text-xl max-[768px]:text-center transition-transform duration-200 ease-in hover:translate-y-[-10px]">
-      <h4>{text}</h4>
-    </div>
-  );
-};
-
-export default Skills;
+export default TechnicalSkills;

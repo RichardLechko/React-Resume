@@ -9,19 +9,18 @@ import Timer from "./components/widgets/Timer.js";
 import Weather from "./components/widgets/Weather.js";
 import MainPage from "./components/MainPage.js";
 import { ScrollProvider } from "./components/ScrollToTop.js";
-import { FaBars } from "react-icons/fa6";
+import { FaBars } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 
 function App() {
-  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-
-  const toggleSidebar = () => setIsSidebarVisible(!isSidebarVisible);
-
   const personalRef = useRef(null);
   const skillsRef = useRef(null);
   const workRef = useRef(null);
   const educationRef = useRef(null);
   const publicationsRef = useRef(null);
+  const technicalSkillsRef = useRef(null);
+  const nonTechnicalSkillsRef = useRef(null);
+  const relevantCourseworkRef = useRef(null);
 
   const refs = {
     personal: personalRef,
@@ -29,6 +28,9 @@ function App() {
     work: workRef,
     education: educationRef,
     publications: publicationsRef,
+    technicalSkills: technicalSkillsRef,
+    nonTechnicalSkills: nonTechnicalSkillsRef,
+    relevantCoursework: relevantCourseworkRef,
   };
 
   return (
@@ -38,41 +40,14 @@ function App() {
           <div className="flex flex-col min-h-screen">
             <div className="flex min-h-screen flex-1">
               <NavBar
-                isSidebarVisible={isSidebarVisible}
-                toggleSidebar={toggleSidebar}
-                refs={refs}
-                className={`transition-all duration-300 ${
-                  isSidebarVisible ? "w-64 sm:w-72 md:w-80" : "w-0"
-                }`}
-                style={{ maxWidth: isSidebarVisible ? "16rem" : "0" }}
+                refs={refs} // Pass all refs here
               />
 
               <div
-                className={`flex-1 flex flex-col transition-all duration-300 ${
-                  isSidebarVisible
-                    ? "max-[768px]:ml-[-1rem] max-[425px]:ml-[-1.5rem]"
-                    : "ml-0"
-                }`}
+                className={`flex-1 flex flex-col transition-all duration-300`}
               >
-                <header className="flex justify-between items-center p-4 sm:p-6 md:p-8 bg-[#1a3a50] text-white fixed w-full top-0 left-0 z-10 transition-all duration-300">
-                  <h1
-                    className={`text-2xl mr-16 transition-all duration-300 ${
-                      isSidebarVisible ? "ml-[5rem]" : "ml-0"
-                    } max-[640px]:text-base max-[425px]:text-sm max-[425px]:text-center`}
-                  >
-                    Richard Lechko - IT Student @ DePaul University
-                  </h1>
-                  <button
-                    onClick={toggleSidebar}
-                    className="px-4 py-3 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded text-xl max-[1024px]:text-base max-[640px]:p-1 max-[425px]:text-sm max-[640px]:text-sm"
-                  >
-                    {isSidebarVisible ? <FaTimes /> : <FaBars />}
-                  </button>
-                </header>
                 <main
-                  className={`flex-1 flex flex-col pt-24 transition-all duration-300 overflow-x-hidden ${
-                    isSidebarVisible ? "ml-20" : "ml-0"
-                  }`}
+                  className={`flex-1 flex flex-col pt-24 transition-all duration-300`}
                 >
                   <Routes>
                     <Route
@@ -80,10 +55,12 @@ function App() {
                       element={
                         <MainPage
                           personalRef={personalRef}
-                          skillsRef={skillsRef}
                           workRef={workRef}
                           educationRef={educationRef}
                           publicationsRef={publicationsRef}
+                          technicalSkillsRef={technicalSkillsRef}
+                          nonTechnicalSkillsRef={nonTechnicalSkillsRef}
+                          relevantCourseworkRef={relevantCourseworkRef}
                         />
                       }
                     />

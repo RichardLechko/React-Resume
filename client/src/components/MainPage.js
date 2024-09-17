@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import Personal from "./Personal.js";
-import Skills from "./Skills.js";
+import TechnicalSkills from "./TechnicalSkills.js";
+import NonTechnicalSkills from "./NonTechnicalSkills.js";
 import Work from "./Work.js";
 import Education from "./Education.js";
 import Publications from "./Publications.js";
@@ -8,18 +9,25 @@ import Coursework from "./Coursework.js";
 
 const MainPage = ({
   personalRef,
-  skillsRef,
   workRef,
   educationRef,
   publicationsRef,
+  relevantCourseworkRef,
+  technicalSkillsRef,
+  nonTechnicalSkillsRef,
 }) => {
+  const courseworkRef = useRef(null);
+
   return (
     <div className="overflow-x-hidden relative">
       <section id="personal" ref={personalRef}>
         <Personal />
       </section>
-      <section id="skills" ref={skillsRef}>
-        <Skills />
+      <section id="technical-skills" ref={technicalSkillsRef}>
+        <TechnicalSkills />
+      </section>
+      <section id="non-technical-skills" ref={nonTechnicalSkillsRef}>
+        <NonTechnicalSkills />
       </section>
       <section id="work" ref={workRef}>
         <Work />
@@ -27,8 +35,8 @@ const MainPage = ({
       <section id="education" ref={educationRef}>
         <Education />
       </section>
-      <section>
-        <Coursework />
+      <section id="relevantCoursework" ref={relevantCourseworkRef}>
+        <Coursework courseworkRef={courseworkRef} />
       </section>
       <section id="publications" ref={publicationsRef}>
         <Publications />

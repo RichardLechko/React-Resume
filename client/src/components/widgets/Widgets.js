@@ -5,9 +5,86 @@ import { DiGithubBadge } from "react-icons/di";
 
 import React, { useEffect } from "react";
 import { useScroll } from "../ScrollToTop.js";
+import { Radar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
 
 const Widgets = () => {
   const { scrollToTop } = useScroll();
+  const data = {
+    labels: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Typescript",
+      "SQL",
+      "C",
+      "React",
+      "Node.js",
+    ],
+    datasets: [
+      {
+        label: "Expertise Level",
+        data: [10, 10, 10, 5, 9, 3, 9, 10],
+        backgroundColor: "rgba(54, 162, 235, 0.6)", // Background color of the cobweb
+        borderColor: "rgba(54, 162, 235, 1)", // Border color of the cobweb
+        borderWidth: 3, // Thickness of the cobweb lines
+        pointBackgroundColor: "rgba(255, 99, 132, 1)", // Color of each point
+        pointBorderColor: "#fff", // Border color of each point
+        pointHoverBackgroundColor: "#fff", // Hover color for each point
+        pointHoverBorderColor: "rgba(54, 162, 235, 1)", // Hover border color
+        pointRadius: 4, // Size of each point
+        pointHoverRadius: 7, // Hover size of each point
+        fill: true, // Fill the cobweb
+      },
+    ],
+  };
+
+  const options = {
+    scales: {
+      r: {
+        angleLines: {
+          display: true, // Show angle lines connecting the labels
+        },
+        grid: {
+          color: "rgba(255, 99, 132, 0.5)", // Cobweb line color
+          lineWidth: 2, // Cobweb line thickness
+        },
+        suggestedMin: 0,
+        suggestedMax: 10, // Maximum level of expertise (0 to 10 scale)
+        ticks: {
+          display: false, // Hide the numbers
+        },
+        pointLabels: {
+          font: {
+            size: 18,
+          },
+          display: true, // Show or hide the skill names (labels)
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false, // Hide the "Expertise Level" label at the top
+      },
+    },
+  };
 
   useEffect(() => {
     scrollToTop();
@@ -15,12 +92,20 @@ const Widgets = () => {
 
   return (
     <div id="widgets" className="container mx-auto px-4 py-8 mb-24">
-      <div className="w-full mt-16 mb-24 mx-auto justify-around py-0 flex flex-wrap gap-4 font-bold text-center">
+      <div className="w-full mt-16 mb-8 mx-auto justify-around py-0 flex flex-wrap gap-4 font-bold text-center">
         <p className="text-2xl text-darkviolet font-bold">
           To show my understanding of JavaScript, Programming, and in general
           problem solving. I have inclued a bunch of projects that I have worked
           on.
         </p>
+      </div>
+      <div className="w-full flex justify-center mb-16">
+        <div className="w-[500px] h-[500px]">
+          {" "}
+          {/* Set specific width and height for the chart */}
+          <h2 className="text-center text-lg mb-2"></h2>
+          <Radar data={data} options={options} />
+        </div>
       </div>
       <section className="flex flex-wrap justify-center gap-8 px-4 ">
         <WidgetsCard

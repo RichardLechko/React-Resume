@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const ScrollContext = createContext();
 
@@ -8,6 +9,7 @@ export const useScroll = () => {
 
 export const ScrollProvider = ({ children }) => {
   const scrollableContainerRef = useRef(null);
+  const location = useLocation();
 
   const scrollToTop = () => {
     if (scrollableContainerRef.current) {
@@ -15,7 +17,9 @@ export const ScrollProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    scrollToTop(); // Scroll to top on location change
+  }, [location]);
 
   return (
     <ScrollContext.Provider value={{ scrollToTop, scrollableContainerRef }}>

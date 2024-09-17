@@ -32,41 +32,81 @@ html {
   overflow-x: hidden;
 }
 
-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-footer {
-  background-color: #002240; /* Ensure it has the correct background color */
-  color: #fff;
-  padding: 2rem; /* Adjust as needed */
-  text-align: center;
-  width: 100%;
-  flex-shrink: 0;
-  margin-top: auto; /* Ensure it's pushed to the bottom */
-}
-
-footer h1,
-footer p {
-  margin: 0;
-}
-
-@media (max-width: 640px) {
-  footer h1 {
-    font-size: 1.5rem; /* Adjust for responsiveness */
-  }
-
-  footer p {
-    font-size: 0.875rem; /* Adjust for responsiveness */
-  }
-}
-
 @media (max-width: 375px) {
   #test {
     max-width: 16rem;
+  }
+}
+
+/* Add this in your CSS file */
+.underline-expand {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #dc2626; /* Tailwind red-700 */
+  transition: width 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.group:hover .underline-expand {
+  width: 100%;
+}
+
+a {
+  font-family: "Roboto Mono", monospace;
+  text-decoration: none; /* Optional: remove underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Optional: underline on hover */
+}
+
+.name-wrapper {
+  display: inline-block;
+  font-family: "Roboto Mono", monospace;
+  color: #00ff00;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 450px;
+  margin: 0; /* Remove auto margin */
+  text-align: left; /* Force alignment */
+}
+
+.name-text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left; /* Ensure text-align is left */
+  padding-right: 0; /* No extra space for the cursor */
+  animation: typing 3s steps(40, end) forwards;
+}
+
+@media (max-width: 1440px) {
+  .name-wrapper {
+    max-width: 400px;
+  }
+}
+
+.cursor-hidden .name-text {
+  border-right: none; /* Hide cursor after typing is complete */
+}
+
+.name-text span {
+  background-color: #4a5568; /* Gray background color */
+  color: #ffffff; /* White text color */
+  padding: 0.2rem 0.2rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Animation for typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }
