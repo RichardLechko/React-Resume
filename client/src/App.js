@@ -9,8 +9,11 @@ import Timer from "./components/widgets/Timer.js";
 import Weather from "./components/widgets/Weather.js";
 import MainPage from "./components/MainPage.js";
 import { ScrollProvider } from "./components/ScrollToTop.js";
+import ShareSheet from "./components/SharedSheet.js"; // Ensure the path is correct
 
 function App() {
+  const [isShareSheetVisible, setShareSheetVisible] = useState(false); // Add state for share sheet visibility
+
   const personalRef = useRef(null);
   const skillsRef = useRef(null);
   const workRef = useRef(null);
@@ -23,6 +26,10 @@ function App() {
     work: workRef,
     education: educationRef,
     publications: publicationsRef,
+  };
+
+  const toggleShareSheet = () => {
+    setShareSheetVisible((prevState) => !prevState);
   };
 
   return (
@@ -67,6 +74,15 @@ function App() {
           </div>
         </ScrollProvider>
       </Router>
+
+      {/* Add the ShareSheet component here */}
+      <button
+        onClick={toggleShareSheet}
+        className="fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded-lg"
+      >
+        Share
+      </button>
+      <ShareSheet isVisible={isShareSheetVisible} onClose={toggleShareSheet} />
     </div>
   );
 }
