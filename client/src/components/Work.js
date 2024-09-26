@@ -20,7 +20,7 @@ const Work = () => {
             }
             descThree={null}
             descFour={null}
-            link={"https://github.com/RichardLechko/freedombutchers"}
+            link={"https://freedombutchers.vercel.app/"}
           />
           <Company
             companyName={"Mariano's"}
