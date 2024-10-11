@@ -83,6 +83,7 @@ const NavBar = ({ refs }) => {
         targetRef.scrollIntoView({ behavior: "smooth" });
       }
     }, 0);
+<<<<<<< HEAD
   };
 
   const handleExternalNavClick = (path) => {
@@ -90,31 +91,57 @@ const NavBar = ({ refs }) => {
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 0);
+=======
+>>>>>>> a600619537b312971563e4628639da04bd39afbe
   };
 
   // NavItem component for internal navigation
   const NavItem = ({ sectionId, sectionName }) => (
+<<<<<<< HEAD
     <li>
       <button
+=======
+    <li className="cursor-pointer">
+      <div
+        role="button"
+>>>>>>> a600619537b312971563e4628639da04bd39afbe
         className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg"
-        onClick={() => handleNavClick(sectionId)}
+        onClick={(e) => {
+          e.preventDefault();
+          handleNavClick(sectionId);
+        }}
+        tabIndex="0"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            handleNavClick(sectionId);
+          }
+        }}
       >
         {sectionName}
       </button>
     </li>
   );
 
+<<<<<<< HEAD
   const NavItemExternal = ({ path, sectionName, isExternal = false }) => (
+=======
+  const NavItemExternal = ({ path, sectionName }) => (
+>>>>>>> a600619537b312971563e4628639da04bd39afbe
     <li className="cursor-pointer">
       <div
         className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg"
         onClick={(e) => {
           e.preventDefault();
+<<<<<<< HEAD
           if (isExternal) {
             window.open(path, "_blank");
           } else {
             navigate(path);
           }
+=======
+          navigate(path);
+>>>>>>> a600619537b312971563e4628639da04bd39afbe
         }}
       >
         {sectionName}
@@ -145,7 +172,7 @@ const NavBar = ({ refs }) => {
       )}
       <nav className="fixed top-0 py-4 left-0 w-full bg-gray-900 text-white z-50 shadow-lg">
         <div className="flex items-center justify-between px-4 py-4">
-          <div
+        <div
             className={`name-wrapper overflow-hidden pr-6 ${
               cursorHidden ? "cursor-hidden" : ""
             }`}
@@ -157,7 +184,6 @@ const NavBar = ({ refs }) => {
               </span>
             </div>
           </div>
-
           {isScreenSmall && (
             <div
               className="text-3xl cursor-pointer"
@@ -166,7 +192,6 @@ const NavBar = ({ refs }) => {
               &#9776;
             </div>
           )}
-
           {!isScreenSmall && (
             <ul className="cursor-pointer flex gap-6 px-4 max-[1280px]:gap-4">
               <NavItem sectionId="personal" sectionName="Personal" />
@@ -193,7 +218,10 @@ const NavBar = ({ refs }) => {
           )}
         </div>
       </nav>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a600619537b312971563e4628639da04bd39afbe
       {isScreenSmall && (
         <div
           className={`fixed left-0 top-[100px] h-[calc(100%-64px)] w-[200px] bg-gray-900 z-40 transform ${
@@ -220,7 +248,7 @@ const NavBar = ({ refs }) => {
               />
               <SocialMediaLink
                 icon={<FaLinkedin className="text-white" />}
-                link="https://www.linkedin.com/in/richardlechko"
+                link="https://www.linkedin.com/in/richard-lechko"
               />
             </div>
           </ul>
