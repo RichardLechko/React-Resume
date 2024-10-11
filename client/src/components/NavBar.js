@@ -179,7 +179,7 @@ const NavBar = ({ refs }) => {
               <NavItemExternal path="/widgets" sectionName="Projects" />
               <NavItemExternal
                 path="https://public-notes-page-react.vercel.app/"
-                sectionName="Public Notes"
+                sectionName="Notes"
                 shouldOpenInNewTab={true}
               />
               <SocialMediaLink
@@ -209,8 +209,8 @@ const NavBar = ({ refs }) => {
             <NavItemExternal path="/contact" sectionName="Contact" />
             <NavItemExternal path="/widgets" sectionName="Projects" />
             <NavItemExternal
-              path="https://example.com"
-              sectionName="Public Notes"
+              path="https://public-notes-page-react.vercel.app/"
+              sectionName="Notes"
               shouldOpenInNewTab={true}
             />
             <div className="flex flex-col max-[1024px]:gap-6">
