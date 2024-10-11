@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaLinkedin } from "react-icons/fa";
 import { DiGithubBadge } from "react-icons/di";
 
@@ -83,28 +83,12 @@ const NavBar = ({ refs }) => {
         targetRef.scrollIntoView({ behavior: "smooth" });
       }
     }, 0);
-<<<<<<< HEAD
   };
 
-  const handleExternalNavClick = (path) => {
-    navigate(path);
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 0);
-=======
->>>>>>> a600619537b312971563e4628639da04bd39afbe
-  };
-
-  // NavItem component for internal navigation
   const NavItem = ({ sectionId, sectionName }) => (
-<<<<<<< HEAD
-    <li>
-      <button
-=======
     <li className="cursor-pointer">
       <div
         role="button"
->>>>>>> a600619537b312971563e4628639da04bd39afbe
         className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg"
         onClick={(e) => {
           e.preventDefault();
@@ -119,29 +103,21 @@ const NavBar = ({ refs }) => {
         }}
       >
         {sectionName}
-      </button>
+      </div>
     </li>
   );
 
-<<<<<<< HEAD
-  const NavItemExternal = ({ path, sectionName, isExternal = false }) => (
-=======
-  const NavItemExternal = ({ path, sectionName }) => (
->>>>>>> a600619537b312971563e4628639da04bd39afbe
+  const NavItemExternal = ({ path, sectionName, shouldOpenInNewTab }) => (
     <li className="cursor-pointer">
       <div
         className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg"
         onClick={(e) => {
           e.preventDefault();
-<<<<<<< HEAD
-          if (isExternal) {
+          if (shouldOpenInNewTab) {
             window.open(path, "_blank");
           } else {
             navigate(path);
           }
-=======
-          navigate(path);
->>>>>>> a600619537b312971563e4628639da04bd39afbe
         }}
       >
         {sectionName}
@@ -172,7 +148,7 @@ const NavBar = ({ refs }) => {
       )}
       <nav className="fixed top-0 py-4 left-0 w-full bg-gray-900 text-white z-50 shadow-lg">
         <div className="flex items-center justify-between px-4 py-4">
-        <div
+          <div
             className={`name-wrapper overflow-hidden pr-6 ${
               cursorHidden ? "cursor-hidden" : ""
             }`}
@@ -193,7 +169,7 @@ const NavBar = ({ refs }) => {
             </div>
           )}
           {!isScreenSmall && (
-            <ul className="cursor-pointer flex gap-6 px-4 max-[1280px]:gap-4">
+            <ul className="cursor-pointer flex gap-6 px-4 max-[1280px]:gap-4 text-center">
               <NavItem sectionId="personal" sectionName="Personal" />
               <NavItem sectionId="skills" sectionName="Skills" />
               <NavItem sectionId="work" sectionName="Work" />
@@ -203,8 +179,8 @@ const NavBar = ({ refs }) => {
               <NavItemExternal path="/widgets" sectionName="Projects" />
               <NavItemExternal
                 path="https://public-notes-page-react.vercel.app/"
-                sectionName="Notes"
-                isExternal={true}
+                sectionName="Public Notes"
+                shouldOpenInNewTab={true}
               />
               <SocialMediaLink
                 icon={<DiGithubBadge />}
@@ -212,16 +188,12 @@ const NavBar = ({ refs }) => {
               />
               <SocialMediaLink
                 icon={<FaLinkedin />}
-                link="https://www.linkedin.com/in/richard-lechko/"
+                link="https://www.linkedin.com/in/richard-lechko"
               />
             </ul>
           )}
         </div>
       </nav>
-<<<<<<< HEAD
-
-=======
->>>>>>> a600619537b312971563e4628639da04bd39afbe
       {isScreenSmall && (
         <div
           className={`fixed left-0 top-[100px] h-[calc(100%-64px)] w-[200px] bg-gray-900 z-40 transform ${
@@ -237,9 +209,9 @@ const NavBar = ({ refs }) => {
             <NavItemExternal path="/contact" sectionName="Contact" />
             <NavItemExternal path="/widgets" sectionName="Projects" />
             <NavItemExternal
-              path="https://public-notes-page-react.vercel.app/"
-              sectionName="Notes"
-              isExternal={true}
+              path="https://example.com"
+              sectionName="Public Notes"
+              shouldOpenInNewTab={true}
             />
             <div className="flex flex-col max-[1024px]:gap-6">
               <SocialMediaLink
