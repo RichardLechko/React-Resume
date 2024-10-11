@@ -21,20 +21,14 @@ const NavBar = ({ refs }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 1024) {
-        setIsScreenSmall(true);
-      } else {
-        setIsScreenSmall(false);
-        setIsSidebarOpen(false); // Close the sidebar when resizing back past 1024px
-      }
+      setIsScreenSmall(window.innerWidth <= 1024);
+      if (window.innerWidth > 1024) setIsSidebarOpen(false);
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Initial check on component mount
+    handleResize();
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -71,46 +65,57 @@ const NavBar = ({ refs }) => {
   const handleNavClick = (sectionId) => {
     if (window.location.pathname === "/") {
       const targetRef = refs[sectionId]?.current;
-
       if (targetRef) {
         targetRef.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      handleExternalNavClick("/", sectionId);
+      navigateToHomeAndScroll(sectionId);
     }
-    if (isScreenSmall) setIsSidebarOpen(false); // Close sidebar after navigating
+
+    if (isScreenSmall) setIsSidebarOpen(false);
   };
 
-  const handleExternalNavClick = (path, sectionId) => {
+  const navigateToHomeAndScroll = (sectionId) => {
+    navigate("/", { replace: true });
+    setTimeout(() => {
+      const targetRef = refs[sectionId]?.current;
+      if (targetRef) {
+        targetRef.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 0);
+  };
+
+  const handleExternalNavClick = (path) => {
     navigate(path);
-
-    if (sectionId) {
-      setTimeout(() => {
-        const targetRef = refs[sectionId]?.current;
-        if (targetRef) {
-          targetRef.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    }
-    if (isScreenSmall) setIsSidebarOpen(false); // Close sidebar after navigating
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
   };
 
+  // NavItem component for internal navigation
   const NavItem = ({ sectionId, sectionName }) => (
     <li>
-      <div
+      <button
         className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg"
         onClick={() => handleNavClick(sectionId)}
       >
         {sectionName}
-      </div>
+      </button>
     </li>
   );
 
-  const NavItemExternal = ({ path, sectionName }) => (
-    <li>
+  const NavItemExternal = ({ path, sectionName, isExternal = false }) => (
+    <li className="cursor-pointer">
       <div
         className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg"
-        onClick={() => handleExternalNavClick(path)}
+        onClick={(e) => {
+          e.preventDefault();
+          if (isExternal) {
+            window.open(path, "_blank");
+          } else {
+            navigate(path);
+          }
+        }}
       >
         {sectionName}
       </div>
@@ -132,10 +137,9 @@ const NavBar = ({ refs }) => {
 
   return (
     <div className="relative">
-      {/* Dimmed background when sidebar is open */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 z-40" // Increased z-index of the overlay
+          className="fixed inset-0 bg-black opacity-50 z-40"
           onClick={() => setIsSidebarOpen(false)}
         ></div>
       )}
@@ -172,25 +176,29 @@ const NavBar = ({ refs }) => {
               <NavItem sectionId="publications" sectionName="Publications" />
               <NavItemExternal path="/contact" sectionName="Contact" />
               <NavItemExternal path="/widgets" sectionName="Projects" />
+              <NavItemExternal
+                path="https://public-notes-page-react.vercel.app/"
+                sectionName="Notes"
+                isExternal={true}
+              />
               <SocialMediaLink
                 icon={<DiGithubBadge />}
                 link="https://github.com/richardlechko"
               />
               <SocialMediaLink
                 icon={<FaLinkedin />}
-                link="https://www.linkedin.com/in/richard-lechko"
+                link="https://www.linkedin.com/in/richard-lechko/"
               />
             </ul>
           )}
         </div>
       </nav>
 
-      {/* Sidebar for small screens */}
       {isScreenSmall && (
         <div
           className={`fixed left-0 top-[100px] h-[calc(100%-64px)] w-[200px] bg-gray-900 z-40 transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } transition-transform duration-300`} // Sidebar starts below the header (adjust `top` if the header height changes)
+          } transition-transform duration-300`}
         >
           <ul className="cursor-pointer flex flex-col gap-6 px-4 mt-6">
             <NavItem sectionId="personal" sectionName="Personal" />
@@ -200,6 +208,11 @@ const NavBar = ({ refs }) => {
             <NavItem sectionId="publications" sectionName="Publications" />
             <NavItemExternal path="/contact" sectionName="Contact" />
             <NavItemExternal path="/widgets" sectionName="Projects" />
+            <NavItemExternal
+              path="https://public-notes-page-react.vercel.app/"
+              sectionName="Notes"
+              isExternal={true}
+            />
             <div className="flex flex-col max-[1024px]:gap-6">
               <SocialMediaLink
                 icon={<DiGithubBadge className="text-white" />}

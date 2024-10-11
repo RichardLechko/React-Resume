@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { FaAnglesUp } from "react-icons/fa6";
+import debounce from "lodash.debounce";
 
 const Personal = () => {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
 
-  const handleScroll = () => {
-    if (window.scrollY > 300) {
-      setShowScrollToTop(true);
-    } else {
-      setShowScrollToTop(false);
-    }
-  };
-
   useEffect(() => {
+    const handleScroll = debounce(() => {
+      setShowScrollToTop(window.scrollY > 300);
+    }, 100); // Adjust the debounce delay as needed
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

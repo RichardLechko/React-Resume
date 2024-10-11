@@ -1,18 +1,20 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar.js";
-import Contact from "./components/Contact.js";
-import Widgets from "./components/widgets/Widgets.js";
 import Footer from "./components/Footer.js";
-import Currency from "./components/widgets/Currency.js";
-import Timer from "./components/widgets/Timer.js";
-import Weather from "./components/widgets/Weather.js";
-import MainPage from "./components/MainPage.js";
 import { ScrollProvider } from "./components/ScrollToTop.js";
-import ShareSheet from "./components/SharedSheet.js"; // Ensure the path is correct
+import ShareSheet from "./components/SharedSheet.js";
+import ErrorBoundary from "./components/ErrorBoundary.js";
+
+const Contact = lazy(() => import("./components/Contact.js"));
+const Widgets = lazy(() => import("./components/widgets/Widgets.js"));
+const Currency = lazy(() => import("./components/widgets/Currency.js"));
+const Timer = lazy(() => import("./components/widgets/Timer.js"));
+const Weather = lazy(() => import("./components/widgets/Weather.js"));
+const MainPage = lazy(() => import("./components/MainPage.js"));
 
 function App() {
-  const [isShareSheetVisible, setShareSheetVisible] = useState(false); // Add state for share sheet visibility
+  const [isShareSheetVisible, setShareSheetVisible] = useState(false);
 
   const personalRef = useRef(null);
   const skillsRef = useRef(null);
@@ -32,41 +34,82 @@ function App() {
     setShareSheetVisible((prevState) => !prevState);
   };
 
+  const shareButtonClass =
+    "fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded-lg";
+
   return (
     <div className="overflow-x-hidden">
       <Router>
         <ScrollProvider>
           <div className="flex flex-col min-h-screen">
             <div className="flex min-h-screen flex-1">
-              <NavBar
-                refs={refs} // Pass all refs here
-              />
-
+              <NavBar refs={refs} />
               <div
                 className={`flex-1 flex flex-col transition-all duration-300`}
               >
                 <main
                   className={`flex-1 flex flex-col pt-24 transition-all duration-300`}
                 >
-                  <Routes>
-                    <Route
-                      path="/"
-                      element={
-                        <MainPage
-                          personalRef={personalRef}
-                          workRef={workRef}
-                          educationRef={educationRef}
-                          publicationsRef={publicationsRef}
-                          skillsRef={skillsRef}
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <ErrorBoundary>
+                      <Routes>
+                        <Route
+                          path="/"
+                          element={
+                            <MainPage
+                              personalRef={personalRef}
+                              skillsRef={skillsRef}
+                              workRef={workRef}
+                              educationRef={educationRef}
+                              publicationsRef={publicationsRef}
+                            />
+                          }
                         />
-                      }
-                    />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/widgets" element={<Widgets />} />
-                    <Route path="/widgets/currency" element={<Currency />} />
-                    <Route path="/widgets/timer" element={<Timer />} />
-                    <Route path="/widgets/weather" element={<Weather />} />
-                  </Routes>
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/widgets" element={<Widgets />} />
+                        <Route
+                          path="/widgets/currency"
+                          element={<Currency />}
+                        />
+                        <Route path="/widgets/timer" element={<Timer />} />
+                        <Route path="/widgets/weather" element={<Weather />} />
+                        {/* Routes for internal sections */}
+                        <Route
+                          path="/personal"
+                          element={
+                            <MainPageSection section="personal" refs={refs} />
+                          }
+                        />
+                        <Route
+                          path="/skills"
+                          element={
+                            <MainPageSection section="skills" refs={refs} />
+                          }
+                        />
+                        <Route
+                          path="/work"
+                          element={
+                            <MainPageSection section="work" refs={refs} />
+                          }
+                        />
+                        <Route
+                          path="/education"
+                          element={
+                            <MainPageSection section="education" refs={refs} />
+                          }
+                        />
+                        <Route
+                          path="/publications"
+                          element={
+                            <MainPageSection
+                              section="publications"
+                              refs={refs}
+                            />
+                          }
+                        />
+                      </Routes>
+                    </ErrorBoundary>
+                  </Suspense>
                 </main>
               </div>
             </div>
@@ -75,16 +118,28 @@ function App() {
         </ScrollProvider>
       </Router>
 
-      {/* Add the ShareSheet component here */}
-      <button
-        onClick={toggleShareSheet}
-        className="fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded-lg"
-      >
+      <button onClick={toggleShareSheet} className={shareButtonClass}>
         Share
       </button>
       <ShareSheet isVisible={isShareSheetVisible} onClose={toggleShareSheet} />
     </div>
   );
 }
+
+// Improved scrolling component with memoization
+const MainPageSection = React.memo(({ section, refs }) => {
+  const scrollToSection = () => {
+    const ref = refs[section];
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  React.useEffect(() => {
+    scrollToSection();
+  }, [section]);
+
+  return null; // This component does not render anything itself
+});
 
 export default App;
