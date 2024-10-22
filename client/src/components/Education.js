@@ -27,9 +27,11 @@ const Education = () => {
       {/* Two-Column Layout */}
       <section className="grid grid-cols-2 gap-8 max-[768px]:grid-cols-1">
         {/* Major GPA */}
-        <div className="bg-white p-8 shadow-md rounded-lg flex flex-col">
-          <h2 className="text-2xl font-bold m-auto">Major GPA</h2>
-          <p className="text-xl max-[425px]:text-base m-auto">3.5 / 4.0</p>
+        <div className="bg-white p-8 shadow-md rounded-lg flex flex-col items-center justify-center text-center">
+          {" "}
+          {/* Added justify-center */}
+          <h2 className="text-2xl font-bold">Major GPA</h2>
+          <p className="text-xl max-[425px]:text-base">3.5 / 4.0</p>
         </div>
 
         {/* Organizations */}
@@ -40,6 +42,7 @@ const Education = () => {
             <li>DePaul Math Club</li>
             <li>DePaul Chess Club</li>
             <li>DePaul User Experience Association</li>
+            <li>DePaul Cloud Club</li>
           </ul>
         </div>
       </section>

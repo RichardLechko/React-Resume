@@ -1,3 +1,5 @@
+// src/components/ScrollToTop.js
+
 import React, { createContext, useContext, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -8,12 +10,12 @@ export const useScroll = () => {
 };
 
 export const ScrollProvider = ({ children }) => {
-  const scrollableContainerRef = useRef(null);
+  const containerRef = useRef(null);
   const location = useLocation();
 
   const scrollToTop = () => {
-    if (scrollableContainerRef.current) {
-      scrollableContainerRef.current.scrollTo(0, 0);
+    if (containerRef.current) {
+      containerRef.current.scrollTo({ top: 0, behavior: "smooth" }); // Smooth scroll to top
     }
   };
 
@@ -22,8 +24,12 @@ export const ScrollProvider = ({ children }) => {
   }, [location]);
 
   return (
-    <ScrollContext.Provider value={{ scrollToTop, scrollableContainerRef }}>
-      <div ref={scrollableContainerRef} className="overflow-y-auto h-[100vh]">
+    <ScrollContext.Provider value={{ scrollToTop, containerRef }}>
+      <div
+        ref={containerRef}
+        className="overflow-y-auto h-[100vh]"
+        aria-hidden="true"
+      >
         {children}
       </div>
     </ScrollContext.Provider>

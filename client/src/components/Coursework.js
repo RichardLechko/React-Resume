@@ -1,9 +1,10 @@
 import React from "react";
-import CourseSlider from "./Slider.js";
+import Slider from "react-slick";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const coursework = [
   {
-    title: "CSC 300 & 301: Data Structures I & II",
+    title: "Data Structures I & II",
     description: [
       "Data Structures",
       "Java",
@@ -13,7 +14,7 @@ const coursework = [
     ],
   },
   {
-    title: "CSC 373: Computer Systems I",
+    title: "Computer Systems I",
     description: [
       "Machine-level Programming",
       "Architecture",
@@ -23,7 +24,7 @@ const coursework = [
     ],
   },
   {
-    title: "MAT 140 & 141: Discrete Math I & II",
+    title: "Discrete Math I & II",
     description: [
       "Combinatorics",
       "Probability",
@@ -33,7 +34,7 @@ const coursework = [
     ],
   },
   {
-    title: "IT 320: Content Management Systems",
+    title: "Content Management Systems",
     description: [
       "CMSs",
       "Enterprise Digital Media",
@@ -43,7 +44,7 @@ const coursework = [
     ],
   },
   {
-    title: "IT 339: Server-Side Web Development",
+    title: "Server-Side Web Development",
     description: [
       "Server-Side Web Application",
       "MVC Architectures",
@@ -53,7 +54,7 @@ const coursework = [
     ],
   },
   {
-    title: "IT 240: Introduction to Databases",
+    title: "Introduction to Databases",
     description: [
       "Desktop Databases",
       "ER Diagrams",
@@ -63,7 +64,7 @@ const coursework = [
     ],
   },
   {
-    title: "UXD 270: User-Centered Web Design",
+    title: "User-Centered Web Design",
     description: [
       "Interactive Design",
       "Information Navigation",
@@ -73,7 +74,7 @@ const coursework = [
     ],
   },
   {
-    title: "IT 231: Web Development I",
+    title: "Web Development I",
     description: [
       "Framework-Based",
       "Interactive",
@@ -83,7 +84,7 @@ const coursework = [
     ],
   },
   {
-    title: "IT 263: Applied Networks and Security",
+    title: "Applied Networks and Security",
     description: [
       "Networking Technologies",
       "Security Measures",
@@ -93,7 +94,7 @@ const coursework = [
     ],
   },
   {
-    title: "CSC 243: Intro to CS for Programmers",
+    title: "Intro to CS",
     description: [
       "Python",
       "Recursion",
@@ -103,7 +104,7 @@ const coursework = [
     ],
   },
   {
-    title: "IT 238: Interactive Web Scripting",
+    title: "Interactive Web Scripting",
     description: [
       "jQuery",
       "DOM Manipulation",
@@ -112,7 +113,7 @@ const coursework = [
     ],
   },
   {
-    title: "IT 223: Data Analysis",
+    title: "Data Analysis",
     description: [
       "Statistics",
       "Data Science",
@@ -124,9 +125,71 @@ const coursework = [
 ];
 
 const Coursework = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    adaptiveHeight: true,
+    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow />,
+  };
+
   return (
-    <div className="pt-32 mb-36">
-      <CourseSlider courses={coursework} />
+    <div className="pt-32 mb-36 mx-auto">
+      <h1 className="text-4xl text-center mb-8 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
+        Relevant Coursework:
+      </h1>
+      <Slider
+        {...settings}
+        className="max-w-[1000px] max-[1024px]:w-[600px] mx-auto max-[640px]:w-[300px]"
+      >
+        {coursework.map((course, index) => (
+          <div key={index} className="flex justify-center ">
+            <div className="p-6 border m-auto border-gray-200 slider-courses rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-center h-64">
+              <h3 className="text-2xl font-bold mb-8 max-[768px]:text-xl max-[640px]:mb-4">
+                {course.title}
+              </h3>
+              <ul className="list-disc list-inside mt-2 space-y-2 overflow-hidden">
+                {course.description.map((item, i) => (
+                  <li key={i} className="text-sm">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </Slider>
+    </div>
+  );
+};
+
+// Custom previous arrow
+const SamplePrevArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <div
+      className="arrow prev-arrow absolute left-10 z-10 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer hover:bg-gray-200 max-[640px]:left-1 max-[640px]:w-8 max-[640px]:h-8"
+      style={{ top: "50%", transform: "translateY(-50%)" }}
+      onClick={onClick}
+    >
+      <FiChevronLeft className="text-gray-600" />
+    </div>
+  );
+};
+
+// Custom next arrow
+const SampleNextArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <div
+      className="arrow next-arrow absolute right-10 z-10 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer hover:bg-gray-200 max-[640px]:right-1 max-[640px]:w-8 max-[640px]:h-8"
+      style={{ top: "50%", transform: "translateY(-50%)" }}
+      onClick={onClick}
+    >
+      <FiChevronRight className="text-gray-600" />
     </div>
   );
 };

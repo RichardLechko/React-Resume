@@ -1,4 +1,4 @@
-import React, { useRef, Suspense, useMemo, Fragment } from "react";
+import React, { useRef, Suspense, useMemo } from "react";
 import skillsData from "./skillsData";
 
 const TechnicalSkills = ({ technicalSkillsRef }) => {
@@ -18,7 +18,9 @@ const TechnicalSkills = ({ technicalSkillsRef }) => {
             expertise of these skills. Hover over the image to see the rating!
           </p>
         </div>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={<div className="text-center">Loading skills...</div>}
+        >
           {skillsData.map((skillCategory) => (
             <SkillsCard
               key={skillCategory.head}
@@ -34,6 +36,7 @@ const TechnicalSkills = ({ technicalSkillsRef }) => {
 
 const SkillsCard = React.memo(({ head, skills }) => {
   const averageRating = useMemo(() => {
+    if (skills.length === 0) return 0; // Handle division by zero
     const totalRating = skills.reduce(
       (total, skill) => total + skill.rating,
       0
@@ -48,23 +51,25 @@ const SkillsCard = React.memo(({ head, skills }) => {
       </h4>
       <div className="flex flex-col items-center">
         {skills.map((skill) => (
-          <Fragment key={skill.name}>
-            <div className="flex flex-col items-center mb-4">
-              <div
-                className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl max-md:w-16 max-md:h-16"
-                style={{ backgroundColor: skill.bgColor }}
-              >
-                {skill.icon}
-              </div>
-              <div className="text-lg font-semibold mt-2">{skill.name}</div>
-              <div className="text-sm text-white bg-gray-900 p-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">
-                {skill.rating}/10
-              </div>
+          <div
+            key={`${skill.name}-${skill.rating}`}
+            className="flex flex-col items-center mb-4"
+          >
+            <div
+              className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl max-md:w-16 max-md:h-16"
+              style={{ backgroundColor: skill.bgColor }}
+              aria-label={skill.name}
+            >
+              {skill.icon}
             </div>
-          </Fragment>
+            <div className="text-lg font-semibold mt-2">{skill.name}</div>
+            <div className="text-sm text-white bg-gray-900 p-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">
+              {skill.rating}/10
+            </div>
+          </div>
         ))}
       </div>
-      <div className="absolute rounded-xl hover:rounded-xl inset-0 bg-gray-800 bg-opacity-75 flex text-center items-center justify-center text-xl text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute rounded-xl inset-0 bg-gray-800 bg-opacity-75 flex text-center items-center justify-center text-xl text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <p>Average Rating: {averageRating}/10</p>
       </div>
     </div>

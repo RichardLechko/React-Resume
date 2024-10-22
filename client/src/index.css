@@ -1,8 +1,90 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -34,11 +116,11 @@ html {
 
 a {
   font-family: "Roboto Mono", monospace;
-  text-decoration: none; /* Optional: remove underline */
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline; /* Optional: underline on hover */
+  text-decoration: underline;
 }
 
 .name-wrapper {
@@ -48,32 +130,31 @@ a:hover {
   white-space: nowrap;
   width: 100%;
   max-width: 450px;
-  margin: 0; /* Remove auto margin */
-  text-align: left; /* Force alignment */
+  margin: 0;
+  text-align: left;
 }
 
 .name-text {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
-  text-align: left; /* Ensure text-align is left */
-  padding-right: 0; /* No extra space for the cursor */
+  text-align: left;
+  padding-right: 0;
   animation: typing 3s steps(40, end) forwards;
 }
 
 .cursor-hidden .name-text {
-  border-right: none; /* Hide cursor after typing is complete */
+  border-right: none;
 }
 
 .name-text span {
-  background-color: #4a5568; /* Gray background color */
-  color: #ffffff; /* White text color */
+  background-color: #4a5568;
+  color: #ffffff;
   padding: 0.2rem 0.2rem;
   border-radius: 0.25rem;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Animation for typing effect */
 @keyframes typing {
   from {
     width: 0;
@@ -86,5 +167,29 @@ a:hover {
 @media (max-width: 1024px) {
   .name-wrapper {
     max-width: 100%;
+  }
+}
+
+.slick-dots {
+  bottom: -30px;
+}
+
+.slick-dots li {
+  width: 16px;
+  height: 16px;
+  margin: 0 5px;
+}
+
+@media (width <= 1024px) {
+  .slick-dots li {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (width <= 640px) {
+  .slick-dots li {
+    width: 5px;
+    height: 5px;
   }
 }

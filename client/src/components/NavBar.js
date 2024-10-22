@@ -117,6 +117,7 @@ const NavBar = ({ refs }) => {
             window.open(path, "_blank");
           } else {
             navigate(path);
+            setIsSidebarOpen(false);
           }
         }}
       >

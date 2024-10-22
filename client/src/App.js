@@ -1,4 +1,4 @@
-import React, { useState, useRef, lazy, Suspense } from "react";
+import React, { useState, useRef, lazy, Suspense, useCallback } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar.js";
 import Footer from "./components/Footer.js";
@@ -15,7 +15,6 @@ const MainPage = lazy(() => import("./components/MainPage.js"));
 
 function App() {
   const [isShareSheetVisible, setShareSheetVisible] = useState(false);
-
   const personalRef = useRef(null);
   const skillsRef = useRef(null);
   const workRef = useRef(null);
@@ -30,9 +29,9 @@ function App() {
     publications: publicationsRef,
   };
 
-  const toggleShareSheet = () => {
+  const toggleShareSheet = useCallback(() => {
     setShareSheetVisible((prevState) => !prevState);
-  };
+  }, []);
 
   const shareButtonClass =
     "fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded-lg";
@@ -44,12 +43,8 @@ function App() {
           <div className="flex flex-col min-h-screen">
             <div className="flex min-h-screen flex-1">
               <NavBar refs={refs} />
-              <div
-                className={`flex-1 flex flex-col transition-all duration-300`}
-              >
-                <main
-                  className={`flex-1 flex flex-col pt-24 transition-all duration-300`}
-                >
+              <div className="flex-1 flex flex-col transition-all duration-300">
+                <main className="flex-1 flex flex-col pt-24 transition-all duration-300">
                   <Suspense fallback={<div>Loading...</div>}>
                     <ErrorBoundary>
                       <Routes>
@@ -74,39 +69,15 @@ function App() {
                         <Route path="/widgets/timer" element={<Timer />} />
                         <Route path="/widgets/weather" element={<Weather />} />
                         {/* Routes for internal sections */}
-                        <Route
-                          path="/personal"
-                          element={
-                            <MainPageSection section="personal" refs={refs} />
-                          }
-                        />
-                        <Route
-                          path="/skills"
-                          element={
-                            <MainPageSection section="skills" refs={refs} />
-                          }
-                        />
-                        <Route
-                          path="/work"
-                          element={
-                            <MainPageSection section="work" refs={refs} />
-                          }
-                        />
-                        <Route
-                          path="/education"
-                          element={
-                            <MainPageSection section="education" refs={refs} />
-                          }
-                        />
-                        <Route
-                          path="/publications"
-                          element={
-                            <MainPageSection
-                              section="publications"
-                              refs={refs}
-                            />
-                          }
-                        />
+                        {Object.keys(refs).map((section) => (
+                          <Route
+                            key={section}
+                            path={`/${section}`}
+                            element={
+                              <MainPageSection section={section} refs={refs} />
+                            }
+                          />
+                        ))}
                       </Routes>
                     </ErrorBoundary>
                   </Suspense>

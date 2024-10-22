@@ -1,3 +1,5 @@
+// src/components/Personal.js
+
 import React, { useState, useEffect } from "react";
 import { FaAnglesUp } from "react-icons/fa6";
 import debounce from "lodash.debounce";
@@ -8,7 +10,7 @@ const Personal = () => {
   useEffect(() => {
     const handleScroll = debounce(() => {
       setShowScrollToTop(window.scrollY > 300);
-    }, 100); // Adjust the debounce delay as needed
+    }, 100);
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -32,24 +34,20 @@ const Personal = () => {
         </h1>
         <div className="text-xl max-[425px]:text-base">
           <p className="mb-6 leading-relaxed">
-            <span>
-              Born and raised in a small suburb in Illinois, with nationality
-              being Belarussian. I grew up speaking Russian.
-            </span>
+            Born and raised in a small suburb in Illinois, with nationality
+            being Belarussian. I grew up speaking Russian.
           </p>
           <p className="mb-6 leading-relaxed">
-            <span>
-              I have always been fascinated with computers. Specifically with
-              computer systems, operating systems, the internet, the cloud, web
-              development, and lots more.
-            </span>
+            I have always been fascinated with computers, particularly computer
+            systems, operating systems, the internet, the cloud, web
+            development, and more.
           </p>
           <p className="mb-6 leading-relaxed">
-            <span>
-              My other interests other than computers is philosophy. Another big
-              interest of mine is Economics.
-            </span>
-            <li className="pl-16 pt-6 text-black leading-10 max-[640px]:leading-8 max-[425px]:pl-4">
+            My other interests besides computers include philosophy and
+            economics.
+          </p>
+          <ul className="pl-4 leading-relaxed mb-6">
+            <li className="text-black leading-10 max-[640px]:leading-8">
               Fun Fact: I have my own section in the{" "}
               <a
                 className="text-blue-900 font-bold"
@@ -59,7 +57,7 @@ const Personal = () => {
               >
                 Lew Rockwell
               </a>
-              , about the{" "}
+              , discussing the{" "}
               <a
                 className="text-blue-900 underline font-bold"
                 target="_blank"
@@ -68,31 +66,27 @@ const Personal = () => {
               >
                 distinction between positive rights and negative rights
               </a>
-              . I was 16 years at the time of writing this email, in my Junior
-              year of High School; I am now in college, and I am still a huge
-              fan of studying economics purely just for fun.
+              . I was 16 at the time of writing this piece, in my junior year of
+              high school. I am now in college, still a huge fan of studying
+              economics purely for fun.
             </li>
+          </ul>
+          <p className="mb-6 leading-relaxed">
+            Another interest of mine is music. Follow me on{" "}
+            <a
+              className="text-[#1db954] font-bold"
+              href="https://open.spotify.com/user/22j4lmvcuabn2joznuzxd3pdy?si=be67aa3576934843"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Spotify
+            </a>
+            !
           </p>
           <p className="mb-6 leading-relaxed">
-            <span>
-              Another interest of mine is music. Follow me on{" "}
-              <a
-                className="text-[#1db954] font-bold"
-                href="https://open.spotify.com/user/22j4lmvcuabn2joznuzxd3pdy?si=be67aa3576934843"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Spotify
-              </a>
-              !
-            </span>
-          </p>
-          <p className="mb-6 leading-relaxed">
-            <span>
-              I love to make projects that serve a purpose. Whether that is
-              increasing my knowledge on a topic (like this one), to reach an
-              important deadline for an assignment, or to help others learn.
-            </span>
+            I love to create projects that serve a purpose, whether that's
+            increasing my knowledge on a topic (like this one), meeting an
+            important deadline, or helping others learn.
           </p>
         </div>
       </div>
