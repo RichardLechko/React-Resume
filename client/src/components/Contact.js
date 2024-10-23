@@ -53,7 +53,7 @@ const Contact = () => {
 
   return (
     <section id="contact">
-      <section className="text-2xl text-black font-semibold text-center p-24 max-[640px]:p-12 max-[640px]:mb-6 pb-0 mb-12 max-[640px]:text-xl max-[425px]:text-base max-[375px]:pl-6 max-[375px]:pr-6">
+      <section className="text-2xl text-black font-semibold text-center pt-24 px-12 mx-auto max-[640px]:p-12 max-[640px]:mb-6 pb-0 mb-12 max-[640px]:text-xl max-[425px]:text-base max-[375px]:pl-6 max-[375px]:pr-6">
         <p>
           I am currently looking for any projects — big or small. Don't be
           afraid to reach out. Whether that be a job opportunity, a freelance
@@ -100,7 +100,7 @@ const Contact = () => {
             id="name"
             value={formData.name}
             onChange={handleChange}
-            className="max-[640px]:text-sm max-[640px]:w-3/4 w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
             placeholder="Your name"
             required
           />
@@ -113,7 +113,7 @@ const Contact = () => {
             id="email"
             value={formData.email}
             onChange={handleChange}
-            className="max-[640px]:text-sm max-[640px]:w-3/4 w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
             placeholder="Your email"
             required
           />
@@ -126,7 +126,7 @@ const Contact = () => {
             id="subject"
             value={formData.subject}
             onChange={handleChange}
-            className="max-[640px]:text-sm max-[640px]:w-3/4 w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
             placeholder="Subject"
             required
           />
@@ -138,7 +138,7 @@ const Contact = () => {
             id="textarea"
             value={formData.message}
             onChange={handleChange}
-            className="max-[640px]:text-sm max-[640px]:w-3/4 w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
             cols="30"
             rows="5"
             placeholder="Your message..."
@@ -146,7 +146,7 @@ const Contact = () => {
           ></textarea>
           <input
             type="submit"
-            className="max-[640px]:text-sm max-[640px]:w-3/4 w-full text-xl p-4 outline-none bg-primaryColor text-white rounded-xl mb-4 border-none font-bold cursor-pointer"
+            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-primaryColor text-white rounded-xl mb-4 border-none font-bold cursor-pointer"
             value="Send Message"
           />
         </form>
@@ -181,7 +181,6 @@ const Contact = () => {
         )}
 
         <div className="flex flex-col text-xl mt-12 mb-20 text-left px-4">
-          {" "}
           <div className="flex items-center gap-4">
             <FaMapMarkerAlt className="text-2xl max-[640px]:text-xl" />
             <article className="mb-4">

@@ -30,6 +30,67 @@ ChartJS.register(
 const Widgets = () => {
   const { scrollToTop } = useScroll();
 
+  const data = {
+    labels: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Typescript",
+      "SQL",
+      "C",
+      "React",
+      "Node.js",
+    ],
+    datasets: [
+      {
+        label: "Expertise Level",
+        data: [10, 10, 10, 5, 9, 3, 9, 10],
+        backgroundColor: "rgba(54, 162, 235, 0.6)",
+        borderColor: "rgba(54, 162, 235, 1)",
+        borderWidth: 3,
+        pointBackgroundColor: "rgba(255, 99, 132, 1)",
+        pointBorderColor: "#fff",
+        pointHoverBackgroundColor: "#fff",
+        pointHoverBorderColor: "rgba(54, 162, 235, 1)",
+        pointRadius: 4,
+        pointHoverRadius: 7,
+        fill: true,
+      },
+    ],
+  };
+  const options = {
+    scales: {
+      r: {
+        angleLines: {
+          display: true,
+        },
+        grid: {
+          color: "rgba(255, 99, 132, 0.5)",
+          lineWidth: 2,
+        },
+        suggestedMin: 0,
+        suggestedMax: 10,
+        ticks: {
+          display: false,
+        },
+        pointLabels: {
+          font: (ctx) => {
+            let width = ctx.chart.width;
+            let size = Math.round(width / 32);
+            size = size > 18 ? 18 : size;
+            return { size };
+          },
+          display: true,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
+
   useEffect(() => {
     scrollToTop();
   }, [scrollToTop]);
@@ -119,11 +180,14 @@ const Widgets = () => {
           worked on.
         </p>
       </div>
-      <section>
+      <div className="w-full max-w-[500px] aspect-square mx-auto max-[640px]:max-w-[380px] max-[375px]:max-w-[280px]">
+        <Radar data={data} options={options} />
+      </div>
+      <sectio className="mt-16">
         <h2 className="text-center text-3xl mb-8 font-bold text-darkviolet">
           Main Projects
         </h2>
-        <div className="flex justify-center mb-16">
+        <div className="flex justify-center mb-24">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {projects.slice(0, 3).map((project, index) => (
               <WidgetsCard key={index} {...project} mainProject />
@@ -140,7 +204,7 @@ const Widgets = () => {
             ))}
           </div>
         </div>
-      </section>
+      </sectio>
     </div>
   );
 };
