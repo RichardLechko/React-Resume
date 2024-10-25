@@ -52,9 +52,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact">
-      <section className="text-2xl text-black font-semibold text-center pt-24 px-12 mx-auto max-[640px]:p-12 max-[640px]:mb-6 pb-0 mb-12 max-[640px]:text-xl max-[425px]:text-base max-[375px]:pl-6 max-[375px]:pr-6">
-        <p>
+    <section id="contact" className="bg-black py-12">
+      <section className="text-2xl text-[#e2e8f0] font-semibold text-center pt-24 px-12 mx-auto max-[640px]:p-12 max-[640px]:mb-6 pb-0 mb-12 max-[640px]:text-xl max-[425px]:text-base max-[375px]:pl-6 max-[375px]:pr-6">
+        <p className="max-w-4xl mx-auto">
           I am currently looking for any projects — big or small. Don't be
           afraid to reach out. Whether that be a job opportunity, a freelance
           opportunity, or a simple project. If you want, you can also check out
@@ -64,18 +64,19 @@ const Contact = () => {
             download
             target="_blank"
             rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-600 underline font-bold transition duration-300"
           >
-            <span className="text-blue-500 underline font-bold">DocX</span>
-            &nbsp;
+            DocX
           </a>
-          or&nbsp;
+          &nbsp;or&nbsp;
           <a
             href="/resumes/Richard_Lechko_Resume.pdf"
             download
             target="_blank"
             rel="noopener noreferrer"
+            className="text-red-400 hover:text-red-600 underline font-bold transition duration-300"
           >
-            <span className="text-red-500 underline font-bold">PDF</span>
+            PDF
           </a>
           . If you would like to request an unofficial transcript for a career
           opportunity, please use the contact form below. Anything else, still
@@ -88,9 +89,11 @@ const Contact = () => {
       </div>
 
       <section className="flex flex-col text-center w-[90%] max-w-[900px] m-auto">
-        <h1 className="text-3xl mb-2 font-bold">Get In Touch!</h1>
+        <h1 className="text-3xl mb-6 font-bold text-[#e2e8f0]">
+          Get In Touch!
+        </h1>
 
-        <form className="w-full mt-12" onSubmit={handleSubmit}>
+        <form className="w-full mt-6" onSubmit={handleSubmit}>
           <label htmlFor="name" className="sr-only">
             Name
           </label>
@@ -100,7 +103,7 @@ const Contact = () => {
             id="name"
             value={formData.name}
             onChange={handleChange}
-            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-gray-700 text-[#e2e8f0] rounded-lg border-2 border-gray-600 mb-4 focus:border-blue-400"
             placeholder="Your name"
             required
           />
@@ -113,7 +116,7 @@ const Contact = () => {
             id="email"
             value={formData.email}
             onChange={handleChange}
-            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-gray-700 text-[#e2e8f0] rounded-lg border-2 border-gray-600 mb-4 focus:border-blue-400"
             placeholder="Your email"
             required
           />
@@ -126,7 +129,7 @@ const Contact = () => {
             id="subject"
             value={formData.subject}
             onChange={handleChange}
-            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-gray-700 text-[#e2e8f0] rounded-lg border-2 border-gray-600 mb-4 focus:border-blue-400"
             placeholder="Subject"
             required
           />
@@ -138,7 +141,7 @@ const Contact = () => {
             id="textarea"
             value={formData.message}
             onChange={handleChange}
-            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-formBg text-white rounded-xl border-4 border-customInput mb-4 focus:border-4 focus:border-solid focus:border-primaryColor"
+            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-gray-700 text-[#e2e8f0] rounded-lg border-2 border-gray-600 mb-4 focus:border-blue-400"
             cols="30"
             rows="5"
             placeholder="Your message..."
@@ -146,22 +149,21 @@ const Contact = () => {
           ></textarea>
           <input
             type="submit"
-            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-primaryColor text-white rounded-xl mb-4 border-none font-bold cursor-pointer"
+            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-blue-500 text-white rounded-lg mb-4 border-none font-bold cursor-pointer hover:bg-blue-600 transition duration-300"
             value="Send Message"
           />
         </form>
 
-        <div id="formFeedback" className="text-2xl mt-4">
+        <div id="formFeedback" className="text-xl mt-4 text-[#e2e8f0]">
           {feedback}
         </div>
 
         {links.length > 0 && (
           <div className="mt-12 my-8 px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 text-center text-gray-900">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 text-[#e2e8f0]">
               Useful Links
             </h2>
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-              {" "}
               {links.map((link, index) => (
                 <a
                   key={index}
@@ -180,20 +182,28 @@ const Contact = () => {
           </div>
         )}
 
-        <div className="flex flex-col text-xl mt-12 mb-20 text-left px-4">
-          <div className="flex items-center gap-4">
-            <FaMapMarkerAlt className="text-2xl max-[640px]:text-xl" />
-            <article className="mb-4">
-              <h1 className="mb-2 font-bold">Location</h1>
+        <div className="flex flex-col text-xl mt-12 mb-20 text-left px-4 text-[#e2e8f0] w-full max-[425px]:px-0">
+          <h1 className="text-3xl font-bold mb-6 text-center">
+            Contact Information
+          </h1>
+
+          <div className="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow-md mb-4 hover:shadow-lg transition-shadow duration-300 max-[375px]:px-2">
+            <FaMapMarkerAlt className="text-3xl max-[640px]:text-2xl text-blue-400 max-[425px]:hidden" />
+            <article className="flex-1">
+              <h2 className="mb-1 font-semibold text-lg">Location</h2>
               <p className="text-lg max-[640px]:text-base">Orland Park, IL</p>
             </article>
           </div>
-          <div className="flex items-center gap-4">
-            <FaEnvelope className="text-2xl max-[640px]:text-xl" />
-            <article className="mb-4">
-              <h1 className="mb-2 font-bold">Email</h1>
+
+          <div className="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 max-[375px]:px-2">
+            <FaEnvelope className="text-3xl max-[640px]:text-2xl text-blue-400 max-[425px]:hidden" />
+            <article className="flex-1">
+              <h2 className="mb-1 font-semibold text-lg">Email</h2>
               <p className="text-lg max-[640px]:text-base">
-                <a href="mailto:richardlechko@gmail.com" className="underline">
+                <a
+                  href="mailto:richardlechko@gmail.com"
+                  className="underline text-blue-400 hover:text-blue-600 transition-colors duration-300"
+                >
                   richardlechko [at] gmail.com
                 </a>
               </p>

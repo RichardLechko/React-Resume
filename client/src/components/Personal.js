@@ -26,13 +26,13 @@ const Personal = () => {
   return (
     <section
       id="personal"
-      className="container flex flex-col mx-auto p-4 overflow-x-hidden"
+      className="container mx-auto pt-32 overflow-x-hidden px-4 md:px-8 "
     >
-      <div className="pt-24 mx-auto justify-around px-8 py-0 flex flex-wrap gap-6">
-        <h1 className="text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
+      <div className="mx-auto justify-around py-6 flex flex-col gap-6">
+        <h1 className="text-4xl font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
           Personal Life:
         </h1>
-        <div className="text-xl max-[425px]:text-base">
+        <div className="text-base md:text-lg text-[#e2e8f0] px-5">
           <p className="mb-6 leading-relaxed">
             Born and raised in a small suburb in Illinois, with nationality
             being Belarussian. I grew up speaking Russian.
@@ -46,11 +46,12 @@ const Personal = () => {
             My other interests besides computers include philosophy and
             economics.
           </p>
-          <ul className="pl-4 leading-relaxed mb-6">
-            <li className="text-black leading-10 max-[640px]:leading-8">
-              Fun Fact: I have my own section in the{" "}
+          <ul className="pl-8 leading-relaxed mb-6 list-disc">
+            <li className="text-[#e2e8f0] leading-8">
+              <span className="text-yellow-400 font-bold">Fun Fact:</span> I
+              have my own section in the{" "}
               <a
-                className="text-blue-900 font-bold"
+                className="text-blue-500 font-bold hover:text-blue-300 transition duration-300"
                 href="https://www.lewrockwell.com/"
                 target="_blank"
                 rel="noreferrer"
@@ -59,7 +60,7 @@ const Personal = () => {
               </a>
               , discussing the{" "}
               <a
-                className="text-blue-900 underline font-bold"
+                className="text-blue-500 underline hover:text-blue-300 transition duration-300"
                 target="_blank"
                 href="https://www.lewrockwell.com/lrc-blog/is-there-a-right-to-life-in-the-libertarian-philosphy/"
                 rel="noreferrer"
@@ -71,10 +72,11 @@ const Personal = () => {
               economics purely for fun.
             </li>
           </ul>
+
           <p className="mb-6 leading-relaxed">
             Another interest of mine is music. Follow me on{" "}
             <a
-              className="text-[#1db954] font-bold"
+              className="text-[#1db954] font-bold hover:underline transition duration-300"
               href="https://open.spotify.com/user/22j4lmvcuabn2joznuzxd3pdy?si=be67aa3576934843"
               target="_blank"
               rel="noreferrer"

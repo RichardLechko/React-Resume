@@ -91,6 +91,8 @@
 h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+  text-align: center;
+  color: #e2e8f0;
 }
 
 body {
@@ -103,11 +105,11 @@ body {
 }
 
 html {
-  background-color: #dff0ff;
   scroll-behavior: auto;
 }
 
 #root {
+  background-color: #0a0a0a;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -116,7 +118,6 @@ html {
 
 a {
   font-family: "Roboto Mono", monospace;
-  text-decoration: none;
 }
 
 a:hover {
@@ -125,7 +126,6 @@ a:hover {
 
 .name-wrapper {
   display: inline-block;
-  font-family: "Roboto Mono", monospace;
   color: #00ff00;
   white-space: nowrap;
   width: 100%;
@@ -141,10 +141,6 @@ a:hover {
   text-align: left;
   padding-right: 0;
   animation: typing 3s steps(40, end) forwards;
-}
-
-.cursor-hidden .name-text {
-  border-right: none;
 }
 
 .name-text span {
@@ -193,3 +189,107 @@ a:hover {
     height: 5px;
   }
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.education-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* FOOTER */
+/* FOOTER */
+/* FOOTER */
+
+.footer-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.social-icon {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  animation: shake 0.5s ease forwards, bounce 0.5s ease forwards;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.hover\:scale-110:hover {
+  transform: scale(1.05);
+}
+
+.text-highlight {
+  transition: color 0.3s ease;
+}
+
+.text-highlight:hover {
+  color: #1da1f2; /* Change to a color of your choice */
+}
+
+.animate-pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* FOOTER */
+/* FOOTER */
+/* FOOTER */

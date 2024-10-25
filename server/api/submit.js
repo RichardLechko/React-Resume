@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
 
     const mailOptions = {
       from: `"${name} - ${subject}" <${process.env.GMAIL_USER}>`,
-      to: "process.env.GMAIL_USER",
+      to: process.env.GMAIL_USER, // No quotes
       subject: `New Contact Form Submission: ${subject}`,
       text: `You have received a new message from your contact form:
              \nName: ${name}
@@ -75,16 +75,12 @@ router.post("/", async (req, res) => {
       links,
     });
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("Error sending email:", error.message || error);
 
-    if (error.code === "EAUTH") {
-      res.status(500).json({
-        success: false,
-        error: "Invalid email credentials. Please check your email settings.",
-      });
-    } else {
-      res.status(500).json({ success: false, error: "Failed to send email" });
-    }
+    res.status(500).json({
+      success: false,
+      error: error.message || "Failed to send email",
+    });
   }
 });
 

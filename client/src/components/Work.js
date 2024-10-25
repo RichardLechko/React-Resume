@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
+import "../styles/work.css";
 
-// Array of work experiences
 const workExperiences = [
   {
     companyName: "RL IT Firm",
@@ -39,7 +39,6 @@ const workExperiences = [
   },
 ];
 
-// Memoized Company component
 const Company = React.memo(
   ({
     companyName,
@@ -49,22 +48,19 @@ const Company = React.memo(
     endTime,
     descriptions,
     link,
+    ref,
   }) => {
     return (
-      <div className="bg-white border border-gray-300 p-6 rounded-lg shadow-lg w-full max-w-6xl">
-        <div className="text-left mb-4 max-[640px]:text-center">
-          <h2 className="text-2xl font-semibold text-gray-800">
-            {companyName}
-          </h2>
-          {position && (
-            <h3 className="text-xl font-medium text-gray-700">{position}</h3>
-          )}
-          <p className="text-gray-500">{address}</p>
-          <p className="text-black">
+      <div className="company-container fade-in " ref={ref}>
+        <div>
+          <h2 className="company-name">{companyName}</h2>
+          {position && <h3 className="company-position">{position}</h3>}
+          <p className="company-address">{address}</p>
+          <p className="company-dates">
             {startTime} - {endTime}
           </p>
         </div>
-        <ul className="list-disc pl-5 mt-2 text-gray-600 max-[640px]:mx-auto">
+        <ul className="description-list">
           {descriptions.map(
             (desc, index) => desc && <li key={index}>{desc}</li>
           )}
@@ -74,7 +70,7 @@ const Company = React.memo(
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-800 underline mt-2 block max-[640px]:text-center"
+            className="project-link"
           >
             View Project
           </a>
@@ -85,15 +81,21 @@ const Company = React.memo(
 );
 
 const Work = () => {
+  const itemsRef = useRef([]);
+
   return (
-    <section className="px-4 mx-auto mb-24" id="work">
-      <div className="pt-32">
-        <h1 className="text-4xl text-center mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
+    <section id="work-section">
+      <div className="pt-24">
+        <h1 className="text-4xl font-bold max-[640px]:text-3xl max-[425px]:text-2xl mb-16">
           Work Experience:
         </h1>
-        <div className="flex flex-col items-center gap-8">
+        <div>
           {workExperiences.map((experience, index) => (
-            <Company key={index} {...experience} />
+            <Company
+              key={index}
+              {...experience}
+              ref={(el) => (itemsRef.current[index] = el)}
+            />
           ))}
         </div>
       </div>

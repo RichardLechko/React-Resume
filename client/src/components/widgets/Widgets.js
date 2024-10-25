@@ -81,6 +81,7 @@ const Widgets = () => {
             return { size };
           },
           display: true,
+          color: "rgba(226, 232, 240, 1)",
         },
       },
     },
@@ -174,7 +175,7 @@ const Widgets = () => {
       className="container mx-auto px-4 py-8 mb-24 flex flex-col items-center"
     >
       <div className="text-center mb-8">
-        <p className="text-2xl text-darkviolet font-bold">
+        <p className="text-2xl font-bold text-[#e2e8f0]">
           To show my understanding of JavaScript, Programming, and in general
           problem-solving. I have included a bunch of projects that I have
           worked on.
@@ -184,9 +185,7 @@ const Widgets = () => {
         <Radar data={data} options={options} />
       </div>
       <sectio className="mt-16">
-        <h2 className="text-center text-3xl mb-8 font-bold text-darkviolet">
-          Main Projects
-        </h2>
+        <h1 className="text-center text-3xl mb-8 font-bold">Main Projects</h1>
         <div className="flex justify-center mb-24">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {projects.slice(0, 3).map((project, index) => (
@@ -194,9 +193,9 @@ const Widgets = () => {
             ))}
           </div>
         </div>
-        <h2 className="text-center text-3xl mb-8 font-bold">
+        <h1 className="text-center text-3xl mb-8 font-bold">
           Smaller Projects
-        </h2>
+        </h1>
         <div className="flex justify-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {projects.slice(3).map((project, index) => (

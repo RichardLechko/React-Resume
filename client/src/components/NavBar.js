@@ -2,22 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaLinkedin } from "react-icons/fa";
 import { DiGithubBadge } from "react-icons/di";
-
-const texts = [
-  "Web Developer",
-  "UI/UX Designer",
-  "IT Student",
-  "Software Eng.",
-];
+import TypingEffect from "./TypingEffect";
 
 const NavBar = ({ refs }) => {
-  const [textIndex, setTextIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [typing, setTyping] = useState(true);
-  const [cursorHidden, setCursorHidden] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScreenSmall, setIsScreenSmall] = useState(false);
   const navigate = useNavigate();
+  const roles = [
+    "Web Dev",
+    "SWE",
+    "UI/UX Designer",
+    "IT Student",
+    "Full Stack Eng.",
+  ];
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,37 +27,6 @@ const NavBar = ({ refs }) => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  useEffect(() => {
-    const currentText = texts[textIndex];
-    const typingSpeed = 100;
-    const pauseDuration = 500;
-
-    if (typing) {
-      let currentIndex = 0;
-      setDisplayedText("");
-      const typingInterval = setInterval(() => {
-        if (currentIndex < currentText.length) {
-          setDisplayedText(currentText.substring(0, currentIndex + 1));
-          currentIndex++;
-        } else {
-          clearInterval(typingInterval);
-          setTyping(false);
-          setCursorHidden(true);
-        }
-      }, typingSpeed);
-
-      return () => clearInterval(typingInterval);
-    } else {
-      const flippingInterval = setInterval(() => {
-        setTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
-        setTyping(true);
-        setCursorHidden(false);
-      }, pauseDuration + typingSpeed * currentText.length);
-
-      return () => clearInterval(flippingInterval);
-    }
-  }, [typing, textIndex]);
 
   const handleNavClick = (sectionId) => {
     if (window.location.pathname === "/") {
@@ -147,20 +113,10 @@ const NavBar = ({ refs }) => {
           onClick={() => setIsSidebarOpen(false)}
         ></div>
       )}
-      <nav className="fixed top-0 py-4 left-0 w-full bg-gray-900 text-white z-50 shadow-lg">
+      <nav className="fixed top-0 py-4 right-0 w-full bg-gray-900 text-white z-50 shadow-lg">
         <div className="flex items-center justify-between px-4 py-4">
-          <div
-            className={`name-wrapper overflow-hidden pr-6 ${
-              cursorHidden ? "cursor-hidden" : ""
-            }`}
-          >
-            <div className="name-text text-xl overflow-hidden max-[1280px]:text-base max-[425px]:text-sm max-[375px]:text-xs">
-              Richard Lechko -{" "}
-              <span className="bg-gray-700 text-white px-2 py-1 rounded overflow-hidden">
-                {displayedText}
-              </span>
-            </div>
-          </div>
+          <TypingEffect texts={roles} />
+
           {isScreenSmall && (
             <div
               className="text-3xl cursor-pointer"
@@ -170,7 +126,7 @@ const NavBar = ({ refs }) => {
             </div>
           )}
           {!isScreenSmall && (
-            <ul className="cursor-pointer flex gap-6 px-4 max-[1280px]:gap-4 text-center">
+            <ul className="flex gap-6 px-4 max-[1280px]:gap-4 text-center ml-auto">
               <NavItem sectionId="personal" sectionName="Personal" />
               <NavItem sectionId="skills" sectionName="Skills" />
               <NavItem sectionId="work" sectionName="Work" />
@@ -201,7 +157,7 @@ const NavBar = ({ refs }) => {
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300`}
         >
-          <ul className="cursor-pointer flex flex-col gap-6 px-4 mt-6">
+          <ul className="flex flex-col items-center py-4 gap-4 text-[#e2e8f0]">
             <NavItem sectionId="personal" sectionName="Personal" />
             <NavItem sectionId="skills" sectionName="Skills" />
             <NavItem sectionId="work" sectionName="Work" />
@@ -214,16 +170,14 @@ const NavBar = ({ refs }) => {
               sectionName="Notes"
               shouldOpenInNewTab={true}
             />
-            <div className="flex flex-col max-[1024px]:gap-6">
-              <SocialMediaLink
-                icon={<DiGithubBadge className="text-white" />}
-                link="https://github.com/richardlechko"
-              />
-              <SocialMediaLink
-                icon={<FaLinkedin className="text-white" />}
-                link="https://www.linkedin.com/in/richard-lechko"
-              />
-            </div>
+            <SocialMediaLink
+              icon={<DiGithubBadge />}
+              link="https://github.com/richardlechko"
+            />
+            <SocialMediaLink
+              icon={<FaLinkedin />}
+              link="https://www.linkedin.com/in/richard-lechko"
+            />
           </ul>
         </div>
       )}

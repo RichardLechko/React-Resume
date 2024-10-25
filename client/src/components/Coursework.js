@@ -138,7 +138,7 @@ const Coursework = () => {
 
   return (
     <div className="pt-32 mb-36 mx-auto">
-      <h1 className="text-4xl text-center mb-8 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
+      <h1 className="text-4xl font-bold max-[640px]:text-3xl max-[425px]:text-2xl mb-8">
         Relevant Coursework:
       </h1>
       <Slider
@@ -147,7 +147,7 @@ const Coursework = () => {
       >
         {coursework.map((course, index) => (
           <div key={index} className="flex justify-center ">
-            <div className="p-6 border m-auto border-gray-200 slider-courses rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-center h-64">
+            <div className="p-6 m-auto slider-courses rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-center h-64">
               <h3 className="text-2xl font-bold mb-8 max-[768px]:text-xl max-[640px]:mb-4">
                 {course.title}
               </h3>

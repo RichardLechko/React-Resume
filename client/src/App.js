@@ -68,7 +68,6 @@ function App() {
                         />
                         <Route path="/widgets/timer" element={<Timer />} />
                         <Route path="/widgets/weather" element={<Weather />} />
-                        {/* Routes for internal sections */}
                         {Object.keys(refs).map((section) => (
                           <Route
                             key={section}

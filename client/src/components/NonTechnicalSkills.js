@@ -1,19 +1,18 @@
-// src/components/NonTechnicalSkills.js
-
 import React from "react";
 import PropTypes from "prop-types";
+import "../styles/nontechskills.css";
 
 const NonTechnicalSkills = ({ nonTechnicalSkillsRef }) => {
   return (
     <section
-      className="container pt-32 flex flex-col m-auto"
       id="non-technical-skills"
       ref={nonTechnicalSkillsRef}
+      className="non-technical-skills-container"
     >
-      <h1 className="text-center text-4xl font-bold max-[640px]:text-3xl max-[425px]:text-2xl mb-6">
+      <h1 className="text-4xl font-bold max-[640px]:text-3xl max-[425px]:text-2xl mb-16">
         Non-Technical Skills:
       </h1>
-      <div className="w-full mx-auto flex flex-wrap gap-6 md:gap-8 justify-center">
+      <div className="non-technical-skills-grid">
         {skillsData.map((skill, index) => (
           <SkillCard key={index} text={skill} />
         ))}
@@ -22,7 +21,6 @@ const NonTechnicalSkills = ({ nonTechnicalSkillsRef }) => {
   );
 };
 
-// Define your non-technical skills as an array
 const skillsData = [
   "Excel in rapidly changing environments",
   "Proficient technical writing",
@@ -36,10 +34,9 @@ const skillsData = [
   "Proactively take on responsibilities",
 ];
 
-// Rename the inner component for clarity
 const SkillCard = ({ text }) => {
   return (
-    <div className="p-4 border-solid border-black border-4 bg-[#333] text-white rounded-2xl font-bold text-base md:text-xl max-[768px]:text-center transition-transform duration-200 ease-in hover:translate-y-[-10px]">
+    <div className="skill-card">
       <h4>{text}</h4>
     </div>
   );

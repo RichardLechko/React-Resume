@@ -1,79 +1,48 @@
-import React, { useRef, Suspense, useMemo } from "react";
+import React, { Suspense } from "react";
 import skillsData from "./skillsData";
 
-const TechnicalSkills = ({ technicalSkillsRef }) => {
-  return (
-    <section
-      className="container flex flex-col m-auto"
-      id="technical-skills"
-      ref={technicalSkillsRef}
-    >
-      <div className="mt-16 mx-auto justify-around px-6 py-0 pt-16 flex flex-wrap gap-6">
-        <div className="w-full mb-8 text-center life-text smallText">
-          <h1 className="text-4xl mb-4 font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
-            Technical Skills:
-          </h1>
-          <p className="text-xl max-[425px]:text-base text-center">
-            I have given a rating from 1-10, categorizing my understanding and
-            expertise of these skills. Hover over the image to see the rating!
-          </p>
-        </div>
-        <Suspense
-          fallback={<div className="text-center">Loading skills...</div>}
-        >
-          {skillsData.map((skillCategory) => (
-            <SkillsCard
-              key={skillCategory.head}
-              head={skillCategory.head}
-              skills={skillCategory.skills}
-            />
-          ))}
-        </Suspense>
-      </div>
-    </section>
-  );
-};
+const TechnicalSkills = React.forwardRef(({ technicalSkillsRef }) => (
+  <section
+    className="flex flex-col mx-auto mb-24 w-[80%] max-[768px]:w-full"
+    id="technical-skills"
+    ref={technicalSkillsRef}
+  >
+    <div className="mt-16 mx-auto px-6 pt-16 flex flex-col items-center gap-6">
+      <header className="text-center mb-8">
+        <h1 className="text-4xl font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
+          Technical Skills:
+        </h1>
+      </header>
 
-const SkillsCard = React.memo(({ head, skills }) => {
-  const averageRating = useMemo(() => {
-    if (skills.length === 0) return 0; // Handle division by zero
-    const totalRating = skills.reduce(
-      (total, skill) => total + skill.rating,
-      0
-    );
-    return (totalRating / skills.length).toFixed(1);
-  }, [skills]);
-
-  return (
-    <div className="relative p-8 max-md:p-4 bg-gray-800 text-white rounded-xl shadow-lg hover:translate-y-[-15px] transition-transform duration-200 ease-in group">
-      <h4 className="text-xl text-center font-bold mb-8">
-        <span className="border-b-2 border-white">{head}</span>
-      </h4>
-      <div className="flex flex-col items-center">
-        {skills.map((skill) => (
-          <div
-            key={`${skill.name}-${skill.rating}`}
-            className="flex flex-col items-center mb-4"
-          >
+      <Suspense
+        fallback={
+          <div className="text-center text-gray-500">Loading skills...</div>
+        }
+      >
+        <div className="flex flex-wrap gap-6 justify-center max-[768px]:grid max-[768px]:grid-cols-2 max-[425px]:grid-cols-1">
+          {skillsData[0].skills.map(({ icon, name, description }) => (
             <div
-              className="w-20 h-20 flex items-center justify-center rounded-lg text-5xl max-md:w-16 max-md:h-16"
-              style={{ backgroundColor: skill.bgColor }}
-              aria-label={skill.name}
+              key={name}
+              className="flex items-center p-6 max-[768px]:p-4 max-[425px]:p-6 rounded-lg bg-[#2b2b2b] transition-colors duration-300 relative overflow-hidden border-2 border-transparent hover:bg-[#3c3c3c] group"
             >
-              {skill.icon}
+              <div className="mr-4 p-3 rounded-xl bg-gray-700 text-white">
+                {icon}
+              </div>
+              <div>
+                <h4 className="text-xl max-[768px]:text-sm max-[425px]:text-lg font-bold text-gray-200 mb-2 max-[768px]:mb-4">
+                  {name}
+                </h4>
+                <p className="text-gray-300 max-[768px]:text-xs max-[425px]:text-sm">
+                  {description}
+                </p>
+              </div>
+              <div className="absolute inset-0 rounded-lg border-2 border-transparent transition-all duration-300 opacity-0 group-hover:border-[#3b82f6] group-hover:opacity-100" />
             </div>
-            <div className="text-lg font-semibold mt-2">{skill.name}</div>
-            <div className="text-sm text-white bg-gray-900 p-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">
-              {skill.rating}/10
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="absolute rounded-xl inset-0 bg-gray-800 bg-opacity-75 flex text-center items-center justify-center text-xl text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <p>Average Rating: {averageRating}/10</p>
-      </div>
+          ))}
+        </div>
+      </Suspense>
     </div>
-  );
-});
+  </section>
+));
 
 export default TechnicalSkills;
