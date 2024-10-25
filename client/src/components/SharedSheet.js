@@ -1,5 +1,3 @@
-// src/components/ShareSheet.js
-
 import React from "react";
 
 const ShareSheet = ({ isVisible, onClose }) => {

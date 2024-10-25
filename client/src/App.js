@@ -96,7 +96,6 @@ function App() {
   );
 }
 
-// Improved scrolling component with memoization
 const MainPageSection = React.memo(({ section, refs }) => {
   const scrollToSection = () => {
     const ref = refs[section];
@@ -109,7 +108,7 @@ const MainPageSection = React.memo(({ section, refs }) => {
     scrollToSection();
   }, [section]);
 
-  return null; // This component does not render anything itself
+  return null;
 });
 
 export default App;

@@ -1,6 +1,5 @@
 import React, { useRef, Suspense } from "react";
 
-// Lazy load components
 const Personal = React.lazy(() => import("./Personal.js"));
 const TechnicalSkills = React.lazy(() => import("./TechnicalSkills.js"));
 const NonTechnicalSkills = React.lazy(() => import("./NonTechnicalSkills.js"));

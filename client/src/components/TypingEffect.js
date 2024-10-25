@@ -6,7 +6,7 @@ const TypingEffect = ({ texts }) => {
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const name = "Richard Lechko -"; // No space here
+  const name = "Richard Lechko -";
 
   useEffect(() => {
     if (!texts || texts.length === 0) return;
@@ -43,7 +43,6 @@ const TypingEffect = ({ texts }) => {
   return (
     <div className="flex items-center text-xl max-[1440px]:text-lg max-[1200px]:text-[0.8rem] max-[1024px]:text-3xl max-[768px]:text-2xl max-[640px]:text-[1.1rem] max-[425px]:text-sm max-[375px]:text-xs">
       <span className="font-mono text-gray-200">{name}&nbsp;</span>
-      {/* Non-breaking space here */}
       <div className="relative">
         <span
           className={`bg-gray-500 text-lime-300 font-mono p-2 border-r-4 border-lime-300 ${

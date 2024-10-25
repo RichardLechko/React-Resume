@@ -1,4 +1,3 @@
-// Footer.js
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
@@ -14,13 +13,11 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} Richard Lechko | All Rights Reserved
         </p>
 
-        {/* Divider without bouncing effect */}
         <div className="border-t border-gray-600 mb-4" />
 
-        {/* Social Media Icons */}
         <div className="flex justify-center space-x-4 mt-4 text-[#e2e8f0]">
           <a
-            href="https://github.com"
+            href="https://github.com/RichardLechko"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon transition-transform duration-300 hover:text-blue-500"
@@ -28,7 +25,7 @@ const Footer = () => {
             <FaGithub className="text-3xl" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/richard-lechko/"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon transition-transform duration-300 hover:text-blue-500"
@@ -37,12 +34,10 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* Text without bouncing effect */}
         <div className="mt-4 text-gray-400 transition-opacity duration-300 hover:opacity-70">
           <p>Follow me on social media!</p>
         </div>
 
-        {/* Additional visual elements */}
         <div className="flex justify-center mt-4">
           <div className="w-12 h-1 bg-blue-500 animate-pulse rounded-lg" />
         </div>

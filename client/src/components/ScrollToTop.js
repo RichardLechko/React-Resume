@@ -1,5 +1,3 @@
-// src/components/ScrollToTop.js
-
 import React, { createContext, useContext, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -15,12 +13,12 @@ export const ScrollProvider = ({ children }) => {
 
   const scrollToTop = () => {
     if (containerRef.current) {
-      containerRef.current.scrollTo({ top: 0, behavior: "smooth" }); // Smooth scroll to top
+      containerRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   useEffect(() => {
-    scrollToTop(); // Scroll to top on location change
+    scrollToTop();
   }, [location]);
 
   return (

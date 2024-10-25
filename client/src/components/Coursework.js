@@ -166,7 +166,6 @@ const Coursework = () => {
   );
 };
 
-// Custom previous arrow
 const SamplePrevArrow = (props) => {
   const { onClick } = props;
   return (
@@ -180,7 +179,6 @@ const SamplePrevArrow = (props) => {
   );
 };
 
-// Custom next arrow
 const SampleNextArrow = (props) => {
   const { onClick } = props;
   return (

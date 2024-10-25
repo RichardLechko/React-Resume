@@ -1,5 +1,3 @@
-// src/components/Personal.js
-
 import React, { useState, useEffect } from "react";
 import { FaAnglesUp } from "react-icons/fa6";
 import debounce from "lodash.debounce";

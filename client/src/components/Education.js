@@ -10,7 +10,6 @@ import {
 const Education = () => {
   return (
     <div className="container flex flex-col m-auto p-8 pt-32 education-fade-in">
-      {/* Hero Section */}
       <h1 className="text-4xl text-center mb-4 font-bold text-[#e2e8f0] max-[640px]:text-3xl max-[425px]:text-2xl">
         Education:
       </h1>
@@ -31,9 +30,7 @@ const Education = () => {
         </p>
       </section>
 
-      {/* Two-Column Layout */}
       <section className="grid grid-cols-2 gap-8 max-[768px]:grid-cols-1">
-        {/* Major GPA */}
         <div className="bg-gray-900 shadow-md rounded-lg flex flex-col items-center justify-center text-center transition duration-300 hover:bg-gray-700 transform hover:scale-105">
           <FaTrophy className="text-yellow-400 text-6xl mb-2 transition-transform duration-300 hover:scale-125 max-[768px]:my-8" />
           <h2 className="text-2xl font-bold text-[#e2e8f0]">Major GPA</h2>
@@ -42,7 +39,6 @@ const Education = () => {
           </p>
         </div>
 
-        {/* Organizations */}
         <div className="bg-gray-900 p-8 shadow-md rounded-lg flex flex-col items-start transition duration-300 hover:bg-gray-700 transform hover:scale-105 max-[375px]:p-[0.2rem]">
           <FaUsers className="text-blue-500 text-6xl mb-2 transition-transform duration-300 hover:scale-125 mx-auto" />
           <h2 className="text-2xl font-bold mb-4 text-[#e2e8f0] text-center mx-auto">
@@ -68,7 +64,6 @@ const Education = () => {
         </div>
       </section>
 
-      {/* Achievements */}
       <section className="bg-gray-900 py-8 mt-12 text-center rounded-lg shadow-lg transition duration-300 hover:bg-gray-700 transform hover:scale-105">
         <div className="flex flex-col items-center">
           <FaMedal className="text-yellow-400 text-6xl mb-2 transition-transform duration-300 hover:scale-125" />
@@ -78,7 +73,6 @@ const Education = () => {
         </div>
       </section>
 
-      {/* Graduation */}
       <section className="bg-gray-900 py-8 mt-8 text-center rounded-lg shadow-md transition duration-300 hover:bg-gray-700 transform hover:scale-105">
         <div className="flex flex-col items-center">
           <FaGraduationCap className="text-blue-500 text-6xl mb-2 transition-transform duration-300 hover:scale-125" />

@@ -14,8 +14,8 @@
   margin: 0 auto 2rem auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 80%; /* Keep 100% to take full width */
-  max-width: none; /* Remove max-width to prevent overflow */
+  width: 80%;
+  max-width: none;
   position: relative;
 }
 
@@ -187,7 +187,7 @@
   }
 
   #work-section {
-    padding: 4rem 4rem; /* Adjust padding for smaller screens */
+    padding: 4rem;
   }
 }
 
