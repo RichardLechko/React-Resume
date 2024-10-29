@@ -6,6 +6,11 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+window.addEventListener("error", (event) => {
+  console.error("Error in client:", event.message);
+});
+
 root.render(
   <React.StrictMode>
     <App />

@@ -148,9 +148,9 @@ const Coursework = () => {
         {coursework.map((course, index) => (
           <div key={index} className="flex justify-center ">
             <div className="p-6 m-auto slider-courses rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-center h-64">
-              <h3 className="text-2xl font-bold mb-8 max-[768px]:text-xl max-[640px]:mb-4">
+              <h2 className="text-2xl font-bold mb-8 max-[768px]:text-xl max-[640px]:mb-4">
                 {course.title}
-              </h3>
+              </h2>
               <ul className="list-disc list-inside mt-2 space-y-2 overflow-hidden">
                 {course.description.map((item, i) => (
                   <li key={i} className="text-sm">

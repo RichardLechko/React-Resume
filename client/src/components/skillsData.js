@@ -1,58 +1,18 @@
 import { lazy } from "react";
 
-const DiReact = lazy(() =>
-  import("react-icons/di").then((module) => ({ default: module.DiReact }))
-);
+import { DiReact, DiNodejs } from "react-icons/di";
+import { BiLogoRedux, BiLogoGit, BiLogoAws } from "react-icons/bi";
+import {
+  SiJest,
+  SiTypescript,
+  SiSupabase,
+  SiTailwindcss,
+  SiPostgresql,
+  SiFirebase,
+} from "react-icons/si";
+import { FaFigma } from "react-icons/fa6";
+import { RiNextjsLine } from "react-icons/ri";
 
-// Lazy load Bi icons
-const BiLogoRedux = lazy(() =>
-  import("react-icons/bi").then((module) => ({ default: module.BiLogoRedux }))
-);
-const BiLogoGit = lazy(() =>
-  import("react-icons/bi").then((module) => ({ default: module.BiLogoGit }))
-);
-
-// Lazy Load Fa6 Icon
-const FaFigma = lazy(() =>
-  import("react-icons/fa6").then((module) => ({ default: module.FaFigma }))
-);
-
-// Lazy load Cg icon
-const CgNpm = lazy(() =>
-  import("react-icons/cg").then((module) => ({ default: module.CgNpm }))
-);
-
-// Lazy load Si icons
-const SiJest = lazy(() =>
-  import("react-icons/si").then((module) => ({ default: module.SiJest }))
-);
-const SiCypress = lazy(() =>
-  import("react-icons/si").then((module) => ({ default: module.SiCypress }))
-);
-const SiTypescript = lazy(() =>
-  import("react-icons/si").then((module) => ({ default: module.SiTypescript }))
-);
-const SiSupabase = lazy(() =>
-  import("react-icons/si").then((module) => ({ default: module.SiSupabase }))
-);
-const SiAppwrite = lazy(() =>
-  import("react-icons/si").then((module) => ({ default: module.SiAppwrite }))
-);
-const SiTailwindcss = lazy(() =>
-  import("react-icons/si").then((module) => ({ default: module.SiTailwindcss }))
-);
-
-// Lazy load Ai icon
-const AiOutlineApi = lazy(() =>
-  import("react-icons/ai").then((module) => ({ default: module.AiOutlineApi }))
-);
-
-// Lazy Load Ri icon
-const RiNextjsLine = lazy(() =>
-  import("react-icons/ri").then((module) => ({ default: module.RiNextjsLine }))
-);
-
-// Skills data
 const skillsData = [
   {
     skills: [
@@ -70,11 +30,6 @@ const skillsData = [
         icon: <BiLogoGit className="text-4xl" />,
         name: "Git",
         description: "Version Control",
-      },
-      {
-        icon: <CgNpm className="text-4xl" />,
-        name: "NPM",
-        description: "Package Manager",
       },
       {
         icon: <SiJest className="text-4xl" />,
@@ -96,7 +51,6 @@ const skillsData = [
         name: "Supabase",
         description: "Backend tool",
       },
-
       {
         icon: <SiTailwindcss className="text-4xl" />,
         name: "Tailwind",
@@ -106,6 +60,26 @@ const skillsData = [
         icon: <RiNextjsLine className="text-4xl" />,
         name: "Next.js",
         description: "React Framework",
+      },
+      {
+        icon: <SiPostgresql className="text-4xl" />,
+        name: "PostgreSQL",
+        description: "Relational Database",
+      },
+      {
+        icon: <BiLogoAws className="text-4xl" />,
+        name: "AWS",
+        description: "Cloud Services",
+      },
+      {
+        icon: <DiNodejs className="text-4xl" />,
+        name: "Node.js",
+        description: "JavaScript Runtime",
+      },
+      {
+        icon: <SiFirebase className="text-4xl" />,
+        name: "Firebase",
+        description: "Backend-as-a-Service",
       },
     ],
   },

@@ -5,28 +5,27 @@ const ShareSheet = ({ isVisible, onClose }) => {
     {
       href: "mailto:?subject=Check this out&body=I found this interesting site: https://www.richardlechko.com/",
       label: "Share via Email",
-      bgColor: "bg-blue-500",
+      bgColor: "bg-blue-600", // Darker blue for better contrast
     },
     {
       href: "https://twitter.com/intent/tweet?text=Check this out! https://www.richardlechko.com/",
       label: "Share on Twitter",
-      bgColor: "bg-blue-400",
+      bgColor: "bg-blue-500", // Darker blue for better contrast
     },
     {
       href: "https://www.facebook.com/sharer/sharer.php?u=https://www.richardlechko.com/",
       label: "Share on Facebook",
-      bgColor: "bg-blue-600",
+      bgColor: "bg-blue-700", // Darker blue for better contrast
     },
   ];
 
   return (
     <div
-      className={`fixed bottom-0 right-0 bg-white shadow-lg p-4 rounded-lg w-64 ${
+      className={`fixed bottom-0 right-0 bg-gray-800 shadow-lg p-4 rounded-lg w-64 ${
         isVisible ? "block" : "hidden"
       }`}
       aria-live="polite"
     >
-      <h3 className="text-lg font-semibold mb-2">Share this page</h3>
       <div className="space-y-2">
         {shareLinks.map(({ href, label, bgColor }, index) => (
           <a
@@ -42,7 +41,7 @@ const ShareSheet = ({ isVisible, onClose }) => {
         ))}
         <button
           onClick={onClose}
-          className="block w-full bg-gray-300 text-gray-800 p-2 rounded-lg text-center mt-2"
+          className="block w-full bg-gray-600 text-white p-2 rounded-lg text-center mt-2" // Darker gray for better contrast
           aria-label="Close Share Sheet"
         >
           Close

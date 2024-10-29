@@ -34,7 +34,7 @@ function App() {
   }, []);
 
   const shareButtonClass =
-    "fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded-lg";
+    "fixed bottom-4 right-4 bg-[#ffc107] text-black font-bold p-2 rounded-lg"; // Example with teal
 
   return (
     <div className="overflow-x-hidden">

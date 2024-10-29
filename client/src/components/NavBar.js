@@ -92,13 +92,14 @@ const NavBar = ({ refs }) => {
     </li>
   );
 
-  const SocialMediaLink = ({ icon, link }) => (
+  const SocialMediaLink = ({ icon, link, ariaLabel }) => (
     <li>
       <a
         className="text-2xl max-[1280px]:text-xl max-[1024px]:text-3xl"
         href={link}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={ariaLabel}
       >
         {icon}
       </a>
@@ -116,7 +117,6 @@ const NavBar = ({ refs }) => {
       <nav className="fixed top-0 py-4 right-0 w-full bg-gray-900 text-white z-50 shadow-lg">
         <div className="flex items-center justify-between px-4 py-4">
           <TypingEffect texts={roles} />
-
           {isScreenSmall && (
             <div
               className="text-3xl cursor-pointer"
@@ -142,10 +142,12 @@ const NavBar = ({ refs }) => {
               <SocialMediaLink
                 icon={<DiGithubBadge />}
                 link="https://github.com/richardlechko"
+                ariaLabel="Visit my GitHub profile"
               />
               <SocialMediaLink
                 icon={<FaLinkedin />}
                 link="https://www.linkedin.com/in/richard-lechko"
+                ariaLabel="Visit my LinkedIn profile"
               />
             </ul>
           )}
@@ -173,10 +175,12 @@ const NavBar = ({ refs }) => {
             <SocialMediaLink
               icon={<DiGithubBadge />}
               link="https://github.com/richardlechko"
+              ariaLabel="Visit my GitHub profile"
             />
             <SocialMediaLink
               icon={<FaLinkedin />}
               link="https://www.linkedin.com/in/richard-lechko"
+              ariaLabel="Visit my LinkedIn profile"
             />
           </ul>
         </div>

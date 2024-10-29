@@ -21,7 +21,7 @@ const Publications = () => {
         {publicationsData.map((publication, index) => (
           <div
             key={index}
-            className="bg-gray-800 flex flex-col gap-4 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 w-full max-w-md text-center hover:rounded-xl"
+            className="bg-gray-700 flex flex-col gap-4 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 w-full max-w-md text-center hover:rounded-xl"
           >
             <a
               href={publication.link}
@@ -30,8 +30,12 @@ const Publications = () => {
             >
               {publication.title}
             </a>
-            <p className="text-lg text-gray-400">{publication.authors}</p>
-            <p className="text-sm text-gray-500">ISBN: {publication.isbn}</p>
+            <p className="text-lg text-gray-300">{publication.authors}</p>{" "}
+            {/* Changed to gray-300 */}
+            <p className="text-sm text-gray-400">
+              ISBN: {publication.isbn}
+            </p>{" "}
+            {/* Changed to gray-400 */}
           </div>
         ))}
       </div>

@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { FaAnglesUp } from "react-icons/fa6";
 import debounce from "lodash.debounce";
+import { useScroll } from "./ScrollToTop.js";
 
 const Personal = () => {
-  const [showScrollToTop, setShowScrollToTop] = useState(false);
+  const { scrollToTop } = useScroll();
+
+  useEffect(() => {
+    scrollToTop();
+  }, [scrollToTop]);
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -24,7 +28,7 @@ const Personal = () => {
   return (
     <section
       id="personal"
-      className="container mx-auto pt-32 overflow-x-hidden px-4 md:px-8 "
+      className="container mx-auto pt-32 overflow-x-hidden px-4 md:px-8"
     >
       <div className="mx-auto justify-around py-6 flex flex-col gap-6">
         <h1 className="text-4xl font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
@@ -59,8 +63,8 @@ const Personal = () => {
               , discussing the{" "}
               <a
                 className="text-blue-500 underline hover:text-blue-300 transition duration-300"
-                target="_blank"
                 href="https://www.lewrockwell.com/lrc-blog/is-there-a-right-to-life-in-the-libertarian-philosphy/"
+                target="_blank"
                 rel="noreferrer"
               >
                 distinction between positive rights and negative rights
@@ -70,7 +74,6 @@ const Personal = () => {
               economics purely for fun.
             </li>
           </ul>
-
           <p className="mb-6 leading-relaxed">
             Another interest of mine is music. Follow me on{" "}
             <a
@@ -90,15 +93,6 @@ const Personal = () => {
           </p>
         </div>
       </div>
-      {showScrollToTop && (
-        <button
-          onClick={handleScrollToTop}
-          className="fixed bottom-4 right-4 bg-gray-900 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition-colors duration-300"
-          aria-label="Scroll to top"
-        >
-          <FaAnglesUp size={24} />
-        </button>
-      )}
     </section>
   );
 };

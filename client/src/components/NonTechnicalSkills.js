@@ -37,7 +37,7 @@ const skillsData = [
 const SkillCard = ({ text }) => {
   return (
     <div className="skill-card">
-      <h4>{text}</h4>
+      <h2>{text}</h2>
     </div>
   );
 };
