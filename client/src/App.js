@@ -6,8 +6,6 @@ import { ScrollProvider } from "./components/ScrollToTop.js";
 import ShareSheet from "./components/SharedSheet.js";
 import ErrorBoundary from "./components/ErrorBoundary.js";
 
-const Contact = lazy(() => import("./components/Contact.js"));
-const Widgets = lazy(() => import("./components/widgets/Widgets.js"));
 const Currency = lazy(() => import("./components/widgets/Currency.js"));
 const Timer = lazy(() => import("./components/widgets/Timer.js"));
 const Weather = lazy(() => import("./components/widgets/Weather.js"));
@@ -20,6 +18,8 @@ function App() {
   const workRef = useRef(null);
   const educationRef = useRef(null);
   const publicationsRef = useRef(null);
+  const contactRef = useRef(null);
+  const projectsRef = useRef(null);
 
   const refs = {
     personal: personalRef,
@@ -27,6 +27,8 @@ function App() {
     work: workRef,
     education: educationRef,
     publications: publicationsRef,
+    contact: contactRef,
+    projects: projectsRef,
   };
 
   const toggleShareSheet = useCallback(() => {
@@ -57,11 +59,11 @@ function App() {
                               workRef={workRef}
                               educationRef={educationRef}
                               publicationsRef={publicationsRef}
+                              contactRef={contactRef}
+                              projectsRef={projectsRef}
                             />
                           }
                         />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/widgets" element={<Widgets />} />
                         <Route
                           path="/widgets/currency"
                           element={<Currency />}

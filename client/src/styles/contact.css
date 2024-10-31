@@ -154,58 +154,9 @@
   }
 }
 
-@media (max-width: 768px) {
-  #resume-container {
-    padding: 15px;
-    max-width: 90%;
-  }
-
-  .resume-title {
-    font-size: 1.5rem;
-  }
-
-  .resume-description {
-    font-size: 0.9rem;
-  }
-
-  .button-container {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .resume-button {
-    width: 100%;
-    padding: 12px;
-  }
-
-  .resume-icon {
-    font-size: 1.5rem;
-  }
-}
-
 @media (max-width: 425px) {
-  #resume-container {
-    padding: 10px;
-  }
-
-  .resume-title {
-    font-size: 1.25rem;
-  }
-
-  .resume-description {
-    font-size: 0.8rem;
-  }
-
   .button-container {
-    margin-top: 10px;
-  }
-
-  .resume-button {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-
-  .resume-icon {
-    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
   }
 }

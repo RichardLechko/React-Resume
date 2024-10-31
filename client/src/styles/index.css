@@ -70,9 +70,6 @@
 
     --radius: 0.5rem;
   }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
@@ -82,30 +79,45 @@
   }
 }
 
+@font-face {
+  font-family: "GeistSans";
+  src: url("../fonts/Geist-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GeistSans";
+  src: url("../fonts/Geist-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GeistSans";
+  src: url("../fonts/Geist-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
 * {
+  font-family: "GeistSans", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 h1 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
   text-align: center;
   color: #e2e8f0;
 }
 
+html,
 body {
-  font-family: "Nunito", sans-serif;
-  font-weight: 300;
-  margin: 0;
-  padding: 0;
   overflow-x: hidden;
   height: 100%;
-}
-
-html {
   scroll-behavior: auto;
+  font-family: "GeistSans", sans-serif;
 }
 
 #root {
@@ -114,10 +126,6 @@ html {
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-a {
-  font-family: "Roboto Mono", monospace;
 }
 
 a:hover {

@@ -137,7 +137,7 @@ const Coursework = () => {
   };
 
   return (
-    <div className="pt-32 mb-36 mx-auto">
+    <div className="pt-32 mx-auto">
       <h1 className="text-4xl font-bold max-[640px]:text-3xl max-[425px]:text-2xl mb-8">
         Relevant Coursework:
       </h1>

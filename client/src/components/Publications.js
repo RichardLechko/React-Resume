@@ -10,7 +10,7 @@ const publicationsData = [
 const Publications = () => {
   return (
     <section
-      className="flex flex-col items-center overflow-hidden px-4 md:px-8 lg:px-16 mb-20 pb-8"
+      className="flex flex-col items-center overflow-hidden px-4 md:px-8 lg:px-16 pt-32"
       id="publications"
     >
       <h1 className="text-4xl mb-4 font-bold text-center max-[640px]:text-3xl max-[425px]:text-2xl">

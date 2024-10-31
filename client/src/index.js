@@ -4,6 +4,8 @@ import "./styles/index.css";
 import App from "./App.js";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+/* import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono"; */
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

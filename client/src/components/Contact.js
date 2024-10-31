@@ -53,65 +53,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-black py-12">
-      <div className="flex justify-center mb-6">
-        <div id="resume-container" className="resume-card p-6">
-          <h2
-            id="resume-title"
-            className="resume-title text-3xl font-bold mb-2"
-          >
-            <span className="resume-icon text-yellow-400">📄</span> Resume
-          </h2>
-          <p
-            id="resume-description"
-            className="resume-description text-md mb-4"
-          >
-            Quick download or view available:
-          </p>
-          <div className="flex justify-center gap-6 button-container">
-            <a
-              id="download-docx"
-              href="/resumes/Richard_Lechko_Resume.docx"
-              download
-              target="_blank"
-              rel="noopener noreferrer"
-              className="resume-button docx-button text-center"
-            >
-              Download DOCX
-            </a>
-            <a
-              id="download-pdf"
-              href="/resumes/Richard_Lechko_Resume.pdf"
-              download
-              target="_blank"
-              rel="noopener noreferrer"
-              className="resume-button pdf-button text-center"
-            >
-              Download PDF
-            </a>
-            <a
-              id="view-pdf"
-              href="/resumes/Richard_Lechko_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="resume-button view-button text-center"
-            >
-              View PDF
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <section className="text-2xl text-[#e2e8f0] font-semibold text-center pt-24 px-12 mx-auto max-[640px]:p-12 max-[640px]:mb-6 pb-0 mb-12 max-[640px]:text-xl max-[425px]:text-base max-[375px]:pl-6 max-[375px]:pr-6">
-        <p className="max-w-4xl mx-auto">
-          I am currently looking for any projects — big or small. Don't be
-          afraid to reach out. Whether that be a job opportunity, a freelance
-          opportunity, or a simple project. If you would like to request an
-          unofficial transcript for a career opportunity, please use the contact
-          form below. Anything else, still use the contact form!
-        </p>
-      </section>
-
+    <section id="contact" className="pt-36">
       <div className="App">
         <CookieConsent />
       </div>

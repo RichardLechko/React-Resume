@@ -1,97 +1,82 @@
-import React, { useState, useEffect } from "react";
-import debounce from "lodash.debounce";
-import { useScroll } from "./ScrollToTop.js";
+import React from "react";
 
 const Personal = () => {
-  const { scrollToTop } = useScroll();
-
-  useEffect(() => {
-    scrollToTop();
-  }, [scrollToTop]);
-
-  useEffect(() => {
-    const handleScroll = debounce(() => {
-      setShowScrollToTop(window.scrollY > 300);
-    }, 100);
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <section
       id="personal"
-      className="container mx-auto pt-32 overflow-x-hidden px-4 md:px-8"
+      className="container mx-auto pt-32 flex flex-col items-center justify-center px-4 md:px-8 max-[1024px]:pt-32"
     >
-      <div className="mx-auto justify-around py-6 flex flex-col gap-6">
-        <h1 className="text-4xl font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
-          Personal Life:
+      <div className="flex items-center text-center max-[640px]:flex-col ">
+        <img
+          src="/myself/myself.jpg"
+          alt="Richard Lechko"
+          className="rounded-full w-24 h-32 mb-4 max-[640px]:mb-8"
+        />
+        <h1 className="text-5xl font-bold max-[1024px]:text-3xl ml-4">
+          Hey, I'm Richard Lechko (lech·koh)
         </h1>
-        <div className="text-base md:text-lg text-[#e2e8f0] px-5">
-          <p className="mb-6 leading-relaxed">
-            Born and raised in a small suburb in Illinois, with nationality
-            being Belarussian. I grew up speaking Russian.
+      </div>
+      <div className="flex justify-center my-6">
+        <div id="resume-container" className="resume-card p-6">
+          <h2
+            id="resume-title"
+            className="resume-title text-3xl font-bold mb-2"
+          >
+            <span className="resume-icon text-yellow-400">📄</span> Resume
+          </h2>
+          <p
+            id="resume-description"
+            className="resume-description text-md mb-4"
+          >
+            Quick download or view available:
           </p>
-          <p className="mb-6 leading-relaxed">
-            I have always been fascinated with computers, particularly computer
-            systems, operating systems, the internet, the cloud, web
-            development, and more.
-          </p>
-          <p className="mb-6 leading-relaxed">
-            My other interests besides computers include philosophy and
-            economics.
-          </p>
-          <ul className="pl-8 leading-relaxed mb-6 list-disc">
-            <li className="text-[#e2e8f0] leading-8">
-              <span className="text-yellow-400 font-bold">Fun Fact:</span> I
-              have my own section in the{" "}
-              <a
-                className="text-blue-500 font-bold hover:text-blue-300 transition duration-300"
-                href="https://www.lewrockwell.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Lew Rockwell
-              </a>
-              , discussing the{" "}
-              <a
-                className="text-blue-500 underline hover:text-blue-300 transition duration-300"
-                href="https://www.lewrockwell.com/lrc-blog/is-there-a-right-to-life-in-the-libertarian-philosphy/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                distinction between positive rights and negative rights
-              </a>
-              . I was 16 at the time of writing this piece, in my junior year of
-              high school. I am now in college, still a huge fan of studying
-              economics purely for fun.
-            </li>
-          </ul>
-          <p className="mb-6 leading-relaxed">
-            Another interest of mine is music. Follow me on{" "}
+          <div className="flex justify-center gap-6 button-container">
             <a
-              className="text-[#1db954] font-bold hover:underline transition duration-300"
-              href="https://open.spotify.com/user/22j4lmvcuabn2joznuzxd3pdy?si=be67aa3576934843"
+              id="download-docx"
+              href="/resumes/Richard_Lechko_Resume.docx"
+              download
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              className="resume-button docx-button text-center"
             >
-              Spotify
+              Download DOCX
             </a>
-            !
-          </p>
-          <p className="mb-6 leading-relaxed">
-            I love to create projects that serve a purpose, whether that's
-            increasing my knowledge on a topic (like this one), meeting an
-            important deadline, or helping others learn.
-          </p>
+            <a
+              id="download-pdf"
+              href="/resumes/Richard_Lechko_Resume.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="resume-button pdf-button text-center"
+            >
+              Download PDF
+            </a>
+            <a
+              id="view-pdf"
+              href="/resumes/Richard_Lechko_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="resume-button view-button text-center"
+            >
+              View PDF
+            </a>
+          </div>
         </div>
+      </div>
+
+      <div className="mt-6 text-lg md:text-xl text-[#e2e8f0] space-y-4 text-left max-[425px]:text-center">
+        <p>
+          I'm a web developer focused on building innovative and user-friendly
+          applications.
+        </p>
+        <p>
+          I work with various programming languages and frameworks and enjoy
+          tackling complex challenges.
+        </p>
+        <p>
+          Outside of coding, I dive into tech blogs and contribute to online
+          communities.
+        </p>
       </div>
     </section>
   );

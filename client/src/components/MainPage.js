@@ -1,12 +1,13 @@
-import React, { useRef, Suspense } from "react";
+import React, { Suspense } from "react";
 
 const Personal = React.lazy(() => import("./Personal.js"));
 const TechnicalSkills = React.lazy(() => import("./TechnicalSkills.js"));
-const NonTechnicalSkills = React.lazy(() => import("./NonTechnicalSkills.js"));
 const Work = React.lazy(() => import("./Work.js"));
 const Education = React.lazy(() => import("./Education.js"));
 const Publications = React.lazy(() => import("./Publications.js"));
 const Coursework = React.lazy(() => import("./Coursework.js"));
+const Contact = React.lazy(() => import("./Contact.js"));
+const Projects = React.lazy(() => import("./Widgets.js"));
 
 const MainPage = ({
   personalRef,
@@ -14,6 +15,8 @@ const MainPage = ({
   educationRef,
   publicationsRef,
   skillsRef,
+  contactRef,
+  projectsRef,
 }) => {
   return (
     <div className="overflow-x-hidden relative">
@@ -24,10 +27,6 @@ const MainPage = ({
 
         <section id="technical-skills" ref={skillsRef}>
           <TechnicalSkills />
-        </section>
-
-        <section id="non-technical-skills">
-          <NonTechnicalSkills />
         </section>
 
         <section id="work" ref={workRef}>
@@ -44,6 +43,14 @@ const MainPage = ({
 
         <section id="publications" ref={publicationsRef}>
           <Publications />
+        </section>
+
+        <section id="contact" ref={contactRef}>
+          <Contact />
+        </section>
+
+        <section id="projects" ref={projectsRef}>
+          <Projects />
         </section>
       </Suspense>
     </div>

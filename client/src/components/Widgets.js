@@ -6,7 +6,7 @@ import { BsCurrencyDollar } from "react-icons/bs";
 import { FaUniversity, FaUser } from "react-icons/fa";
 import { GiMeatCleaver } from "react-icons/gi";
 import React, { useEffect } from "react";
-import { useScroll } from "../ScrollToTop.js";
+import { useScroll } from "./ScrollToTop.js";
 import { Radar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -171,16 +171,12 @@ const Widgets = () => {
 
   return (
     <div
-      id="widgets"
-      className="container mx-auto px-4 py-8 mb-24 flex flex-col items-center"
+      id="projects"
+      className="container mx-auto px-4 pt-32 mb-20 flex flex-col items-center"
     >
-      <div className="text-center mb-8">
-        <p className="text-2xl font-bold text-[#e2e8f0]">
-          To show my understanding of JavaScript, Programming, and in general
-          problem-solving. I have included a bunch of projects that I have
-          worked on.
-        </p>
-      </div>
+      <h1 className="text-4xl mb-4 font-bold text-center max-[640px]:text-3xl max-[425px]:text-2xl">
+        Projects:
+      </h1>
       <div className="w-full max-w-[500px] aspect-square mx-auto max-[640px]:max-w-[380px] max-[375px]:max-w-[280px]">
         <Radar data={data} options={options} />
       </div>

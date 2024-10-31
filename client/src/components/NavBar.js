@@ -2,19 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaLinkedin } from "react-icons/fa";
 import { DiGithubBadge } from "react-icons/di";
-import TypingEffect from "./TypingEffect";
+import { FiExternalLink } from "react-icons/fi";
 
 const NavBar = ({ refs }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScreenSmall, setIsScreenSmall] = useState(false);
   const navigate = useNavigate();
-  const roles = [
-    "Web Dev",
-    "SWE",
-    "UI/UX Designer",
-    "IT Student",
-    "Full Stack Eng.",
-  ];
 
   useEffect(() => {
     const handleResize = () => {
@@ -74,9 +67,9 @@ const NavBar = ({ refs }) => {
   );
 
   const NavItemExternal = ({ path, sectionName, shouldOpenInNewTab }) => (
-    <li className="cursor-pointer">
+    <li className="cursor-pointer flex items-center gap-1">
       <div
-        className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg"
+        className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg flex items-center"
         onClick={(e) => {
           e.preventDefault();
           if (shouldOpenInNewTab) {
@@ -87,7 +80,7 @@ const NavBar = ({ refs }) => {
           }
         }}
       >
-        {sectionName}
+        {sectionName} <FiExternalLink className="inline-block" />
       </div>
     </li>
   );
@@ -116,7 +109,6 @@ const NavBar = ({ refs }) => {
       )}
       <nav className="fixed top-0 py-4 right-0 w-full bg-gray-900 text-white z-50 shadow-lg">
         <div className="flex items-center justify-between px-4 py-4">
-          <TypingEffect texts={roles} />
           {isScreenSmall && (
             <div
               className="text-3xl cursor-pointer"
@@ -132,8 +124,8 @@ const NavBar = ({ refs }) => {
               <NavItem sectionId="work" sectionName="Work" />
               <NavItem sectionId="education" sectionName="Education" />
               <NavItem sectionId="publications" sectionName="Publications" />
-              <NavItemExternal path="/contact" sectionName="Contact" />
-              <NavItemExternal path="/widgets" sectionName="Projects" />
+              <NavItem sectionId="contact" sectionName="Contact" />
+              <NavItem sectionId="projects" sectionName="Projects" />
               <NavItemExternal
                 path="https://public-notes-page-react.vercel.app/"
                 sectionName="Notes"
@@ -165,8 +157,8 @@ const NavBar = ({ refs }) => {
             <NavItem sectionId="work" sectionName="Work" />
             <NavItem sectionId="education" sectionName="Education" />
             <NavItem sectionId="publications" sectionName="Publications" />
-            <NavItemExternal path="/contact" sectionName="Contact" />
-            <NavItemExternal path="/widgets" sectionName="Projects" />
+            <NavItem sectionId="contact" sectionName="Contact" />
+            <NavItem sectionId="projects" sectionName="Projects" />
             <NavItemExternal
               path="https://public-notes-page-react.vercel.app/"
               sectionName="Notes"
