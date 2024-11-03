@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaLinkedin } from "react-icons/fa";
 import { DiGithubBadge } from "react-icons/di";
 import { FiExternalLink } from "react-icons/fi";
+import ThemeToggle from "./ThemeToggle";
 
 const NavBar = ({ refs }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -45,58 +46,52 @@ const NavBar = ({ refs }) => {
   };
 
   const NavItem = ({ sectionId, sectionName }) => (
-    <li className="cursor-pointer">
-      <div
-        role="button"
-        className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg"
-        onClick={(e) => {
+    <div
+      className="cursor-pointer text-xl max-[1280px]:text-lg"
+      role="button"
+      onClick={(e) => {
+        e.preventDefault();
+        handleNavClick(sectionId);
+      }}
+      tabIndex="0"
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
           e.preventDefault();
           handleNavClick(sectionId);
-        }}
-        tabIndex="0"
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            handleNavClick(sectionId);
-          }
-        }}
-      >
-        {sectionName}
-      </div>
-    </li>
+        }
+      }}
+    >
+      {sectionName}
+    </div>
   );
 
   const NavItemExternal = ({ path, sectionName, shouldOpenInNewTab }) => (
-    <li className="cursor-pointer flex items-center gap-1">
-      <div
-        className="text-xl text-[#A0C1D1] hover:text-[#80D6F4] max-[1280px]:text-lg flex items-center"
-        onClick={(e) => {
-          e.preventDefault();
-          if (shouldOpenInNewTab) {
-            window.open(path, "_blank");
-          } else {
-            navigate(path);
-            setIsSidebarOpen(false);
-          }
-        }}
-      >
-        {sectionName} <FiExternalLink className="inline-block" />
-      </div>
-    </li>
+    <div
+      className="cursor-pointer flex items-center gap-1 text-xl max-[1280px]:text-lg"
+      onClick={(e) => {
+        e.preventDefault();
+        if (shouldOpenInNewTab) {
+          window.open(path, "_blank");
+        } else {
+          navigate(path);
+          setIsSidebarOpen(false);
+        }
+      }}
+    >
+      {sectionName} <FiExternalLink className="inline-block" />
+    </div>
   );
 
   const SocialMediaLink = ({ icon, link, ariaLabel }) => (
-    <li>
-      <a
-        className="text-2xl max-[1280px]:text-xl max-[1024px]:text-3xl"
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={ariaLabel}
-      >
-        {icon}
-      </a>
-    </li>
+    <a
+      className="text-2xl max-[1280px]:text-xl max-[1024px]:text-3xl"
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={ariaLabel}
+    >
+      {icon}
+    </a>
   );
 
   return (
@@ -107,8 +102,8 @@ const NavBar = ({ refs }) => {
           onClick={() => setIsSidebarOpen(false)}
         ></div>
       )}
-      <nav className="fixed top-0 py-4 right-0 w-full bg-gray-900 text-white z-50 shadow-lg">
-        <div className="flex items-center justify-between px-4 py-4">
+      <nav className="fixed top-0 py-4 right-0 w-full bg-white dark:bg-gray-900 z-50 shadow-lg">
+        <div className="flex items-center justify-center px-4 py-4">
           {isScreenSmall && (
             <div
               className="text-3xl cursor-pointer"
@@ -118,7 +113,8 @@ const NavBar = ({ refs }) => {
             </div>
           )}
           {!isScreenSmall && (
-            <ul className="flex gap-6 px-4 max-[1280px]:gap-4 text-center ml-auto">
+            <ul className="flex items-center justify-center gap-6 max-[1280px]:gap-4 text-center">
+              <ThemeToggle />
               <NavItem sectionId="personal" sectionName="Personal" />
               <NavItem sectionId="skills" sectionName="Skills" />
               <NavItem sectionId="work" sectionName="Work" />
@@ -147,11 +143,11 @@ const NavBar = ({ refs }) => {
       </nav>
       {isScreenSmall && (
         <div
-          className={`fixed left-0 top-[100px] h-[calc(100%-64px)] w-[200px] bg-gray-900 z-40 transform ${
+          className={`fixed left-0 top-[100px] h-[calc(100%-64px)] w-[200px] bg-white dark:bg-gray-900 z-40 transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300`}
         >
-          <ul className="flex flex-col items-center py-4 gap-4 text-[#e2e8f0]">
+          <ul className="flex flex-col items-center py-4 gap-4">
             <NavItem sectionId="personal" sectionName="Personal" />
             <NavItem sectionId="skills" sectionName="Skills" />
             <NavItem sectionId="work" sectionName="Work" />

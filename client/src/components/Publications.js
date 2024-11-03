@@ -17,25 +17,22 @@ const Publications = () => {
         Publications:
       </h1>
 
-      <div className="flex flex-col items-center gap-6">
+      <div className="flex flex-col items-center gap-6 rounded-xl">
         {publicationsData.map((publication, index) => (
           <div
             key={index}
-            className="bg-gray-700 flex flex-col gap-4 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 w-full max-w-md text-center hover:rounded-xl"
+            className="bg-[#f2f1ef] dark:bg-gray-700 flex flex-col gap-4 rounded-xl p-6 shadow-lg transition-transform duration-300 hover:scale-105 w-full max-w-md text-center"
           >
             <a
               href={publication.link}
               target="_blank"
-              className="text-xl font-semibold text-[#e2e8f0] hover:text-blue-400 hover:underline transition-colors duration-300"
+              rel="noopener noreferrer"
+              className="text-xl font-semibold hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors duration-300"
             >
               {publication.title}
             </a>
-            <p className="text-lg text-gray-300">{publication.authors}</p>{" "}
-            {/* Changed to gray-300 */}
-            <p className="text-sm text-gray-400">
-              ISBN: {publication.isbn}
-            </p>{" "}
-            {/* Changed to gray-400 */}
+            <p className="text-lg">{publication.authors}</p>
+            <p className="text-sm">ISBN: {publication.isbn}</p>
           </div>
         ))}
       </div>

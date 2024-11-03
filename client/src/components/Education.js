@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTrophy, FaBookOpen, FaGraduationCap, FaMedal } from "react-icons/fa";
+import { FaTrophy, FaBookOpen } from "react-icons/fa";
 
 const Education = () => {
   const organizations = [
@@ -39,55 +39,59 @@ const Education = () => {
 
   return (
     <div className="container flex flex-col m-auto p-8 pt-32 education-fade-in space-y-8">
-      <h1 className="text-4xl text-center font-bold text-[#e2e8f0] max-[640px]:text-3xl max-[425px]:text-2xl mb-6">
+      <h1 className="text-4xl text-center font-bold max-[640px]:text-3xl max-[425px]:text-2xl mb-6 text-gray-800 dark:text-gray-200">
         Education
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        {/* Current Program Section */}
-        <div className="bg-gray-800 rounded-lg shadow-lg p-4 transition duration-300 border border-gray-700 flex flex-col space-y-4">
-          <h2 className="text-lg font-semibold text-[#e2e8f0] mb-2">
+        <div className="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-xl p-4 transition duration-300 border border-gray-300 dark:border-gray-600 flex flex-col space-y-4">
+          <h2 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
             Current Program
           </h2>
-          <p className="text-md text-gray-400 mb-1">
+          <p className="text-md mb-1 text-gray-800 dark:text-gray-300">
             Full-time student at{" "}
             <a
-              className="underline font-bold text-red-500"
+              className="underline font-bold text-[#005EB8] hover:text-[#E4002B] transition duration-300 dark:text-[#A3C9E0] dark:hover:text-[#FF4D4D]"
               href="https://www.depaul.edu/Pages/default.aspx"
               target="_blank"
               rel="noopener noreferrer"
             >
-              DePaul University
+              <span className="text-[#005EB8] dark:text-[#A3C9E0]">DePaul</span>{" "}
+              <span className="text-[#E4002B] dark:text-[#FF4D4D]">
+                University
+              </span>
             </a>
           </p>
-          <p className="text-md text-gray-400 mb-1">
+          <p className="text-md mb-1 text-gray-800 dark:text-gray-300">
             Bachelor of Science in Information Technology
           </p>
-          <p className="text-md text-gray-400">
+          <p className="text-md text-gray-800 dark:text-gray-300">
             Concentration: Web Development | Expected Graduation:{" "}
             <span className="underline">06/2026</span>
           </p>
         </div>
 
-        {/* GPA & Achievements Section */}
-        <div className="bg-gray-800 rounded-lg shadow-lg p-4 transition duration-300 border border-gray-700">
-          <h2 className="text-lg font-semibold text-[#e2e8f0] mb-4">
+        <div className="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-xl p-4 transition duration-300 border border-gray-300 dark:border-gray-600">
+          <h2 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">
             GPA & Achievements
           </h2>
           <div className="flex items-center mb-3">
             <FaTrophy className="text-yellow-400 text-3xl mr-3" />
             <div>
-              <h3 className="text-md font-bold text-[#e2e8f0]">
-                Major GPA: <span className="text-lg">3.5 / 4.0</span>
+              <h3 className="text-md font-bold text-gray-800 dark:text-gray-200">
+                Major GPA:{" "}
+                <span className="text-lg">
+                  <span className="underline">3.5</span> / 4.0
+                </span>
               </h3>
-              <p className="text-md text-[#e2e8f0] max-[375px]:text-[0.9rem]">
+              <p className="text-md text-gray-800 dark:text-gray-300">
                 2-time Dean's List Student
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="bg-gray-800 rounded-lg shadow-lg p-4 transition duration-300 border border-gray-700">
-        <h2 className="text-lg font-semibold text-[#e2e8f0] mb-2">
+      <div className="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-xl p-4 transition duration-300 border border-gray-300 dark:border-gray-600">
+        <h2 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
           Organizations
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -96,27 +100,29 @@ const Education = () => {
               const dateA = new Date(
                 a.startDate.split("/")[1],
                 a.startDate.split("/")[0] - 1
-              ); // Convert to Date object
+              );
               const dateB = new Date(
                 b.startDate.split("/")[1],
                 b.startDate.split("/")[0] - 1
               );
-              return dateB - dateA; // Sort in descending order
+              return dateB - dateA;
             })
             .map((org, index) => (
               <div
                 key={index}
-                className="flex items-start p-2 bg-gray-700 rounded-md shadow-sm transition duration-300"
+                className="flex items-start p-2 bg-gray-200 dark:bg-gray-700 shadow-sm transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 border border-transparent hover:border-gray-500 dark:hover:border-gray-400 rounded-xl"
               >
                 <FaBookOpen className="text-blue-400 text-3xl mr-2" />
                 <div className="flex flex-col space-y-2">
-                  <span className="font-bold text-[#e2e8f0] text-sm">
+                  <span className="font-bold text-sm text-gray-800 dark:text-gray-200">
                     {org.name}
                   </span>
-                  <span className="text-gray-400 text-xs">
+                  <span className="text-xs text-gray-700 dark:text-gray-300">
                     {org.startDate} - {org.endDate}
                   </span>
-                  <p className="text-xs text-gray-400">{org.description}</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">
+                    {org.description}
+                  </p>
                 </div>
               </div>
             ))}

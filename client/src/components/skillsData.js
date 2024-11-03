@@ -1,17 +1,44 @@
 import { lazy } from "react";
 
-import { DiReact, DiNodejs } from "react-icons/di";
-import { BiLogoRedux, BiLogoGit, BiLogoAws } from "react-icons/bi";
-import {
-  SiJest,
-  SiTypescript,
-  SiSupabase,
-  SiTailwindcss,
-  SiPostgresql,
-  SiFirebase,
-} from "react-icons/si";
-import { FaFigma } from "react-icons/fa6";
-import { RiNextjsLine } from "react-icons/ri";
+const DiReact = lazy(() =>
+  import("react-icons/di").then((module) => ({ default: module.DiReact }))
+);
+const DiNodejs = lazy(() =>
+  import("react-icons/di").then((module) => ({ default: module.DiNodejs }))
+);
+const BiLogoRedux = lazy(() =>
+  import("react-icons/bi").then((module) => ({ default: module.BiLogoRedux }))
+);
+const BiLogoGit = lazy(() =>
+  import("react-icons/bi").then((module) => ({ default: module.BiLogoGit }))
+);
+const BiLogoAws = lazy(() =>
+  import("react-icons/bi").then((module) => ({ default: module.BiLogoAws }))
+);
+const SiJest = lazy(() =>
+  import("react-icons/si").then((module) => ({ default: module.SiJest }))
+);
+const SiTypescript = lazy(() =>
+  import("react-icons/si").then((module) => ({ default: module.SiTypescript }))
+);
+const SiSupabase = lazy(() =>
+  import("react-icons/si").then((module) => ({ default: module.SiSupabase }))
+);
+const SiTailwindcss = lazy(() =>
+  import("react-icons/si").then((module) => ({ default: module.SiTailwindcss }))
+);
+const SiPostgresql = lazy(() =>
+  import("react-icons/si").then((module) => ({ default: module.SiPostgresql }))
+);
+const SiFirebase = lazy(() =>
+  import("react-icons/si").then((module) => ({ default: module.SiFirebase }))
+);
+const FaFigma = lazy(() =>
+  import("react-icons/fa6").then((module) => ({ default: module.FaFigma }))
+);
+const RiNextjsLine = lazy(() =>
+  import("react-icons/ri").then((module) => ({ default: module.RiNextjsLine }))
+);
 
 const skillsData = [
   {

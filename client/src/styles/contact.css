@@ -1,56 +1,25 @@
 #resume-container {
-  background: radial-gradient(circle at top left, #1a1a1a, #0f0f0f);
-  border: 1px solid #333;
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
   box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.05),
     0 4px 8px rgba(0, 0, 0, 0.4);
   animation: fadeIn 0.6s ease-in-out;
 }
 
-.resume-title {
-  font-size: 2rem;
-  color: #fbbf24;
-  margin: 10px 0;
-  text-align: center;
-  font-weight: bold;
-  animation: slideDown 0.6s ease-in-out;
-}
-
-.resume-description {
-  font-size: 1rem;
-  color: #e2e8f0;
-  margin: 10px 0;
-  text-align: center;
-  line-height: 1.4;
-  text-overflow: ellipsis;
-  animation: fadeIn 0.8s ease-in-out;
-}
-
-.button-container {
+.button-container a {
   display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 12px;
-  animation: fadeInUp 0.8s ease-in-out;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .resume-button {
-  padding: 10px 16px;
-  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
   color: #ffffff;
-  text-decoration: none;
   font-weight: bold;
   transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 .docx-button {
@@ -87,11 +56,42 @@
 }
 
 .resume-icon {
-  font-size: 2rem;
-  color: #fbbf24;
-  text-shadow: 0 0 8px rgba(251, 191, 36, 0.6), 0 0 12px rgba(251, 191, 36, 0.4);
-  animation: glow 3s ease-in-out infinite alternate, bounce 5s ease infinite;
-  display: inline-block;
+  animation: glow 1.5s ease-in-out infinite alternate, bounce 5s ease infinite; /* Shorter glow animation duration */
+}
+
+/* Dark mode styles */
+.dark .resume-icon {
+  color: #34d399; /* Base color for the icon in dark mode */
+  text-shadow: 0 0 10px rgba(52, 211, 153, 1),
+    /* Initial glow size */ 0 0 20px rgba(52, 211, 153, 0.8),
+    /* Medium glow size */ 0 0 30px rgba(52, 211, 153, 0.6),
+    /* Larger glow size */ 0 0 40px rgba(52, 211, 153, 0.4); /* Largest glow size */
+}
+
+/* Light mode styles */
+.light .resume-icon {
+  color: #4ade80; /* A lighter color for the icon in light mode */
+  text-shadow: 0 0 10px rgba(74, 222, 128, 1),
+    /* Initial glow size */ 0 0 20px rgba(74, 222, 128, 0.8),
+    /* Medium glow size */ 0 0 30px rgba(74, 222, 128, 0.6),
+    /* Larger glow size */ 0 0 40px rgba(74, 222, 128, 0.4); /* Largest glow size */
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px rgba(52, 211, 153, 1),
+      0 0 20px rgba(52, 211, 153, 0.8), 0 0 30px rgba(52, 211, 153, 0.6),
+      0 0 40px rgba(52, 211, 153, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(52, 211, 153, 1), 0 0 30px rgba(52, 211, 153, 1),
+      0 0 45px rgba(52, 211, 153, 0.8), 0 0 60px rgba(52, 211, 153, 0.6);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(52, 211, 153, 1),
+      0 0 20px rgba(52, 211, 153, 0.8), 0 0 30px rgba(52, 211, 153, 0.6),
+      0 0 40px rgba(52, 211, 153, 0.4);
+  }
 }
 
 @keyframes bounce {
@@ -143,20 +143,23 @@
   }
 }
 
-@keyframes glow {
-  0% {
-    text-shadow: 0 0 8px rgba(251, 191, 36, 0.6),
-      0 0 12px rgba(251, 191, 36, 0.4);
-  }
-  100% {
-    text-shadow: 0 0 12px rgba(251, 191, 36, 0.8),
-      0 0 16px rgba(251, 191, 36, 0.6);
-  }
-}
-
 @media (max-width: 425px) {
   .button-container {
     display: flex;
     flex-direction: column;
   }
+}
+
+.personal-text {
+  line-height: 2.5rem;
+}
+
+.placeholder-styled::placeholder {
+  color: #333;
+  opacity: 0.8;
+}
+
+.dark .placeholder-styled::placeholder {
+  color: #fff;
+  opacity: 0.8;
 }

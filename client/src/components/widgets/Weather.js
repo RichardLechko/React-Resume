@@ -76,7 +76,7 @@ const Weather = () => {
   return (
     <div className="px-4">
       <header className="text-center mt-12 mb-4 flex">
-        <h1 className="m-auto text-2xl sm:text-3xl md:text-4xl font-bold text-black underline max-[375px]:text-xl max-[320px]:text-lg">
+        <h1 className="m-auto text-2xl sm:text-3xl md:text-4xl font-bold underline max-[375px]:text-xl max-[320px]:text-lg">
           Weather App Widget
         </h1>
       </header>
@@ -88,7 +88,7 @@ const Weather = () => {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="text-base sm:text-lg md:text-xl p-2 sm:p-3 md:p-4 font-bold text-black outline-1 outline-black rounded-lg w-full max-w-xs"
+            className="text-base sm:text-lg md:text-xl p-2 sm:p-3 md:p-4 font-bold outline-1 outline-black rounded-lg w-full max-w-xs"
           />
           <button
             className="bg-green-500 font-bold text-base sm:text-lg md:text-xl p-2 sm:p-3 md:p-4 rounded-lg w-full max-w-xs"
@@ -97,7 +97,7 @@ const Weather = () => {
             Search
           </button>
           {weatherData && weatherData.main && (
-            <div className="weather flex flex-col sm:flex-row items-center gap-4 w-full mt-4 sm:mt-6 p-4 sm:p-6 bg-[#444] rounded-2xl text-white">
+            <div className="weather flex flex-col sm:flex-row items-center gap-4 w-full mt-4 sm:mt-6 p-4 sm:p-6 bg-[#444] rounded-2xl">
               <div className="flex-1 flex flex-col items-center gap-2">
                 <p className="text-base sm:text-lg md:text-xl mb-2">
                   {weatherData.weather[0].main}

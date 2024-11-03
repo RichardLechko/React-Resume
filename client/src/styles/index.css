@@ -4,78 +4,19 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
+.no-transition * {
+  transition: none !important;
+}
+
+:root {
+  --darkModeText: #e2e8f0;
+  --lightBg: #e2e8f0;
+  --lightModeText: #0a0a0a;
+  --darkBg: #0a0a0a;
+}
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 215 20.2% 65.1%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
-
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
-
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
-
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
-
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 216 34% 17%;
-
-    --radius: 0.5rem;
-  }
   * {
     @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
@@ -100,16 +41,17 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "GeistMono";
+  src: url("../fonts/GeistMono-Light.woff2") format("woff2");
+  font-weight: 700;
+}
+
 * {
   font-family: "GeistSans", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-h1 {
-  text-align: center;
-  color: #e2e8f0;
 }
 
 html,
@@ -118,186 +60,78 @@ body {
   height: 100%;
   scroll-behavior: auto;
   font-family: "GeistSans", sans-serif;
+  color: var(--lightModeText);
 }
 
 #root {
-  background-color: #0a0a0a;
+  background-color: var(--lightBg);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
+.dark #root {
+  background-color: var(--darkBg);
+}
+
+.dark html,
+.dark body {
+  color: var(--darkModeText);
+}
+
+.dark p,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark a,
+.dark span,
+.dark div,
+.dark div.text {
+  color: var(--darkModeText);
+}
+
+h1 {
+  text-align: center;
+}
+
 a:hover {
   text-decoration: underline;
 }
 
-.name-wrapper {
-  display: inline-block;
-  color: #00ff00;
-  white-space: nowrap;
-  width: 100%;
-  max-width: 450px;
-  margin: 0;
-  text-align: left;
+.dark .slick-dots li.slick-active button {
+  background-color: red;
+}
+.slick-dots li.slick-active button {
+  background-color: blue;
 }
 
-.name-text {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-align: left;
-  padding-right: 0;
-  animation: typing 3s steps(40, end) forwards;
+.slick-dots li button {
+  background-color: #cccccc;
 }
 
-.name-text span {
-  background-color: #4a5568;
-  color: #ffffff;
-  padding: 0.2rem 0.2rem;
-  border-radius: 0.25rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+.slick-dots li button {
+  width: 12px;
+  height: 12px;
 }
 
 @media (max-width: 1024px) {
-  .name-wrapper {
-    max-width: 100%;
-  }
-}
-
-.slick-dots {
-  bottom: -30px;
-}
-
-.slick-dots li {
-  width: 16px;
-  height: 16px;
-  margin: 0 5px;
-}
-
-@media (width <= 1024px) {
   .slick-dots li {
     width: 10px;
     height: 10px;
   }
 }
 
-@media (width <= 640px) {
+@media (max-width: 640px) {
   .slick-dots li {
     width: 5px;
     height: 5px;
   }
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+#custom-font {
+  font-family: "GeistMono", "GeistSans", sans-serif;
 }
-
-.education-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-/* FOOTER */
-/* FOOTER */
-/* FOOTER */
-
-.footer-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.social-icon {
-  position: relative;
-  transition: transform 0.3s ease;
-}
-
-.social-icon:hover {
-  animation: shake 0.5s ease forwards, bounce 0.5s ease forwards;
-}
-
-@keyframes shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-5px);
-  }
-  50% {
-    transform: translateX(5px);
-  }
-  75% {
-    transform: translateX(-5px);
-  }
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-.hover\:scale-110:hover {
-  transform: scale(1.05);
-}
-
-.text-highlight {
-  transition: color 0.3s ease;
-}
-
-.text-highlight:hover {
-  color: #1da1f2;
-}
-
-.animate-pulse {
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* FOOTER */
-/* FOOTER */
-/* FOOTER */

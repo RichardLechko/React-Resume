@@ -69,7 +69,7 @@ const Currency = () => {
   return (
     <div>
       <header className="container justify-center m-auto mt-16 underline">
-        <h1 className="text-3xl text-center text-black font-bold max-[768px]:text-2xl mt-8 max-[375px]:text-xl">
+        <h1 className="text-3xl text-center font-bold max-[768px]:text-2xl mt-8 max-[375px]:text-xl">
           Currency App Widget
         </h1>
       </header>

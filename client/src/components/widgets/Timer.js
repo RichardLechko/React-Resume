@@ -118,7 +118,7 @@ const Timer = () => {
   const seconds = remainingTime % 60;
 
   return (
-    <div className="flex flex-col justify-center gap-6 text-center w-full max-w-[640px] mx-auto my-8 bg-[#333] text-white p-4 sm:p-6 rounded-3xl max-[850px]:mt-16 max-[768px]:w-3/4">
+    <div className="flex flex-col justify-center gap-6 text-center w-full max-w-[640px] mx-auto my-8 p-4 sm:p-6 rounded-3xl max-[850px]:mt-16 max-[768px]:w-3/4">
       <header className="flex m-auto">
         <h1 className="m-auto text-center text-2xl sm:text-3xl md:text-4xl">
           Timer
@@ -132,7 +132,7 @@ const Timer = () => {
       <h2 className="text-base sm:text-lg md:text-xl">Start Time:</h2>
       <div id="clockContainer">
         <input
-          className="p-2 text-black text-xs sm:text-sm md:text-base"
+          className="p-2 text-xs sm:text-sm md:text-base"
           type="text"
           id="timeInput"
           placeholder="Enter Time"
@@ -143,7 +143,7 @@ const Timer = () => {
       <div className="flex flex-col gap-2 sm:flex-row sm:gap-4 justify-center mx-auto text-xs sm:text-sm md:text-base p-2 sm:p-3 rounded-xl">
         <button
           id="updateButton"
-          className="bg-[#f0f0f0] mb-2 sm:mb-0 p-2 sm:p-3 rounded-xl text-black font-bold"
+          className="bg-[#f0f0f0] mb-2 sm:mb-0 p-2 sm:p-3 rounded-xl font-bold"
           ref={updateButtonRef}
           onClick={() => {
             if (isRunning) {
@@ -163,7 +163,7 @@ const Timer = () => {
 
         <button
           id="stopTimer"
-          className="bg-[#f0f0f0] p-2 sm:p-3 rounded-xl text-black font-bold"
+          className="bg-[#f0f0f0] p-2 sm:p-3 rounded-xl font-bold"
           ref={stopButtonRef}
           onClick={handleStopButtonClick}
         >

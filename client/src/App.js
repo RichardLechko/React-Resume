@@ -1,18 +1,16 @@
-import React, { useState, useRef, lazy, Suspense, useCallback } from "react";
+import React, { useRef, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar.js";
 import Footer from "./components/Footer.js";
 import { ScrollProvider } from "./components/ScrollToTop.js";
-import ShareSheet from "./components/SharedSheet.js";
-import ErrorBoundary from "./components/ErrorBoundary.js";
 
+const ErrorBoundary = lazy(() => import("./components/ErrorBoundary.js"));
 const Currency = lazy(() => import("./components/widgets/Currency.js"));
 const Timer = lazy(() => import("./components/widgets/Timer.js"));
 const Weather = lazy(() => import("./components/widgets/Weather.js"));
 const MainPage = lazy(() => import("./components/MainPage.js"));
 
 function App() {
-  const [isShareSheetVisible, setShareSheetVisible] = useState(false);
   const personalRef = useRef(null);
   const skillsRef = useRef(null);
   const workRef = useRef(null);
@@ -30,13 +28,6 @@ function App() {
     contact: contactRef,
     projects: projectsRef,
   };
-
-  const toggleShareSheet = useCallback(() => {
-    setShareSheetVisible((prevState) => !prevState);
-  }, []);
-
-  const shareButtonClass =
-    "fixed bottom-4 right-4 bg-[#ffc107] text-black font-bold p-2 rounded-lg"; // Example with teal
 
   return (
     <div className="overflow-x-hidden">
@@ -89,11 +80,6 @@ function App() {
           </div>
         </ScrollProvider>
       </Router>
-
-      <button onClick={toggleShareSheet} className={shareButtonClass}>
-        Share
-      </button>
-      <ShareSheet isVisible={isShareSheetVisible} onClose={toggleShareSheet} />
     </div>
   );
 }
