@@ -106,12 +106,14 @@ const NavBar = ({ refs }) => {
         <div className="flex items-center justify-center px-4 py-4">
           {isScreenSmall && (
             <div
-              className="text-3xl cursor-pointer"
+              className="text-3xl cursor-pointer flex items-center gap-2"
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
-              &#9776;
+              <span className="mr-2">&#9776;</span>
+              <ThemeToggle />
             </div>
           )}
+
           {!isScreenSmall && (
             <ul className="flex items-center justify-center gap-6 max-[1280px]:gap-4 text-center">
               <ThemeToggle />
@@ -143,7 +145,7 @@ const NavBar = ({ refs }) => {
       </nav>
       {isScreenSmall && (
         <div
-          className={`fixed left-0 top-[100px] h-[calc(100%-64px)] w-[200px] bg-white dark:bg-gray-900 z-40 transform ${
+          className={`fixed left-0 pt-10 top-[100px] h-[calc(100%-64px)] w-[200px] bg-white dark:bg-gray-900 z-40 transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300`}
         >

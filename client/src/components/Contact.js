@@ -169,7 +169,7 @@ const Contact = () => {
               <p className="text-lg max-[640px]:text-base">
                 <span
                   id="custom-font"
-                  className="text-blue-400 hover:text-blue-600 transition-colors duration-300"
+                  className="text-blue-400 hover:text-blue-600 transition-colors duration-300 dark:text-blue-500"
                 >
                   richardlechko [at] gmail.com
                 </span>

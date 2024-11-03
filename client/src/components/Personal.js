@@ -8,17 +8,19 @@ const Personal = () => {
       id="personal"
       className="container mx-auto pt-32 flex flex-col items-center justify-center px-4 md:px-8"
     >
-      <div className="flex items-center text-center max-[640px]:flex-col">
+      <div className="flex flex-col items-center text-center md:flex-row md:items-center md:text-left">
         <img
           src="/myself/myself.jpg"
           alt="Richard Lechko"
-          className="rounded-full w-24 h-32 mb-4 max-[640px]:mb-8"
+          className="rounded-full w-24 h-32 mb-4 md:mb-0 md:mr-4"
         />
-        <div className="ml-4 text-left flex flex-col space-y-2">
-          <h1 className="text-5xl font-bold max-[1024px]:text-3xl">
+        <div className="flex flex-col items-center md:items-start">
+          <h1 className="text-5xl font-bold max-[1024px]:text-3xl max-[640px]:text-[1.4rem]">
             Hey, I'm Richard Lechko (lech·koh)
           </h1>
-          <p className="text-lg text-gray-500">Based in Chicago, IL.</p>
+          <p className="text-lg text-gray-500 max-[640px]:text-base">
+            Based in Chicago, IL.
+          </p>
         </div>
       </div>
 
@@ -34,7 +36,7 @@ const Personal = () => {
             Resume
           </h2>
           <p className="text-md m-2">Quick download or view available:</p>
-          <div className="flex justify-center space-x-2 mt-3 button-container">
+          <div className="flex justify-center gap-4 mt-3 button-container">
             <a
               id="download-docx"
               href="/resumes/Richard_Lechko_Resume.docx"
@@ -68,7 +70,7 @@ const Personal = () => {
         </div>
       </div>
 
-      <div className="mt-6 w-1/2 mx-auto text-lg md:text-xl space-y-4 text-center max-[425px]:text-center personal-text">
+      <div className="mt-6 w-1/2 max-[640px]:w-4/5 mx-auto text-lg md:text-xl space-y-4 text-center max-[425px]:text-center personal-text">
         <p>
           I'm a web developer focused on building innovative and user-friendly
           applications. I work with various programming languages and frameworks

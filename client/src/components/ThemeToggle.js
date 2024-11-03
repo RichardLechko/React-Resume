@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 const ThemeToggle = () => {
   const [theme, setTheme] = useState("light");
 
-  const toggleTheme = () => {
+  const toggleTheme = (e) => {
+    e.stopPropagation(); // Prevent the click from bubbling up to the parent
     const root = document.documentElement;
 
     root.classList.add("no-transition");
