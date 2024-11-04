@@ -66,7 +66,7 @@ const Contact = () => {
             id="name"
             value={formData.name}
             onChange={handleChange}
-            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-[#f2f1ef] dark:bg-[#2a2a2a] rounded-xl border-2 border-gray-600 dark:border-gray-400 mb-4 focus:border-teal-500 placeholder-styled"
+            className="border-2 border-gray-500 dark:border-gray-400 mb-4 placeholder-styled max-[640px]:text-sm w-full text-xl p-4 outline-none bg-[#f2f1ef] dark:bg-[#2a2a2a] rounded-xl"
             placeholder="Your name"
             required
           />
@@ -80,7 +80,7 @@ const Contact = () => {
             id="email"
             value={formData.email}
             onChange={handleChange}
-            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-[#f2f1ef] dark:bg-[#2a2a2a] rounded-xl border-2 dark:border-gray-400 mb-4 focus:border-teal-500 placeholder-styled"
+            className="border-2 border-gray-500 dark:border-gray-400 mb-4 placeholder-styled max-[640px]:text-sm w-full text-xl p-4 outline-none bg-[#f2f1ef] dark:bg-[#2a2a2a] rounded-xl"
             placeholder="Your email"
             required
           />
@@ -94,7 +94,7 @@ const Contact = () => {
             id="subject"
             value={formData.subject}
             onChange={handleChange}
-            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-[#f2f1ef] dark:bg-[#2a2a2a] rounded-xl border-2 border-gray-600 dark:border-gray-400 mb-4 focus:border-teal-500 placeholder-styled"
+            className="border-2 border-gray-500 dark:border-gray-400 mb-4 placeholder-styled max-[640px]:text-sm w-full text-xl p-4 outline-none bg-[#f2f1ef] dark:bg-[#2a2a2a] rounded-xl"
             placeholder="Subject"
             required
           />
@@ -107,18 +107,19 @@ const Contact = () => {
             id="textarea"
             value={formData.message}
             onChange={handleChange}
-            className="max-[640px]:text-sm w-full text-xl p-4 outline-none bg-[#f2f1ef] dark:bg-[#2a2a2a] rounded-xl border-2 border-gray-600 dark:border-gray-400 mb-4 focus:border-teal-500 placeholder-styled"
+            className="border-2 border-gray-500 dark:border-gray-400 mb-4 placeholder-styled max-[640px]:text-sm w-full text-xl p-4 outline-none bg-[#f2f1ef] dark:bg-[#2a2a2a] rounded-xl"
             cols="30"
             rows="5"
             placeholder="Your message..."
             required
           ></textarea>
-
-          <input
-            type="submit"
-            className="max-[640px]:text-sm bg-[#d1d0ce] hover:bg-[#b0aeac] dark:bg-[#4a4a4a] dark:hover:bg-[#3a3a3a] w-full text-xl p-4 outline-none rounded-xl mb-4 border-none font-bold cursor-pointer transition duration-300"
-            value="Send Message"
-          />
+          <div className="w-1/3 mx-auto">
+            <input
+              type="submit"
+              className="max-[640px]:text-sm w-full bg-[#c1c9d1] hover:bg-[#a4adb8] dark:bg-[#1f1f1f] dark:hover:bg-[#333333] text-xl p-4 outline-none rounded-xl mb-4 border-none font-bold cursor-pointer transition duration-300"
+              value="Send Message"
+            />
+          </div>
         </form>
 
         <div id="formFeedback" className="text-xl mt-4">
@@ -167,7 +168,13 @@ const Contact = () => {
             <article className="flex-1">
               <h2 className="mb-1 font-semibold text-lg">Email</h2>
               <p className="text-lg max-[640px]:text-base">
-                <span id="custom-font">richardlechko [at] gmail.com</span>
+                <a
+                  href="mailto:richardlechko@gmail.com"
+                  id="custom-font"
+                  className="text-[#1e90ff] dark:text-[#79b8ff] underline hover:text-[#1c7ed6] dark:hover:text-[#5391ff] transition duration-200"
+                >
+                  richardlechko [at] gmail.com
+                </a>
               </p>
             </article>
           </div>

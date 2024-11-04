@@ -10,19 +10,6 @@ const Education = () => {
       description: "Engaged in various tech projects and networking events.",
     },
     {
-      name: "DePaul Math Club",
-      startDate: "09/2022",
-      endDate: "Present",
-      description: "Collaborated on math challenges and study groups.",
-    },
-    {
-      name: "DePaul Chess Club",
-      startDate: "09/2022",
-      endDate: "Present",
-      description:
-        "Participated in regional chess tournaments and strategy sessions.",
-    },
-    {
       name: "DePaul UI/UX Association",
       startDate: "01/2024",
       endDate: "Present",

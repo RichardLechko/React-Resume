@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
@@ -125,16 +125,29 @@ const coursework = [
 ];
 
 const Coursework = () => {
+  const sliderRef = useRef(null);
+  const [isUserInteracting, setIsUserInteracting] = useState(false);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    adaptiveHeight: true,
-    prevArrow: <SamplePrevArrow />,
-    nextArrow: <SampleNextArrow />,
+    adaptiveHeight: false,
+    prevArrow: <SamplePrevArrow onClick={() => setIsUserInteracting(true)} />,
+    nextArrow: <SampleNextArrow onClick={() => setIsUserInteracting(true)} />,
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isUserInteracting && sliderRef.current) {
+        sliderRef.current.slickNext();
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isUserInteracting]);
 
   return (
     <div>
@@ -143,11 +156,17 @@ const Coursework = () => {
       </h1>
       <Slider
         {...settings}
+        ref={sliderRef}
         className="mx-auto w-[1000px] max-[1440px]:w-[800px] max-[1024px]:w-[640px] max-[768px]:w-[360px] max-[425px]:w-[250px]"
+        beforeChange={() => setIsUserInteracting(true)}
+        afterChange={() => setIsUserInteracting(false)}
       >
         {coursework.map((course, index) => (
           <div key={index} className="flex justify-center">
-            <div className="p-6 m-auto slider-courses rounded-lg shadow-lg bg-[#f2f1ef] text-center dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-700">
+            <div
+              className="p-6 m-auto slider-courses rounded-lg shadow-lg bg-[#f2f1ef] text-center dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-700"
+              style={{ height: "300px" }}
+            >
               <h2 className="text-2xl font-bold mb-8 max-[768px]:text-xl max-[640px]:mb-4">
                 {course.title}
               </h2>
@@ -166,30 +185,26 @@ const Coursework = () => {
   );
 };
 
-const SamplePrevArrow = (props) => {
-  const { onClick } = props;
-  return (
-    <div
-      className="arrow prev-arrow absolute left-10 z-10 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer hover:bg-gray-200 max-[640px]:left-1 max-[640px]:w-8 max-[640px]:h-8 dark:bg-gray-800 dark:hover:bg-gray-600"
-      style={{ top: "50%", transform: "translateY(-50%)" }}
-      onClick={onClick}
-    >
-      <FiChevronLeft />
-    </div>
-  );
-};
+const SamplePrevArrow = ({ onClick }) => (
+  <button
+    className="arrow prev-arrow absolute left-10 z-10 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer hover:bg-gray-200 max-[640px]:left-1 max-[640px]:w-8 max-[640px]:h-8 dark:bg-gray-800 dark:hover:bg-gray-600"
+    style={{ top: "50%", transform: "translateY(-50%)" }}
+    onClick={onClick}
+    aria-label="Previous Slide"
+  >
+    <FiChevronLeft />
+  </button>
+);
 
-const SampleNextArrow = (props) => {
-  const { onClick } = props;
-  return (
-    <div
-      className="arrow next-arrow absolute right-10 z-10 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer hover:bg-gray-200 max-[640px]:right-1 max-[640px]:w-8 max-[640px]:h-8 dark:bg-gray-800 dark:hover:bg-gray-600"
-      style={{ top: "50%", transform: "translateY(-50%)" }}
-      onClick={onClick}
-    >
-      <FiChevronRight />
-    </div>
-  );
-};
+const SampleNextArrow = ({ onClick }) => (
+  <button
+    className="arrow next-arrow absolute right-10 z-10 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer hover:bg-gray-200 max-[640px]:right-1 max-[640px]:w-8 max-[640px]:h-8 dark:bg-gray-800 dark:hover:bg-gray-600"
+    style={{ top: "50%", transform: "translateY(-50%)" }}
+    onClick={onClick}
+    aria-label="Next Slide"
+  >
+    <FiChevronRight />
+  </button>
+);
 
 export default Coursework;

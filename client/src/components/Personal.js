@@ -6,7 +6,7 @@ const Personal = () => {
   return (
     <section
       id="personal"
-      className="flex flex-col items-center justify-center px-4 md:px-8 "
+      className="flex flex-col items-center justify-center px-4 md:px-8"
     >
       <div className="flex flex-col items-center text-center md:flex-row md:items-center md:text-left">
         <img

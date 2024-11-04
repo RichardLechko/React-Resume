@@ -25,7 +25,15 @@ const workExperiences = [
       "Ensure optimal viewing experiences through responsive design and user testing.",
     ],
     logo: "/work-images/rl-it-firm-logo.png",
-    tools: ["Astro", "Tailwind", "React", "Consulting"],
+    tools: [
+      "Astro",
+      "Tailwind",
+      "React",
+      "Consulting",
+      "SASS",
+      "TypeScript",
+      "Node.js",
+    ],
   },
   {
     companyName: "Mariano's",
@@ -56,7 +64,7 @@ const Company = React.forwardRef(
     },
     ref
   ) => {
-    const isMarianos = companyName === "Mariano's"; // Check if it's Mariano's job
+    const isMarianos = companyName === "Mariano's";
 
     return (
       <div
@@ -67,7 +75,7 @@ const Company = React.forwardRef(
           src={logo}
           alt={`${companyName} logo`}
           className={`rounded-full border-2 border-gray-800 ml-[-3.3rem] z-20 max-[768px]:ml-0 max-[768px]:mb-4 ${
-            isMarianos ? "w-16 h-16 ml-[-2.4rem]" : "w-24 h-24"
+            isMarianos ? "w-16 h-16 ml-[-2.35rem]" : "w-24 h-24"
           }`}
         />
         <div
