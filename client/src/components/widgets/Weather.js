@@ -3,9 +3,10 @@ import {
   FaCloudShowersHeavy,
   FaRegSnowflake,
   FaCloudRain,
-  FaGlassWaterDroplet,
   FaCloud,
-} from "react-icons/fa6";
+} from "react-icons/fa";
+
+import { FaGlassWaterDroplet } from "react-icons/fa6";
 
 const Weather = () => {
   useEffect(() => {
@@ -88,16 +89,16 @@ const Weather = () => {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="text-base sm:text-lg md:text-xl p-2 sm:p-3 md:p-4 font-bold outline-1 outline-black rounded-lg w-full max-w-xs"
+            className="text-base sm:text-lg md:text-xl p-2 sm:p-3 md:p-4 font-bold outline-1 outline-black rounded-lg w-full max-w-xs dark:text-[#0a0a0a]"
           />
           <button
-            className="bg-green-500 font-bold text-base sm:text-lg md:text-xl p-2 sm:p-3 md:p-4 rounded-lg w-full max-w-xs"
+            className="bg-green-500 font-bold text-base sm:text-lg md:text-xl p-2 sm:p-3 md:p-4 rounded-lg w-full max-w-xs dark:text-[#0a0a0a]"
             onClick={handleSearch}
           >
             Search
           </button>
           {weatherData && weatherData.main && (
-            <div className="weather flex flex-col sm:flex-row items-center gap-4 w-full mt-4 sm:mt-6 p-4 sm:p-6 bg-[#444] rounded-2xl">
+            <div className="weather flex flex-col sm:flex-row items-center gap-4 w-full mt-4 sm:mt-6 p-4 sm:p-6 bg-[#444] rounded-2xl text-white">
               <div className="flex-1 flex flex-col items-center gap-2">
                 <p className="text-base sm:text-lg md:text-xl mb-2">
                   {weatherData.weather[0].main}

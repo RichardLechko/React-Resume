@@ -52,8 +52,8 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="pt-36">
-      <section className="flex flex-col text-center w-[90%] max-w-[900px] m-auto">
+    <section id="contact">
+      <section>
         <h1 className="text-3xl mb-6 font-bold">Get In Touch!</h1>
 
         <form className="w-full mt-6" onSubmit={handleSubmit}>
@@ -167,12 +167,7 @@ const Contact = () => {
             <article className="flex-1">
               <h2 className="mb-1 font-semibold text-lg">Email</h2>
               <p className="text-lg max-[640px]:text-base">
-                <span
-                  id="custom-font"
-                  className="text-blue-400 dark:text-blue-500"
-                >
-                  richardlechko [at] gmail.com
-                </span>
+                <span id="custom-font">richardlechko [at] gmail.com</span>
               </p>
             </article>
           </div>

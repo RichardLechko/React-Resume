@@ -38,7 +38,7 @@ const Education = () => {
   ];
 
   return (
-    <div className="container flex flex-col m-auto p-8 pt-32 education-fade-in space-y-8">
+    <div>
       <h1 className="text-4xl text-center font-bold max-[640px]:text-3xl max-[425px]:text-2xl mb-6 text-gray-800 dark:text-gray-200">
         Education
       </h1>

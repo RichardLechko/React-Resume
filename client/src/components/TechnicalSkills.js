@@ -1,15 +1,167 @@
 import React, { Suspense, useState } from "react";
-import skillsData from "./skillsData";
+import { DiReact, DiNodejs, DiGithubBadge } from "react-icons/di";
+import { BiLogoRedux, BiLogoGit, BiLogoAws } from "react-icons/bi";
+import {
+  SiJest,
+  SiTypescript,
+  SiSupabase,
+  SiTailwindcss,
+  SiPostgresql,
+  SiFirebase,
+} from "react-icons/si";
+import {
+  FaFigma,
+  FaUniversity,
+  FaUser,
+  FaBook,
+  FaGlobe,
+  FaSass,
+} from "react-icons/fa";
+import { FaRegFileLines } from "react-icons/fa6";
+import { RiNextjsLine } from "react-icons/ri";
+import { GiMeatCleaver } from "react-icons/gi";
+import { BsCurrencyDollar } from "react-icons/bs";
+import { AiFillClockCircle } from "react-icons/ai";
+import { HiSun, HiCurrencyEuro } from "react-icons/hi";
+
+const icons = {
+  DiReact,
+  DiNodejs,
+  DiGithubBadge,
+  BiLogoRedux,
+  BiLogoGit,
+  BiLogoAws,
+  SiJest,
+  SiTypescript,
+  SiSupabase,
+  SiTailwindcss,
+  SiPostgresql,
+  SiFirebase,
+  FaFigma,
+  RiNextjsLine,
+  FaUniversity,
+  FaUser,
+  FaBook,
+  FaGlobe,
+  FaRegFileLines,
+  GiMeatCleaver,
+  BsCurrencyDollar,
+  AiFillClockCircle,
+  HiSun,
+  HiCurrencyEuro,
+  FaSass,
+};
+
+const skillsData = [
+  {
+    skills: [
+      {
+        iconName: "DiReact",
+        name: "React",
+        description: "JavaScript Library",
+        hoverColor: "#61DAFB",
+        darkHoverColor: "#1E90FF",
+      },
+      {
+        iconName: "BiLogoRedux",
+        name: "Redux",
+        description: "State Management",
+        hoverColor: "#764ABC",
+        darkHoverColor: "#A052C6",
+      },
+      {
+        iconName: "BiLogoGit",
+        name: "Git",
+        description: "Version Control",
+        hoverColor: "#F05033",
+        darkHoverColor: "#FF6347",
+      },
+      {
+        iconName: "SiJest",
+        name: "Jest",
+        description: "Testing Framework",
+        hoverColor: "#99424F",
+        darkHoverColor: "#D3003F",
+      },
+      {
+        iconName: "SiTypescript",
+        name: "TypeScript",
+        description: "JavaScript but better",
+        hoverColor: "#3178C6",
+        darkHoverColor: "#004B87",
+      },
+      {
+        iconName: "FaFigma",
+        name: "Figma",
+        description: "Design Tool",
+        hoverColor: "#F24E1E",
+        darkHoverColor: "#D95B0D",
+      },
+      {
+        iconName: "SiSupabase",
+        name: "Supabase",
+        description: "Backend tool",
+        hoverColor: "#3ECF8E",
+        darkHoverColor: "#2CA67B",
+      },
+      {
+        iconName: "SiTailwindcss",
+        name: "Tailwind",
+        description: "CSS Framework",
+        hoverColor: "#38B2AC",
+        darkHoverColor: "#2D8C8B",
+      },
+      {
+        iconName: "RiNextjsLine",
+        name: "Next.js",
+        description: "React Framework",
+        hoverColor: "#0070f3",
+        darkHoverColor: "#1a73e8",
+      },
+      {
+        iconName: "SiPostgresql",
+        name: "PostgreSQL",
+        description: "Relational Database",
+        hoverColor: "#336791",
+        darkHoverColor: "#154360",
+      },
+      {
+        iconName: "BiLogoAws",
+        name: "AWS",
+        description: "Cloud Services",
+        hoverColor: "#FF9900",
+        darkHoverColor: "#FFA500",
+      },
+      {
+        iconName: "DiNodejs",
+        name: "Node.js",
+        description: "JavaScript Runtime",
+        hoverColor: "#83CD29",
+        darkHoverColor: "#5F7B1E",
+      },
+      {
+        iconName: "SiFirebase",
+        name: "Firebase",
+        description: "Backend-as-a-Service",
+        hoverColor: "#FFCA28",
+        darkHoverColor: "#FFA726",
+      },
+      {
+        iconName: "FaSass",
+        name: "Sass",
+        description: "CSS Preprocessor",
+        hoverColor: "#CC6699",
+        darkHoverColor: "#C37D9D",
+      },
+    ],
+  },
+];
 
 const TechnicalSkills = React.forwardRef((props, ref) => {
   return (
-    <section
-      className="min-h-screen py-16 px-4 md:px-8"
-      id="technical-skills"
-      ref={ref}
-    >
-      <div className="max-w-7xl mx-auto">
-        <header className="text-center mb-16">
+    <section id="technical-skills" ref={ref}>
+      <div>
+        <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl">
             Technical Skills
           </h1>
@@ -20,7 +172,8 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
             {skillsData[0].skills.map(
-              ({ icon, name, description, hoverColor, darkHoverColor }) => {
+              ({ iconName, name, description, hoverColor, darkHoverColor }) => {
+                const IconComponent = icons[iconName];
                 const [isHovered, setIsHovered] = useState(false);
 
                 return (
@@ -37,14 +190,14 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
                         }`}
                       >
                         <span
-                          className="transition-colors duration-300"
+                          className="transition-colors duration-300 text-4xl"
                           style={{
                             color: isHovered
                               ? darkHoverColor || hoverColor
                               : "inherit",
                           }}
                         >
-                          {icon}
+                          <IconComponent />
                         </span>
                       </div>
 

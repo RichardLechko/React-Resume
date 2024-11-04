@@ -132,7 +132,7 @@ const Timer = () => {
       <h2 className="text-base sm:text-lg md:text-xl">Start Time:</h2>
       <div id="clockContainer">
         <input
-          className="p-2 text-xs sm:text-sm md:text-base"
+          className="p-2 text-xs sm:text-sm md:text-base dark:text-[#0a0a0a]"
           type="text"
           id="timeInput"
           placeholder="Enter Time"
@@ -140,7 +140,7 @@ const Timer = () => {
           ref={timeInputRef}
         />
       </div>
-      <div className="flex flex-col gap-2 sm:flex-row sm:gap-4 justify-center mx-auto text-xs sm:text-sm md:text-base p-2 sm:p-3 rounded-xl">
+      <div className="flex flex-col gap-2 sm:flex-row sm:gap-4 justify-center mx-auto text-xs sm:text-sm md:text-base p-2 sm:p-3 rounded-xl dark:text-[#0a0a0a]">
         <button
           id="updateButton"
           className="bg-[#f0f0f0] mb-2 sm:mb-0 p-2 sm:p-3 rounded-xl font-bold"
@@ -163,7 +163,7 @@ const Timer = () => {
 
         <button
           id="stopTimer"
-          className="bg-[#f0f0f0] p-2 sm:p-3 rounded-xl font-bold"
+          className="bg-[#f0f0f0] p-2 sm:p-3 rounded-xl font-bold "
           ref={stopButtonRef}
           onClick={handleStopButtonClick}
         >

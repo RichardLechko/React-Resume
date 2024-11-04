@@ -1,132 +1,15 @@
+import React, { useEffect } from "react";
+import { useScroll } from "./ScrollToTop.js";
 import { FaUniversity, FaUser, FaBook, FaGlobe } from "react-icons/fa";
+import { FaRegFileLines } from "react-icons/fa6";
 import { GiMeatCleaver } from "react-icons/gi";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { AiFillClockCircle } from "react-icons/ai";
 import { HiSun, HiCurrencyEuro } from "react-icons/hi";
 import { DiGithubBadge } from "react-icons/di";
 
-import { FaRegFileLines } from "react-icons/fa6";
-
-import { Radar } from "react-chartjs-2";
-import { useEffect, useRef } from "react";
-import { useScroll } from "./ScrollToTop.js";
-import {
-  Chart as ChartJS,
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend,
-} from "chart.js";
-
-ChartJS.register(
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend
-);
-
 const Widgets = () => {
   const { scrollToTop } = useScroll();
-  const chartRef = useRef(null);
-
-  const data = {
-    labels: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Typescript",
-      "SQL",
-      "C",
-      "React",
-      "Node.js",
-    ],
-    datasets: [
-      {
-        label: "Expertise Level",
-        data: [10, 10, 10, 5, 9, 3, 9, 10],
-        backgroundColor: "rgba(54, 162, 235, 0.6)",
-        borderColor: "rgba(54, 162, 235, 1)",
-        borderWidth: 3,
-        pointBackgroundColor: "rgba(255, 99, 132, 1)",
-        pointBorderColor: "#fff",
-        pointHoverBackgroundColor: "#fff",
-        pointHoverBorderColor: "rgba(54, 162, 235, 1)",
-        pointRadius: 4,
-        pointHoverRadius: 7,
-        fill: true,
-      },
-    ],
-  };
-
-  const getLabelColor = () => {
-    return document.body.classList.contains("dark")
-      ? "rgba(255, 255, 255, 1)"
-      : "rgba(0, 0, 0, 1)";
-  };
-
-  const options = {
-    scales: {
-      r: {
-        angleLines: { display: true },
-        grid: {
-          color: "rgba(255, 99, 132, 0.5)",
-          lineWidth: 2,
-        },
-        suggestedMin: 0,
-        suggestedMax: 10,
-        ticks: { display: false },
-        pointLabels: {
-          display: true,
-          color: getLabelColor(),
-          font: (ctx) => {
-            const size = Math.min(Math.round(ctx.chart.width / 32), 18);
-            return { size };
-          },
-        },
-      },
-    },
-    plugins: {
-      legend: { display: false },
-    },
-  };
-
-  useEffect(() => {
-    const updateChartColors = () => {
-      if (chartRef.current) {
-        const chartInstance = chartRef.current;
-
-        chartInstance.data.datasets[0].backgroundColor =
-          document.body.classList.contains("dark")
-            ? "rgba(255, 99, 132, 0.6)"
-            : "rgba(54, 162, 235, 0.6)";
-
-        chartInstance.data.datasets[0].borderColor =
-          document.body.classList.contains("dark")
-            ? "rgba(255, 99, 132, 1)"
-            : "rgba(54, 162, 235, 1)";
-
-        chartInstance.options.scales.r.pointLabels.color = getLabelColor();
-
-        chartInstance.update();
-      }
-    };
-
-    updateChartColors();
-
-    const observer = new MutationObserver(updateChartColors);
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   useEffect(() => {
     scrollToTop();
@@ -136,128 +19,133 @@ const Widgets = () => {
     {
       mainProject: true,
       linkText: "DePaul x Northern Trust Competition",
-      icon: <FaUniversity size={50} />,
+      icon: FaUniversity,
       text: "A finance application developed for the Northern Trust x DePaul University competition. This project got us 3rd place in the competition.",
       newTab: true,
       techStack: ["React", "JS", "Tailwind", "Python", "Flask"],
       live: true,
       liveLink: "https://depaul-northern-trust-hackathon.vercel.app/",
+      inDevelopment: false,
     },
     {
       mainProject: true,
       linkText: "Personal Portfolio",
-      icon: <FaUser size={50} />,
+      icon: FaUser,
       text: "My web dev portfolio, showcasing personal aspects of my life, education, skills, and more!",
       newTab: true,
       techStack: ["React", "Tailwind", "JavaScript", "Node.js"],
       live: true,
       liveLink: "https://www.richardlechko.com/",
+      inDevelopment: false,
     },
     {
       mainProject: true,
       linkText: "Freedom Butchers Freelance Work",
-      icon: <GiMeatCleaver size={50} />,
+      icon: GiMeatCleaver,
       text: "A full-fledged e-commerce site developed for a small local business called 'Freedom Butchers'.",
       newTab: true,
       techStack: ["Astro", "Node.js", "Express", "SCSS"],
       live: true,
       liveLink: "https://freedombutchers.vercel.app/",
+      inDevelopment: true,
     },
     {
       mainProject: true,
       linkText: "Blog",
-      icon: <FaBook size={50} />,
+      icon: FaBook,
       text: "My public notes page.",
       newTab: true,
       techStack: ["React", "HyGraph", "API", "Tailwind"],
       live: true,
       liveLink: "https://public-notes-page-react.vercel.app/",
+      inDevelopment: false,
     },
     {
       mainProject: false,
       linkText: "Fintech App",
-      icon: <BsCurrencyDollar size={50} />,
+      icon: BsCurrencyDollar,
       text: "An app showcasing CSS skills.",
       newTab: true,
       techStack: ["HTML", "CSS"],
       live: false,
       liveLink: "https://github.com/RichardLechko/Fintech-Solutions",
+      inDevelopment: false,
     },
     {
       mainProject: false,
       linkText: "Timer Widget",
-      icon: <AiFillClockCircle size={50} />,
+      icon: AiFillClockCircle,
       text: "A timer widget that counts down from a set time.",
       newTab: false,
       techStack: ["JavaScript", "HTML", "CSS"],
       live: true,
       liveLink: "/widgets/timer",
+      inDevelopment: false,
     },
     {
       mainProject: false,
       linkText: "Weather App Widget",
-      icon: <HiSun size={50} className="text-yellow-400" />,
+      icon: HiSun,
       text: "Enter a city to get real-time weather data.",
       newTab: false,
       techStack: ["JavaScript", "API", "HTML", "Tailwind"],
       live: true,
       liveLink: "/widgets/weather",
+      inDevelopment: false,
     },
     {
       mainProject: false,
       linkText: "Currency Converter Widget",
-      icon: <HiCurrencyEuro size={50} className="text-green-400" />,
+      icon: HiCurrencyEuro,
       text: "Convert between 33 currencies using real-time API data.",
       newTab: false,
       techStack: ["JavaScript", "API", "HTML", "Tailwind"],
       live: true,
       liveLink: "/widgets/currency",
+      inDevelopment: false,
     },
     {
       mainProject: false,
       linkText: "IT 238 - Final Project",
-      icon: <FaGlobe size={50} className="text-blue-500" />,
+      icon: FaGlobe,
       text: "A travel guide website to France for my final project.",
       newTab: true,
       techStack: ["JavaScript", "CSS", "HTML"],
       live: false,
       liveLink: "https://github.com/RichardLechko/it238-finalproject",
+      inDevelopment: false,
     },
     {
       mainProject: false,
       linkText: "Loruki Website",
-      icon: <FaRegFileLines size={50} className="text-blue-500" />,
+      icon: FaRegFileLines,
       text: "A mockup website for a cloud hosting service.",
       newTab: true,
       techStack: ["HTML", "CSS"],
       live: false,
       liveLink: "https://github.com/RichardLechko/Loruki-Website",
+      inDevelopment: false,
     },
     {
       mainProject: false,
       linkText: "Personal Website (Deprecated)",
-      icon: <DiGithubBadge size={50} />,
+      icon: DiGithubBadge,
       text: "Source code for my web development portfolio.",
       newTab: true,
       techStack: ["HTML", "CSS", "JavaScript"],
       live: false,
       liveLink: "https://github.com/RichardLechko/RichardLechkoResume",
+      inDevelopment: false,
     },
   ];
 
   return (
-    <div
-      id="projects"
-      className="container mx-auto px-4 pt-32 mb-20 flex flex-col items-center"
-    >
+    <div id="projects">
       <h1 className="text-4xl mb-4 font-bold text-center max-[640px]:text-3xl max-[425px]:text-2xl">
         Projects:
       </h1>
-      <div className="w-full max-w-[500px] aspect-square mx-auto max-[640px]:max-w-[380px] max-[375px]:max-w-[280px]">
-        <Radar ref={chartRef} data={data} options={options} />
-      </div>
-      <section className="mt-16">
-        <h1 className="text-center text-3xl mb-8 font-bold">Main Projects</h1>
+
+      <section>
         <div className="flex justify-center mb-24">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects
@@ -293,6 +181,7 @@ const WidgetsCard = ({
   techStack,
   live,
   liveLink,
+  inDevelopment,
 }) => {
   return (
     <div
@@ -302,46 +191,55 @@ const WidgetsCard = ({
           : "bg-[#D8D8D8] dark:bg-[#1E1E1E]"
       } rounded-xl shadow-lg transition-transform duration-300`}
     >
-      <div className="flex-grow text-center">
-        <div className="mb-2">
-          {techStack.map((tech, index) => (
-            <span
-              key={index}
-              className={`inline-block ${
-                mainProject
-                  ? "bg-[#D0D0D0] dark:bg-[#4A4A4A] hover:bg-[#B8B8B8] dark:hover:bg-[#3A3A3A]"
-                  : "bg-[#eaeae8] dark:bg-[#3B3B3B] hover:bg-[#D1D1D1] dark:hover:bg-[#2A2A2A]"
-              } text-sm font-semibold py-2 px-3 rounded-full mr-2 transition duration-200 mb-4`}
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        <h4
-          className={`text-2xl mb-4 ${
-            mainProject ? "font-bold" : "font-semibold"
-          } dark:text-gray-200`}
-        >
-          {linkText}
-        </h4>
-
-        <div className="text-6xl mb-4 flex justify-center">
-          <span className="text-[#3b82f6] dark:text-[#3b82f6]">{icon}</span>
-        </div>
-
-        <p className="text-lg h-20 overflow-hidden text-center dark:text-gray-400">
-          {text}
-        </p>
+      {/* Tech Stack */}
+      <div className="text-center mb-4">
+        {techStack.map((tech, index) => (
+          <span
+            key={index}
+            className={`inline-block ${
+              mainProject
+                ? "bg-[#D0D0D0] dark:bg-[#4A4A4A]"
+                : "bg-[#eaeae8] dark:bg-[#3B3B3B]"
+            } text-sm font-semibold py-2 px-3 rounded-full mr-2 transition duration-200 mb-1`}
+          >
+            {tech}
+          </span>
+        ))}
       </div>
-      <a
-        href={liveLink || "#"}
-        target={newTab ? "_blank" : "_self"}
-        rel={newTab ? "noopener noreferrer" : undefined}
-        className="mt-4 inline-block bg-blue-500 text-white dark:bg-blue-700 dark:text-gray-200 py-2 px-4 rounded transition duration-200 hover:bg-blue-600 dark:hover:bg-blue-600 self-end mx-auto"
+
+      {/* Link Text */}
+      <h4
+        className={`text-2xl text-center mb-4 ${
+          mainProject ? "font-bold" : "font-semibold"
+        } dark:text-gray-200`}
       >
-        {live ? "View Site" : "View Repo"}
-      </a>
+        {linkText}
+      </h4>
+
+      {/* Icon and Description Container */}
+      <div className="flex-grow flex flex-col items-center justify-center mb-6">
+        <span className="text-5xl mb-4">{React.createElement(icon)}</span>
+        <p className="text-lg text-center px-4 dark:text-gray-400">{text}</p>
+      </div>
+
+      {/* In Development Notice */}
+      {inDevelopment && (
+        <p className="text-center text-sm font-semibold dark:text-gray-300 mb-4">
+          *In Development*
+        </p>
+      )}
+
+      {/* Button */}
+      <div className="text-center mt-4">
+        <a
+          href={liveLink || "#"}
+          target={newTab ? "_blank" : "_self"}
+          rel={newTab ? "noopener noreferrer" : undefined}
+          className="inline-block bg-blue-500 text-white dark:bg-blue-700 dark:text-gray-200 py-2 px-4 rounded transition duration-200 hover:bg-blue-600 dark:hover:bg-blue-600"
+        >
+          {live ? "View Site" : "View Repo"}
+        </a>
+      </div>
     </div>
   );
 };

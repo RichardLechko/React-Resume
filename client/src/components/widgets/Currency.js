@@ -1,5 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { IoRefresh } from "react-icons/io5";
+import React, { useState, useEffect, useCallback, lazy } from "react";
+
+const IoRefresh = lazy(() =>
+  import("react-icons/io5").then((module) => ({
+    default: module.IoRefresh,
+  }))
+);
 
 const Currency = () => {
   useEffect(() => {
@@ -83,13 +88,13 @@ const Currency = () => {
                   type="text"
                   name="currency-startVal"
                   id="currency-startVal"
-                  className="text-lg md:text-xl font-bold text-center p-3 md:p-[15px] border-b-2 md:border-b-0 md:border-r-2 border-black max-[375px]:p-1 max-[375px]:text-base"
+                  className="dark:text-[#0a0a0a] text-lg md:text-xl font-bold text-center p-3 md:p-[15px] border-b-2 md:border-b-0 md:border-r-2 border-black max-[375px]:p-1 max-[375px]:text-base"
                   value={firstCurrVal}
                   onChange={(e) => setFirstCurrVal(e.target.value)}
                 />
 
                 <select
-                  className="text-lg md:text-xl font-bold text-center p-3 md:p-[15px] max-[375px]:p-1 max-[375px]:text-base"
+                  className="text-lg md:text-xl font-bold text-center p-3 md:p-[15px] max-[375px]:p-1 max-[375px]:text-base dark:text-[#0a0a0a]"
                   name="currency-start"
                   id="currency-start"
                   value={startCurrency}
@@ -136,12 +141,12 @@ const Currency = () => {
                   type="text"
                   name="currency-endVal"
                   id="currency-endVal"
-                  className="text-lg md:text-xl font-bold text-center p-3 md:p-[15px] border-b-2 md:border-b-0 md:border-r-2 border-black max-[375px]:p-1 max-[375px]:text-base"
+                  className="dark:text-[#0a0a0a] text-lg md:text-xl font-bold text-center p-3 md:p-[15px] border-b-2 md:border-b-0 md:border-r-2 border-black max-[375px]:p-1 max-[375px]:text-base"
                   value={secondCurrVal}
                   readOnly
                 />
                 <select
-                  className="text-lg md:text-xl font-bold text-center p-3 md:p-[15px] max-[375px]:p-1 max-[375px]:text-base"
+                  className="text-lg md:text-xl font-bold text-center p-3 md:p-[15px] max-[375px]:p-1 max-[375px]:text-base dark:text-[#0a0a0a]"
                   name="currency-end"
                   id="currency-end"
                   value={endCurrency}
@@ -186,14 +191,14 @@ const Currency = () => {
               </div>
             </form>
           </div>
-          <div className="flex-grow flex justify-center items-center mt-4 max-md:mt-0 ">
-            <i
+          <div className="flex-grow flex justify-center items-center mt-4 max-md:mt-0">
+            <div
               id="flip-icon"
               className="rotate-90 hover:cursor-pointer p-4 text-[4rem] max-[375px]:text-[3rem]"
               onClick={handleFlip}
             >
               <IoRefresh />
-            </i>
+            </div>
           </div>
         </div>
 

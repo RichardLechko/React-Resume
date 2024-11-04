@@ -21,35 +21,66 @@ const MainPage = ({
   return (
     <div className="overflow-x-hidden relative">
       <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
-        <section id="personal" ref={personalRef}>
+        <section
+          id="personal"
+          ref={personalRef}
+          className="pt-32 container mx-auto px-4 max-[1024px]:pt-20"
+        >
           <Personal />
         </section>
 
-        <section id="technical-skills" ref={skillsRef}>
+        <section
+          id="technical-skills"
+          ref={skillsRef}
+          className="min-h-screen pt-32 px-4 md:px-8 container mx-auto max-[1024px]:pt-20"
+        >
           <TechnicalSkills />
         </section>
 
-        <section id="work" ref={workRef}>
+        <section
+          id="work"
+          ref={workRef}
+          className="pt-32 container mx-auto px-4 max-[1024px]:pt-20"
+        >
           <Work />
         </section>
 
-        <section id="education" ref={educationRef}>
+        <section
+          id="education"
+          ref={educationRef}
+          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20"
+        >
           <Education />
         </section>
 
-        <section id="relevantCoursework">
+        <section
+          id="relevantCoursework"
+          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20"
+        >
           <Coursework />
         </section>
 
-        <section id="publications" ref={publicationsRef}>
+        <section
+          id="publications"
+          ref={publicationsRef}
+          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20"
+        >
           <Publications />
         </section>
 
-        <section id="contact" ref={contactRef}>
+        <section
+          id="contact"
+          ref={contactRef}
+          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20"
+        >
           <Contact />
         </section>
 
-        <section id="projects" ref={projectsRef}>
+        <section
+          id="projects"
+          ref={projectsRef}
+          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20"
+        >
           <Projects />
         </section>
       </Suspense>

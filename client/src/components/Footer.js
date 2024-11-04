@@ -1,10 +1,14 @@
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import icons from "./icons";
 
 const Footer = () => {
+  const openLink = (url) => {
+    window.open(url, "_blank");
+  };
+
   return (
-    <footer className="footer py-8 px-4 text-center bg-[#f5f3f5] dark:bg-[#2c2c2c] border-t border-[#bcbcbc] dark:border-[#6b4f4f]">
+    <footer className="mt-8 py-8 px-4 text-center bg-[#f5f3f5] dark:bg-[#2c2c2c] border-t border-[#bcbcbc] dark:border-[#6b4f4f]">
       <div className="max-w-screen-xl mx-auto relative z-10">
-        <h1 className="text-4xl font-bold mb-4 sm:text-3xl xs:text-2xl text-[#333333] dark:text-[#ffffff] ">
+        <h1 className="text-4xl font-bold mb-4 sm:text-3xl xs:text-2xl text-[#333333] dark:text-[#ffffff]">
           Richard Lechko
         </h1>
         <p className="pb-4 text-lg sm:text-base xs:text-sm text-[#333333] dark:text-[#ffffff]">
@@ -12,22 +16,26 @@ const Footer = () => {
         </p>
         <div className="flex justify-center space-x-4 mt-4">
           <a
-            href="https://github.com/RichardLechko"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              openLink("https://github.com/RichardLechko");
+            }}
             aria-label="Visit my GitHub profile"
-            className="transition-transform duration-300 "
+            className="transition-transform duration-300"
           >
-            <FaGithub className="text-3xl text-[#333333] dark:text-[#ffffff] transition-transform duration-300 hover:scale-110 hover:text-blue-500 dark:hover:text-blue-500" />
+            <icons.ImGithub className="text-3xl text-[#333333] dark:text-[#ffffff] transition-transform duration-300 hover:scale-110 hover:text-blue-500 dark:hover:text-blue-500" />
           </a>
           <a
-            href="https://www.linkedin.com/in/richard-lechko/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              openLink("https://www.linkedin.com/in/richard-lechko/");
+            }}
             aria-label="Visit my LinkedIn profile"
-            className="transition-transform duration-300 "
+            className="transition-transform duration-300"
           >
-            <FaLinkedin className="text-3xl text-[#333333] dark:text-[#ffffff] transition-transform duration-300 hover:scale-110 hover:text-blue-500 dark:hover:text-blue-500" />
+            <icons.FaLinkedin className="text-3xl text-[#333333] dark:text-[#ffffff] transition-transform duration-300 hover:scale-110 hover:text-blue-500 dark:hover:text-blue-500" />
           </a>
         </div>
         <p className="mt-4 text-[#333333] dark:text-[#ffffff]">

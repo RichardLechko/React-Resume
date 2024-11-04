@@ -38,55 +38,95 @@ const workExperiences = [
     ],
     logo: "/work-images/marianos-logo.png",
     tools: ["Soft Skills"],
+    truncated: true,
   },
 ];
 
 const Company = React.forwardRef(
   (
-    { companyName, position, startTime, endTime, descriptions, logo, tools },
+    {
+      companyName,
+      position,
+      startTime,
+      endTime,
+      descriptions,
+      logo,
+      tools,
+      truncated,
+    },
     ref
   ) => {
+    const isMarianos = companyName === "Mariano's"; // Check if it's Mariano's job
+
     return (
       <div
         ref={ref}
-        className="flex items-start mb-8 relative max-[768px]:flex-col max-[768px]:items-center"
+        className={`flex items-start relative max-[768px]:flex-col max-[768px]:items-center`}
       >
         <img
           src={logo}
           alt={`${companyName} logo`}
-          className="w-24 h-24 rounded-full border-2 border-gray-800 ml-[-3.3rem] z-20 max-[768px]:ml-0 max-[768px]:mb-4 max-[425px]:w-16 max-[425px]:h-16"
+          className={`rounded-full border-2 border-gray-800 ml-[-3.3rem] z-20 max-[768px]:ml-0 max-[768px]:mb-4 ${
+            isMarianos ? "w-16 h-16 ml-[-2.4rem]" : "w-24 h-24"
+          }`}
         />
-        <div className="flex-grow pl-10 max-[768px]:pl-0 max-[768px]:text-center">
-          <p className="text-sm mb-1 max-[425px]:text-xs text-gray-600 dark:text-gray-400">
-            <span className="font-semibold">{startTime}</span> -{" "}
-            <span className="font-semibold">{endTime}</span>
+        <div
+          className={`flex-grow pl-10 max-[768px]:pl-0 max-[768px]:text-center ${
+            isMarianos ? "pl-14" : ""
+          }`}
+        >
+          <p
+            className={`text-sm mb-1 max-[425px]:text-xs text-gray-600 dark:text-gray-400 ${
+              isMarianos ? "text-xs" : "font-semibold"
+            }`}
+          >
+            <span>{startTime}</span> - <span>{endTime}</span>
           </p>
-          <h2 className="text-3xl font-bold mb-1 max-[425px]:text-2xl text-gray-800 dark:text-gray-200">
+          <h2
+            className={`font-bold mb-1 ${
+              isMarianos ? "text-xl font-semibold" : "text-3xl"
+            } max-[425px]:text-2xl text-gray-800 dark:text-gray-200`}
+          >
             {companyName}
           </h2>
-          <h3 className="text-lg font-semibold mb-2 max-[425px]:text-md text-gray-700 dark:text-gray-300">
+          <h3
+            className={` mb-2 ${
+              isMarianos ? "text-md" : "text-lg font-semibold"
+            } max-[425px]:text-md text-gray-700 dark:text-gray-300`}
+          >
             {position}
           </h3>
-          <ul className="list-disc list-inside mt-2 max-[768px]:text-left max-[768px]:pl-0 text-gray-700 dark:text-gray-300">
-            {descriptions.map((desc, index) => (
-              <li
-                key={index}
-                className="mb-2 leading-relaxed max-[425px]:text-sm"
+          {!truncated && (
+            <>
+              <ul
+                className={`list-disc list-inside mt-2 max-[768px]:text-left max-[768px]:pl-0 text-gray-700 dark:text-gray-300`}
               >
-                {desc}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {tools.map((tool, index) => (
-              <span
-                key={index}
-                className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded-full text-sm"
-              >
-                {tool}
-              </span>
-            ))}
-          </div>
+                {descriptions.map((desc, index) => (
+                  <li
+                    key={index}
+                    className="mb-2 leading-relaxed max-[425px]:text-sm"
+                  >
+                    {desc}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {tools.map((tool, index) => (
+                  <span
+                    key={index}
+                    className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded-full text-sm"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
+          {truncated && (
+            <p className="text-gray-700 dark:text-gray-300 italic mt-2 text-md">
+              Gained valuable customer service and communication skills.
+            </p>
+          )}
         </div>
       </div>
     );
@@ -97,9 +137,9 @@ const Work = () => {
   const itemsRef = useRef([]);
 
   return (
-    <section className="pt-32">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-10 text-center max-[425px]:text-3xl text-gray-800 dark:text-gray-200">
+    <section>
+      <div>
+        <h1 className="text-4xl font-bold mb-8 text-center max-[425px]:text-3xl text-gray-800 dark:text-gray-200">
           Work Experience:
         </h1>
         <div className="relative rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-300 dark:border-gray-600">

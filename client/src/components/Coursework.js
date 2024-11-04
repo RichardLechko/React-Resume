@@ -137,17 +137,17 @@ const Coursework = () => {
   };
 
   return (
-    <div className="pt-32 mx-auto">
+    <div>
       <h1 className="text-4xl font-bold max-[640px]:text-3xl max-[425px]:text-2xl mb-8">
         Relevant Coursework:
       </h1>
       <Slider
         {...settings}
-        className="max-w-[1000px] max-[1024px]:w-[600px] mx-auto max-[640px]:w-[300px]"
+        className="mx-auto w-[1000px] max-[1440px]:w-[800px] max-[1024px]:w-[640px] max-[768px]:w-[360px] max-[425px]:w-[250px]"
       >
         {coursework.map((course, index) => (
-          <div key={index} className="flex justify-center ">
-            <div className="p-6 m-auto slider-courses rounded-lg shadow-lg bg-[#f2f1ef] text-center h-64 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-700">
+          <div key={index} className="flex justify-center">
+            <div className="p-6 m-auto slider-courses rounded-lg shadow-lg bg-[#f2f1ef] text-center dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-700">
               <h2 className="text-2xl font-bold mb-8 max-[768px]:text-xl max-[640px]:mb-4">
                 {course.title}
               </h2>

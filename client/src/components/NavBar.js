@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, startTransition } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaLinkedin } from "react-icons/fa";
-import { ImGithub } from "react-icons/im";
+import icons from "./icons";
+
 import { FiExternalLink } from "react-icons/fi";
+
 import ThemeToggle from "./ThemeToggle";
 
 const NavBar = ({ refs }) => {
@@ -12,8 +13,11 @@ const NavBar = ({ refs }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsScreenSmall(window.innerWidth <= 1024);
-      if (window.innerWidth > 1024) setIsSidebarOpen(false);
+      const isSmall = window.innerWidth <= 1024;
+      startTransition(() => {
+        setIsScreenSmall(isSmall);
+        if (!isSmall) setIsSidebarOpen(false);
+      });
     };
 
     window.addEventListener("resize", handleResize);
@@ -32,7 +36,9 @@ const NavBar = ({ refs }) => {
       navigateToHomeAndScroll(sectionId);
     }
 
-    if (isScreenSmall) setIsSidebarOpen(false);
+    if (isScreenSmall) {
+      startTransition(() => setIsSidebarOpen(false));
+    }
   };
 
   const navigateToHomeAndScroll = (sectionId) => {
@@ -103,16 +109,16 @@ const NavBar = ({ refs }) => {
         ></div>
       )}
       <nav className="fixed top-0 py-4 max-[1024px]:py-1 right-0 w-full bg-white dark:bg-gray-900 z-50 shadow-lg">
-        <div className="flex items-center justify-between px-4 py-2">
-          <div className="flex items-center text-2xl whitespace-nowrap nav-name max-[1200px]:text-xl max-[1024px]:text-3xl max-[425px]:text-xl">
+        <div className="flex items-center justify-between px-4 py-2 max-[640px]:py-0">
+          <div className="flex items-center text-2xl whitespace-nowrap nav-name max-[1200px]:text-xl max-[1024px]:text-3xl max-[640px]:text-xl">
             Richard Lechko
           </div>
           {isScreenSmall && (
             <div
-              className="text-2xl cursor-pointer flex items-center gap-2"
-              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              className="text-2xl cursor-pointer flex items-center gap-4 max-[640px]:text-xl"
+              onClick={() => setIsSidebarOpen((prev) => !prev)}
             >
-              <span className="mr-2">&#9776;</span>
+              <span>&#9776;</span>
               <ThemeToggle />
             </div>
           )}
@@ -134,17 +140,17 @@ const NavBar = ({ refs }) => {
                 />
                 <ThemeToggle />
               </li>
-              <li className="flex-none flex gap-2">
+              <li className="flex-none flex gap-6">
                 <SocialMediaLink
                   icon={
-                    <ImGithub className="text-3xl hover:scale-90 transform transition duration-150" />
+                    <icons.ImGithub className="text-3xl hover:scale-90 transform transition duration-150" />
                   }
                   link="https://github.com/richardlechko"
                   ariaLabel="Visit my GitHub profile"
                 />
                 <SocialMediaLink
                   icon={
-                    <FaLinkedin className="text-3xl hover:scale-90 transform transition duration-150" />
+                    <icons.FaLinkedin className="text-3xl hover:scale-90 transform transition duration-150" />
                   }
                   link="https://www.linkedin.com/in/richard-lechko"
                   ariaLabel="Visit my LinkedIn profile"
@@ -157,7 +163,7 @@ const NavBar = ({ refs }) => {
 
       {isScreenSmall && (
         <div
-          className={`fixed left-0 pt-10 top-[64px] h-[calc(100%-64px)] w-[200px] max-[768px]:w-[150px] max-[640px]:w-[120px] bg-white dark:bg-gray-900 z-40 transform ${
+          className={`fixed left-0 pt-10 top-[50px] h-[calc(100%-64px)] w-[200px] max-[768px]:w-[150px] max-[640px]:w-[120px] bg-white dark:bg-gray-900 z-40 transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300`}
         >
@@ -176,12 +182,12 @@ const NavBar = ({ refs }) => {
             />
             <div className="flex mt-8 gap-4">
               <SocialMediaLink
-                icon={<ImGithub />}
+                icon={<icons.ImGithub />}
                 link="https://github.com/richardlechko"
                 ariaLabel="Visit my GitHub profile"
               />
               <SocialMediaLink
-                icon={<FaLinkedin />}
+                icon={<icons.FaLinkedin />}
                 link="https://www.linkedin.com/in/richard-lechko"
                 ariaLabel="Visit my LinkedIn profile"
               />
