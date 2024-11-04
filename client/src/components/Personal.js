@@ -18,7 +18,7 @@ const Personal = () => {
           <h1 className="text-5xl font-bold max-[1024px]:text-3xl max-[640px]:text-[1.4rem]">
             Hey, I'm Richard Lechko (letch·koh)
           </h1>
-          <p className="text-lg text-gray-500 max-[640px]:text-base">
+          <p className="text-lg text-gray-700 max-[640px]:text-base">
             Based in Chicago, IL.
           </p>
         </div>

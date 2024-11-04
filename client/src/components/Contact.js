@@ -171,7 +171,7 @@ const Contact = () => {
                 <a
                   href="mailto:richardlechko@gmail.com"
                   id="custom-font"
-                  className="text-[#1e90ff] dark:text-[#79b8ff] underline hover:text-[#1c7ed6] dark:hover:text-[#5391ff] transition duration-200"
+                  className="text-gray-800 dark:text-gray-200 underline hover:text-gray-600 dark:hover:text-gray-300 transition duration-200"
                 >
                   richardlechko [at] gmail.com
                 </a>

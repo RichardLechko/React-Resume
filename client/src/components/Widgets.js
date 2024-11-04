@@ -206,13 +206,13 @@ const WidgetsCard = ({
         ))}
       </div>
 
-      <h4
+      <div
         className={`text-2xl text-center mb-4 ${
           mainProject ? "font-bold" : "font-semibold"
         } dark:text-gray-200`}
       >
         {linkText}
-      </h4>
+      </div>
 
       <div className="flex-grow flex flex-col items-center justify-center mb-6">
         <span className="text-5xl mb-4">{React.createElement(icon)}</span>
@@ -230,7 +230,7 @@ const WidgetsCard = ({
           href={liveLink || "#"}
           target={newTab ? "_blank" : "_self"}
           rel={newTab ? "noopener noreferrer" : undefined}
-          className="inline-block bg-blue-500 text-white dark:bg-blue-700 dark:text-gray-200 py-2 px-4 rounded transition duration-200 hover:bg-blue-600 dark:hover:bg-blue-600"
+          className="inline-block bg-blue-600 text-white dark:bg-blue-800 dark:text-gray-200 py-2 px-4 rounded transition duration-200 hover:bg-blue-700 dark:hover:bg-blue-700"
         >
           {live ? "View Site" : "View Repo"}
         </a>
