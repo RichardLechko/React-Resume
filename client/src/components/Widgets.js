@@ -191,7 +191,6 @@ const WidgetsCard = ({
           : "bg-[#D8D8D8] dark:bg-[#1E1E1E]"
       } rounded-xl shadow-lg transition-transform duration-300`}
     >
-      {/* Tech Stack */}
       <div className="text-center mb-4">
         {techStack.map((tech, index) => (
           <span
@@ -207,7 +206,6 @@ const WidgetsCard = ({
         ))}
       </div>
 
-      {/* Link Text */}
       <h4
         className={`text-2xl text-center mb-4 ${
           mainProject ? "font-bold" : "font-semibold"
@@ -216,20 +214,17 @@ const WidgetsCard = ({
         {linkText}
       </h4>
 
-      {/* Icon and Description Container */}
       <div className="flex-grow flex flex-col items-center justify-center mb-6">
         <span className="text-5xl mb-4">{React.createElement(icon)}</span>
         <p className="text-lg text-center px-4 dark:text-gray-400">{text}</p>
       </div>
 
-      {/* In Development Notice */}
       {inDevelopment && (
         <p className="text-center text-sm font-semibold dark:text-gray-300 mb-4">
           *In Development*
         </p>
       )}
 
-      {/* Button */}
       <div className="text-center mt-4">
         <a
           href={liveLink || "#"}

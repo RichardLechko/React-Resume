@@ -4,7 +4,7 @@ const ThemeToggle = () => {
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = (e) => {
-    e.stopPropagation(); // Prevent the click from bubbling up to the parent
+    e.stopPropagation();
     const root = document.documentElement;
 
     root.classList.add("no-transition");
