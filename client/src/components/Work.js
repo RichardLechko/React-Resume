@@ -8,10 +8,11 @@ const workExperiences = [
     startTime: "11/2024",
     endTime: "Present",
     descriptions: [
-      "Assist in processing and reporting data to determine KPIs while creating PowerBI dashboards for business process owners and collaborating with teams to identify data needs.",
+      "Assist in processing and reporting data to determine KPIs while creating PowerBI dashboards.",
       "Participate in data analysis sessions to provide insights that drive decision-making.",
     ],
     logo: "/work-images/hendricksons-logo.png",
+    tools: ["PowerBi", "KPIs"],
   },
   {
     companyName: "RL IT Firm",
@@ -20,10 +21,11 @@ const workExperiences = [
     startTime: "12/2022",
     endTime: "Present",
     descriptions: [
-      "Develop a full-stack application for a local business, collaborating with clients to gather requirements and utilizing Astro, ShadCN, Tailwind, NodeJS, and Express for a robust, responsive app deployed on Vercel.",
-      "Ensure optimal viewing experiences through responsive design and conduct user testing to refine features and usability.",
+      "Develop a full-stack application for a local business using Astro, ShadCN, and Tailwind.",
+      "Ensure optimal viewing experiences through responsive design and user testing.",
     ],
     logo: "/work-images/rl-it-firm-logo.png",
+    tools: ["Astro", "Tailwind", "React", "Consulting"],
   },
   {
     companyName: "Mariano's",
@@ -32,14 +34,18 @@ const workExperiences = [
     startTime: "05/2022",
     endTime: "11/2024",
     descriptions: [
-      "Enhance communication skills through customer interactions while developing resilience by handling demanding situations positively and mastering various bakery tasks over time.",
+      "Enhance communication skills through customer interactions and handle various bakery tasks.",
     ],
     logo: "/work-images/marianos-logo.png",
+    tools: ["Soft Skills"],
   },
 ];
 
 const Company = React.forwardRef(
-  ({ companyName, position, startTime, endTime, descriptions, logo }, ref) => {
+  (
+    { companyName, position, startTime, endTime, descriptions, logo, tools },
+    ref
+  ) => {
     return (
       <div
         ref={ref}
@@ -50,9 +56,8 @@ const Company = React.forwardRef(
           alt={`${companyName} logo`}
           className="w-24 h-24 rounded-full border-2 border-gray-800 ml-[-3.3rem] z-20 max-[768px]:ml-0 max-[768px]:mb-4 max-[425px]:w-16 max-[425px]:h-16"
         />
-
         <div className="flex-grow pl-10 max-[768px]:pl-0 max-[768px]:text-center">
-          <p className="text-sm mb-1 max-[425px]:text-xs text-gray-600 dark:text-gray-400 italic">
+          <p className="text-sm mb-1 max-[425px]:text-xs text-gray-600 dark:text-gray-400">
             <span className="font-semibold">{startTime}</span> -{" "}
             <span className="font-semibold">{endTime}</span>
           </p>
@@ -63,18 +68,25 @@ const Company = React.forwardRef(
             {position}
           </h3>
           <ul className="list-disc list-inside mt-2 max-[768px]:text-left max-[768px]:pl-0 text-gray-700 dark:text-gray-300">
-            {descriptions.map(
-              (desc, index) =>
-                desc && (
-                  <li
-                    key={index}
-                    className="mb-2 leading-relaxed max-[425px]:text-sm"
-                  >
-                    {desc}
-                  </li>
-                )
-            )}
+            {descriptions.map((desc, index) => (
+              <li
+                key={index}
+                className="mb-2 leading-relaxed max-[425px]:text-sm"
+              >
+                {desc}
+              </li>
+            ))}
           </ul>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {tools.map((tool, index) => (
+              <span
+                key={index}
+                className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded-full text-sm"
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     );

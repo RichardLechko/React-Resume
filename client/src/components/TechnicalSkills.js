@@ -1,45 +1,74 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import skillsData from "./skillsData";
 
-const TechnicalSkills = React.forwardRef((props, ref) => (
-  <section
-    className="flex flex-col mx-auto mb-24 w-[80%] max-[768px]:w-full"
-    id="technical-skills"
-    ref={ref}
-  >
-    <div className="mt-16 mx-auto px-6 pt-16 flex flex-col items-center gap-6">
-      <header className="text-center mb-8">
-        <h1 className="text-4xl font-bold max-[640px]:text-3xl max-[425px]:text-2xl">
-          Technical Skills:
-        </h1>
-      </header>
+const TechnicalSkills = React.forwardRef((props, ref) => {
+  return (
+    <section
+      className="min-h-screen py-16 px-4 md:px-8"
+      id="technical-skills"
+      ref={ref}
+    >
+      <div className="max-w-7xl mx-auto">
+        <header className="text-center mb-16">
+          <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl">
+            Technical Skills
+          </h1>
+        </header>
 
-      <Suspense fallback={<div className="text-center">Loading skills...</div>}>
-        <div className="flex flex-wrap gap-8 justify-center max-[768px]:grid max-[768px]:grid-cols-2 max-[425px]:grid-cols-1">
-          {skillsData[0].skills.map(({ icon, name, description }) => (
-            <div
-              key={name}
-              className="flex items-center p-6 max-[768px]:p-4 max-[425px]:p-4 rounded-xl bg-[#f2f1ef] dark:bg-[#2b2b2b] transition-transform duration-300 transform hover:scale-105 relative overflow-hidden border-2 border-transparent group shadow-md"
-            >
-              <div className="mr-6 p-4 rounded-xl bg-stone-300 dark:bg-gray-700 transition-transform duration-300 transform group-hover:rotate-12">
-                {icon}
-              </div>
-              <div>
-                <h2 className="text-2xl max-[768px]:text-lg max-[425px]:text-xl font-bold mb-2 max-[768px]:mb-1 transition-colors duration-300 group-hover:text-[#4c8bf8]">
-                  {name}
-                </h2>
-                <p className=" max-[768px]:text-xs max-[425px]:text-xs opacity-90 transition-opacity duration-300 group-hover:opacity-80">
-                  {description}
-                </p>
-              </div>
-              <div className="absolute inset-0 rounded-xl border-2 border-transparent transition-all duration-300 opacity-0 group-hover:border-[#4c8bf8] group-hover:opacity-100" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#4c8bf8] opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg" />
-            </div>
-          ))}
-        </div>
-      </Suspense>
-    </div>
-  </section>
-));
+        <Suspense
+          fallback={<div className="text-center">Loading skills...</div>}
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+            {skillsData[0].skills.map(
+              ({ icon, name, description, hoverColor, darkHoverColor }) => {
+                const [isHovered, setIsHovered] = useState(false);
+
+                return (
+                  <div
+                    key={name}
+                    className="relative group rounded-xl bg-[#f2f1ef] dark:bg-[#2b2b2b] p-6 transition-all duration-300 hover:scale-102 shadow-md hover:shadow-lg"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    <div className="flex items-start space-x-4">
+                      <div
+                        className={`flex-shrink-0 p-4 transition-transform duration-300 ${
+                          isHovered ? "scale-125" : "scale-100"
+                        }`}
+                      >
+                        <span
+                          className="transition-colors duration-300"
+                          style={{
+                            color: isHovered
+                              ? darkHoverColor || hoverColor
+                              : "inherit",
+                          }}
+                        >
+                          {icon}
+                        </span>
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <h2 className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-[#4c8bf8] truncate">
+                          {name}
+                        </h2>
+                        <p className="text-sm opacity-90 transition-opacity duration-300 group-hover:opacity-80 line-clamp-3">
+                          {description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="absolute inset-0 rounded-xl border-2 border-transparent transition-all duration-300 opacity-0 group-hover:border-[#4c8bf8] group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#4c8bf8] opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-xl" />
+                  </div>
+                );
+              }
+            )}
+          </div>
+        </Suspense>
+      </div>
+    </section>
+  );
+});
 
 export default TechnicalSkills;

@@ -16,7 +16,7 @@ const Personal = () => {
         />
         <div className="flex flex-col items-center md:items-start">
           <h1 className="text-5xl font-bold max-[1024px]:text-3xl max-[640px]:text-[1.4rem]">
-            Hey, I'm Richard Lechko (lech·koh)
+            Hey, I'm Richard Lechko (letch·koh)
           </h1>
           <p className="text-lg text-gray-500 max-[640px]:text-base">
             Based in Chicago, IL.
@@ -35,7 +35,9 @@ const Personal = () => {
             </span>
             Resume
           </h2>
-          <p className="text-md m-2">Quick download or view available:</p>
+          <p className="text-md m-2 text-center">
+            Quick download or view available:
+          </p>
           <div className="flex justify-center gap-4 mt-3 button-container">
             <a
               id="download-docx"
@@ -73,9 +75,8 @@ const Personal = () => {
       <div className="mt-6 w-1/2 max-[640px]:w-4/5 mx-auto text-lg md:text-xl space-y-4 text-center max-[425px]:text-center personal-text">
         <p>
           I'm a web developer focused on building innovative and user-friendly
-          applications. I work with various programming languages and frameworks
-          and enjoy tackling complex challenges. Outside of coding, I like to
-          play video games and listen to music.
+          applications. When I'm not coding, I enjoy playing Old School
+          RuneScape, going to concerts, and going on walks.
         </p>
       </div>
     </section>

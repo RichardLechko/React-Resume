@@ -50,14 +50,13 @@ const Education = () => {
           <p className="text-md mb-1 text-gray-800 dark:text-gray-300">
             Full-time student at{" "}
             <a
-              className="underline font-bold text-[#005EB8] hover:text-[#E4002B] transition duration-300 dark:text-[#A3C9E0] dark:hover:text-[#FF4D4D]"
+              className="font-bold"
               href="https://www.depaul.edu/Pages/default.aspx"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="text-[#005EB8] dark:text-[#A3C9E0]">DePaul</span>{" "}
-              <span className="text-[#E4002B] dark:text-[#FF4D4D]">
-                University
+              <span className="text-[#005EB8] underline hover:text-[#004080] dark:text-[#0094E0]">
+                DePaul University
               </span>
             </a>
           </p>
@@ -110,7 +109,7 @@ const Education = () => {
             .map((org, index) => (
               <div
                 key={index}
-                className="flex items-start p-2 bg-gray-200 dark:bg-gray-700 shadow-sm transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 border border-transparent hover:border-gray-500 dark:hover:border-gray-400 rounded-xl"
+                className="flex items-start p-2 bg-gray-200 dark:bg-gray-700 shadow-sm transition duration-300 border border-transparent rounded-xl"
               >
                 <FaBookOpen className="text-blue-400 text-3xl mr-2" />
                 <div className="flex flex-col space-y-2">

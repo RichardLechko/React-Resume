@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar.js";
 import Footer from "./components/Footer.js";
 import { ScrollProvider } from "./components/ScrollToTop.js";
+import StarryBackground from "./components/Background.js";
 
 const ErrorBoundary = lazy(() => import("./components/ErrorBoundary.js"));
 const Currency = lazy(() => import("./components/widgets/Currency.js"));
@@ -30,14 +31,15 @@ function App() {
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="min-h-screen">
+      <StarryBackground />
       <Router>
         <ScrollProvider>
-          <div className="flex flex-col min-h-screen">
+          <div className="flex flex-col min-h-screen z-0">
             <div className="flex min-h-screen flex-1">
               <NavBar refs={refs} />
-              <div className="flex-1 flex flex-col transition-all duration-300">
-                <main className="flex-1 flex flex-col pt-24 transition-all duration-300">
+              <div className="flex-1 flex flex-col transition-all duration-300 ">
+                <main className="flex-1 flex flex-col pt-24 transition-all duration-300 ">
                   <Suspense fallback={<div>Loading...</div>}>
                     <ErrorBoundary>
                       <Routes>

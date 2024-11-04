@@ -20,6 +20,10 @@
   }
 }
 
+.nav-name {
+  font-family: "Rubik", sans-serif;
+}
+
 @font-face {
   font-family: "GeistSans";
   src: url("../fonts/Geist-Regular.woff2") format("woff2");
@@ -45,53 +49,6 @@
   font-family: "GeistMono";
   src: url("../fonts/GeistMono-Light.woff2") format("woff2");
   font-weight: 700;
-}
-
-* {
-  font-family: "GeistSans", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  overflow-x: hidden;
-  height: 100%;
-  scroll-behavior: auto;
-  font-family: "GeistSans", sans-serif;
-  color: var(--lightModeText);
-}
-
-#root {
-  background-color: var(--lightBg);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-.dark #root {
-  background-color: var(--darkBg);
-}
-
-.dark html,
-.dark body {
-  color: var(--darkModeText);
-}
-
-.dark p,
-.dark h1,
-.dark h2,
-.dark h3,
-.dark h4,
-.dark h5,
-.dark h6,
-.dark a,
-.dark span,
-.dark div,
-.dark div.text {
-  color: var(--darkModeText);
 }
 
 h1 {
@@ -134,4 +91,65 @@ a:hover {
 
 #custom-font {
   font-family: "GeistMono", "GeistSans", sans-serif;
+}
+
+* {
+  font-family: "GeistSans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  height: 100%;
+  scroll-behavior: auto;
+  font-family: "GeistSans", sans-serif;
+  color: var(--lightModeText);
+}
+
+.dark html,
+.dark body {
+  color: var(--darkModeText);
+}
+
+.dark p,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark a,
+.dark span,
+.dark div,
+.dark div.text {
+  color: var(--darkModeText);
+}
+
+#root {
+  background-color: var(--lightBg);
+  isolation: isolate;
+  position: relative;
+  min-height: 100vh;
+}
+
+.dark #root {
+  background-color: var(--darkBg);
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: var(--tw-opacity, 1);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: var(--tw-opacity, 1);
+    transform: scale(1);
+  }
 }
