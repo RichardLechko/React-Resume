@@ -29,12 +29,7 @@ const Personal = () => {
           id="resume-container"
           className="bg-stone-200 dark:bg-zinc-900 p-6 rounded-xl max-w-xl mx-auto flex flex-col items-center overflow-hidden"
         >
-          <h2 className="text-[2rem] my-2 text-center font-bold">
-            <span className="resume-icon text-[2rem] inline-block mr-4">
-              📄
-            </span>
-            Resume
-          </h2>
+          <h2 className="text-[2rem] my-2 text-center font-bold">Resume</h2>
           <p className="text-md m-2 text-center">
             Quick download or view available:
           </p>

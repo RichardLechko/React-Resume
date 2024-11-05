@@ -1,4 +1,8 @@
 import React, { useRef } from "react";
+import {
+  TbCircleLetterMFilled,
+  TbSquareRoundedLetterHFilled,
+} from "react-icons/tb";
 
 const workExperiences = [
   {
@@ -11,7 +15,8 @@ const workExperiences = [
       "Assist in processing and reporting data to determine KPIs while creating PowerBI dashboards.",
       "Participate in data analysis sessions to provide insights that drive decision-making.",
     ],
-    logo: "/work-images/hendricksons-logo.png",
+    logo: <TbSquareRoundedLetterHFilled size={120} color="#000000" />,
+
     tools: ["PowerBi", "KPIs"],
   },
   {
@@ -44,7 +49,7 @@ const workExperiences = [
     descriptions: [
       "Enhance communication skills through customer interactions and handle various bakery tasks.",
     ],
-    logo: "/work-images/marianos-logo.png",
+    logo: <TbCircleLetterMFilled size={120} color="#000000" />,
     tools: ["Soft Skills"],
     truncated: true,
   },
@@ -71,13 +76,29 @@ const Company = React.forwardRef(
         ref={ref}
         className={`flex items-start relative max-[768px]:flex-col max-[768px]:items-center`}
       >
-        <img
-          src={logo}
-          alt={`${companyName} logo`}
-          className={`rounded-full border-2 border-gray-800 ml-[-3.3rem] z-20 max-[768px]:ml-0 max-[768px]:mb-4 ${
-            isMarianos ? "w-[5rem] h-[5rem] ml-[-2.999rem]" : "w-24 h-24"
+        <div
+          className={`ml-[-3.3rem] z-20 max-[768px]:ml-0 max-[768px]:mb-4 flex items-center justify-center ${
+            isMarianos ? "w-[5rem] h-[5rem] ml-[-2.8rem]" : "w-24 h-24"
           }`}
-        />
+        >
+          {typeof logo === "string" ? (
+            <img
+              src={logo}
+              alt={`${companyName} logo`}
+              className={`rounded-full border-2 border-gray-800 ${
+                isMarianos ? "w-[5rem] h-[5rem]" : "w-24 h-24"
+              }`}
+            />
+          ) : (
+            <div
+              className={`rounded-full border-gray-800 flex items-center justify-center ${
+                isMarianos ? "w-[5rem] h-[5rem]" : "w-24 h-24"
+              }`}
+            >
+              {logo}
+            </div>
+          )}
+        </div>
         <div
           className={`flex-grow pl-10 max-[768px]:pl-0 max-[768px]:text-center ${
             isMarianos ? "pl-14" : ""
@@ -98,7 +119,7 @@ const Company = React.forwardRef(
             {companyName}
           </h2>
           <h3
-            className={` mb-2 ${
+            className={`mb-2 ${
               isMarianos ? "text-md" : "text-lg font-semibold"
             } max-[425px]:text-md text-gray-700 dark:text-gray-300`}
           >

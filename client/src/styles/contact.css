@@ -55,63 +55,6 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-.resume-icon {
-  animation: glow 1.5s ease-in-out infinite alternate, bounce 5s ease infinite; /* Shorter glow animation duration */
-}
-
-/* Dark mode styles */
-.dark .resume-icon {
-  color: #34d399; /* Base color for the icon in dark mode */
-  text-shadow: 0 0 10px rgba(52, 211, 153, 1),
-    /* Initial glow size */ 0 0 20px rgba(52, 211, 153, 0.8),
-    /* Medium glow size */ 0 0 30px rgba(52, 211, 153, 0.6),
-    /* Larger glow size */ 0 0 40px rgba(52, 211, 153, 0.4); /* Largest glow size */
-}
-
-/* Light mode styles */
-.light .resume-icon {
-  color: #4ade80; /* A lighter color for the icon in light mode */
-  text-shadow: 0 0 10px rgba(74, 222, 128, 1),
-    /* Initial glow size */ 0 0 20px rgba(74, 222, 128, 0.8),
-    /* Medium glow size */ 0 0 30px rgba(74, 222, 128, 0.6),
-    /* Larger glow size */ 0 0 40px rgba(74, 222, 128, 0.4); /* Largest glow size */
-}
-
-@keyframes glow {
-  0% {
-    text-shadow: 0 0 10px rgba(52, 211, 153, 1),
-      0 0 20px rgba(52, 211, 153, 0.8), 0 0 30px rgba(52, 211, 153, 0.6),
-      0 0 40px rgba(52, 211, 153, 0.4);
-  }
-  50% {
-    text-shadow: 0 0 15px rgba(52, 211, 153, 1), 0 0 30px rgba(52, 211, 153, 1),
-      0 0 45px rgba(52, 211, 153, 0.8), 0 0 60px rgba(52, 211, 153, 0.6);
-  }
-  100% {
-    text-shadow: 0 0 10px rgba(52, 211, 153, 1),
-      0 0 20px rgba(52, 211, 153, 0.8), 0 0 30px rgba(52, 211, 153, 0.6),
-      0 0 40px rgba(52, 211, 153, 0.4);
-  }
-}
-
-@keyframes bounce {
-  0% {
-    transform: translateY(0);
-  }
-  30% {
-    transform: translateY(-20px);
-  }
-  50% {
-    transform: translateY(0);
-  }
-  70% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
