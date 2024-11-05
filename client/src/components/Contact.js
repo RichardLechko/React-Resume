@@ -113,10 +113,10 @@ const Contact = () => {
             placeholder="Your message..."
             required
           ></textarea>
-          <div className="w-1/3 mx-auto">
+          <div className="w-1/3 mx-auto max-[640px]:w-1/2 max-[375px]:w-3/5">
             <input
               type="submit"
-              className="max-[640px]:text-sm w-full bg-[#c1c9d1] hover:bg-[#a4adb8] dark:bg-[#1f1f1f] dark:hover:bg-[#333333] text-xl p-4 outline-none rounded-xl mb-4 border-none font-bold cursor-pointer transition duration-300"
+              className="max-[640px]:text-sm w-full bg-[#c1c9d1] hover:bg-[#a4adb8] dark:bg-[#1f1f1f] dark:hover:bg-[#333333] text-xl p-4 outline-none rounded-xl mb-4 border-none font-bold cursor-pointer transition duration-300 max-[768px]:text-lg"
               value="Send Message"
             />
           </div>
@@ -171,7 +171,7 @@ const Contact = () => {
                 <a
                   href="mailto:richardlechko@gmail.com"
                   id="custom-font"
-                  className="text-gray-800 dark:text-gray-200 underline hover:text-gray-600 dark:hover:text-gray-300 transition duration-200"
+                  className="underline text-blue-500 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400 transition duration-200"
                 >
                   richardlechko [at] gmail.com
                 </a>

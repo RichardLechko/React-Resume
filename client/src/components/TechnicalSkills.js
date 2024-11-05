@@ -1,28 +1,9 @@
 import React, { Suspense, useState } from "react";
 import { DiReact, DiNodejs, DiGithubBadge } from "react-icons/di";
 import { BiLogoRedux, BiLogoGit, BiLogoAws } from "react-icons/bi";
-import {
-  SiJest,
-  SiTypescript,
-  SiSupabase,
-  SiTailwindcss,
-  SiPostgresql,
-  SiFirebase,
-} from "react-icons/si";
-import {
-  FaFigma,
-  FaUniversity,
-  FaUser,
-  FaBook,
-  FaGlobe,
-  FaSass,
-} from "react-icons/fa";
-import { FaRegFileLines } from "react-icons/fa6";
+import { SiJest, SiTypescript, SiSupabase, SiPostgresql } from "react-icons/si";
+import { FaFigma, FaSass } from "react-icons/fa";
 import { RiNextjsLine } from "react-icons/ri";
-import { GiMeatCleaver } from "react-icons/gi";
-import { BsCurrencyDollar } from "react-icons/bs";
-import { AiFillClockCircle } from "react-icons/ai";
-import { HiSun, HiCurrencyEuro } from "react-icons/hi";
 
 const icons = {
   DiReact,
@@ -34,21 +15,9 @@ const icons = {
   SiJest,
   SiTypescript,
   SiSupabase,
-  SiTailwindcss,
   SiPostgresql,
-  SiFirebase,
   FaFigma,
   RiNextjsLine,
-  FaUniversity,
-  FaUser,
-  FaBook,
-  FaGlobe,
-  FaRegFileLines,
-  GiMeatCleaver,
-  BsCurrencyDollar,
-  AiFillClockCircle,
-  HiSun,
-  HiCurrencyEuro,
   FaSass,
 };
 
@@ -105,13 +74,6 @@ const skillsData = [
         darkHoverColor: "#2CA67B",
       },
       {
-        iconName: "SiTailwindcss",
-        name: "Tailwind",
-        description: "CSS Framework",
-        hoverColor: "#38B2AC",
-        darkHoverColor: "#2D8C8B",
-      },
-      {
         iconName: "RiNextjsLine",
         name: "Next.js",
         description: "React Framework",
@@ -139,13 +101,7 @@ const skillsData = [
         hoverColor: "#83CD29",
         darkHoverColor: "#5F7B1E",
       },
-      {
-        iconName: "SiFirebase",
-        name: "Firebase",
-        description: "Backend-as-a-Service",
-        hoverColor: "#FFCA28",
-        darkHoverColor: "#FFA726",
-      },
+
       {
         iconName: "FaSass",
         name: "Sass",

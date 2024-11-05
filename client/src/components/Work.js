@@ -75,7 +75,7 @@ const Company = React.forwardRef(
           src={logo}
           alt={`${companyName} logo`}
           className={`rounded-full border-2 border-gray-800 ml-[-3.3rem] z-20 max-[768px]:ml-0 max-[768px]:mb-4 ${
-            isMarianos ? "w-16 h-16 ml-[-2.35rem]" : "w-24 h-24"
+            isMarianos ? "w-[5rem] h-[5rem] ml-[-2.9rem]" : "w-24 h-24"
           }`}
         />
         <div
@@ -107,7 +107,7 @@ const Company = React.forwardRef(
           {!truncated && (
             <>
               <ul
-                className={`list-disc list-inside mt-2 max-[768px]:text-left max-[768px]:pl-0 text-gray-700 dark:text-gray-300`}
+                className={`list-disc list-inside mt-2 max-[768px]:text-left max-[768px]:pl-0 max-[768px]:mb-6 text-gray-700 dark:text-gray-300`}
               >
                 {descriptions.map((desc, index) => (
                   <li
