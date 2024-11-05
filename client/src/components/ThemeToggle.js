@@ -43,7 +43,7 @@ const ThemeToggle = () => {
       <button
         onClick={toggleTheme}
         aria-pressed={theme === "light"}
-        className={`flex items-center justify-center w-12 h-12 rounded-full shadow-lg ${
+        className={`flex items-center justify-center w-12 h-12 rounded-full shadow-lg max-[768px]:w-10 max-[768px]:h-10 max-[375px]:w-8 max-[375px]:h-8 ${
           theme === "light"
             ? "bg-gray-200 text-gray-800 hover:bg-gray-300"
             : "bg-gray-800 text-gray-200 hover:bg-gray-700"

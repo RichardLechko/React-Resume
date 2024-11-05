@@ -126,7 +126,7 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
         <Suspense
           fallback={<div className="text-center">Loading skills...</div>}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-[640px]:gap-3 auto-rows-fr">
             {skillsData[0].skills.map(
               ({ iconName, name, description, hoverColor, darkHoverColor }) => {
                 const IconComponent = icons[iconName];
@@ -135,7 +135,7 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
                 return (
                   <div
                     key={name}
-                    className="relative group rounded-xl bg-[#f2f1ef] dark:bg-[#2b2b2b] p-6 transition-all duration-300 hover:scale-102 shadow-md hover:shadow-lg"
+                    className="relative group rounded-xl bg-[#f2f1ef] dark:bg-[#2b2b2b] p-6 max-[640px]:py-4 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                   >

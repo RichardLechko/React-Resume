@@ -38,6 +38,14 @@ const MainPage = ({
         </section>
 
         <section
+          id="projects"
+          ref={projectsRef}
+          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20 max-[375px]:px-5"
+        >
+          <Projects />
+        </section>
+
+        <section
           id="work"
           ref={workRef}
           className="pt-32 container mx-auto px-4 max-[1024px]:pt-20"
@@ -55,7 +63,7 @@ const MainPage = ({
 
         <section
           id="relevantCoursework"
-          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20"
+          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20 max-[425px]:px-3"
         >
           <Coursework />
         </section>
@@ -71,17 +79,9 @@ const MainPage = ({
         <section
           id="contact"
           ref={contactRef}
-          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20"
+          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20 max-[425px]:m-0 max-[640px]:px-0"
         >
           <Contact />
-        </section>
-
-        <section
-          id="projects"
-          ref={projectsRef}
-          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20"
-        >
-          <Projects />
         </section>
       </Suspense>
     </div>

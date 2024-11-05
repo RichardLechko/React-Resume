@@ -159,7 +159,7 @@
 
 .placeholder-styled::placeholder {
   color: #333;
-  opacity: 0.8;
+  background-color: red;
 }
 
 .dark .placeholder-styled::placeholder {

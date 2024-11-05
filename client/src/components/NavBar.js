@@ -53,7 +53,7 @@ const NavBar = ({ refs }) => {
 
   const NavItem = ({ sectionId, sectionName }) => (
     <div
-      className="cursor-pointer text-xl max-[1280px]:text-lg hover:text-blue-400 max-[640px]:text-base"
+      className="cursor-pointer text-xl max-[1440px]:text-lg hover:text-blue-400 max-[1200px]:text-base"
       role="button"
       onClick={(e) => {
         e.preventDefault();
@@ -73,7 +73,7 @@ const NavBar = ({ refs }) => {
 
   const NavItemExternal = ({ path, sectionName, shouldOpenInNewTab }) => (
     <div
-      className="cursor-pointer flex items-center gap-1 text-xl max-[1280px]:text-lg hover:text-blue-400 max-[640px]:text-base"
+      className="cursor-pointer flex items-center gap-1 text-xl max-[1440px]:text-lg hover:text-blue-400 max-[1200px]:text-base "
       onClick={(e) => {
         e.preventDefault();
         if (shouldOpenInNewTab) {
@@ -90,7 +90,7 @@ const NavBar = ({ refs }) => {
 
   const SocialMediaLink = ({ icon, link, ariaLabel }) => (
     <a
-      className="text-2xl max-[1280px]:text-xl max-[1024px]:text-3xl max-[640px]:text-xl"
+      className="text-2xl max-[1200px]:text-base"
       href={link}
       target="_blank"
       rel="noopener noreferrer"
@@ -109,7 +109,7 @@ const NavBar = ({ refs }) => {
         ></div>
       )}
       <nav className="fixed top-0 py-4 max-[1024px]:py-1 right-0 w-full bg-white dark:bg-gray-900 z-50 shadow-lg">
-        <div className="flex items-center justify-between px-4 py-2 max-[640px]:py-0">
+        <div className="flex items-center justify-between px-4 py-2">
           <div className="flex items-center text-2xl whitespace-nowrap nav-name max-[1200px]:text-xl max-[1024px]:text-3xl max-[640px]:text-xl">
             Richard Lechko
           </div>
@@ -118,29 +118,32 @@ const NavBar = ({ refs }) => {
               className="text-2xl cursor-pointer flex items-center gap-4 max-[640px]:text-xl"
               onClick={() => setIsSidebarOpen((prev) => !prev)}
             >
-              <span>&#9776;</span>
               <ThemeToggle />
+              <span>&#9776;</span>
             </div>
           )}
 
           {!isScreenSmall && (
-            <ul className="flex items-center justify-between max-[1280px]:gap-4 text-center w-full">
-              <li className="flex items-center justify-center gap-4 flex-grow">
+            <ul className="flex items-center justify-between text-center w-full">
+              <li className="flex items-center justify-center mx-auto gap-8 w-full max-[1200px]:gap-6">
                 <NavItem sectionId="personal" sectionName="Personal" />
+
                 <NavItem sectionId="skills" sectionName="Skills" />
+                <NavItem sectionId="projects" sectionName="Projects" />
                 <NavItem sectionId="work" sectionName="Work" />
                 <NavItem sectionId="education" sectionName="Education" />
                 <NavItem sectionId="publications" sectionName="Publications" />
                 <NavItem sectionId="contact" sectionName="Contact" />
-                <NavItem sectionId="projects" sectionName="Projects" />
+
                 <NavItemExternal
                   path="https://public-notes-page-react.vercel.app/"
                   sectionName="Notes"
                   shouldOpenInNewTab={true}
                 />
-                <ThemeToggle />
               </li>
-              <li className="flex-none flex gap-6">
+
+              <li className="flex-none flex flex-row items-center justify-center space-x-3">
+                <ThemeToggle />
                 <SocialMediaLink
                   icon={
                     <icons.ImGithub className="text-3xl hover:scale-90 transform transition duration-150" />
@@ -169,12 +172,14 @@ const NavBar = ({ refs }) => {
         >
           <ul className="flex flex-col pl-8 py-2 gap-4 max-[640px]:pl-4">
             <NavItem sectionId="personal" sectionName="Personal" />
+
             <NavItem sectionId="skills" sectionName="Skills" />
+            <NavItem sectionId="projects" sectionName="Projects" />
             <NavItem sectionId="work" sectionName="Work" />
             <NavItem sectionId="education" sectionName="Education" />
             <NavItem sectionId="publications" sectionName="Publications" />
             <NavItem sectionId="contact" sectionName="Contact" />
-            <NavItem sectionId="projects" sectionName="Projects" />
+
             <NavItemExternal
               path="https://public-notes-page-react.vercel.app/"
               sectionName="Notes"

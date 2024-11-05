@@ -157,7 +157,7 @@ const Coursework = () => {
       <Slider
         {...settings}
         ref={sliderRef}
-        className="mx-auto w-[1000px] max-[1440px]:w-[800px] max-[1024px]:w-[640px] max-[768px]:w-[360px] max-[425px]:w-[250px]"
+        className="mx-auto w-[1000px] max-[1440px]:w-[800px] max-[1024px]:w-[640px] max-[768px]:w-[560px] max-[640px]:w-[360px] max-[425px]:w-[290px]"
         beforeChange={() => setIsUserInteracting(true)}
         afterChange={() => setIsUserInteracting(false)}
       >
@@ -170,7 +170,7 @@ const Coursework = () => {
               <h2 className="text-2xl font-bold mb-8 max-[768px]:text-xl max-[640px]:mb-4">
                 {course.title}
               </h2>
-              <ul className="list-disc list-inside mt-2 space-y-2 overflow-hidden">
+              <ul className="list-disc list-inside mt-10 space-y-2 overflow-hidden flex flex-col items-center justify-center">
                 {course.description.map((item, i) => (
                   <li key={i} className="text-sm">
                     {item}

@@ -75,7 +75,7 @@ const Company = React.forwardRef(
           src={logo}
           alt={`${companyName} logo`}
           className={`rounded-full border-2 border-gray-800 ml-[-3.3rem] z-20 max-[768px]:ml-0 max-[768px]:mb-4 ${
-            isMarianos ? "w-[5rem] h-[5rem] ml-[-2.9rem]" : "w-24 h-24"
+            isMarianos ? "w-[5rem] h-[5rem] ml-[-2.999rem]" : "w-24 h-24"
           }`}
         />
         <div
@@ -118,7 +118,7 @@ const Company = React.forwardRef(
                   </li>
                 ))}
               </ul>
-              <div className="mt-2 flex flex-wrap gap-2">
+              <div className="mt-2 flex flex-wrap gap-2 w-full">
                 {tools.map((tool, index) => (
                   <span
                     key={index}
@@ -154,7 +154,7 @@ const Work = () => {
           <div className="absolute inset-0 rounded-lg p-[2px]">
             <div className="bg-gradient-to-r from-gray-100 to-gray-300 dark:from-gray-700 dark:to-gray-900 rounded-lg"></div>
           </div>
-          <div className="max-[768px]:border-none p-12 relative max-[425px]:px-6">
+          <div className="max-[768px]:border-none p-12 relative max-[425px]:px-6 max-[375px]:px-3">
             <div className="absolute left-[5rem] top-0 bottom-0 border-l-4 max-[768px]:border-none border-gray-300 dark:border-gray-600"></div>
             <div className="pl-10 space-y-10 max-[768px]:pl-0">
               {workExperiences.map((experience, index) => (

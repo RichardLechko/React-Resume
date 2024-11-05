@@ -15,7 +15,7 @@ const Personal = () => {
           className="rounded-full w-24 h-32 mb-4 md:mb-0 md:mr-4"
         />
         <div className="flex flex-col items-center md:items-start">
-          <h1 className="text-5xl font-bold max-[1024px]:text-3xl max-[640px]:text-[1.4rem]">
+          <h1 className="text-5xl font-bold max-[1024px]:text-3xl max-[640px]:text-[1.3rem]">
             Hey, I'm Richard Lechko (letch·koh)
           </h1>
           <p className="text-lg text-gray-700 max-[640px]:text-base">
@@ -72,7 +72,7 @@ const Personal = () => {
         </div>
       </div>
 
-      <div className="mt-6 w-1/2 max-[640px]:w-4/5 mx-auto text-lg md:text-xl space-y-4 text-center max-[425px]:text-center personal-text">
+      <div className="mt-6 w-1/2 max-[640px]:w-4/5 mx-auto text-lg md:text-xl space-y-4 text-center max-[425px]:text-center max-[375px]:w-full">
         <p>
           I'm a web developer focused on building innovative and user-friendly
           applications. When I'm not coding, I enjoy playing Old School
