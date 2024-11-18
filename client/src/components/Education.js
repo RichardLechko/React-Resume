@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTrophy, FaBookOpen } from "react-icons/fa";
+import { FaTrophy, FaBookOpen, FaGraduationCap } from "react-icons/fa";
 
 const Education = () => {
   const organizations = [
@@ -30,30 +30,35 @@ const Education = () => {
         Education
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div className="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-xl p-4 transition duration-300 border border-gray-300 dark:border-gray-600 flex flex-col space-y-4">
-          <h2 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
-            Current Program
-          </h2>
-          <p className="text-md mb-1 text-gray-800 dark:text-gray-300">
-            Full-time student at{" "}
-            <a
-              className="font-bold"
-              href="https://www.depaul.edu/Pages/default.aspx"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="text-[#005EB8] underline hover:text-[#004080] dark:text-[#0094E0]">
-                DePaul University
-              </span>
-            </a>
-          </p>
-          <p className="text-md mb-1 text-gray-800 dark:text-gray-300">
-            Bachelor of Science in Information Technology
-          </p>
-          <p className="text-md text-gray-800 dark:text-gray-300">
-            Concentration: Web Development | Expected Graduation:{" "}
-            <span className="underline">06/2026</span>
-          </p>
+        <div className="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-xl p-4 transition duration-300 border border-gray-300 dark:border-gray-600">
+          <div className="flex items-center mb-4">
+            <FaGraduationCap className="text-blue-500 text-3xl mr-3" />
+            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+              Current Program
+            </h2>
+          </div>
+          <div className="flex flex-col space-y-4">
+            <p className="text-md mb-1 text-gray-800 dark:text-gray-300">
+              Full-time student at{" "}
+              <a
+                className="font-bold"
+                href="https://www.depaul.edu/Pages/default.aspx"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-[#005EB8] underline hover:text-[#004080] dark:text-[#0094E0]">
+                  DePaul University
+                </span>
+              </a>
+            </p>
+            <p className="text-md mb-1 text-gray-800 dark:text-gray-300">
+              Bachelor of Science in Information Technology
+            </p>
+            <p className="text-md text-gray-800 dark:text-gray-300">
+              Concentration: Web Development | Expected Graduation:{" "}
+              <span className="underline">06/2026</span>
+            </p>
+          </div>
         </div>
 
         <div className="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-xl p-4 transition duration-300 border border-gray-300 dark:border-gray-600">

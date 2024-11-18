@@ -14,6 +14,9 @@ const Footer = () => {
         <p className="pb-4 text-lg max-[640px]:text-base max-[425px]:text-sm text-[#333333] dark:text-[#ffffff]">
           &copy; {new Date().getFullYear()} Richard Lechko | All Rights Reserved
         </p>
+        <p className="text-sm text-[#333333] dark:text-[#ffffff]">
+          Last updated: {new Date().toLocaleDateString()}
+        </p>
         <div className="flex justify-center space-x-4 mt-4">
           <a
             href="#"

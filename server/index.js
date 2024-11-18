@@ -1,28 +1,27 @@
 import express from "express";
-import cookieParser from "cookie-parser"; // Optional, add if needed
+import cookieParser from "cookie-parser";
 import cors from "cors";
-import http from "http"; // For creating the HTTP server
-import "dotenv/config"; // For loading environment variables
+import http from "http";
+import "dotenv/config";
 import currencyRoutes from "./api/currency.js";
 import submitRoutes from "./api/submit.js";
 import weatherRoutes from "./api/weather.js";
+import spotifyRoutes from "./api/spotify.js";
 
-// Initialize express app
 const app = express();
 
-// Middleware
-app.use(cors()); // Basic CORS setup
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser()); // Optional, remove if not needed
+app.use(cookieParser());
 
-// API routes
+app.get("/", (req, res) => res.send("API is running!"));
 app.use("/api/currency", currencyRoutes);
 app.use("/api/submit", submitRoutes);
 app.use("/api/weather", weatherRoutes);
+app.use("/api", spotifyRoutes);
 
-// Create and run the server
-const port = process.env.PORT || 5000;
+const port = 5000;
 const server = http.createServer(app);
 
 server.listen(port, () => {

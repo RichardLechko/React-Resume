@@ -19,12 +19,16 @@ const MainPage = ({
   projectsRef,
 }) => {
   return (
-    <div className="overflow-x-hidden relative">
-      <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+    <div className="overflow-x-hidden relative min-h-screen">
+      <Suspense
+        fallback={
+          <div className="loading-spinner min-h-screen">Loading...</div>
+        }
+      >
         <section
           id="personal"
           ref={personalRef}
-          className="pt-32 container mx-auto px-4 max-[1024px]:pt-20"
+          className="pt-32 container mx-auto px-4"
         >
           <Personal />
         </section>
@@ -32,7 +36,7 @@ const MainPage = ({
         <section
           id="technical-skills"
           ref={skillsRef}
-          className="min-h-screen pt-32 px-4 md:px-8 container mx-auto max-[1024px]:pt-20"
+          className="pt-32 pb-28 px-4 container mx-auto"
         >
           <TechnicalSkills />
         </section>
@@ -40,7 +44,7 @@ const MainPage = ({
         <section
           id="projects"
           ref={projectsRef}
-          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20 max-[375px]:px-5"
+          className="container flex flex-col mx-auto mt-[-5rem] pt-32"
         >
           <Projects />
         </section>
@@ -48,7 +52,7 @@ const MainPage = ({
         <section
           id="work"
           ref={workRef}
-          className="pt-32 container mx-auto px-4 max-[1024px]:pt-20"
+          className="pt-32 container mx-auto px-4"
         >
           <Work />
         </section>
@@ -56,14 +60,14 @@ const MainPage = ({
         <section
           id="education"
           ref={educationRef}
-          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20"
+          className="container flex flex-col mx-auto pt-32"
         >
           <Education />
         </section>
 
         <section
           id="relevantCoursework"
-          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20 max-[425px]:px-3"
+          className="container flex flex-col mx-auto pt-32"
         >
           <Coursework />
         </section>
@@ -71,7 +75,7 @@ const MainPage = ({
         <section
           id="publications"
           ref={publicationsRef}
-          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20"
+          className="container flex flex-col mx-auto pt-32"
         >
           <Publications />
         </section>
@@ -79,7 +83,7 @@ const MainPage = ({
         <section
           id="contact"
           ref={contactRef}
-          className="container flex flex-col mx-auto pt-32 max-[1024px]:pt-20 max-[425px]:m-0 max-[640px]:px-0"
+          className="container flex flex-col mx-auto pt-32"
         >
           <Contact />
         </section>

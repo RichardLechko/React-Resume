@@ -38,8 +38,8 @@ function App() {
           <div className="flex flex-col min-h-screen z-0">
             <div className="flex min-h-screen flex-1">
               <NavBar refs={refs} />
-              <div className="flex-1 flex flex-col transition-all duration-300 ">
-                <main className="flex-1 flex flex-col pt-24 transition-all duration-300 ">
+              <div className="flex-1 flex flex-col">
+                <main className="flex-1 flex flex-col pt-24">
                   <Suspense fallback={<div>Loading...</div>}>
                     <ErrorBoundary>
                       <Routes>

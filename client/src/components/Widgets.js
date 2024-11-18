@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useScroll } from "./ScrollToTop.js";
-import { FaUniversity, FaUser, FaBook, FaGlobe } from "react-icons/fa";
+import { FaUniversity, FaGlobe } from "react-icons/fa";
 import { GiMeatCleaver } from "react-icons/gi";
 
 const Widgets = () => {
@@ -19,6 +19,7 @@ const Widgets = () => {
       live: true,
       liveLink: "https://depaul-northern-trust-hackathon.vercel.app/",
       inDevelopment: false,
+      isPrivate: false,
     },
     {
       linkText: "Freedom Butchers Freelance Work",
@@ -28,6 +29,7 @@ const Widgets = () => {
       live: true,
       liveLink: "https://freedombutchers.vercel.app/",
       inDevelopment: true,
+      isPrivate: false,
     },
     {
       linkText: "DePaul Cloud Club Research",
@@ -42,14 +44,15 @@ const Widgets = () => {
         "TypeScript",
       ],
       live: false,
-      liveLink: "https://github.com/RichardLechko/depaul-cloud-project",
+      liveLink: "",
       inDevelopment: true,
+      isPrivate: true,
     },
   ];
 
   return (
     <div id="projects">
-      <h1 className="text-4xl mb-4 font-bold text-center max-[640px]:text-3xl max-[425px]:text-2xl">
+      <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl">
         Projects:
       </h1>
 
@@ -74,6 +77,7 @@ const WidgetsCard = ({
   live,
   liveLink,
   inDevelopment,
+  isPrivate,
 }) => {
   return (
     <div className="flex flex-col h-full p-6 bg-[#eaeae8] dark:bg-[#2D2D2D] rounded-xl shadow-lg transition-transform duration-300">
@@ -104,14 +108,16 @@ const WidgetsCard = ({
       )}
 
       <div className="text-center mt-4">
-        <a
-          href={liveLink || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-blue-600 text-white dark:bg-blue-800 dark:text-gray-200 py-2 px-4 rounded transition duration-200 hover:bg-blue-700 dark:hover:bg-blue-700"
-        >
-          {live ? "View Site" : "View Repo"}
-        </a>
+        {!isPrivate && (
+          <a
+            href={liveLink || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-blue-600 text-white dark:bg-blue-800 dark:text-gray-200 py-2 px-4 rounded transition duration-200 hover:bg-blue-700 dark:hover:bg-blue-700"
+          >
+            {live ? "View Site" : "View Repo"}
+          </a>
+        )}
       </div>
     </div>
   );

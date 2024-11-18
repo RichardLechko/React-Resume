@@ -3,7 +3,7 @@ import React from "react";
 const StarryBackground = () => {
   return (
     <div
-      className="fixed inset-0 -z-10 pointer-events-none bg-[#e2e8f0] dark:bg-[#0a0a0a]"
+      className="fixed inset-0 -z-10 pointer-events-none bg-[#e2e8f0] dark:bg-[#0a0a0a] transition-colors duration-500 ease-in-out"
       aria-hidden="true"
     >
       <div className="absolute inset-0">

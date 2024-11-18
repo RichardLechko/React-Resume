@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:5000",
   "description": "A fresh start for the client application",
   "main": "index.js",
   "scripts": {

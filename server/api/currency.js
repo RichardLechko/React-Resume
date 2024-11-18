@@ -2,7 +2,6 @@ import fetch from "node-fetch";
 import { Router } from "express";
 import { config } from "dotenv";
 
-// Load environment variables from .env file
 config();
 
 const router = Router();

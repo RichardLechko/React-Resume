@@ -4,16 +4,13 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-.no-transition * {
-  transition: none !important;
-}
-
 :root {
   --darkModeText: #e2e8f0;
   --lightBg: #e2e8f0;
   --lightModeText: #0a0a0a;
   --darkBg: #0a0a0a;
 }
+
 @layer base {
   * {
     @apply border-border;
@@ -102,16 +99,14 @@ a:hover {
 
 html,
 body {
-  overflow-x: hidden;
-  height: 100%;
-  scroll-behavior: auto;
-  font-family: "GeistSans", sans-serif;
   color: var(--lightModeText);
+  background-color: var(--lightBg);
 }
 
 .dark html,
 .dark body {
   color: var(--darkModeText);
+  background-color: var(--darkBg);
 }
 
 .dark p,
@@ -137,19 +132,4 @@ body {
 
 .dark #root {
   background-color: var(--darkBg);
-}
-
-@keyframes twinkle {
-  0% {
-    opacity: var(--tw-opacity, 1);
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.2;
-    transform: scale(0.7);
-  }
-  100% {
-    opacity: var(--tw-opacity, 1);
-    transform: scale(1);
-  }
 }

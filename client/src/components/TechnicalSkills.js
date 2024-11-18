@@ -135,22 +135,31 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
                 return (
                   <div
                     key={name}
-                    className="relative group rounded-xl bg-[#f2f1ef] dark:bg-[#2b2b2b] p-6 max-[640px]:py-4 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
+                    className={`
+                      relative group rounded-xl 
+                      bg-[#f2f1ef] dark:bg-[#2b2b2b] 
+                      p-6 max-[640px]:py-4 
+                      shadow-md hover:shadow-lg
+                    `}
+                    style={{
+                      transform: isHovered ? "scale(1.05)" : "scale(1)",
+                      transition:
+                        "transform 0.2s ease, background-color 0.1s ease, box-shadow 0.2s ease",
+                    }}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                   >
                     <div className="flex items-start space-x-4">
-                      <div
-                        className={`flex-shrink-0 p-4 transition-transform duration-300 ${
-                          isHovered ? "scale-125" : "scale-100"
-                        }`}
-                      >
+                      <div className="flex-shrink-0 p-4">
                         <span
-                          className="transition-colors duration-300 text-4xl"
                           style={{
                             color: isHovered
                               ? darkHoverColor || hoverColor
-                              : "inherit",
+                              : "currentColor",
+                            transform: isHovered ? "scale(1.25)" : "scale(1)",
+                            transition: "transform 0.2s ease, color 0.1s ease",
+                            display: "block",
+                            fontSize: "2rem",
                           }}
                         >
                           <IconComponent />
@@ -158,17 +167,41 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <h2 className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-[#4c8bf8] truncate">
+                        <h2
+                          className="text-xl font-bold mb-2 truncate"
+                          style={{
+                            color: isHovered ? "#4c8bf8" : "currentColor",
+                            transition: "color 0.1s ease",
+                          }}
+                        >
                           {name}
                         </h2>
-                        <p className="text-sm opacity-90 transition-opacity duration-300 group-hover:opacity-80 line-clamp-3">
+                        <p
+                          className="text-sm line-clamp-3"
+                          style={{
+                            opacity: isHovered ? 0.8 : 0.9,
+                            transition: "opacity 0.1s ease",
+                          }}
+                        >
                           {description}
                         </p>
                       </div>
                     </div>
 
-                    <div className="absolute inset-0 rounded-xl border-2 border-transparent transition-all duration-300 opacity-0 group-hover:border-[#4c8bf8] group-hover:opacity-100" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#4c8bf8] opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-xl" />
+                    <div
+                      className="absolute inset-0 rounded-xl border-2 border-[#4c8bf8]"
+                      style={{
+                        opacity: isHovered ? 1 : 0,
+                        transition: "opacity 0.1s ease",
+                      }}
+                    />
+                    <div
+                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent to-[#4c8bf8]"
+                      style={{
+                        opacity: isHovered ? 0.2 : 0,
+                        transition: "opacity 0.1s ease",
+                      }}
+                    />
                   </div>
                 );
               }
