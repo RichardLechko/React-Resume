@@ -6,7 +6,7 @@ import "dotenv/config";
 import currencyRoutes from "./api/currency.js";
 import submitRoutes from "./api/submit.js";
 import weatherRoutes from "./api/weather.js";
-import spotifyRoutes from "./api/spotify.js";
+import spotifyRoutes from "./api/spotify.js"; // Corrected import
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.get("/", (req, res) => res.send("API is running!"));
 app.use("/api/currency", currencyRoutes);
 app.use("/api/submit", submitRoutes);
 app.use("/api/weather", weatherRoutes);
-app.use("/api", spotifyRoutes);
+app.use("/api/spotify", spotifyRoutes); // Corrected path
 
 const port = 5000;
 const server = http.createServer(app);

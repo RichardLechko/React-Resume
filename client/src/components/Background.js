@@ -12,7 +12,7 @@ const StarryBackground = () => {
           return (
             <div
               key={i}
-              className="absolute rounded-full bg-[#0a0a0a] dark:bg-[#e2e8f0]"
+              className="absolute rounded-full bg-[#0a0a0a]/[0.4] dark:bg-[#e2e8f0]/[0.4] transition-colors duration-500 ease-in-out"
               style={{
                 width: `${size}px`,
                 height: `${size}px`,

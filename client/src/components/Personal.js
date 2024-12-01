@@ -29,15 +29,16 @@ const Personal = () => {
   return (
     <section
       id="personal"
-      className="flex flex-col items-center justify-center px-4 md:px-8 max-[425px]:px-2 max-[375px]:px-1"
+      className="relative z-10 flex flex-col items-center justify-center px-4 md:px-8 max-[425px]:px-2 max-[375px]:px-1"
     >
-      <div className="flex flex-col items-center text-center md:flex-row md:items-center md:text-left mb-8 max-[768px]:mb-12">
+      {/* Add a subtle semi-transparent backdrop to text areas */}
+      <div className="flex flex-col items-center text-center md:flex-row md:items-center md:text-left mb-8 max-[768px]:mb-12 backdrop-blur-sm">
         <img
           src="/myself/myself.jpg"
           alt="Richard Lechko"
           className="rounded-full w-24 h-32 mb-4 md:mb-0 md:mr-4"
         />
-        <div className="flex flex-col items-center md:items-start ">
+        <div className="flex flex-col items-center md:items-start">
           <h1 className="text-5xl font-bold max-[1024px]:text-3xl max-[640px]:text-[1.3rem] max-[425px]:text-[1rem] max-[425px]:mr-auto">
             Hey, I'm Richard Lechko (letch·koh)
           </h1>
@@ -68,7 +69,6 @@ const Personal = () => {
         </div>
       </div>
 
-      {/* Resume Container - Now centered without the timezone */}
       <div className="my-6 w-full flex justify-center">
         <div
           id="resume-container"
@@ -112,14 +112,13 @@ const Personal = () => {
         </div>
       </div>
 
-      {/* Rest of the content */}
-      <div className="mt-6 w-1/2 max-[640px]:w-4/5 mx-auto text-lg md:text-xl space-y-4 text-center max-[425px]:text-center max-[375px]:w-full">
+      <div className="p-4 mt-6 w-1/2 max-[640px]:w-4/5 mx-auto text-lg md:text-xl space-y-4 text-center max-[425px]:text-center max-[375px]:w-full backdrop-blur-sm">
         <p>
           I'm a web developer focused on building innovative and user-friendly
           applications. When I'm not coding, I enjoy playing video games, going
           to concerts, and going on walks. Follow me on{" "}
           <a
-            href="https://open.spotify.com/user/22j4lmvcuabn2joznuzxd3pdy?si=b8273b935c894611"
+            href="https://open.spotify.com/user/22j4lmvcuabn2joznuzd3pdy?si=b8273b935c894611"
             target="_blank"
             className="underline hover:text-green-500"
           >

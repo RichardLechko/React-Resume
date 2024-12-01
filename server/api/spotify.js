@@ -1,65 +1,61 @@
 import express from "express";
-import SpotifyWebApi from "spotify-web-api-node";
-import "dotenv/config";
+import spotifyApi, {
+  refreshAccessToken,
+  handleAuthorizationCode,
+} from "../get-refresh-token.js";
 
 const router = express.Router();
 
-const spotifyApi = new SpotifyWebApi({
-  clientId: process.env.SPOTIFY_CLIENT_ID,
-  clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-  refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
+router.get("/authorize", (req, res) => {
+  const scopes = ["user-read-playback-state", "user-read-currently-playing"];
+  const redirectUri = process.env.SPOTIFY_REDIRECT_URI;
+  const authUrl = spotifyApi.createAuthorizeURL(scopes, redirectUri);
+  res.redirect(authUrl);
 });
 
-async function refreshAccessToken() {
+router.get("/callback", async (req, res) => {
+  const { code } = req.query;
+
+  if (!code) {
+    return res.status(400).json({ message: "Authorization code missing" });
+  }
+
   try {
-    const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
-    if (!refreshToken) {
-      console.error("No refresh token found");
-      return false;
-    }
+    const { accessToken, refreshToken } = await handleAuthorizationCode(code);
 
-    spotifyApi.setRefreshToken(refreshToken);
+    res.status(200).json({
+      message: "Tokens successfully retrieved",
+      accessToken,
+      refreshToken,
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Failed to handle callback", error: error.message });
+  }
+});
 
-    const data = await spotifyApi.refreshAccessToken();
-    const accessToken = data.body["access_token"];
-
+router.get("/current-track", async (req, res) => {
+  try {
+    const accessToken = await refreshAccessToken();
     spotifyApi.setAccessToken(accessToken);
 
-    return true;
-  } catch (error) {
-    console.error("Error refreshing access token:", error);
-    return false;
-  }
-}
-
-router.get("/spotify", async (req, res) => {
-  try {
-    const isTokenRefreshed = await refreshAccessToken();
-
-    if (!isTokenRefreshed) {
-      return res
-        .status(500)
-        .json({ message: "Failed to refresh access token" });
+    const currentTrack = await spotifyApi.getMyCurrentPlaybackState();
+    if (currentTrack.body && currentTrack.body.is_playing) {
+      const song = {
+        name: currentTrack.body.item.name,
+        artist: currentTrack.body.item.artists[0].name,
+        spotifyUrl: currentTrack.body.item.external_urls.spotify,
+        albumImageUrl: currentTrack.body.item.album.images[0].url,
+      };
+      res.json({ song });
+    } else {
+      res.json({ message: "No track currently playing" });
     }
-
-    const data = await spotifyApi.getMyCurrentPlayingTrack();
-
-    if (!data.body || !data.body.item) {
-      return res.json({ message: "No track currently playing" });
-    }
-
-    const song = {
-      name: data.body.item.name,
-      artist: data.body.item.artists[0].name,
-      spotifyUrl: data.body.item.external_urls.spotify,
-    };
-
-    res.json({ song });
   } catch (error) {
-    console.error("Error fetching current song:", error);
     res
-      .status(error.statusCode || 500)
-      .json({ message: "Failed to fetch current song" });
+      .status(500)
+      .json({ message: "Failed to fetch current track", error: error.message });
   }
 });
 

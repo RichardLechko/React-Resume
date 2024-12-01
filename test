@@ -1,0 +1,1 @@
+https://accounts.spotify.com/authorize?client_id=38c31f61fd414cb284855712e7c28b2a&response_type=code&redirect_uri=http://localhost:5000/callback&scope=user-read-playback-state

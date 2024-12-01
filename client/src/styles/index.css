@@ -133,3 +133,94 @@ body {
 .dark #root {
   background-color: var(--darkBg);
 }
+
+.nav-item {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 0.5rem;
+}
+
+.nav-item > * {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+  background-color: rgba(74, 85, 104, 0.8); /* Slight transparency for hover */
+  transform: scale(1.05);
+}
+
+.nav-item.active {
+  color: #ffffff;
+  background-color: #4a5568; /* Light mode active background */
+}
+
+.dark .nav-item.active {
+  background-color: #2d3748; /* Dark mode active background */
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-item:hover::before {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.active-nav-item-outline {
+  border: 2px solid #1a202c !important;
+}
+
+@media (max-width: 1400px) {
+  .nav-item {
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-item {
+    text-align: start;
+  }
+}
+
+.now-playing-indicator {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.dot {
+  width: 6px;
+  height: 10px;
+  background: #6b7280;
+  border-radius: 1px;
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* The animation keyframes */
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(2);
+  }
+}

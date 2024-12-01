@@ -10,7 +10,7 @@ const publicationsData = [
 const Publications = () => {
   return (
     <section id="publications">
-      <h1 className="text-4xl mb-4 font-bold text-center max-[640px]:text-3xl max-[425px]:text-2xl">
+      <h1 className="text-4xl mb-4 font-bold text-center max-[640px]:text-3xl max-[425px]:text-2xl backdrop-blur-sm">
         Publications:
       </h1>
 

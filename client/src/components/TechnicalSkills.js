@@ -115,10 +115,10 @@ const skillsData = [
 
 const TechnicalSkills = React.forwardRef((props, ref) => {
   return (
-    <section id="technical-skills" ref={ref}>
+    <section id="skills" ref={ref}>
       <div>
         <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl">
+          <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
             Technical Skills
           </h1>
         </header>

@@ -1,50 +1,49 @@
-import express from "express";
 import SpotifyWebApi from "spotify-web-api-node";
 import "dotenv/config";
-
-const app = express();
 
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.SPOTIFY_CLIENT_ID,
   clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-  redirectUri:
-    process.env.NODE_ENV === "production"
-      ? "https://react-resume-api.vercel.app/callback"
-      : "http://localhost:5000/callback",
+  redirectUri: process.env.SPOTIFY_REDIRECT_URI,
 });
 
-const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
-if (refreshToken) {
-  spotifyApi.setAccessToken(refreshToken);
-} else {
-  console.error("No refresh token found");
-}
+spotifyApi.setAccessToken(process.env.SPOTIFY_ACCESS_TOKEN);
+spotifyApi.setRefreshToken(process.env.SPOTIFY_REFRESH_TOKEN);
 
-app.get("/api/spotify", async (req, res) => {
+export const refreshAccessToken = async () => {
   try {
     const data = await spotifyApi.refreshAccessToken();
     const accessToken = data.body["access_token"];
 
     spotifyApi.setAccessToken(accessToken);
 
-    const currentTrack = await spotifyApi.getMyCurrentPlaybackState();
+    process.env.SPOTIFY_ACCESS_TOKEN = accessToken;
 
-    if (currentTrack.body && currentTrack.body.is_playing) {
-      const song = {
-        name: currentTrack.body.item.name,
-        artist: currentTrack.body.item.artists[0].name,
-        spotifyUrl: currentTrack.body.item.external_urls.spotify,
-      };
-      res.json({ song });
-    } else {
-      res.json({ message: "No track currently playing" });
-    }
+    return accessToken;
   } catch (error) {
-    console.error("Error:", error);
-    res.status(500).json({ message: "Failed to fetch current song" });
+    throw error;
   }
-});
+};
 
-app.listen(5000, () => {
-  console.log("Server running on http://localhost:5000");
-});
+export const handleAuthorizationCode = async (code) => {
+  try {
+    const data = await spotifyApi.authorizationCodeGrant(code);
+    const accessToken = data.body.access_token;
+    const refreshToken = data.body.refresh_token;
+
+    spotifyApi.setAccessToken(accessToken);
+    spotifyApi.setRefreshToken(refreshToken);
+
+    process.env.SPOTIFY_ACCESS_TOKEN = accessToken;
+    process.env.SPOTIFY_REFRESH_TOKEN = refreshToken;
+
+    return {
+      accessToken,
+      refreshToken,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
+export default spotifyApi;

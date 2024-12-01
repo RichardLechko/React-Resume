@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { TbCircleLetterMFilled, TbCircleLetterHFilled } from "react-icons/tb";
+import { TbCircleLetterHFilled } from "react-icons/tb";
 
 const workExperiences = [
   {
@@ -13,7 +13,6 @@ const workExperiences = [
       "Participate in data analysis sessions to provide insights that drive decision-making.",
     ],
     logo: <TbCircleLetterHFilled size={120} />,
-
     tools: [
       "PowerBi",
       "KPIs",
@@ -45,56 +44,28 @@ const workExperiences = [
       "Node.js",
     ],
   },
-  {
-    companyName: "Mariano's",
-    position: "Bakery Clerk",
-    address: "Orland Park, IL",
-    startTime: "05/2022",
-    endTime: "11/2024",
-    descriptions: [
-      "Enhance communication skills through customer interactions and handle various bakery tasks.",
-    ],
-    logo: <TbCircleLetterMFilled size={120} />,
-    tools: ["Soft Skills"],
-    truncated: true,
-  },
 ];
 
 const Company = React.forwardRef(
   (
-    {
-      companyName,
-      position,
-      startTime,
-      endTime,
-      descriptions,
-      logo,
-      tools,
-      truncated,
-    },
+    { companyName, position, startTime, endTime, descriptions, logo, tools },
     ref
   ) => {
-    const isMarianos = companyName === "Mariano's";
-    const logoSize = isMarianos ? 64 : 96;
-    const borderOffset = isMarianos ? "2.35rem" : "3.3rem";
+    const logoSize = 96;
 
     return (
       <div
         ref={ref}
         className="flex items-start relative max-[768px]:flex-col max-[768px]:items-center max-[768px]:w-full"
       >
-        <div
-          className="flex items-center justify-center z-50 relative max-[768px]:ml-0 max-[768px]:mb-6"
-          style={{
-            marginLeft: `-${borderOffset}`,
-          }}
-        >
-          <div className="relative flex justify-center items-center">
+        {/* Logo Wrapper */}
+        <div className="flex items-center justify-center z-10 relative max-[768px]:w-full max-[768px]:mb-6">
+          <div className="relative flex justify-center items-center -ml-[3.3rem] max-[768px]:ml-0">
             {typeof logo === "string" ? (
               <img
                 src={logo}
                 alt={`${companyName} logo`}
-                className="rounded-full border-gray-400 border-8"
+                className="rounded-full border-gray-400 border-8 z-10"
                 style={{
                   width: `${logoSize}px`,
                   height: `${logoSize}px`,
@@ -102,7 +73,7 @@ const Company = React.forwardRef(
               />
             ) : (
               <div
-                className="rounded-full flex items-center justify-center dark:text-[#2b2b2b] bg-gray-400"
+                className="rounded-full flex items-center justify-center dark:text-[#2b2b2b] bg-gray-400 z-10"
                 style={{
                   width: `${logoSize}px`,
                   height: `${logoSize}px`,
@@ -114,79 +85,37 @@ const Company = React.forwardRef(
           </div>
         </div>
 
-        {isMarianos && (
-          <div
-            className="absolute z-[-10] max-[768px]:hidden"
-            style={{
-              width: `${logoSize}px`,
-              height: `${logoSize}px`,
-              top: "0",
-              left: `calc(100% + 1rem)`,
-            }}
-          ></div>
-        )}
-
-        <div
-          className={`flex-grow max-[768px]:pl-0 max-[768px]:text-center max-[768px]:w-full`}
-          style={{
-            paddingLeft: isMarianos ? "3.3rem" : "2.5rem",
-          }}
-        >
-          <p
-            className={`text-xs mb-1 max-[425px]:text-xs ${
-              isMarianos ? "text-xs mb-2" : ""
-            } text-gray-600 dark:text-gray-400`}
-          >
+        {/* Content */}
+        <div className="flex-grow pl-10 max-[768px]:pl-0 max-[768px]:text-center max-[768px]:w-full">
+          <p className="text-xs mb-1 max-[425px]:text-xs text-gray-600 dark:text-gray-400">
             <span>{startTime}</span> - <span>{endTime}</span>
           </p>
 
-          <h2
-            className={`font-bold mb-1 ${
-              isMarianos ? "text-lg font-semibold" : "text-3xl"
-            } max-[425px]:text-2xl text-gray-800 dark:text-gray-200`}
-          >
+          <h2 className="font-bold mb-1 text-3xl max-[425px]:text-2xl text-gray-800 dark:text-gray-200">
             {companyName}
           </h2>
 
-          <h3
-            className={`mb-2 ${
-              isMarianos ? "text-sm" : "text-lg font-semibold"
-            } max-[425px]:text-md text-gray-700 dark:text-gray-300`}
-          >
+          <h3 className="mb-2 text-lg font-semibold max-[425px]:text-md text-gray-700 dark:text-gray-300">
             {position}
           </h3>
 
-          {!truncated && (
-            <>
-              <ul className="list-disc list-inside mt-2 max-[768px]:text-left max-[768px]:list-none max-[768px]:space-y-2 text-gray-700 dark:text-gray-300">
-                {descriptions.map((desc, index) => (
-                  <li
-                    key={index}
-                    className={`mb-2 leading-relaxed ${
-                      isMarianos ? "text-sm" : "text-md"
-                    }`}
-                  >
-                    {desc}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-2 flex flex-wrap gap-2 w-full max-[768px]:justify-center">
-                {tools.map((tool, index) => (
-                  <span
-                    key={index}
-                    className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded-full text-sm"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </>
-          )}
-          {truncated && (
-            <p className="text-gray-700 dark:text-gray-300 italic mt-2 text-md">
-              Gained valuable customer service and communication skills.
-            </p>
-          )}
+          <ul className="list-disc list-inside mt-2 max-[768px]:text-left max-[768px]:list-none max-[768px]:space-y-2 text-gray-700 dark:text-gray-300">
+            {descriptions.map((desc, index) => (
+              <li key={index} className="mb-2 leading-relaxed text-md">
+                {desc}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-2 flex flex-wrap gap-2 w-full max-[768px]:justify-center">
+            {tools.map((tool, index) => (
+              <span
+                key={index}
+                className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded-full text-sm"
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -199,8 +128,8 @@ const Work = () => {
   return (
     <section>
       <div>
-        <h1 className="text-4xl font-bold mb-8 text-center max-[425px]:text-3xl text-gray-800 dark:text-gray-200">
-          Work Experience:
+        <h1 className="text-4xl font-bold mb-8 text-center max-[425px]:text-3xl text-gray-800 dark:text-gray-200 backdrop-blur-sm">
+          Work Experience
         </h1>
         <div className="relative rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-300 dark:border-gray-600">
           <div className="absolute inset-0 rounded-lg p-[2px]">

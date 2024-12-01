@@ -52,7 +52,7 @@ const Widgets = () => {
 
   return (
     <div id="projects">
-      <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl">
+      <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
         Projects:
       </h1>
 
@@ -85,7 +85,7 @@ const WidgetsCard = ({
         {techStack.map((tech, index) => (
           <span
             key={index}
-            className="inline-block bg-[#D0D0D0] dark:bg-[#4A4A4A] text-sm font-semibold py-2 px-3 rounded-full transition duration-200 mb-1"
+            className="inline-block bg-[#D0D0D0] dark:bg-[#4A4A4A] text-sm font-semibold py-2 px-3 rounded-full transition duration-200 mb-1 max-[640px]:px-[0.45rem] max-[375px]:py-1"
           >
             {tech}
           </span>
