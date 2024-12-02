@@ -1,5 +1,3 @@
-import icons from "./icons";
-
 const Footer = () => {
   const openLink = (url) => {
     window.open(url, "_blank");
@@ -17,30 +15,6 @@ const Footer = () => {
         <p className="text-sm text-[#333333] dark:text-[#ffffff]">
           Last updated: {new Date().toLocaleDateString()}
         </p>
-        <div className="flex justify-center space-x-4 mt-4">
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              openLink("https://github.com/RichardLechko");
-            }}
-            aria-label="Visit my GitHub profile"
-            className="transition-transform duration-300"
-          >
-            <icons.ImGithub className="text-3xl text-[#333333] dark:text-[#ffffff] transition-transform duration-300 hover:scale-110 hover:text-blue-500 dark:hover:text-blue-500" />
-          </a>
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              openLink("https://www.linkedin.com/in/richard-lechko/");
-            }}
-            aria-label="Visit my LinkedIn profile"
-            className="transition-transform duration-300"
-          >
-            <icons.FaLinkedin className="text-3xl text-[#333333] dark:text-[#ffffff] transition-transform duration-300 hover:scale-110 hover:text-blue-500 dark:hover:text-blue-500" />
-          </a>
-        </div>
       </div>
     </footer>
   );

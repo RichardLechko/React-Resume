@@ -179,7 +179,7 @@ const Coursework = () => {
 
   return (
     <div className="px-2 max-[375px]:p-0">
-      <h1 className="text-4xl font-bold mb-8 text-center max-[425px]:text-3xl text-gray-800 dark:text-gray-200 backdrop-blur-sm">
+      <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
         Relevant Coursework
       </h1>
       <Slider

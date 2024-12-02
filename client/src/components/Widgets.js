@@ -53,7 +53,7 @@ const Widgets = () => {
   return (
     <div id="projects">
       <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
-        Projects:
+        Projects
       </h1>
 
       <section>

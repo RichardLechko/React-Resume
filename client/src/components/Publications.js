@@ -10,8 +10,8 @@ const publicationsData = [
 const Publications = () => {
   return (
     <section id="publications">
-      <h1 className="text-4xl mb-4 font-bold text-center max-[640px]:text-3xl max-[425px]:text-2xl backdrop-blur-sm">
-        Publications:
+      <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
+        Publications
       </h1>
 
       <div className="flex flex-col items-center gap-6 rounded-xl">

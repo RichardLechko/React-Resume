@@ -144,41 +144,56 @@ body {
   border-radius: 0.5rem;
 }
 
-.nav-item > * {
+.nav-item > span {
   font-family: "JetBrains Mono", monospace;
+  position: relative;
+  z-index: 1;
 }
 
 .nav-item:hover {
-  color: #ffffff;
-  background-color: rgba(74, 85, 104, 0.8); /* Slight transparency for hover */
+  color: #f8fafc;
+  background-color: #0f766e;
   transform: scale(1.05);
+}
+
+.dark .nav-item:hover {
+  background-color: #374151;
 }
 
 .nav-item.active {
   color: #ffffff;
-  background-color: #4a5568; /* Light mode active background */
+  background-color: #334155;
 }
 
 .dark .nav-item.active {
-  background-color: #2d3748; /* Dark mode active background */
+  background-color: #1f2937;
 }
 
-.nav-item::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 2px solid transparent;
-  border-radius: 0.5rem;
-  transition: border-color 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
+.fixed ul .nav-item {
+  display: block;
+  width: calc(100% - 1rem);
+  text-align: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.nav-item:hover::before {
-  border-color: rgba(255, 255, 255, 0.2);
+.fixed ul .nav-item.active {
+  background-color: #334155;
+}
+
+.fixed ul .dark .nav-item.active {
+  background-color: #1f2937;
 }
 
 .active-nav-item-outline {
-  border: 2px solid #1a202c !important;
+  border: 2px solid #0f766e;
+  border-radius: 0.5rem;
+  transform-origin: center;
+  transition: transform 0.2s ease, border-color 0.3s ease;
+}
+
+.nav-item:hover .active-nav-item-outline {
+  transform: scale(1.05);
 }
 
 @media (max-width: 1400px) {

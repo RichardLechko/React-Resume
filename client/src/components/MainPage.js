@@ -77,7 +77,7 @@ const MainPage = ({
         <section
           id="projects"
           ref={projectsRef}
-          className="container flex flex-col mx-auto mt-[-2rem] pt-40"
+          className="container flex flex-col mx-auto pt-40"
         >
           <Projects />
         </section>

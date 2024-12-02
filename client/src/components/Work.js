@@ -128,7 +128,7 @@ const Work = () => {
   return (
     <section>
       <div>
-        <h1 className="text-4xl font-bold mb-8 text-center max-[425px]:text-3xl text-gray-800 dark:text-gray-200 backdrop-blur-sm">
+        <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
           Work Experience
         </h1>
         <div className="relative rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-300 dark:border-gray-600">

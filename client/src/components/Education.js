@@ -26,7 +26,7 @@ const Education = () => {
 
   return (
     <div>
-      <h1 className="text-4xl text-center font-bold max-[640px]:text-3xl max-[425px]:text-2xl mb-6 text-gray-800 dark:text-gray-200 backdrop-blur-sm">
+      <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
         Education
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
