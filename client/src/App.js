@@ -63,13 +63,12 @@ function App() {
                         />
                         <Route path="/widgets/timer" element={<Timer />} />
                         <Route path="/widgets/weather" element={<Weather />} />
+                        {/* Dynamic routes for the sections */}
                         {Object.keys(refs).map((section) => (
                           <Route
                             key={section}
                             path={`/${section}`}
-                            element={
-                              <MainPageSection section={section} refs={refs} />
-                            }
+                            element={<MainPage section={section} refs={refs} />}
                           />
                         ))}
                       </Routes>
@@ -85,20 +84,5 @@ function App() {
     </div>
   );
 }
-
-const MainPageSection = React.memo(({ section, refs }) => {
-  const scrollToSection = () => {
-    const ref = refs[section];
-    if (ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  React.useEffect(() => {
-    scrollToSection();
-  }, [section]);
-
-  return null;
-});
 
 export default App;

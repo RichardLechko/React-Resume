@@ -40,7 +40,22 @@
   background: linear-gradient(135deg, #10b981, #059669);
 }
 
-.resume-button::before {
+.docx-button:hover,
+.pdf-button:hover,
+.view-button:hover {
+  scale: 1.1;
+  width: 8rem;
+  margin: 0rem 1rem 0rem 1rem;
+}
+
+.docx-button,
+.pdf-button,
+.view-button {
+  width: 7rem;
+  transition: 0.3s cubic-bezier(1, 0.09, 0.37, 1.59);
+}
+
+/* .resume-button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -59,7 +74,7 @@
 .resume-button:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-}
+} */
 
 @keyframes fadeIn {
   from {

@@ -1,11 +1,11 @@
-import React, { useState, useEffect, startTransition, memo } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import icons from "./icons";
 import ThemeToggle from "./ThemeToggle";
 
-const NavItem = ({ sectionId, sectionName, isActive, onNavClick }) => (
+const NavItem = ({ sectionId, sectionName, onNavClick }) => (
   <div
-    className={`nav-item ${isActive ? "active" : ""}`}
+    className="nav-item relative cursor-pointer hover:scale-105 transition-transform duration-150"
     role="button"
     onClick={(e) => {
       e.preventDefault();
@@ -19,23 +19,16 @@ const NavItem = ({ sectionId, sectionName, isActive, onNavClick }) => (
       }
     }}
   >
-    <span className="text-base max-[1200px]:text-sm">{sectionName}</span>
-    {isActive && (
-      <div
-        className="active-nav-item-outline absolute inset-0 rounded-lg pointer-events-none"
-        style={{
-          border: "2px solid currentColor",
-          transition: "transform 0.2s ease",
-        }}
-      />
-    )}
+    <span className="text-base max-[1200px]:text-sm relative z-10">
+      {sectionName}
+    </span>
   </div>
 );
 
 const NavItemExternal = memo(
   ({ path, sectionName, shouldOpenInNewTab, isHamburgerMenu, onNavigate }) => (
     <div
-      className={`cursor-pointer flex items-center gap-1 ${
+      className={`cursor-pointer flex items-center gap-1 transition-transform duration-150 hover:scale-105 ${
         isHamburgerMenu
           ? "text-base max-[1024px]:ml-1"
           : "max-[1500px]:text-base max-[1270px]:text-sm"
@@ -55,11 +48,7 @@ const NavItemExternal = memo(
 
 const SocialMediaLink = memo(({ icon, link, ariaLabel }) => (
   <a
-    className={`
-      transition-transform 
-      duration-150 
-      hover:scale-90 
-    `}
+    className={`transition-transform duration-150 hover:scale-90`}
     href={link}
     target="_blank"
     rel="noopener noreferrer"
@@ -69,14 +58,13 @@ const SocialMediaLink = memo(({ icon, link, ariaLabel }) => (
   </a>
 ));
 
-// Navigation items data
 const NAV_ITEMS = [
-  { id: "personal", name: "《Home》" },
-  { id: "projects", name: "[Projects]" },
-  { id: "work", name: "「Work」" },
-  { id: "education", name: "{Education}" },
-  { id: "skills", name: "⟨Skills⟩" },
-  { id: "contact", name: "〔Contact〕" },
+  { id: "personal", name: "Home" },
+  { id: "projects", name: "Projects" },
+  { id: "work", name: "Work" },
+  { id: "education", name: "Education" },
+  { id: "skills", name: "Skills" },
+  { id: "contact", name: "Contact" },
 ];
 
 const MOBILE_NAV_ITEMS = [
@@ -101,9 +89,8 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const NavBar = ({ refs }) => {
+const NavBar = ({ refs, activeSection }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState(null);
   const [isHamburgerMenu, setIsHamburgerMenu] = useState(false);
   const navigate = useNavigate();
 
@@ -121,29 +108,6 @@ const NavBar = ({ refs }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [isSidebarOpen]);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    Object.values(refs).forEach((ref) => {
-      if (ref?.current) observer.observe(ref.current);
-    });
-
-    return () => {
-      Object.values(refs).forEach((ref) => {
-        if (ref?.current) observer.unobserve(ref.current);
-      });
-    };
-  }, [refs]);
-
   const handleNavClick = (sectionId) => {
     if (window.location.pathname === "/") {
       refs[sectionId]?.current?.scrollIntoView({ behavior: "smooth" });
@@ -155,7 +119,7 @@ const NavBar = ({ refs }) => {
     }
 
     if (isHamburgerMenu) {
-      startTransition(() => setIsSidebarOpen(false));
+      setIsSidebarOpen(false);
     }
   };
 
@@ -173,7 +137,7 @@ const NavBar = ({ refs }) => {
         />
       )}
 
-      <nav className="fixed top-0 w-full bg-white dark:bg-gray-900 z-50 shadow-lg">
+      <nav className="fixed top-0 w-full bg-[#e2e8f0] z-50">
         <div className="flex items-center justify-between px-4 py-2 max-[1200px]:px-2">
           <div className="flex items-center text-2xl whitespace-nowrap nav-name max-[1440px]:text-xl max-[1024px]:text-3xl max-[640px]:text-xl">
             Richard Lechko
@@ -182,15 +146,15 @@ const NavBar = ({ refs }) => {
           {!isHamburgerMenu ? (
             <ul className="flex items-center justify-between w-full">
               <li className="flex items-center justify-center mx-auto">
-                <pre className="bg-gradient-to-br from-slate-200 via-slate-100 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4 max-[1200px]:px-2 rounded-md shadow-lg overflow-auto">
+                <pre className="p-4 max-[1200px]:px-2 overflow-auto">
                   <div className="flex space-x-10 max-[1440px]:space-x-2">
                     {NAV_ITEMS.map(({ id, name }) => (
                       <NavItem
                         key={id}
                         sectionId={id}
                         sectionName={name}
-                        isActive={activeSection === id}
                         onNavClick={handleNavClick}
+                        isActive={activeSection === id}
                       />
                     ))}
                   </div>
@@ -232,63 +196,28 @@ const NavBar = ({ refs }) => {
         </div>
       </nav>
 
-      {/* Mobile Sidebar */}
       {isHamburgerMenu && (
         <div
-          className={`
-            fixed 
-            left-0 
-            pt-10 
-            top-[40px] 
-            h-[calc(100%-64px)] 
-            w-[200px] 
-            bg-white 
-            dark:bg-gray-900 
-            z-40 
-            transform 
-            ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
-            transition-transform 
-            duration-300
-          `}
+          className={`fixed left-0 pt-10 top-[40px] h-[calc(100%-64px)] w-[200px] bg-white dark:bg-gray-900 z-40 transform ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } transition-transform`}
         >
-          <ul className="flex flex-col pl-8 py-2 gap-4">
+          <ul>
             {MOBILE_NAV_ITEMS.map(({ id, name }) => (
-              <NavItem
-                key={id}
-                sectionId={id}
-                sectionName={name}
-                isActive={activeSection === id}
-                onNavClick={handleNavClick}
-              />
+              <li key={id} className="px-4 py-2">
+                <NavItem
+                  sectionId={id}
+                  sectionName={name}
+                  onNavClick={handleNavClick}
+                  isActive={activeSection === id}
+                />
+              </li>
             ))}
           </ul>
-
-          <div>
-            <div className="flex flex-row mt-8 gap-4 pl-8">
-              {SOCIAL_LINKS.map(({ icon, link, ariaLabel }, index) => (
-                <SocialMediaLink
-                  key={index}
-                  icon={icon}
-                  link={link}
-                  ariaLabel={ariaLabel}
-                  isHamburgerMenu={isHamburgerMenu}
-                />
-              ))}
-            </div>
-            <div className="flex flex-col mt-4 gap-4 pl-8">
-              <NavItemExternal
-                path="https://public-notes-page-react.vercel.app/"
-                sectionName="Blog"
-                shouldOpenInNewTab
-                isHamburgerMenu={isHamburgerMenu}
-                onNavigate={handleExternalNavigation}
-              />
-            </div>
-          </div>
         </div>
       )}
     </div>
   );
 };
 
-export default memo(NavBar);
+export default NavBar;

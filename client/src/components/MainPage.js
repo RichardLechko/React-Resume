@@ -17,39 +17,44 @@ const MainPage = ({
   skillsRef,
   contactRef,
   projectsRef,
+  setActiveSection, // Prop to set active section in the navbar
 }) => {
-  const [activeSection, setActiveSection] = useState("personal");
+  const [activeSection, setActive] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = [
-        { id: "personal", ref: personalRef },
-        { id: "skills", ref: skillsRef },
-        { id: "projects", ref: projectsRef },
-        { id: "work", ref: workRef },
-        { id: "education", ref: educationRef },
-        { id: "publications", ref: publicationsRef },
-        { id: "contact", ref: contactRef },
-      ];
-
-      // Loop through sections and determine which section is in view
-      for (const section of sections) {
-        const rect = section.ref.current.getBoundingClientRect();
-        if (
-          rect.top <= window.innerHeight * 0.5 &&
-          rect.bottom >= window.innerHeight * 0.2
-        ) {
-          setActiveSection(section.id); // Update active section
-          break; // Stop at the first visible section
-        }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            setActive(sectionId);
+            setActiveSection(sectionId); // Notify NavBar about the active section
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Adjust this value to change when a section is considered "in view"
       }
+    );
+
+    // List of sections to observe
+    const sections = [
+      personalRef.current,
+      workRef.current,
+      educationRef.current,
+      publicationsRef.current,
+      skillsRef.current,
+      contactRef.current,
+      projectsRef.current,
+    ];
+
+    // Observe all sections
+    sections.forEach((section) => section && observer.observe(section));
+
+    // Clean up observer on unmount
+    return () => {
+      sections.forEach((section) => section && observer.unobserve(section));
     };
-
-    // Listen to the scroll event
-    window.addEventListener("scroll", handleScroll);
-
-    // Cleanup event listener
-    return () => window.removeEventListener("scroll", handleScroll);
   }, [
     personalRef,
     workRef,
@@ -58,6 +63,7 @@ const MainPage = ({
     skillsRef,
     contactRef,
     projectsRef,
+    setActiveSection,
   ]);
 
   return (
@@ -70,35 +76,45 @@ const MainPage = ({
         <section
           id="personal"
           ref={personalRef}
-          className="pt-40 container mx-auto px-4 max-[1024px]:pt-32"
+          className={`pt-40 container mx-auto px-4 ${
+            activeSection === "personal" ? "outline" : ""
+          }`}
         >
           <Personal />
         </section>
         <section
           id="projects"
           ref={projectsRef}
-          className="container flex flex-col mx-auto pt-40"
+          className={`container flex flex-col mx-auto pt-40 ${
+            activeSection === "projects" ? "outline" : ""
+          }`}
         >
           <Projects />
         </section>
         <section
           id="work"
           ref={workRef}
-          className="pt-40 container mx-auto px-4"
+          className={`pt-40 container mx-auto px-4 ${
+            activeSection === "work" ? "outline" : ""
+          }`}
         >
           <Work />
         </section>
         <section
           id="education"
           ref={educationRef}
-          className="container flex flex-col mx-auto pt-44 mb-24"
+          className={`container flex flex-col mx-auto pt-44 mb-24 ${
+            activeSection === "education" ? "outline" : ""
+          }`}
         >
           <Education />
         </section>
         <section
           id="publications"
           ref={publicationsRef}
-          className="container flex flex-col mx-auto pt-16"
+          className={`container flex flex-col mx-auto pt-16 ${
+            activeSection === "publications" ? "outline" : ""
+          }`}
         >
           <Publications />
         </section>
@@ -111,15 +127,18 @@ const MainPage = ({
         <section
           id="skills"
           ref={skillsRef}
-          className="pt-40 px-4 container mx-auto"
+          className={`pt-40 px-4 container mx-auto ${
+            activeSection === "skills" ? "outline" : ""
+          }`}
         >
           <TechnicalSkills />
         </section>
-
         <section
           id="contact"
           ref={contactRef}
-          className="container flex flex-col mx-auto pt-48"
+          className={`container flex flex-col mx-auto pt-48 ${
+            activeSection === "contact" ? "outline" : ""
+          }`}
         >
           <Contact />
         </section>
