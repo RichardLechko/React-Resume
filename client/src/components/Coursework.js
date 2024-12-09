@@ -163,8 +163,13 @@ const Coursework = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     adaptiveHeight: false,
+    centerMode: true,
+    centerPadding: "0px",
+    variableWidth: false,
     prevArrow: <SamplePrevArrow onClick={() => setIsUserInteracting(true)} />,
     nextArrow: <SampleNextArrow onClick={() => setIsUserInteracting(true)} />,
+    beforeChange: () => setIsUserInteracting(true),
+    afterChange: () => setIsUserInteracting(false),
   };
 
   useEffect(() => {
@@ -178,39 +183,28 @@ const Coursework = () => {
   }, [isUserInteracting]);
 
   return (
-    <div className="px-2 max-[375px]:p-0">
-      <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
-        Relevant Coursework
+    <div className="coursework-container">
+      <h1 className="coursework-title">
+        <span className="content-backdrop">Coursework</span>
       </h1>
       <Slider
         {...settings}
         ref={sliderRef}
-        className="mx-auto max-w-3xl max-[1024px]:w-[600px] max-[768px]:w-[500px] max-[640px]:w-[340px] max-[425px]:w-[250px]"
-        beforeChange={() => setIsUserInteracting(true)}
-        afterChange={() => setIsUserInteracting(false)}
+        className="coursework-slider content-backdrop"
       >
         {coursework.map((course, index) => (
-          <div key={index} className="flex justify-center">
-            <div
-              className="p-4 m-auto slider-courses rounded-xl  shadow-lg bg-[#f2f1ef] text-center dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-700 max-[375px]:p-3 max-[375px]:h-[260px] flex flex-col items-center justify-center"
-              style={{ height: "300px" }}
-            >
-              <h2 className="text-lg font-bold mb-4 max-[375px]:text-[16px] max-[335px]:text-[15px] ">
-                {course.title}
-              </h2>
-              <ul className="list-disc list-inside mt-4 space-y-2 overflow-hidden flex flex-col  items-center justify-center max-[375px]:text-sm max-[335px]:text-xs">
+          <div key={index} className="coursework-slide">
+            <div className="coursework-card">
+              <h2 className="coursework-card-title">{course.title}</h2>
+              <ul className="coursework-card-description">
                 {course.description.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
               </ul>
 
-              {/* Horizontal Tagline */}
-              <div className="course-info-tags mt-4 flex justify-center gap-4 text-sm">
+              <div className="coursework-info-tags">
                 {course.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="bg-gray-300 text-gray-800 py-1 px-4 rounded-full dark:bg-gray-600 dark:text-gray-200"
-                  >
+                  <span key={idx} className="coursework-tag">
                     {tag}
                   </span>
                 ))}
@@ -225,23 +219,21 @@ const Coursework = () => {
 
 const SamplePrevArrow = ({ onClick }) => (
   <button
-    className="arrow prev-arrow absolute left-10 z-10 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer hover:bg-gray-200 max-[640px]:left-1 max-[640px]:w-8 max-[640px]:h-8 min-[320px]:w-6 min-[320px]:h-6 dark:bg-gray-800 dark:hover:bg-gray-600"
-    style={{ top: "50%", transform: "translateY(-50%)" }}
+    className="arrow prev-arrow"
     onClick={onClick}
     aria-label="Previous Slide"
   >
-    <FiChevronLeft className="max-[425px]:w-4 max-[425px]:h-4" />
+    <FiChevronLeft className="arrow-icon" />
   </button>
 );
 
 const SampleNextArrow = ({ onClick }) => (
   <button
-    className="arrow next-arrow absolute right-10 z-10 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer hover:bg-gray-200 max-[640px]:right-1 max-[640px]:w-8 max-[640px]:h-8 min-[320px]:w-6 min-[320px]:h-6 dark:bg-gray-800 dark:hover:bg-gray-600"
-    style={{ top: "50%", transform: "translateY(-50%)" }}
+    className="arrow next-arrow"
     onClick={onClick}
     aria-label="Next Slide"
   >
-    <FiChevronRight className="max-[425px]:w-4 max-[425px]:h-4" />
+    <FiChevronRight className="arrow-icon" />
   </button>
 );
 

@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { useScroll } from "./ScrollToTop.js";
-import { FaUniversity, FaGlobe } from "react-icons/fa";
-import { GiMeatCleaver } from "react-icons/gi";
 
 const Widgets = () => {
   const { scrollToTop } = useScroll();
@@ -13,7 +11,6 @@ const Widgets = () => {
   const projects = [
     {
       linkText: "DePaul x Northern Trust Competition",
-      icon: FaUniversity,
       text: "A finance application developed for the Northern Trust x DePaul University competition. This project got us 3rd place in the competition.",
       techStack: ["React", "JS", "Tailwind", "Node.js", "Express"],
       live: true,
@@ -23,17 +20,15 @@ const Widgets = () => {
     },
     {
       linkText: "Freedom Butchers Freelance Work",
-      icon: GiMeatCleaver,
       text: "A full-fledged e-commerce site developed for a small local business called 'Freedom Butchers'.",
-      techStack: ["Astro", "Node.js", "Express", "SCSS"],
+      techStack: ["Astro", "Node.js", "Express", "SCSS", "Docker", "ShadCN"],
       live: true,
       liveLink: "https://freedombutchers.vercel.app/",
-      inDevelopment: true,
+      inDevelopment: false,
       isPrivate: false,
     },
     {
       linkText: "DePaul Cloud Club Research",
-      icon: FaGlobe,
       text: "Collaborating with graduate students on a cloud project, enhancing frontend skills and contributing to innovative solutions.",
       techStack: [
         "Next.js",
@@ -42,6 +37,28 @@ const Widgets = () => {
         "Docker",
         "Express",
         "TypeScript",
+        "Django",
+      ],
+      live: false,
+      liveLink: "",
+      inDevelopment: true,
+      isPrivate: true,
+    },
+    {
+      linkText: "MMA Scheduler",
+      text: "This MMA software provides a comprehensive platform for scheduling and tracking MMA events, including fighter details, match dates, and categories. It aggregates and displays real-time data through web scraping, enabling users to stay updated with upcoming fights and results.",
+      techStack: [
+        "Next.js",
+        "SCSS",
+        "ShadCN",
+        "TypeScript",
+        "Redux",
+        "Go",
+        "Supabase",
+        "Cypress",
+        "Jest",
+        "Docker",
+        "AWS",
       ],
       live: false,
       liveLink: "",
@@ -51,14 +68,14 @@ const Widgets = () => {
   ];
 
   return (
-    <div id="projects">
-      <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
-        Projects
+    <div id="projects" className="projects-container">
+      <h1 className="projects-title">
+        <span className="content-backdrop">Projects</span>
       </h1>
 
-      <section>
-        <div className="flex justify-center mb-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="projects-content">
+        <div className="projects-grid">
+          <div className="projects-grid-inner">
             {projects.map((project, index) => (
               <WidgetsCard key={index} {...project} />
             ))}
@@ -71,7 +88,6 @@ const Widgets = () => {
 
 const WidgetsCard = ({
   linkText,
-  icon,
   text,
   techStack,
   live,
@@ -80,40 +96,30 @@ const WidgetsCard = ({
   isPrivate,
 }) => {
   return (
-    <div className="flex flex-col h-full p-6 bg-[#eaeae8] dark:bg-[#2D2D2D] rounded-xl shadow-lg transition-transform duration-300">
-      <div className="text-center w-full mb-4 flex flex-wrap items-center justify-center gap-2">
+    <div className="project-card">
+      <div className="project-tech-stack">
         {techStack.map((tech, index) => (
-          <span
-            key={index}
-            className="inline-block bg-[#D0D0D0] dark:bg-[#4A4A4A] text-sm font-semibold py-2 px-3 rounded-full transition duration-200 mb-1 max-[640px]:px-[0.45rem] max-[375px]:py-1"
-          >
+          <span key={index} className="tech-tag">
             {tech}
           </span>
         ))}
       </div>
 
-      <div className="text-2xl text-center mb-4 font-bold dark:text-gray-200">
-        {linkText}
+      <div className="project-title">{linkText}</div>
+
+      <div className="project-description">
+        <p>{text}</p>
       </div>
 
-      <div className="flex-grow flex flex-col items-center justify-center mb-6">
-        <span className="text-5xl mb-4">{React.createElement(icon)}</span>
-        <p className="text-lg text-center px-4 dark:text-gray-400">{text}</p>
-      </div>
+      {inDevelopment && <p className="development-badge">*In Development*</p>}
 
-      {inDevelopment && (
-        <p className="text-center text-sm font-semibold dark:text-gray-300 mb-4">
-          *In Development*
-        </p>
-      )}
-
-      <div className="text-center mt-4">
+      <div className="project-links">
         {!isPrivate && (
           <a
             href={liveLink || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-blue-600 text-white dark:bg-blue-800 dark:text-gray-200 py-2 px-4 rounded transition duration-200 hover:bg-blue-700 dark:hover:bg-blue-700"
+            className="project-link-button"
           >
             {live ? "View Site" : "View Repo"}
           </a>

@@ -31,54 +31,49 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen">
-      <StarryBackground />
+    <div style={{ position: "relative", minHeight: "100vh" }}>
       <Router>
         <ScrollProvider>
-          <div className="flex flex-col min-h-screen z-0">
-            <div className="flex min-h-screen flex-1">
-              <NavBar refs={refs} />
-              <div className="flex-1 flex flex-col">
-                <main className="flex-1 flex flex-col pt-24">
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <ErrorBoundary>
-                      <Routes>
-                        <Route
-                          path="/"
-                          element={
-                            <MainPage
-                              personalRef={personalRef}
-                              skillsRef={skillsRef}
-                              workRef={workRef}
-                              educationRef={educationRef}
-                              publicationsRef={publicationsRef}
-                              contactRef={contactRef}
-                              projectsRef={projectsRef}
-                            />
-                          }
-                        />
-                        <Route
-                          path="/widgets/currency"
-                          element={<Currency />}
-                        />
-                        <Route path="/widgets/timer" element={<Timer />} />
-                        <Route path="/widgets/weather" element={<Weather />} />
-                        {/* Dynamic routes for the sections */}
-                        {Object.keys(refs).map((section) => (
-                          <Route
-                            key={section}
-                            path={`/${section}`}
-                            element={<MainPage section={section} refs={refs} />}
+          <StarryBackground />
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <NavBar refs={refs} />
+
+            <div>
+              <main>
+                <Suspense fallback={<div>Loading...</div>}>
+                  <ErrorBoundary>
+                    <Routes>
+                      <Route
+                        path="/"
+                        element={
+                          <MainPage
+                            personalRef={personalRef}
+                            skillsRef={skillsRef}
+                            workRef={workRef}
+                            educationRef={educationRef}
+                            publicationsRef={publicationsRef}
+                            contactRef={contactRef}
+                            projectsRef={projectsRef}
                           />
-                        ))}
-                      </Routes>
-                    </ErrorBoundary>
-                  </Suspense>
-                </main>
-              </div>
+                        }
+                      />
+                      <Route path="/widgets/currency" element={<Currency />} />
+                      <Route path="/widgets/timer" element={<Timer />} />
+                      <Route path="/widgets/weather" element={<Weather />} />
+                      {Object.keys(refs).map((section) => (
+                        <Route
+                          key={section}
+                          path={`/${section}`}
+                          element={<MainPage section={section} refs={refs} />}
+                        />
+                      ))}
+                    </Routes>
+                  </ErrorBoundary>
+                </Suspense>
+              </main>
             </div>
-            <Footer refs={refs} />
           </div>
+          <Footer refs={refs} />
         </ScrollProvider>
       </Router>
     </div>

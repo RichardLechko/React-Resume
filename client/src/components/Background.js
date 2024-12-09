@@ -1,33 +1,97 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const StarryBackground = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    const stars = [];
+    const numStars = 200;
+    const starSpeed = 0.25; // Increased speed from 0.05 to 0.15
+
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2.5 + 0.5, // Slightly larger stars
+        speedX: (Math.random() - 0.5) * starSpeed,
+        speedY: (Math.random() - 0.5) * starSpeed,
+        brightness: Math.random(),
+      });
+    }
+
+    const animate = () => {
+      const computedStyle = getComputedStyle(document.documentElement);
+      const backgroundColor = computedStyle
+        .getPropertyValue("--background-color")
+        .trim();
+      const isLightMode = backgroundColor.includes("e2e8f0"); // Check if it's light mode
+
+      ctx.fillStyle = `${backgroundColor}`;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      stars.forEach((star) => {
+        star.x += star.speedX;
+        star.y += star.speedY;
+
+        if (star.x < 0) star.x = canvas.width;
+        if (star.x > canvas.width) star.x = 0;
+        if (star.y < 0) star.y = canvas.height;
+        if (star.y > canvas.height) star.y = 0;
+
+        star.brightness += (Math.random() - 0.5) * 0.1;
+        star.brightness = Math.max(0.3, Math.min(1, star.brightness)); // Increased minimum brightness
+
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+
+        // Use different colors for light/dark mode
+        const starColor = isLightMode
+          ? "#1a1a1a"
+          : computedStyle.getPropertyValue("--accent-color").trim();
+        ctx.fillStyle = `${starColor}`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div
-      className="fixed inset-0 -z-10 pointer-events-none bg-[#e2e8f0] dark:bg-[#0a0a0a] transition-colors duration-500 ease-in-out"
-      aria-hidden="true"
+      className="starry-background-wrapper"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
+        pointerEvents: "none",
+      }}
     >
-      <div className="absolute inset-0">
-        {[...Array(150)].map((_, i) => {
-          const size = Math.random() * 2.5 + 1.5;
-          return (
-            <div
-              key={i}
-              className="absolute rounded-full bg-[#0a0a0a]/[0.4] dark:bg-[#e2e8f0]/[0.4] transition-colors duration-500 ease-in-out"
-              style={{
-                width: `${size}px`,
-                height: `${size}px`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animation: `twinkle ${
-                  2 + Math.random() * 4
-                }s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 3}s`,
-                opacity: Math.random() * 0.5 + 0.5,
-              }}
-            />
-          );
-        })}
-      </div>
+      <canvas
+        ref={canvasRef}
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+      />
     </div>
   );
 };

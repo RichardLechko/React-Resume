@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { TbCircleLetterHFilled } from "react-icons/tb";
 
 const workExperiences = [
   {
@@ -12,12 +11,12 @@ const workExperiences = [
       "Assist in processing and reporting data to determine KPIs while creating PowerBI dashboards.",
       "Participate in data analysis sessions to provide insights that drive decision-making.",
     ],
-    logo: <TbCircleLetterHFilled size={120} />,
+    logo: "/work-images/hendrickson-logo.png",
     tools: [
       "PowerBi",
       "KPIs",
       "SQL",
-      "Microsoft Teams",
+      "Microsoft Products",
       "VPNs",
       "QAD",
       "ERP Systems",
@@ -42,6 +41,7 @@ const workExperiences = [
       "SASS",
       "TypeScript",
       "Node.js",
+      "ShadCN",
     ],
   },
 ];
@@ -51,70 +51,44 @@ const Company = React.forwardRef(
     { companyName, position, startTime, endTime, descriptions, logo, tools },
     ref
   ) => {
-    const logoSize = 96;
-
     return (
-      <div
-        ref={ref}
-        className="flex items-start relative max-[768px]:flex-col max-[768px]:items-center max-[768px]:w-full"
-      >
-        {/* Logo Wrapper */}
-        <div className="flex items-center justify-center z-10 relative max-[768px]:w-full max-[768px]:mb-6">
-          <div className="relative flex justify-center items-center -ml-[3.3rem] max-[768px]:ml-0">
-            {typeof logo === "string" ? (
+      <div ref={ref} className="company-container">
+        <div className="company-info">
+          <div className="company-logo-container">
+            <div className="company-logo">
               <img
                 src={logo}
                 alt={`${companyName} logo`}
-                className="rounded-full border-gray-400 border-8 z-10"
-                style={{
-                  width: `${logoSize}px`,
-                  height: `${logoSize}px`,
-                }}
+                className="company-logo-img"
               />
-            ) : (
-              <div
-                className="rounded-full flex items-center justify-center dark:text-[#2b2b2b] bg-gray-400 z-10"
-                style={{
-                  width: `${logoSize}px`,
-                  height: `${logoSize}px`,
-                }}
-              >
-                {logo}
-              </div>
-            )}
+            </div>
           </div>
-        </div>
 
-        {/* Content */}
-        <div className="flex-grow pl-10 max-[768px]:pl-0 max-[768px]:text-center max-[768px]:w-full">
-          <p className="text-xs mb-1 max-[425px]:text-xs text-gray-600 dark:text-gray-400">
-            <span>{startTime}</span> - <span>{endTime}</span>
-          </p>
+          <div className="company-header">
+            <p className="company-duration">
+              <span className="start-time">{startTime}</span> -{" "}
+              <span className="end-time">{endTime}</span>
+            </p>
+            <h2 className="company-name">{companyName}</h2>
+            <h3 className="company-position">{position}</h3>
+          </div>
 
-          <h2 className="font-bold mb-1 text-3xl max-[425px]:text-2xl text-gray-800 dark:text-gray-200">
-            {companyName}
-          </h2>
+          <div className="company-content">
+            <ul className="company-descriptions">
+              {descriptions.map((desc, index) => (
+                <li key={index} className="company-description-item">
+                  {desc}
+                </li>
+              ))}
+            </ul>
 
-          <h3 className="mb-2 text-lg font-semibold max-[425px]:text-md text-gray-700 dark:text-gray-300">
-            {position}
-          </h3>
-
-          <ul className="list-disc list-inside mt-2 max-[768px]:text-left max-[768px]:list-none max-[768px]:space-y-2 text-gray-700 dark:text-gray-300">
-            {descriptions.map((desc, index) => (
-              <li key={index} className="mb-2 leading-relaxed text-md">
-                {desc}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-2 flex flex-wrap gap-2 w-full max-[768px]:justify-center">
-            {tools.map((tool, index) => (
-              <span
-                key={index}
-                className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded-full text-sm"
-              >
-                {tool}
-              </span>
-            ))}
+            <div className="company-tools">
+              {tools.map((tool, index) => (
+                <span key={index} className="company-tool">
+                  {tool}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -126,23 +100,24 @@ const Work = () => {
   const itemsRef = useRef([]);
 
   return (
-    <section>
-      <div>
-        <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
-          Work Experience
+    <section id="work" className="work-section">
+      <div className="work-container">
+        <h1>
+          <span className="content-backdrop">Work Experience</span>
         </h1>
-        <div className="relative rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-300 dark:border-gray-600">
-          <div className="absolute inset-0 rounded-lg p-[2px]">
-            <div className="bg-gradient-to-r from-gray-100 to-gray-300 dark:from-gray-700 dark:to-gray-900 rounded-lg"></div>
+        <div className="work-content">
+          <div className="work-left">
+            <div className="work-left-inner"></div>
           </div>
-          <div className="max-[768px]:border-none p-12 relative max-[425px]:px-6 max-[375px]:px-3">
-            <div className="absolute left-[5rem] top-0 bottom-0 border-l-4 max-[768px]:border-none border-gray-300 dark:border-gray-600"></div>
-            <div className="pl-10 space-y-10 max-[768px]:pl-0">
+          <div className="work-right">
+            <div className="work-right-inner"></div>
+            <div className="work-experiences">
               {workExperiences.map((experience, index) => (
                 <Company
                   key={index}
                   {...experience}
                   ref={(el) => (itemsRef.current[index] = el)}
+                  className="work-experience-item"
                 />
               ))}
             </div>

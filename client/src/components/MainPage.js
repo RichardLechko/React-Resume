@@ -17,129 +17,38 @@ const MainPage = ({
   skillsRef,
   contactRef,
   projectsRef,
-  setActiveSection, // Prop to set active section in the navbar
 }) => {
-  const [activeSection, setActive] = useState("");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const sectionId = entry.target.id;
-            setActive(sectionId);
-            setActiveSection(sectionId); // Notify NavBar about the active section
-          }
-        });
-      },
-      {
-        threshold: 0.5, // Adjust this value to change when a section is considered "in view"
-      }
-    );
-
-    // List of sections to observe
-    const sections = [
-      personalRef.current,
-      workRef.current,
-      educationRef.current,
-      publicationsRef.current,
-      skillsRef.current,
-      contactRef.current,
-      projectsRef.current,
-    ];
-
-    // Observe all sections
-    sections.forEach((section) => section && observer.observe(section));
-
-    // Clean up observer on unmount
-    return () => {
-      sections.forEach((section) => section && observer.unobserve(section));
-    };
-  }, [
-    personalRef,
-    workRef,
-    educationRef,
-    publicationsRef,
-    skillsRef,
-    contactRef,
-    projectsRef,
-    setActiveSection,
-  ]);
-
   return (
-    <div className="overflow-x-hidden relative min-h-screen">
-      <Suspense
-        fallback={
-          <div className="loading-spinner min-h-screen">Loading...</div>
-        }
-      >
-        <section
-          id="personal"
-          ref={personalRef}
-          className={`pt-40 container mx-auto px-4 ${
-            activeSection === "personal" ? "outline" : ""
-          }`}
-        >
+    <div className="container main-page-container">
+      <Suspense fallback={<div>Loading...</div>}>
+        <section id="personal" ref={personalRef}>
           <Personal />
         </section>
-        <section
-          id="projects"
-          ref={projectsRef}
-          className={`container flex flex-col mx-auto pt-40 ${
-            activeSection === "projects" ? "outline" : ""
-          }`}
-        >
+        <section id="projects" ref={projectsRef}>
           <Projects />
         </section>
-        <section
-          id="work"
-          ref={workRef}
-          className={`pt-40 container mx-auto px-4 ${
-            activeSection === "work" ? "outline" : ""
-          }`}
-        >
+
+        <section id="work" ref={workRef}>
           <Work />
         </section>
-        <section
-          id="education"
-          ref={educationRef}
-          className={`container flex flex-col mx-auto pt-44 mb-24 ${
-            activeSection === "education" ? "outline" : ""
-          }`}
-        >
+
+        <section id="education" ref={educationRef}>
           <Education />
         </section>
-        <section
-          id="publications"
-          ref={publicationsRef}
-          className={`container flex flex-col mx-auto pt-16 ${
-            activeSection === "publications" ? "outline" : ""
-          }`}
-        >
+
+        <section id="publications" ref={publicationsRef}>
           <Publications />
         </section>
-        <section
-          id="relevantCoursework"
-          className="container flex flex-col mx-auto pt-40"
-        >
+
+        <section id="relevantCoursework">
           <Coursework />
         </section>
-        <section
-          id="skills"
-          ref={skillsRef}
-          className={`pt-40 px-4 container mx-auto ${
-            activeSection === "skills" ? "outline" : ""
-          }`}
-        >
+
+        <section id="skills" ref={skillsRef}>
           <TechnicalSkills />
         </section>
-        <section
-          id="contact"
-          ref={contactRef}
-          className={`container flex flex-col mx-auto pt-48 ${
-            activeSection === "contact" ? "outline" : ""
-          }`}
-        >
+
+        <section id="contact" ref={contactRef}>
           <Contact />
         </section>
       </Suspense>

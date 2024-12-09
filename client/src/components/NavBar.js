@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import icons from "./icons";
 import ThemeToggle from "./ThemeToggle";
 
-const NavItem = ({ sectionId, sectionName, onNavClick }) => (
+const NavItem = ({ sectionId, sectionName, onNavClick, isActive }) => (
   <div
-    className="nav-item relative cursor-pointer hover:scale-105 transition-transform duration-150"
+    className="nav-ul-li"
     role="button"
+    data-active={isActive}
     onClick={(e) => {
       e.preventDefault();
       onNavClick(sectionId);
@@ -19,20 +20,13 @@ const NavItem = ({ sectionId, sectionName, onNavClick }) => (
       }
     }}
   >
-    <span className="text-base max-[1200px]:text-sm relative z-10">
-      {sectionName}
-    </span>
+    <span>{sectionName}</span>
   </div>
 );
 
 const NavItemExternal = memo(
-  ({ path, sectionName, shouldOpenInNewTab, isHamburgerMenu, onNavigate }) => (
+  ({ path, sectionName, shouldOpenInNewTab, onNavigate }) => (
     <div
-      className={`cursor-pointer flex items-center gap-1 transition-transform duration-150 hover:scale-105 ${
-        isHamburgerMenu
-          ? "text-base max-[1024px]:ml-1"
-          : "max-[1500px]:text-base max-[1270px]:text-sm"
-      }`}
       onClick={() => {
         if (shouldOpenInNewTab) {
           window.open(path, "_blank", "noopener noreferrer");
@@ -48,7 +42,6 @@ const NavItemExternal = memo(
 
 const SocialMediaLink = memo(({ icon, link, ariaLabel }) => (
   <a
-    className={`transition-transform duration-150 hover:scale-90`}
     href={link}
     target="_blank"
     rel="noopener noreferrer"
@@ -78,12 +71,12 @@ const MOBILE_NAV_ITEMS = [
 
 const SOCIAL_LINKS = [
   {
-    icon: <icons.ImGithub className="text-3xl max-[1400px]:text-2xl" />,
+    icon: <icons.ImGithub />,
     link: "https://github.com/richardlechko",
     ariaLabel: "Visit my GitHub profile",
   },
   {
-    icon: <icons.FaLinkedin className="text-3xl max-[1400px]:text-2xl" />,
+    icon: <icons.FaLinkedin />,
     link: "https://www.linkedin.com/in/richard-lechko",
     ariaLabel: "Visit my LinkedIn profile",
   },
@@ -92,7 +85,16 @@ const SOCIAL_LINKS = [
 const NavBar = ({ refs, activeSection }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isHamburgerMenu, setIsHamburgerMenu] = useState(false);
+  const [sidebarStyle, setSidebarStyle] = useState({ left: "-250px" });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isSidebarOpen) {
+      setSidebarStyle({ left: "0px" });
+    } else {
+      setSidebarStyle({ left: "-250px" });
+    }
+  }, [isSidebarOpen]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -129,82 +131,88 @@ const NavBar = ({ refs, activeSection }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="navbar-container">
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 transition-opacity"
+          className="sidebar-overlay"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
 
-      <nav className="fixed top-0 w-full bg-[#e2e8f0] z-50">
-        <div className="flex items-center justify-between px-4 py-2 max-[1200px]:px-2">
-          <div className="flex items-center text-2xl whitespace-nowrap nav-name max-[1440px]:text-xl max-[1024px]:text-3xl max-[640px]:text-xl">
-            Richard Lechko
-          </div>
+      <nav>
+        <div className="navbar-content">
+          <div className="navbar-logo">Richard Lechko</div>
 
           {!isHamburgerMenu ? (
-            <ul className="flex items-center justify-between w-full">
-              <li className="flex items-center justify-center mx-auto">
-                <pre className="p-4 max-[1200px]:px-2 overflow-auto">
-                  <div className="flex space-x-10 max-[1440px]:space-x-2">
-                    {NAV_ITEMS.map(({ id, name }) => (
-                      <NavItem
-                        key={id}
-                        sectionId={id}
-                        sectionName={name}
-                        onNavClick={handleNavClick}
-                        isActive={activeSection === id}
-                      />
-                    ))}
-                  </div>
-                </pre>
+            <ul className="desktop-navbar">
+              <li className="nav-item-wrapper">
+                <div className="desktop-nav-items">
+                  {NAV_ITEMS.map(({ id, name }) => (
+                    <NavItem
+                      key={id}
+                      sectionId={id}
+                      sectionName={name}
+                      onNavClick={handleNavClick}
+                      isActive={activeSection === id}
+                    />
+                  ))}
+                </div>
               </li>
 
-              <li className="flex items-center gap-6 max-[1440px]:gap-3">
-                <ThemeToggle />
-                <NavItemExternal
-                  path="https://public-notes-page-react.vercel.app/"
-                  sectionName="Blog"
-                  shouldOpenInNewTab
-                  isHamburgerMenu={isHamburgerMenu}
-                  onNavigate={handleExternalNavigation}
-                />
-                {SOCIAL_LINKS.map(({ icon, link, ariaLabel }, index) => (
-                  <SocialMediaLink
-                    key={index}
-                    icon={icon}
-                    link={link}
-                    ariaLabel={ariaLabel}
+              <li className="external-links">
+                <div className="theme-toggle-and-blog">
+                  <ThemeToggle /> {/* Theme toggle for desktop */}
+                  <NavItemExternal
+                    path="https://public-notes-page-react.vercel.app/"
+                    sectionName="Blog"
+                    shouldOpenInNewTab
                     isHamburgerMenu={isHamburgerMenu}
+                    onNavigate={handleExternalNavigation}
                   />
-                ))}
+                </div>
+                <div className="social-links">
+                  {SOCIAL_LINKS.map(({ icon, link, ariaLabel }, index) => (
+                    <SocialMediaLink
+                      key={index}
+                      icon={icon}
+                      link={link}
+                      ariaLabel={ariaLabel}
+                      isHamburgerMenu={isHamburgerMenu}
+                    />
+                  ))}
+                </div>
               </li>
             </ul>
-          ) : (
-            <div className="flex items-center gap-4 ml-auto">
-              <ThemeToggle />
-              <button
-                className="text-3xl cursor-pointer max-[425px]:text-2xl"
-                onClick={() => setIsSidebarOpen((prev) => !prev)}
-                aria-label="Toggle navigation menu"
-              >
-                &#9776;
-              </button>
-            </div>
-          )}
+          ) : null}
+
+          <div className="navbar-actions">
+            {isHamburgerMenu /* Only show theme toggle on mobile */ && (
+              <>
+                <ThemeToggle />
+                <button
+                  className="hamburger-menu-button"
+                  onClick={() => setIsSidebarOpen((prev) => !prev)}
+                  aria-label="Toggle navigation menu"
+                >
+                  &#9776;
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </nav>
 
-      {isHamburgerMenu && (
+      {isHamburgerMenu && isSidebarOpen && (
         <div
-          className={`fixed left-0 pt-10 top-[40px] h-[calc(100%-64px)] w-[200px] bg-white dark:bg-gray-900 z-40 transform ${
-            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } transition-transform`}
+          className="mobile-sidebar"
+          style={{
+            ...sidebarStyle,
+            transition: "left 0.3s ease",
+          }}
         >
-          <ul>
+          <ul className="mobile-nav-items">
             {MOBILE_NAV_ITEMS.map(({ id, name }) => (
-              <li key={id} className="px-4 py-2">
+              <li key={id} className="mobile-nav-item">
                 <NavItem
                   sectionId={id}
                   sectionName={name}

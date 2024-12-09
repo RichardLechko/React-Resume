@@ -115,18 +115,18 @@ const skillsData = [
 
 const TechnicalSkills = React.forwardRef((props, ref) => {
   return (
-    <section id="skills" ref={ref}>
-      <div>
-        <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
-            Technical Skills
+    <section id="skills" ref={ref} className="technical-skills-section">
+      <div className="technical-skills-container">
+        <header className="technical-skills-header">
+          <h1 className="technical-skills-title">
+            <span className="content-backdrop">Skills</span>
           </h1>
         </header>
 
         <Suspense
-          fallback={<div className="text-center">Loading skills...</div>}
+          fallback={<div className="loading-skills">Loading skills...</div>}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-[640px]:gap-3 auto-rows-fr">
+          <div className="skills-list">
             {skillsData[0].skills.map(
               ({ iconName, name, description, hoverColor, darkHoverColor }) => {
                 const IconComponent = icons[iconName];
@@ -135,73 +135,29 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
                 return (
                   <div
                     key={name}
-                    className={`
-                      relative group rounded-xl 
-                      bg-[#f2f1ef] dark:bg-[#2b2b2b] 
-                      p-6 max-[640px]:py-4 
-                      shadow-md hover:shadow-lg
-                    `}
+                    className="skill-item"
                     style={{
-                      transform: isHovered ? "scale(1.05)" : "scale(1)",
-                      transition:
-                        "transform 0.2s ease, background-color 0.1s ease, box-shadow 0.2s ease",
+                      "--hover-color": hoverColor,
+                      "--dark-hover-color": darkHoverColor,
                     }}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                   >
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 p-4">
-                        <span
-                          style={{
-                            color: isHovered
-                              ? darkHoverColor || hoverColor
-                              : "currentColor",
-                            transform: isHovered ? "scale(1.25)" : "scale(1)",
-                            transition: "transform 0.2s ease, color 0.1s ease",
-                            display: "block",
-                            fontSize: "2rem",
-                          }}
-                        >
+                    <div className="skill-content">
+                      <div className="skill-icon-container">
+                        <span className="skill-icon">
                           <IconComponent />
                         </span>
                       </div>
 
-                      <div className="flex-1 min-w-0">
-                        <h2
-                          className="text-xl font-bold mb-2 truncate"
-                          style={{
-                            color: isHovered ? "#4c8bf8" : "currentColor",
-                            transition: "color 0.1s ease",
-                          }}
-                        >
-                          {name}
-                        </h2>
-                        <p
-                          className="text-sm line-clamp-3"
-                          style={{
-                            opacity: isHovered ? 0.8 : 0.9,
-                            transition: "opacity 0.1s ease",
-                          }}
-                        >
-                          {description}
-                        </p>
+                      <div className="skill-description-container">
+                        <h2 className="skill-name">{name}</h2>
+                        <p className="skill-description">{description}</p>
                       </div>
                     </div>
 
-                    <div
-                      className="absolute inset-0 rounded-xl border-2 border-[#4c8bf8]"
-                      style={{
-                        opacity: isHovered ? 1 : 0,
-                        transition: "opacity 0.1s ease",
-                      }}
-                    />
-                    <div
-                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent to-[#4c8bf8]"
-                      style={{
-                        opacity: isHovered ? 0.2 : 0,
-                        transition: "opacity 0.1s ease",
-                      }}
-                    />
+                    <div className="skill-divider" />
+                    <div className="skill-divider" />
                   </div>
                 );
               }

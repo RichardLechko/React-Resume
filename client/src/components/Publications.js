@@ -9,27 +9,23 @@ const publicationsData = [
 
 const Publications = () => {
   return (
-    <section id="publications">
-      <h1 className="text-4xl font-bold text-center mb-4 sm:text-5xl backdrop-blur-sm">
-        Publications
+    <section id="publications" className="publications-section">
+      <h1 className="publications-title">
+        <span className="content-backdrop">Publications</span>
       </h1>
-
-      <div className="flex flex-col items-center gap-6 rounded-xl">
+      <div className="publications-list">
         {publicationsData.map((publication, index) => (
-          <div
-            key={index}
-            className="bg-[#f2f1ef] dark:bg-gray-700 flex flex-col gap-4 rounded-xl p-6 shadow-lg transition-transform duration-300 hover:scale-105 w-full max-w-md text-center"
-          >
+          <div key={index} className="publication-item">
             <a
               href={publication.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xl font-semibold hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors duration-300"
+              className="publication-link"
             >
               {publication.title}
             </a>
-            <p className="text-lg">{publication.authors}</p>
-            <p className="text-sm">ISBN: {publication.isbn}</p>
+            <p className="publication-authors">{publication.authors}</p>
+            <p className="publication-isbn">ISBN: {publication.isbn}</p>
           </div>
         ))}
       </div>
