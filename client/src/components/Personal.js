@@ -39,7 +39,7 @@ const Personal = () => {
                 onMouseEnter={() => setIsSameTimezone(true)}
                 onMouseLeave={() => setIsSameTimezone(false)}
               >
-                My Time: {currentTime} CST (UTC-06)
+                {currentTime} CST (UTC-06)
               </span>
             </div>
           </div>

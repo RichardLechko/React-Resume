@@ -1858,6 +1858,16 @@ footer p {
 /* CONTACT */
 /* CONTACT */
 
+.contact-input.error {
+  border-color: #ef4444;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
 .contact-section {
   display: flex;
   flex-direction: column;
@@ -2152,6 +2162,9 @@ footer p {
 /* MEDIA QUERIES */
 
 @media (max-width: 1440px) {
+  #publications .publication-link {
+    font-size: 1.3rem;
+  }
   #contact h1 {
     font-size: 3.9rem;
   }
@@ -2294,6 +2307,15 @@ footer p {
 }
 
 @media (max-width: 1024px) {
+  #publications .publication-link {
+    font-size: 1rem;
+  }
+  #publications .publication-authors {
+    font-size: 0.9rem;
+  }
+  #publications .publication-isbn {
+    font-size: 0.8rem;
+  }
   #contact .contact-info-group > * {
     width: 80%;
     margin: auto;
@@ -2382,10 +2404,7 @@ footer p {
     font-weight: 300;
     font-size: 0.8rem;
   }
-  #personal .time-zone-popup {
-    font-size: 0.6rem;
-    padding: 0.3rem 1rem;
-  }
+
   .container {
     max-width: 600px;
   }
@@ -2482,11 +2501,17 @@ footer p {
     width: 100%;
   }
 
+  #personal .personal-resume-content,
+  #personal .spotify-container {
+    width: 100%;
+  }
+
   #personal .personal-resume-content div {
     margin-top: 2rem;
     align-items: center;
     justify-content: center;
     display: flex;
+
     flex-direction: column;
   }
 
@@ -2503,31 +2528,9 @@ footer p {
   #personal h1 {
     font-size: 1.6rem;
   }
-  #personal .personal-based-in-and-time {
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-  #personal .personal-based-in-and-time div {
-    font-size: 1rem;
-    margin: auto auto 2rem auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  #personal .time-zone-popup {
-    font-size: 0.7rem !important;
-    margin-top: 0 !important;
-    top: 83%;
-    left: 14%;
-  }
 
   #personal .personal-info-spotify {
+    padding: 3rem 0rem 3rem 0rem;
     width: 100%;
   }
   .container {
@@ -2625,6 +2628,10 @@ footer p {
     gap: 1rem;
   }
 
+  #personal .personal-based-in-and-time {
+    margin-top: 0.3rem;
+  }
+
   #personal .personal-resume-content p {
     width: 70%;
 
@@ -2654,15 +2661,7 @@ footer p {
   #personal h1 {
     font-size: 1.1rem;
   }
-  #personal .personal-based-in-and-time {
-    font-size: 0.8rem;
-  }
-  #personal .personal-based-in-and-time div {
-    font-size: 0.8rem;
 
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-  }
   #personal .personal-info-spotify {
     padding: 3rem 1rem 3rem 1rem;
   }
@@ -2695,6 +2694,12 @@ footer p {
 }
 
 @media (max-width: 425px) {
+  footer h1 {
+    font-size: 1.5rem;
+  }
+  footer p {
+    font-size: 0.7rem;
+  }
   .contact-input,
   .contact-textarea {
     font-size: 0.7rem;
@@ -2786,7 +2791,6 @@ footer p {
   }
   #personal .personal-based-in-and-time div {
     font-size: 0.7rem;
-    padding: 0.5rem;
   }
   #personal .personal-resume-content h2 {
     font-size: 1.4rem;
@@ -2797,7 +2801,7 @@ footer p {
   }
   #personal .personal-based-in-and-time {
     padding: 0;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
 
   #personal .personal-info-spotify {
@@ -2886,15 +2890,8 @@ footer p {
     font-size: 0.6rem;
   }
 
-  #personal .personal-based-in-and-time {
-    opacity: 0.7;
-    margin-top: 0.25rem;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-  }
-  #personal .personal-based-in-and-time div {
-    font-size: 0.7rem;
-    margin: 1rem 0rem 1rem 0rem;
+  #personal .personal-based-in-and-time > * {
+    font-size: 11px;
   }
 
   #personal .spotify-container {

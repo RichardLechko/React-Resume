@@ -15,18 +15,40 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [errors, setErrors] = useState({});
   const [feedback, setFeedback] = useState("");
   const [links, setLinks] = useState([]);
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: "",
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateEmail(formData.email)) {
+      setErrors({
+        ...errors,
+        email: "Please enter a valid email address",
+      });
+      return;
+    }
 
     const apiUrl = "https://react-resume-api.vercel.app/api/submit";
 
@@ -46,6 +68,7 @@ const Contact = () => {
       const data = await response.json();
       setFeedback(data.message);
       setLinks(data.links);
+      setErrors({});
     } catch (error) {
       setFeedback("Error sending message.");
     }
@@ -82,10 +105,15 @@ const Contact = () => {
               id="email"
               value={formData.email}
               onChange={handleChange}
-              className="contact-input"
+              className={`contact-input ${errors.email ? "error" : ""}`}
               placeholder="Your email"
               required
             />
+            {errors.email && (
+              <div className="error-message text-red-500 text-sm mt-1">
+                {errors.email}
+              </div>
+            )}
             <div className="left-border"></div>
             <div className="right-border"></div>
             <div className="bottom-left"></div>
