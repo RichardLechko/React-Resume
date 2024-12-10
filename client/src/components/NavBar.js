@@ -4,23 +4,25 @@ import icons from "./icons";
 import ThemeToggle from "./ThemeToggle";
 
 const NavItem = ({ sectionId, sectionName, onNavClick, isActive }) => (
-  <div
-    className="nav-ul-li"
-    role="button"
-    data-active={isActive}
-    onClick={(e) => {
-      e.preventDefault();
-      onNavClick(sectionId);
-    }}
-    tabIndex="0"
-    onKeyDown={(e) => {
-      if (e.key === "Enter") {
+  <div className="nav-item-stable-wrapper">
+    <div
+      className="nav-ul-li"
+      role="button"
+      data-active={isActive}
+      onClick={(e) => {
         e.preventDefault();
         onNavClick(sectionId);
-      }
-    }}
-  >
-    <span>{sectionName}</span>
+      }}
+      tabIndex="0"
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          onNavClick(sectionId);
+        }
+      }}
+    >
+      <span>{sectionName}</span>
+    </div>
   </div>
 );
 

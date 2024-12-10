@@ -15,14 +15,14 @@ const StarryBackground = () => {
     window.addEventListener("resize", handleResize);
 
     const stars = [];
-    const numStars = 200;
-    const starSpeed = 0.25; // Increased speed from 0.05 to 0.15
+    const numStars = 150;
+    const starSpeed = 0.15;
 
     for (let i = 0; i < numStars; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 0.5 + 0.5, // Slightly larger stars
+        size: Math.random() * 0.5 + 0.5,
         speedX: (Math.random() - 0.5) * starSpeed,
         speedY: (Math.random() - 0.5) * starSpeed,
         brightness: Math.random(),
@@ -34,7 +34,7 @@ const StarryBackground = () => {
       const backgroundColor = computedStyle
         .getPropertyValue("--background-color")
         .trim();
-      const isLightMode = backgroundColor.includes("e2e8f0"); // Check if it's light mode
+      const isLightMode = backgroundColor.includes("#ffffff");
 
       ctx.fillStyle = `${backgroundColor}`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -49,12 +49,11 @@ const StarryBackground = () => {
         if (star.y > canvas.height) star.y = 0;
 
         star.brightness += (Math.random() - 0.5) * 0.1;
-        star.brightness = Math.max(0.3, Math.min(1, star.brightness)); // Increased minimum brightness
+        star.brightness = Math.max(0.3, Math.min(1, star.brightness));
 
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
 
-        // Use different colors for light/dark mode
         const starColor = isLightMode
           ? "#1a1a1a"
           : computedStyle.getPropertyValue("--accent-color").trim();

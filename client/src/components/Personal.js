@@ -39,16 +39,8 @@ const Personal = () => {
                 onMouseEnter={() => setIsSameTimezone(true)}
                 onMouseLeave={() => setIsSameTimezone(false)}
               >
-                {currentTime} CST - (hover to check timezone)
+                My Time: {currentTime} CST (UTC-06)
               </span>
-              {isSameTimezone && (
-                <div className="time-zone-popup content-backdrop">
-                  We're{" "}
-                  {isSameTimezone
-                    ? "in the same timezone!"
-                    : "in different timezones!"}
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -58,15 +50,7 @@ const Personal = () => {
         <p className="content-backdrop">
           I'm a web developer focused on building innovative and user-friendly
           applications. When I'm not coding, I enjoy playing video games, going
-          to concerts, and going on walks. Follow me on{" "}
-          <a
-            href="https://open.spotify.com/user/22j4lmvcuabn2joznuzd3pdy?si=b8273b935c894611"
-            target="_blank"
-            className="spotify-link content-backdrop"
-          >
-            Spotify
-          </a>
-          !
+          to concerts, and going on walks.
         </p>
       </div>
       <div className="spotify-api">

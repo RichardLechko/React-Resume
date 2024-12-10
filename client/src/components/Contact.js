@@ -140,26 +140,6 @@ const Contact = () => {
         </div>
       )}
 
-      {links.length > 0 && (
-        <div className="useful-links">
-          <h2 className="useful-links-heading">Useful Links</h2>
-          <div className="links-grid">
-            {links.map((link, index) => (
-              <a
-                key={index}
-                href={link.url}
-                download={link.download}
-                className="link-item"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="link-text">{link.text}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
-
       <div className="contact-info">
         <h1 className="contact-info-heading">
           <span className="content-backdrop">Contact Information</span>
