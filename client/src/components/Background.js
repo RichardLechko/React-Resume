@@ -22,7 +22,7 @@ const StarryBackground = () => {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 2.5 + 0.5, // Slightly larger stars
+        size: Math.random() * 0.5 + 0.5, // Slightly larger stars
         speedX: (Math.random() - 0.5) * starSpeed,
         speedY: (Math.random() - 0.5) * starSpeed,
         brightness: Math.random(),
