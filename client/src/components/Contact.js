@@ -20,8 +20,8 @@ const Contact = () => {
   const [links, setLinks] = useState([]);
 
   const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email) && email.includes(".");
   };
 
   const handleChange = (e) => {
@@ -134,6 +134,7 @@ const Contact = () => {
             <div className="right-border"></div>
             <div className="bottom-left"></div>
             <div className="bottom-right"></div>
+            <input type="text" name="honeypot" id="honeypot" />
           </div>
           <div className="input-wrapper">
             <textarea

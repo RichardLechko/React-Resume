@@ -54,96 +54,131 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const useScrollTracking = (refs) => {
-  const [currentSection, setCurrentSection] = useState("personal");
-  const [sectionProgress, setSectionProgress] = useState({});
-
-  const handleScroll = useCallback(() => {
-    const windowHeight = window.innerHeight;
-    const scrollPosition = window.scrollY;
-
-    if (scrollPosition <= 50) {
-      setCurrentSection("personal");
-      setSectionProgress({
-        personal: { progress: 1, intersection: 1 },
-        ...Object.keys(refs)
-          .filter((id) => id !== "personal")
-          .reduce(
-            (acc, id) => ({ ...acc, [id]: { progress: 0, intersection: 0 } }),
-            {}
-          ),
-      });
-      return;
-    }
-
-    const updatedSectionProgress = {};
-    let bestMatchSection = "personal";
-    let largestIntersectionRatio = 0;
-
-    Object.entries(refs).forEach(([sectionId, ref]) => {
-      if (!ref.current) return;
-
-      const sectionElement = ref.current;
-      const rect = sectionElement.getBoundingClientRect();
-
-      const elementTop = rect.top + scrollPosition;
-      const sectionHeight = rect.height;
-
-      const sectionCenterOffset = sectionHeight / 2;
-      const progress = Math.max(
-        0,
-        Math.min(
-          1,
-          (scrollPosition - elementTop + sectionCenterOffset) / sectionHeight
-        )
-      );
-
-      const visibleHeight = Math.min(
-        windowHeight,
-        Math.max(0, windowHeight - rect.top),
-        Math.max(0, rect.bottom)
-      );
-      const intersectionRatio = visibleHeight / sectionHeight;
-
-      const isInView = intersectionRatio > 0.4;
-
-      if (isInView) {
-        updatedSectionProgress[sectionId] = {
-          progress: Number(progress.toFixed(2)),
-          intersection: Number(intersectionRatio.toFixed(2)),
-        };
-
-        if (intersectionRatio > largestIntersectionRatio) {
-          bestMatchSection = sectionId;
-          largestIntersectionRatio = intersectionRatio;
-        }
-      } else {
-        updatedSectionProgress[sectionId] = {
-          progress: 0,
-          intersection: 0,
-        };
-      }
-    });
-
-    setSectionProgress(updatedSectionProgress);
-    setCurrentSection(bestMatchSection);
-  }, [refs]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll]);
-
-  return { currentSection, sectionProgress };
-};
-
 const NavBar = ({ refs, activeSection }) => {
-  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isHamburgerMenu, setIsHamburgerMenu] = useState(false);
+  const [sidebarStyle, setSidebarStyle] = useState({ left: "-250px" });
+  const navigate = useNavigate();
+
+  const useScrollTracking = (refs, isSidebarOpen) => {
+    const [currentSection, setCurrentSection] = useState("personal");
+    const [sectionProgress, setSectionProgress] = useState({});
+
+    const handleScroll = useCallback(() => {
+      if (isSidebarOpen) return; // Stop scroll tracking if the sidebar is open
+
+      const windowHeight = window.innerHeight;
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition <= 50) {
+        setCurrentSection("personal");
+        setSectionProgress({
+          personal: { progress: 1, intersection: 1 },
+          ...Object.keys(refs)
+            .filter((id) => id !== "personal")
+            .reduce(
+              (acc, id) => ({
+                ...acc,
+                [id]: { progress: 0, intersection: 0 },
+              }),
+              {}
+            ),
+        });
+        return;
+      }
+
+      const updatedSectionProgress = {};
+      let bestMatchSection = "personal";
+      let largestIntersectionRatio = 0;
+
+      Object.entries(refs).forEach(([sectionId, ref]) => {
+        if (!ref.current) return;
+
+        const sectionElement = ref.current;
+        const rect = sectionElement.getBoundingClientRect();
+
+        const elementTop = rect.top + scrollPosition;
+        const sectionHeight = rect.height;
+
+        const sectionCenterOffset = sectionHeight / 2;
+        const progress = Math.max(
+          0,
+          Math.min(
+            1,
+            (scrollPosition - elementTop + sectionCenterOffset) / sectionHeight
+          )
+        );
+
+        const visibleHeight = Math.min(
+          windowHeight,
+          Math.max(0, windowHeight - rect.top),
+          Math.max(0, rect.bottom)
+        );
+        const intersectionRatio = visibleHeight / sectionHeight;
+
+        const isInView = intersectionRatio > 0.4;
+
+        if (isInView) {
+          updatedSectionProgress[sectionId] = {
+            progress: Number(progress.toFixed(2)),
+            intersection: Number(intersectionRatio.toFixed(2)),
+          };
+
+          if (intersectionRatio > largestIntersectionRatio) {
+            bestMatchSection = sectionId;
+            largestIntersectionRatio = intersectionRatio;
+          }
+        } else {
+          updatedSectionProgress[sectionId] = {
+            progress: 0,
+            intersection: 0,
+          };
+        }
+      });
+
+      setSectionProgress(updatedSectionProgress);
+      setCurrentSection(bestMatchSection);
+    }, [refs, isSidebarOpen]);
+
+    useEffect(() => {
+      if (isSidebarOpen) return; // Do not attach scroll listener if the sidebar is open
+
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, [handleScroll, isSidebarOpen]);
+
+    if (isSidebarOpen) {
+      return { currentSection: null, sectionProgress: {} };
+    }
+
+    return { currentSection, sectionProgress };
+  };
+
+  useEffect(() => {
+    if (isSidebarOpen) {
+      setSidebarStyle({ left: "0px" });
+    } else {
+      setSidebarStyle({ left: "-250px" });
+    }
+  }, [isSidebarOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isSmallScreen = window.innerWidth <= 1024;
+      setIsHamburgerMenu(isSmallScreen);
+      if (!isSmallScreen && isSidebarOpen) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isSidebarOpen]);
 
   const { currentSection, sectionProgress } = useScrollTracking(refs);
 
@@ -181,7 +216,7 @@ const NavBar = ({ refs, activeSection }) => {
         <div className="nav-item-stable-wrapper">
           <div
             className={`nav-ul-li ${
-              currentSection === sectionId ? "active" : ""
+              currentSection === sectionId && !isSidebarOpen ? "active" : ""
             }`}
             role="button"
             onClick={() => onNavClick(sectionId)}
@@ -191,24 +226,30 @@ const NavBar = ({ refs, activeSection }) => {
                 onNavClick(sectionId);
               }
             }}
+            style={{
+              cursor: "pointer",
+              pointerEvents: "auto",
+            }}
           >
             <span>{sectionName}</span>
-            <div
-              className="section-progress-indicator"
-              style={{
-                width: `${sectionData.progress * 100}%`,
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                height: "3px",
-                backgroundColor: "var(--secondary)",
-              }}
-            />
+            {!isSidebarOpen && (
+              <div
+                className="section-progress-indicator"
+                style={{
+                  width: `${sectionData.progress * 100}%`,
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  height: "3px",
+                  backgroundColor: "var(--secondary)",
+                }}
+              />
+            )}
           </div>
         </div>
       );
     },
-    [currentSection, sectionProgress]
+    [currentSection, sectionProgress, isSidebarOpen]
   );
 
   return (
@@ -266,7 +307,7 @@ const NavBar = ({ refs, activeSection }) => {
           ) : null}
 
           <div className="navbar-actions">
-            {isHamburgerMenu && (
+            {isHamburgerMenu /* Only show theme toggle on mobile */ && (
               <>
                 <ThemeToggle />
                 <button
@@ -297,7 +338,7 @@ const NavBar = ({ refs, activeSection }) => {
                   sectionId={id}
                   sectionName={name}
                   onNavClick={handleNavClick}
-                  isActive={currentSection === id}
+                  isActive={activeSection === id}
                 />
               </li>
             ))}

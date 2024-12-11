@@ -325,7 +325,7 @@ nav {
 
 .mobile-nav-item .nav-ul-li {
   display: block;
-  width: 70%;
+  width: 100px;
 }
 
 [data-theme="dark"] .mobile-nav-item .nav-ul-li {
@@ -1663,6 +1663,11 @@ footer p {
   transition: all 0.3s ease;
 }
 
+#honeypot {
+  visibility: hidden;
+  display: none;
+}
+
 /* Add letter spacing to the placeholder */
 .contact-input::placeholder,
 .contact-textarea::placeholder {
@@ -2527,7 +2532,7 @@ footer p {
     height: 40px;
     margin: 0rem auto 0rem auto;
   }
-  #personal .personal-based-in-and-time div {
+  #personal .personal-based-in-and-time {
     font-size: 0.7rem;
   }
   #personal .personal-resume-content h2 {
@@ -2558,8 +2563,8 @@ footer p {
     top: 65px;
   }
 
-  .mobile-nav-item .nav-ul-li {
-    width: 80%;
+  .mobile-nav-items {
+    padding-left: 1rem;
   }
 
   .navbar-logo,
@@ -2625,7 +2630,7 @@ footer p {
     font-size: 0.6rem;
   }
 
-  #personal .personal-based-in-and-time > * {
+  #personal .personal-based-in-and-time {
     font-size: 11px;
   }
 
@@ -2635,13 +2640,6 @@ footer p {
 }
 
 @media (max-width: 320px) {
-  .mobile-nav-item .nav-ul-li {
-    width: 90%;
-  }
-  .mobile-nav-item {
-    font-size: 0.7rem;
-  }
-
   .mobile-sidebar {
     width: 150px;
   }
