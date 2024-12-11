@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense } from "react";
 
 const Personal = React.lazy(() => import("./Personal.js"));
 const TechnicalSkills = React.lazy(() => import("./TechnicalSkills.js"));

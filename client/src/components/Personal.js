@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { FaDownload } from "react-icons/fa6";
-import Spotify from "./Spotify";
 
 const Personal = () => {
   const [currentTime, setCurrentTime] = useState("");
@@ -52,9 +51,6 @@ const Personal = () => {
           applications. When I'm not coding, I enjoy playing video games, going
           to concerts, and going on walks.
         </p>
-      </div>
-      <div className="spotify-api">
-        <Spotify />
       </div>
 
       <div className="personal-resume-content">
