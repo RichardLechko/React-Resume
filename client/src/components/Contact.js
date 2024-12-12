@@ -17,7 +17,6 @@ const Contact = () => {
   });
   const [errors, setErrors] = useState({});
   const [feedback, setFeedback] = useState("");
-  const [links, setLinks] = useState([]);
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
@@ -67,7 +66,6 @@ const Contact = () => {
 
       const data = await response.json();
       setFeedback(data.message);
-      setLinks(data.links);
       setErrors({});
     } catch (error) {
       console.error("Submission error:", error);
