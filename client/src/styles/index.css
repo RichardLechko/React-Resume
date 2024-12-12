@@ -1837,9 +1837,11 @@ footer p {
 }
 
 .form-feedback {
+  width: 250px;
   font-size: 1rem;
   padding: 1rem;
   border-radius: 8px;
+  margin-top: 1rem;
   background-color: var(--nav-background);
   outline: 1px solid var(--secondary);
   color: var(--accent-color);
@@ -1876,6 +1878,7 @@ footer p {
   border-radius: 8px;
   transition: box-shadow 0.3s ease;
 }
+
 .info-icon {
   font-size: 1.75rem;
   color: var(--secondary);
@@ -2264,6 +2267,11 @@ footer p {
 }
 
 @media (max-width: 640px) {
+  #contact .form-feedback {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+    width: 200px;
+  }
   .skills-list {
     gap: 1rem;
     grid-template-columns: 1fr;
@@ -2429,6 +2437,10 @@ footer p {
   #contact h1 {
     font-size: 2rem;
   }
+  #contact .form-feedback {
+    font-size: 0.6rem;
+    max-width: 50%;
+  }
   .contact-submit {
     width: 50%;
     margin: auto;
@@ -2561,6 +2573,12 @@ footer p {
 }
 
 @media (max-width: 375px) {
+  #contact .form-feedback {
+    padding-left: 0rem;
+    max-width: 70%;
+    font-size: 0.8rem;
+    padding-right: 0rem;
+  }
   .slick-dots li button:before {
     font-size: 5px;
   }
