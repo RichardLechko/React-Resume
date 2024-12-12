@@ -33,16 +33,18 @@ const Personal = () => {
           </h1>
           <div className="personal-info content-backdrop">
             <div className="personal-based-in-and-time">
-              <p>Based in Chicago, IL.</p>
-              <div>
+              <p>
+                Based in Chicago, IL <span className="time-arrow">→</span>
                 <span
+                  className="time-display"
                   onMouseEnter={() => setIsSameTimezone(true)}
                   onMouseLeave={() => setIsSameTimezone(false)}
                 >
                   {currentTime} CST (UTC-06)
                 </span>
-              </div>
+              </p>
             </div>
+
             <div className="personal-info-spotify">
               <p className="content-backdrop">
                 I am a web developer specializing in creating responsive,
