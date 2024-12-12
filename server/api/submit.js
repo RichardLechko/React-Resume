@@ -2,20 +2,12 @@ import nodemailer from "nodemailer";
 import { Router } from "express";
 import { config } from "dotenv";
 import validator from "validator";
-import rateLimit from "express-rate-limit";
-import axios from "axios";
 
 config();
 
 const router = Router();
 
-const limiter = rateLimit({
-  windowMs: 60 * 1000,
-  max: 5,
-  message: { error: "Too many requests. Please try again later." },
-});
-
-router.post("/", limiter, async (req, res) => {
+router.post("/", async (req, res) => {
   const { name, email, subject, message, honeypot } = req.body;
 
   if (honeypot) {
@@ -28,25 +20,6 @@ router.post("/", limiter, async (req, res) => {
 
   if (!validator.isEmail(email)) {
     return res.status(400).json({ error: "Invalid email address." });
-  }
-
-  try {
-    const response = await axios.get("https://api.kickbox.com/v2/verify", {
-      params: {
-        email: email,
-        apiKey: process.env.KICKBOX_API_KEY,
-      },
-    });
-    console.log("Kickbox Response:", response.data);
-
-    if (response.data.result === "disposable") {
-      return res
-        .status(400)
-        .json({ error: "Disposable email addresses are not allowed." });
-    }
-  } catch (error) {
-    console.error("Error verifying email with Kickbox:", error);
-    return res.status(500).json({ error: "Failed to verify email." });
   }
 
   if (name.length > 100 || subject.length > 150 || message.length > 1000) {

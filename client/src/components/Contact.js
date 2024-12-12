@@ -70,7 +70,8 @@ const Contact = () => {
       setLinks(data.links);
       setErrors({});
     } catch (error) {
-      setFeedback("Error sending message.");
+      console.error("Submission error:", error);
+      setFeedback(error.message || "Error sending message.");
     }
   };
 

@@ -6,9 +6,6 @@ import { ScrollProvider } from "./components/ScrollToTop.js";
 import StarryBackground from "./components/Background.js";
 
 const ErrorBoundary = lazy(() => import("./components/ErrorBoundary.js"));
-const Currency = lazy(() => import("./components/widgets/Currency.js"));
-const Timer = lazy(() => import("./components/widgets/Timer.js"));
-const Weather = lazy(() => import("./components/widgets/Weather.js"));
 const MainPage = lazy(() => import("./components/MainPage.js"));
 
 function App() {
@@ -57,9 +54,6 @@ function App() {
                           />
                         }
                       />
-                      <Route path="/widgets/currency" element={<Currency />} />
-                      <Route path="/widgets/timer" element={<Timer />} />
-                      <Route path="/widgets/weather" element={<Weather />} />
                       {Object.keys(refs).map((section) => (
                         <Route
                           key={section}
