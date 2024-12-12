@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar.js";
 import Footer from "./components/Footer.js";
 import { ScrollProvider } from "./components/ScrollToTop.js";
-import StarryBackground from "./components/Background.js";
+/* import StarryBackground from "./components/Background.js"; */
 
 const ErrorBoundary = lazy(() => import("./components/ErrorBoundary.js"));
 const MainPage = lazy(() => import("./components/MainPage.js"));
@@ -31,7 +31,7 @@ function App() {
     <div style={{ position: "relative", minHeight: "100vh" }}>
       <Router>
         <ScrollProvider>
-          <StarryBackground />
+          {/* <StarryBackground /> */}
           <div style={{ position: "relative", zIndex: 1 }}>
             <NavBar refs={refs} />
 

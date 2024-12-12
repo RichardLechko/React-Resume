@@ -103,9 +103,6 @@ body {
   margin-top: -10rem;
 }
 
-#contact {
-  margin-bottom: 15rem;
-}
 #personal h1,
 #projects h1,
 #work h1,
@@ -501,7 +498,6 @@ nav {
 }
 
 .nav-ul-li.active {
-  transform: translateY(0) scale(0.85);
   background: linear-gradient(145deg, var(--secondary), rgba(0, 0, 0, 0.1));
   color: #ffffff;
   box-shadow: 3px 3px 10px var(--secondary),
@@ -654,6 +650,8 @@ nav {
 /* PERSONAL */
 
 #personal h1 {
+  text-align: left;
+  width: 100%;
   margin: 0;
 }
 
@@ -669,6 +667,14 @@ nav {
   font-size: 1.2rem;
   position: relative;
   color: var(--text-color);
+}
+
+#personal .personal-info-spotify p {
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  margin: 4rem auto 4rem auto;
+  font-size: 1.2rem;
 }
 
 #personal .personal-resume-content {
@@ -764,14 +770,6 @@ nav {
   z-index: 2;
 }
 
-.personal-info-spotify {
-  padding: 3rem;
-  width: 60%;
-  margin: auto;
-  text-align: center;
-  font-size: 1.2rem;
-}
-
 /* PERSONAL */
 /* PERSONAL */
 /* PERSONAL */
@@ -847,12 +845,19 @@ footer p {
 }
 
 .project-tech-stack,
-.coursework-info-tags,
 .company-tools {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1rem;
+}
+
+.coursework-info-tags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .tech-tag,
@@ -1315,16 +1320,10 @@ footer p {
   background-color: var(--nav-background);
   color: var(--text-color);
   border-radius: 12px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   margin: 0rem auto 4rem auto;
-  transition: box-shadow 0.3s ease;
   z-index: 5;
   position: relative;
   border: 1px solid var(--secondary);
-}
-
-[data-theme="dark"] .coursework-card {
-  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.8);
 }
 
 .coursework-card.slick-active {
@@ -1547,11 +1546,6 @@ footer p {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--secondary);
   transition: transform 0.3s ease;
-}
-
-.skill-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .skill-content {
@@ -1981,6 +1975,9 @@ footer p {
 }
 
 @media (max-width: 1280px) {
+  .coursework-card {
+    width: 480px;
+  }
   #contact h1 {
     font-size: 3.4rem;
   }
@@ -2141,12 +2138,13 @@ footer p {
   #personal h1 {
     font-size: 2rem;
   }
-  #personal .personal-based-in-and-time {
+  #personal .personal-based-in-and-time,
+  #personal .personal-info-spotify p {
     font-size: 0.9rem;
   }
 
-  #personal .personal-info-spotify {
-    font-size: 0.9rem;
+  #personal .personal-info-spotify p {
+    margin: 2rem auto 1rem auto;
   }
 
   .container {
@@ -2190,22 +2188,14 @@ footer p {
     padding: 0;
   }
 
-  .coursework-card-title {
-    margin-top: 0.5rem;
-    font-size: 1.25rem;
-  }
   .coursework-card-description {
-    width: 80%;
+    width: 100%;
     margin: auto;
   }
-  .coursework-card-description li {
-    font-size: 0.8rem;
-  }
-  .coursework-tag {
-    font-size: 0.7rem;
-  }
+
   .coursework-info-tags {
-    width: 80%;
+    width: 100%;
+    margin-bottom: 1rem;
     gap: 0.7rem;
   }
 
@@ -2220,15 +2210,8 @@ footer p {
   .slick-dots {
     gap: 8px;
   }
-  #projects .projects-grid {
-    width: 100%;
-  }
   #projects .project-card {
     padding: 1rem;
-  }
-
-  .organizations {
-    width: 100%;
   }
 
   #education .education-grid {
@@ -2236,16 +2219,14 @@ footer p {
     flex-direction: column;
     width: 100%;
   }
+
+  #personal .personal-resume-content,
+  #publications .publication-item,
+  #personal .personal-info-spotify p,
   #education .education-grid > :nth-child(1),
-  #education .education-grid > :nth-child(2) {
-    width: 100%;
-  }
-
-  #publications .publication-item {
-    width: 100%;
-  }
-
-  #personal .personal-resume-content {
+  #education .education-grid > :nth-child(2),
+  .organizations,
+  #projects .projects-grid {
     width: 100%;
   }
 
@@ -2271,11 +2252,6 @@ footer p {
   #personal h1 {
     font-size: 1.6rem;
   }
-
-  #personal .personal-info-spotify {
-    padding: 3rem 0rem 3rem 0rem;
-    width: 100%;
-  }
   .container {
     max-width: 475px;
   }
@@ -2289,16 +2265,32 @@ footer p {
 
 @media (max-width: 640px) {
   .skills-list {
+    gap: 1rem;
     grid-template-columns: 1fr;
   }
-  .skill-item:hover {
-    transform: scale(1.1);
+
+  .skill-name {
+    margin-bottom: 0;
   }
+  .skill-description {
+    line-height: normal;
+  }
+  .skill-item {
+    height: 80px;
+    padding-bottom: 0;
+  }
+
   .coursework-slider {
     padding: 0;
   }
-  .coursework-card {
-    width: 100%;
+  .coursework-card-title {
+    font-size: 1.2rem;
+  }
+  .coursework-tag {
+    font-size: 0.7rem;
+  }
+  .coursework-card-description li {
+    font-size: 0.8rem;
   }
   #work .work-experiences {
     width: 100%;
@@ -2360,7 +2352,8 @@ footer p {
   #skills h1 {
     font-size: 2.3rem;
   }
-  #personal .personal-resume-content {
+  #personal .personal-resume-content,
+  #personal .personal-info-spotify p {
     width: 90%;
   }
   #personal .personal-resume-content div {
@@ -2373,13 +2366,6 @@ footer p {
 
   #personal .personal-based-in-and-time {
     margin-top: 0.3rem;
-  }
-
-  #personal .personal-resume-content p {
-    width: 70%;
-
-    margin: 1.5rem auto 1.5rem auto;
-    padding: 0;
   }
 
   #personal .personal-resume-content div a {
@@ -2395,18 +2381,11 @@ footer p {
     display: flex;
     gap: 0.5rem;
     flex-direction: row;
-  }
-
-  #personal .personal-resume-content div span {
-    padding: 0;
     font-size: 1rem;
   }
+
   #personal h1 {
     font-size: 1.1rem;
-  }
-
-  #personal .personal-info-spotify {
-    padding: 3rem 1rem 3rem 1rem;
   }
   .container {
     max-width: 335px;
@@ -2532,7 +2511,8 @@ footer p {
     height: 40px;
     margin: 0rem auto 0rem auto;
   }
-  #personal .personal-based-in-and-time {
+  #personal .personal-based-in-and-time,
+  #personal .personal-info-spotify p {
     font-size: 0.7rem;
   }
   #personal .personal-resume-content h2 {
@@ -2541,14 +2521,6 @@ footer p {
 
   #personal h1 {
     font-size: 0.85rem;
-  }
-  #personal .personal-based-in-and-time {
-    padding: 0;
-    font-size: 0.6rem;
-  }
-
-  #personal .personal-info-spotify {
-    font-size: 0.75rem;
   }
 
   .container {

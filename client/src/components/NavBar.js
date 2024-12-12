@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo, useCallback, useRef } from "react";
+import React, { useState, useEffect, memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import icons from "./icons";
 import ThemeToggle from "./ThemeToggle";
@@ -54,109 +54,34 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const NavBar = ({ refs, activeSection }) => {
+const NavBar = ({ refs }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isHamburgerMenu, setIsHamburgerMenu] = useState(false);
   const [sidebarStyle, setSidebarStyle] = useState({ left: "-250px" });
+  const [activeSection, setActiveSection] = useState("");
   const navigate = useNavigate();
 
-  const useScrollTracking = (refs, isSidebarOpen) => {
-    const [currentSection, setCurrentSection] = useState("personal");
-    const [sectionProgress, setSectionProgress] = useState({});
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-    const handleScroll = useCallback(() => {
-      if (isSidebarOpen) return; // Stop scroll tracking if the sidebar is open
-
-      const windowHeight = window.innerHeight;
-      const scrollPosition = window.scrollY;
-
-      if (scrollPosition <= 50) {
-        setCurrentSection("personal");
-        setSectionProgress({
-          personal: { progress: 1, intersection: 1 },
-          ...Object.keys(refs)
-            .filter((id) => id !== "personal")
-            .reduce(
-              (acc, id) => ({
-                ...acc,
-                [id]: { progress: 0, intersection: 0 },
-              }),
-              {}
-            ),
-        });
-        return;
-      }
-
-      const updatedSectionProgress = {};
-      let bestMatchSection = "personal";
-      let largestIntersectionRatio = 0;
-
-      Object.entries(refs).forEach(([sectionId, ref]) => {
-        if (!ref.current) return;
-
-        const sectionElement = ref.current;
-        const rect = sectionElement.getBoundingClientRect();
-
-        const elementTop = rect.top + scrollPosition;
-        const sectionHeight = rect.height;
-
-        const sectionCenterOffset = sectionHeight / 2;
-        const progress = Math.max(
-          0,
-          Math.min(
-            1,
-            (scrollPosition - elementTop + sectionCenterOffset) / sectionHeight
-          )
-        );
-
-        const visibleHeight = Math.min(
-          windowHeight,
-          Math.max(0, windowHeight - rect.top),
-          Math.max(0, rect.bottom)
-        );
-        const intersectionRatio = visibleHeight / sectionHeight;
-
-        const isInView = intersectionRatio > 0.4;
-
-        if (isInView) {
-          updatedSectionProgress[sectionId] = {
-            progress: Number(progress.toFixed(2)),
-            intersection: Number(intersectionRatio.toFixed(2)),
-          };
-
-          if (intersectionRatio > largestIntersectionRatio) {
-            bestMatchSection = sectionId;
-            largestIntersectionRatio = intersectionRatio;
+      for (const [id, ref] of Object.entries(refs)) {
+        if (ref.current) {
+          const { offsetTop, offsetHeight } = ref.current;
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(id);
+            break;
           }
-        } else {
-          updatedSectionProgress[sectionId] = {
-            progress: 0,
-            intersection: 0,
-          };
         }
-      });
+      }
+    };
 
-      setSectionProgress(updatedSectionProgress);
-      setCurrentSection(bestMatchSection);
-    }, [refs, isSidebarOpen]);
-
-    useEffect(() => {
-      if (isSidebarOpen) return; // Do not attach scroll listener if the sidebar is open
-
-      window.addEventListener("scroll", handleScroll);
-      handleScroll();
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, [handleScroll, isSidebarOpen]);
-
-    if (isSidebarOpen) {
-      return { currentSection: null, sectionProgress: {} };
-    }
-
-    return { currentSection, sectionProgress };
-  };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [refs]);
 
   useEffect(() => {
     if (isSidebarOpen) {
@@ -179,8 +104,6 @@ const NavBar = ({ refs, activeSection }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [isSidebarOpen]);
-
-  const { currentSection, sectionProgress } = useScrollTracking(refs);
 
   const handleNavClick = useCallback(
     (sectionId) => {
@@ -206,50 +129,30 @@ const NavBar = ({ refs, activeSection }) => {
   };
 
   const NavItem = useCallback(
-    ({ sectionId, sectionName, onNavClick }) => {
-      const sectionData = sectionProgress[sectionId] || {
-        progress: 0,
-        intersection: 0,
-      };
-
-      return (
-        <div className="nav-item-stable-wrapper">
-          <div
-            className={`nav-ul-li ${
-              currentSection === sectionId && !isSidebarOpen ? "active" : ""
-            }`}
-            role="button"
-            onClick={() => onNavClick(sectionId)}
-            tabIndex="0"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                onNavClick(sectionId);
-              }
-            }}
-            style={{
-              cursor: "pointer",
-              pointerEvents: "auto",
-            }}
-          >
-            <span>{sectionName}</span>
-            {!isSidebarOpen && (
-              <div
-                className="section-progress-indicator"
-                style={{
-                  width: `${sectionData.progress * 100}%`,
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  height: "3px",
-                  backgroundColor: "var(--secondary)",
-                }}
-              />
-            )}
-          </div>
+    ({ sectionId, sectionName, onNavClick }) => (
+      <div className="nav-item-stable-wrapper">
+        <div
+          className={`nav-ul-li ${
+            activeSection === sectionId && !isSidebarOpen ? "active" : ""
+          }`}
+          role="button"
+          onClick={() => onNavClick(sectionId)}
+          tabIndex="0"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onNavClick(sectionId);
+            }
+          }}
+          style={{
+            cursor: "pointer",
+            pointerEvents: "auto",
+          }}
+        >
+          <span>{sectionName}</span>
         </div>
-      );
-    },
-    [currentSection, sectionProgress, isSidebarOpen]
+      </div>
+    ),
+    [activeSection, isSidebarOpen]
   );
 
   return (
@@ -307,7 +210,7 @@ const NavBar = ({ refs, activeSection }) => {
           ) : null}
 
           <div className="navbar-actions">
-            {isHamburgerMenu /* Only show theme toggle on mobile */ && (
+            {isHamburgerMenu && (
               <>
                 <ThemeToggle />
                 <button
@@ -338,7 +241,6 @@ const NavBar = ({ refs, activeSection }) => {
                   sectionId={id}
                   sectionName={name}
                   onNavClick={handleNavClick}
-                  isActive={activeSection === id}
                 />
               </li>
             ))}

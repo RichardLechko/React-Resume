@@ -103,7 +103,7 @@ const Work = () => {
     <section id="work" className="work-section">
       <div className="work-container">
         <h1>
-          <span className="content-backdrop">Work Experience</span>
+          <span className="content-backdrop">Work</span>
         </h1>
         <div className="work-content">
           <div className="work-left">

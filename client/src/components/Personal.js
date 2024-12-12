@@ -31,26 +31,27 @@ const Personal = () => {
           <h1 className="content-backdrop">
             Hey, I'm Richard Lechko (letch·koh)👋
           </h1>
-          <div className="personal-based-in-and-time content-backdrop">
-            <p>Based in Chicago, IL.</p>
-            <div>
-              <span
-                onMouseEnter={() => setIsSameTimezone(true)}
-                onMouseLeave={() => setIsSameTimezone(false)}
-              >
-                {currentTime} CST (UTC-06)
-              </span>
+          <div className="personal-info content-backdrop">
+            <div className="personal-based-in-and-time">
+              <p>Based in Chicago, IL.</p>
+              <div>
+                <span
+                  onMouseEnter={() => setIsSameTimezone(true)}
+                  onMouseLeave={() => setIsSameTimezone(false)}
+                >
+                  {currentTime} CST (UTC-06)
+                </span>
+              </div>
+            </div>
+            <div className="personal-info-spotify">
+              <p className="content-backdrop">
+                I am a web developer specializing in creating responsive,
+                user-friendly applications and designing seamless experiences
+                tailored to meet project goals.
+              </p>
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="personal-info-spotify">
-        <p className="content-backdrop">
-          I'm a web developer focused on building innovative and user-friendly
-          applications. When I'm not coding, I enjoy playing video games, going
-          to concerts, and going on walks.
-        </p>
       </div>
 
       <div className="personal-resume-content">
