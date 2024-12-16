@@ -539,17 +539,41 @@ nav {
   justify-content: space-between;
   width: 100%;
   padding: 0.5rem 1rem;
-  border: 1px solid #e0e0e0;
   border-radius: 6px;
   cursor: pointer;
-  background-color: var(--primary);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 2px solid transparent;
+  background: linear-gradient(45deg, #4a90e2, #6b5aed);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
 
-  transition: all 0.2s ease;
+.language-selector-toggle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.language-selector-toggle:hover::before {
+  left: 100%;
 }
 
 .language-selector-toggle:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  background: linear-gradient(45deg, #6b5aed, #4a90e2);
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3),
+    0 2px 6px rgba(74, 144, 226, 0.2);
+  border-color: rgba(74, 144, 226, 0.5);
 }
 
 .language-selector-content {
@@ -565,12 +589,12 @@ nav {
 .dropdown-arrow {
   display: flex;
   align-items: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .dropdown-arrow svg {
   color: white;
-  flex-shrink: 0; /* Prevent shrinking */
+  flex-shrink: 0;
 }
 
 .dropdown-arrow.open {
@@ -583,21 +607,49 @@ nav {
   top: 110%;
   left: 0;
   width: 100%;
-  border: 1px solid #e0e0e0;
   border-radius: 6px;
   background-color: var(--nav-background);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   list-style: none;
   margin: 0;
   padding: 0;
-  z-index: 10;
   opacity: 0;
   transform: translateY(-10px);
   animation: dropdown-slide 0.2s ease forwards;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  border: 2px solid #4361ee;
+  box-shadow: 0 4px 15px rgba(67, 97, 238, 0.15);
+}
+
+[data-theme="dark"] .language-selector-toggle {
+  background: linear-gradient(45deg, #8a4fff, #e542a5);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .language-selector-toggle:hover {
+  background: linear-gradient(45deg, #e542a5, #8a4fff);
+  box-shadow: 0 4px 15px rgba(233, 66, 165, 0.3),
+    0 2px 6px rgba(233, 66, 165, 0.2);
+  border-color: rgba(233, 66, 165, 0.5);
 }
 
 [data-theme="dark"] .language-selector-dropdown {
   background-color: var(--secondary);
+  border: 2px solid #7209b7;
+  box-shadow: 0 4px 15px rgba(114, 9, 183, 0.2);
+}
+
+[data-theme="dark"] .language-selector-toggle::before {
+  background: linear-gradient(
+    115deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+[data-theme="dark"] .language-selector-dropdown li::after {
+  background: linear-gradient(to right, #8a4fff, #e542a5);
 }
 
 @keyframes dropdown-slide {
@@ -616,8 +668,32 @@ nav {
   cursor: pointer;
   gap: 8px;
   margin: 0;
-  height: 48px; /* Consistent height */
-  box-sizing: border-box; /* Ensure padding and border are included in the height */
+  height: 48px;
+  box-sizing: border-box;
+
+  transition: background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.language-selector-dropdown li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #4a90e2, #6b5aed);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.language-selector-dropdown li:hover::after {
+  transform: scaleX(1);
+}
+
+.language-selector-dropdown li:hover {
+  background-color: rgba(74, 144, 226, 0.05);
 }
 
 .language-selector-dropdown li > div {
@@ -625,11 +701,11 @@ nav {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-grow: 1; /* Ensure content takes up remaining space evenly */
+  flex-grow: 1;
 }
 
 .language-selector-dropdown li:hover {
-  background-color: #f5f5f5;
+  background-color: color-mix(in srgb, currentColor 5%, transparent);
 }
 
 /* NAVITEMS HOVER EFFECTS */
@@ -841,16 +917,14 @@ nav {
   position: relative;
   cursor: help;
   padding: 0.25rem 0.5rem;
-  background-color: var(--background-subtle, #f5f5f5);
+  color: #0057b7;
+  background: color-mix(in srgb, #0057b7 10%, transparent);
   border-radius: 4px;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
-.time-display:hover {
-  background-color: var(--background-hover, #e5e5e5);
-}
-
-#personal .personal-based-in-and-time .time-display::after {
+/* The tooltip dropdown */
+.time-display::after {
   content: "Your local time zone 😁";
   position: absolute;
   bottom: -30px;
@@ -864,16 +938,53 @@ nav {
   font-size: 0.8rem;
   opacity: 0;
   transition: all 0.3s ease;
+  z-index: 1;
 }
 
+/* The radial gradient effect */
+.time-display::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    color-mix(in srgb, currentColor 15%, transparent) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.3s ease;
+}
+
+/* Hover states */
+.time-display:hover {
+  background: color-mix(in srgb, #0057b7 20%, transparent);
+}
+
+.time-display:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.time-display:hover::after {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+/* Russian language support */
 #personal:lang(ru) .personal-based-in-and-time .time-display::after {
   width: 195px;
   content: "Ваш местный пояс времени 😁";
 }
 
-#personal .time-display:hover::after {
-  transform: translateX(-50%) scale(1);
-  opacity: 1;
+/* Dark theme overrides */
+[data-theme="dark"] .time-display {
+  color: #ff4757;
+  background: color-mix(in srgb, #ff4757 10%, transparent);
+}
+
+[data-theme="dark"] .time-display:hover {
+  background: color-mix(in srgb, #ff4757 20%, transparent);
 }
 
 #personal .personal-resume-content {
@@ -3458,6 +3569,10 @@ footer p {
 }
 
 @media (max-width: 375px) {
+  #personal .personal-based-in-and-time {
+    width: 100%;
+    font-size: 0.65rem;
+  }
   #personal .personal-left h1 {
     font-size: 1.7rem;
   }
