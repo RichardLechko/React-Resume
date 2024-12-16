@@ -297,7 +297,7 @@
           "description": "Version Control"
         },
         "jest": {
-          "description": "Testing Framework"
+          "description": "Integration Testing"
         },
         "typescript": {
           "description": "JavaScript but better"
@@ -322,6 +322,15 @@
         },
         "sass": {
           "description": "CSS Preprocessor"
+        },
+        "html": {
+          "description": "Hypertext Markup Language"
+        },
+        "cypress": {
+          "description": "End-to-End Testing"
+        },
+        "mongodb": {
+          "description": "Database"
         }
       }
     },
@@ -680,7 +689,7 @@
           "description": "Контроль версий"
         },
         "jest": {
-          "description": "Тестовый фреймворк"
+          "description": "Интеграционное тестирование"
         },
         "typescript": {
           "description": "JavaScript, но улучшенный"
@@ -705,6 +714,15 @@
         },
         "sass": {
           "description": "CSS-препроцессор"
+        },
+        "html": {
+          "description": "Язык гипертекстовой разметки"
+        },
+        "cypress": {
+          "description": "Сквозное тестирование"
+        },
+        "mongodb": {
+          "description": "База данных"
         }
       }
     },

@@ -1,10 +1,18 @@
 import React, { Suspense, useState } from "react";
 import { DiReact, DiNodejs, DiGithubBadge } from "react-icons/di";
 import { BiLogoRedux, BiLogoGit, BiLogoAws } from "react-icons/bi";
-import { SiJest, SiTypescript, SiSupabase, SiPostgresql } from "react-icons/si";
+import {
+  SiJest,
+  SiTypescript,
+  SiSupabase,
+  SiPostgresql,
+  SiCypress,
+  SiMongodb,
+} from "react-icons/si";
 import { FaFigma, FaSass } from "react-icons/fa";
 import { RiNextjsLine } from "react-icons/ri";
 import { useTranslation } from "./language/LanguageContext";
+import { AiFillHtml5 } from "react-icons/ai";
 
 const TechnicalSkills = React.forwardRef((props, ref) => {
   const { t, language } = useTranslation();
@@ -22,6 +30,9 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
     FaFigma,
     RiNextjsLine,
     FaSass,
+    AiFillHtml5,
+    SiCypress,
+    SiMongodb,
   };
 
   const skillsData = [
@@ -87,6 +98,21 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
           iconName: "FaSass",
           name: "Sass",
           description: t("skills.skills-list.sass.description"),
+        },
+        {
+          iconName: "AiFillHtml5",
+          name: "HTML",
+          description: t("skills.skills-list.html.description"),
+        },
+        {
+          iconName: "SiCypress",
+          name: "Cypress",
+          description: t("skills.skills-list.cypress.description"),
+        },
+        {
+          iconName: "SiMongodb",
+          name: "MongoDB",
+          description: t("skills.skills-list.mongodb.description"),
         },
       ],
     },
