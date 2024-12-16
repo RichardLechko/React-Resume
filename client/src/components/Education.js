@@ -39,15 +39,15 @@ const Education = () => {
             {t("education.heading")}
           </span>
         </h1>
-        <div className="education-grid" lang={language}>
-          <div className="education-card" lang={language}>
-            <header className="education-header" lang={language}>
-              <h2 className="education-subheading" lang={language}>
+        <div className="education-grid">
+          <div className="education-card">
+            <header className="education-header">
+              <h2 className="education-subheading">
                 {t("education.current_program")}
               </h2>
             </header>
-            <div className="education-details" lang={language}>
-              <p className="education-text" lang={language}>
+            <div className="education-details">
+              <p className="education-text">
                 {t("education.current_program_description_1")}{" "}
                 <a
                   className="education-link"
@@ -55,13 +55,14 @@ const Education = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="DePaul University website"
-                  lang={language}
                 >
                   {t("education.current_program_description_2")}
                 </a>
               </p>
-              <p className="education-text" lang={language}>
-                {t("education.bachelor_degree")}
+              <p className="education-text">
+                <span className="education-highlight">
+                  {t("education.bachelor_degree")}
+                </span>
               </p>
               <p className="education-grad-text">
                 {t("education.expected_graduation")}:{" "}
@@ -93,11 +94,11 @@ const Education = () => {
         </div>
       </section>
 
-      <section className="organizations" lang={language}>
-        <h2 className="organizations-heading" lang={language}>
+      <section className="organizations">
+        <h2 className="organizations-heading">
           {t("education.organizations_heading")}
         </h2>
-        <div className="organizations-grid" lang={language}>
+        <div className="organizations-grid">
           {organizations
             .sort((a, b) => {
               const dateA = new Date(a.startDate);
@@ -105,16 +106,72 @@ const Education = () => {
               return dateB - dateA;
             })
             .map((org, index) => (
-              <div key={index} className="organization-item" lang={language}>
-                <div className="organization-details" lang={language}>
-                  <span className="organization-name" lang={language}>
-                    {org.name}
-                  </span>
-                  <span className="organization-dates" lang={language}>
+              <div key={index} className="organization-item">
+                <div className="organization-details">
+                  <span className="organization-name">{org.name}</span>
+                  <span className="organization-dates">
                     {org.startDate} - {org.endDate}
                   </span>
                   <p className="organization-description" lang={language}>
-                    {org.description}
+                    {org.description
+                      .split(
+                        new RegExp(
+                          `(${
+                            org.name.includes(
+                              "DePaul Computer Science Society"
+                            ) ||
+                            org.name.includes(
+                              "Общество компьютерных наук DePaul"
+                            )
+                              ? t(
+                                  "education.organizations.depaul_computer_sci_society.highlightedText"
+                                ).join("|")
+                              : org.name.includes("DePaul Cloud Club") ||
+                                org.name.includes(
+                                  "Клуб облачных технологий DePaul"
+                                )
+                              ? t(
+                                  "education.organizations.depaul_cloud_club.highlightedText"
+                                ).join("|")
+                              : org.name.includes("DePaul UI/UX Association") ||
+                                org.name.includes("Ассоциация UI/UX DePaul")
+                              ? t(
+                                  "education.organizations.depaul_uiux_association.highlightedText"
+                                ).join("|")
+                              : ""
+                          })`,
+                          "g"
+                        )
+                      )
+                      .map((part, index) => (
+                        <React.Fragment key={index}>
+                          {(org.name.includes(
+                            "DePaul Computer Science Society"
+                          ) ||
+                          org.name.includes("Общество компьютерных наук DePaul")
+                            ? t(
+                                "education.organizations.depaul_computer_sci_society.highlightedText"
+                              )
+                            : org.name.includes("DePaul Cloud Club") ||
+                              org.name.includes(
+                                "Клуб облачных технологий DePaul"
+                              )
+                            ? t(
+                                "education.organizations.depaul_cloud_club.highlightedText"
+                              )
+                            : org.name.includes("DePaul UI/UX Association") ||
+                              org.name.includes("Ассоциация UI/UX DePaul")
+                            ? t(
+                                "education.organizations.depaul_uiux_association.highlightedText"
+                              )
+                            : []
+                          ).includes(part) ? (
+                            <span className="highlight-text">{part}</span>
+                          ) : (
+                            part
+                          )}
+                        </React.Fragment>
+                      ))}
                   </p>
                 </div>
               </div>

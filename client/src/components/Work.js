@@ -113,7 +113,37 @@ const Company = React.forwardRef(
             <ul className="company-descriptions">
               {descriptions.map((desc, index) => (
                 <li key={index} className="company-description-item">
-                  {desc}
+                  {desc
+                    .split(
+                      new RegExp(
+                        `(${
+                          companyName.includes("Hendrickson")
+                            ? t(
+                                "work.work-list.hendrickson.highlightedText"
+                              ).join("|")
+                            : companyName.includes("RL IT Firm")
+                            ? t(
+                                "work.work-list.rl-it-firm.highlightedText"
+                              ).join("|")
+                            : ""
+                        })`,
+                        "g"
+                      )
+                    )
+                    .map((part, index) => (
+                      <React.Fragment key={index}>
+                        {(companyName.includes("Hendrickson")
+                          ? t("work.work-list.hendrickson.highlightedText")
+                          : companyName.includes("RL IT Firm")
+                          ? t("work.work-list.rl-it-firm.highlightedText")
+                          : []
+                        ).includes(part) ? (
+                          <span className="highlight-text">{part}</span>
+                        ) : (
+                          part
+                        )}
+                      </React.Fragment>
+                    ))}
                 </li>
               ))}
             </ul>

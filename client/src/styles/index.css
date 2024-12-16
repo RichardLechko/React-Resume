@@ -3463,6 +3463,15 @@ footer p {
 }
 
 @media (max-width: 425px) {
+  .language-selector {
+    width: 100px;
+  }
+  .language-selector-toggle {
+    padding: 0.3rem 0.7rem;
+  }
+  .language-selector-dropdown {
+    padding: 0;
+  }
   #skills .skill-description {
     margin-top: 0.5rem;
   }

@@ -76,7 +76,7 @@
             "Assistance in processing and analyzing data to determine key performance indicators (KPIs) and creating dashboards in PowerBI.",
             "Participation in data analysis sessions to provide insights that support decision-making."
           ],
-          "highlightedText": ["PowerBI", "KPI"]
+          "highlightedText": ["PowerBI", "KPIs"]
         },
         "rl-it-firm": {
           "companyName": "RL IT Firm",
@@ -89,7 +89,9 @@
             "Ensuring an optimal user experience through responsive design and testing."
           ],
           "highlightedText": [
-            "Astro, ShadCN, and Tailwind",
+            "Astro",
+            "ShadCN",
+            "Tailwind",
             "responsive design",
             "testing"
           ]
@@ -113,19 +115,22 @@
           "name": "DePaul Computer Science Society",
           "startDate": "09/2022",
           "endDate": "Present",
-          "description": "Engaged in various tech projects and networking events."
+          "description": "Engaged in various tech projects and networking events.",
+          "highlightedText": ["various tech projects"]
         },
         "depaul_uiux_association": {
           "name": "DePaul UI/UX Association",
           "startDate": "01/2024",
           "endDate": "Present",
-          "description": "Worked on design sprints and user research initiatives."
+          "description": "Worked on design sprints and user research initiatives.",
+          "highlightedText": ["user research initiatives"]
         },
         "depaul_cloud_club": {
           "name": "DePaul Cloud Club",
           "startDate": "10/2024",
           "endDate": "Present",
-          "description": "Explored cloud computing technologies and hosted workshops."
+          "description": "Explored cloud computing technologies and hosted workshops.",
+          "highlightedText": ["hosted workshops"]
         }
       }
     },
@@ -471,9 +476,10 @@
           "startTime": "11/2024",
           "endTime": "Настоящее время",
           "descriptions": [
-            "Помощь в обработке и анализе данных для определения ключевых показателей (KPI) и создание дашбордов в PowerBI.",
+            "Помощь в обработке и анализе данных для определения ключевых показателей (КПЭ) и создание дашбордов в PowerBI.",
             "Участие в сессиях анализа данных для предоставления информации, способствующей принятию решений."
-          ]
+          ],
+          "highlightedText": ["PowerBI", "КПЭ"]
         },
         "rl-it-firm": {
           "companyName": "RL IT Firm",
@@ -484,6 +490,13 @@
           "descriptions": [
             "Разработка полнофункционального приложения для местного бизнеса с использованием Astro, ShadCN и Tailwind.",
             "Обеспечение оптимального пользовательского опыта через адаптивный дизайн и тестирование."
+          ],
+          "highlightedText": [
+            "Astro",
+            "ShadCN",
+            "Tailwind",
+            "адаптивный дизайн",
+            "тестирование"
           ]
         }
       }
@@ -505,19 +518,22 @@
           "name": "Общество компьютерных наук DePaul",
           "startDate": "09/2022",
           "endDate": "Настоящее время",
-          "description": "Участвовал в различных технических проектах и мероприятиях по сетям."
+          "description": "Участвовал в различных технических проектах и мероприятиях по сетям.",
+          "highlightedText": ["различных технических проектах"]
         },
         "depaul_uiux_association": {
           "name": "Ассоциация UI/UX DePaul",
           "startDate": "01/2024",
           "endDate": "Настоящее время",
-          "description": "Работал над дизайновыми спринтами и инициативами по изучению пользователей."
+          "description": "Работал над дизайновыми спринтами и инициативами по изучению пользователей.",
+          "highlightedText": ["инициативами по изучению пользователей"]
         },
         "depaul_cloud_club": {
           "name": "Клуб облачных технологий DePaul",
           "startDate": "10/2024",
           "endDate": "Настоящее время",
-          "description": "Исследовал облачные технологии и проводил воркшопы."
+          "description": "Исследовал облачные технологии и проводил воркшопы.",
+          "highlightedText": ["проводил воркшопы"]
         }
       }
     },
