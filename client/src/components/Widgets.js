@@ -114,7 +114,49 @@ const WidgetsCard = ({
       <div className="project-title">{linkText}</div>
 
       <div className="project-description">
-        <p>{text}</p>
+        <p>
+          {text
+            .split(
+              new RegExp(
+                `(${
+                  linkText.includes("Northern Trust")
+                    ? t(
+                        "projects.projects-list.northern-trust.highlightedText"
+                      ).join("|")
+                    : linkText.includes("Freedom Butchers")
+                    ? t(
+                        "projects.projects-list.freedom-butchers.highlightedText"
+                      ).join("|")
+                    : linkText.includes("Cloud Club")
+                    ? t(
+                        "projects.projects-list.cloud-project.highlightedText"
+                      ).join("|")
+                    : linkText.includes("MMA")
+                    ? t("projects.projects-list.mma.highlightedText").join("|")
+                    : ""
+                })`,
+                "g"
+              )
+            )
+            .map((part, index) => (
+              <React.Fragment key={index}>
+                {(linkText.includes("Northern Trust")
+                  ? t("projects.projects-list.northern-trust.highlightedText")
+                  : linkText.includes("Freedom Butchers")
+                  ? t("projects.projects-list.freedom-butchers.highlightedText")
+                  : linkText.includes("Cloud Club")
+                  ? t("projects.projects-list.cloud-project.highlightedText")
+                  : linkText.includes("MMA")
+                  ? t("projects.projects-list.mma.highlightedText")
+                  : []
+                ).includes(part) ? (
+                  <span className="highlight-text">{part}</span>
+                ) : (
+                  part
+                )}
+              </React.Fragment>
+            ))}
+        </p>
       </div>
 
       {inDevelopment && (

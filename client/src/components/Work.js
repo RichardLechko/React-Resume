@@ -52,7 +52,7 @@ const Work = () => {
   ];
 
   return (
-    <section id="work" className="work-section" lang={language}>
+    <section id="work" className="work-section">
       <div className="work-container">
         <h1>
           <span className="content-backdrop">{t("work.title-name")}</span>
@@ -85,7 +85,7 @@ const Company = React.forwardRef(
     { companyName, position, startTime, endTime, descriptions, logo, tools },
     ref
   ) => {
-    const { t, language } = useTranslation();
+    const { t } = useTranslation();
 
     return (
       <div ref={ref} className="company-container">

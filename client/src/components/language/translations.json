@@ -36,22 +36,30 @@
       "title-name": "Projects",
       "view-site": "View Site",
       "development": "In Development",
+
       "projects-list": {
         "northern-trust": {
           "linkText": "DePaul x Northern Trust Competition",
-          "text": "A finance application developed for the Northern Trust x DePaul University competition. This project got us 3rd place in the competition."
+          "text": "A finance application developed for the Northern Trust x DePaul University competition. This project got us 3rd place in the competition.",
+          "highlightedText": [
+            "Northern Trust x DePaul University competition",
+            "3rd place"
+          ]
         },
         "freedom-butchers": {
           "linkText": "Freedom Butchers Freelance Work",
-          "text": "A full-fledged e-commerce site developed for a small local business called 'Freedom Butchers'."
+          "text": "A full-fledged e-commerce site developed for a small local business called 'Freedom Butchers'.",
+          "highlightedText": ["full-fledged e-commerce site"]
         },
         "cloud-project": {
           "linkText": "DePaul Cloud Club Research",
-          "text": "Collaborating with graduate students on a cloud project, enhancing frontend skills and contributing to innovative solutions."
+          "text": "Collaborating with graduate students on a cloud project, enhancing frontend skills and contributing to innovative solutions.",
+          "highlightedText": ["innovative solutions", "cloud project"]
         },
         "mma": {
           "linkText": "MMA Scheduler",
-          "text": "This MMA software provides a comprehensive platform for scheduling and tracking MMA events, including fighter details, match dates, and categories. It aggregates and displays real-time data through web scraping, enabling users to stay updated with upcoming fights and results."
+          "text": "This MMA software provides a comprehensive platform for scheduling and tracking MMA events, including fighter details, match dates, and categories. It aggregates and displays real-time data through web scraping, enabling users to stay updated with upcoming fights and results.",
+          "highlightedText": ["displays real-time data through web scraping"]
         }
       }
     },
@@ -67,7 +75,8 @@
           "descriptions": [
             "Assistance in processing and analyzing data to determine key performance indicators (KPIs) and creating dashboards in PowerBI.",
             "Participation in data analysis sessions to provide insights that support decision-making."
-          ]
+          ],
+          "highlightedText": ["PowerBI", "KPI"]
         },
         "rl-it-firm": {
           "companyName": "RL IT Firm",
@@ -78,6 +87,11 @@
           "descriptions": [
             "Development of a full-featured application for a local business using Astro, ShadCN, and Tailwind.",
             "Ensuring an optimal user experience through responsive design and testing."
+          ],
+          "highlightedText": [
+            "Astro, ShadCN, and Tailwind",
+            "responsive design",
+            "testing"
           ]
         }
       }
@@ -424,19 +438,26 @@
       "projects-list": {
         "northern-trust": {
           "linkText": "Соревнование DePaul x Northern Trust",
-          "text": "Финансовое приложение, разработанное для соревнования Northern Trust x DePaul University. Этот проект принес нам 3-е место в соревновании."
+          "text": "Финансовое приложение, разработанное для соревнования Northern Trust x DePaul University. Этот проект принес нам 3-е место в соревновании.",
+          "highlightedText": ["Northern Trust x DePaul University", "3-е место"]
         },
         "freedom-butchers": {
           "linkText": "Фриланс проект для Freedom Butchers",
-          "text": "Полноценный сайт электронной коммерции, разработанный для небольшого локального бизнеса под названием 'Freedom Butchers'."
+          "text": "Полноценный сайт электронной коммерции, разработанный для небольшого локального бизнеса под названием 'Freedom Butchers'.",
+          "highlightedText": ["Полноценный сайт электронной коммерции"]
         },
         "cloud-project": {
           "linkText": "Исследование Cloud Club DePaul",
-          "text": "Сотрудничество с аспирантами над облачным проектом, улучшение навыков фронтенда и участие в разработке инновационных решений."
+          "text": "Сотрудничество с аспирантами над облачным проектом, улучшение навыков фронтенда и участие в разработке инновационных решений.",
+          "highlightedText": ["инновационных решений", "облачным проектом"]
         },
         "mma": {
           "linkText": "Планировщик MMA",
-          "text": "Это программное обеспечение MMA предоставляет всеобъемлющую платформу для планирования и отслеживания мероприятий MMA, включая информацию о бойцах, даты матчей и категории. Оно агрегирует и отображает данные в реальном времени через веб-скрейпинг, позволяя пользователям оставаться в курсе предстоящих боев и результатов."
+          "text": "Это программное обеспечение MMA предоставляет всеобъемлющую платформу для планирования и отслеживания мероприятий MMA, включая информацию о бойцах, даты матчей и категории. Оно агрегирует и отображает данные в реальном времени через веб-скрейпинг, позволяя пользователям оставаться в курсе предстоящих боев и результатов.",
+          "highlightedText": [
+            "агрегирует",
+            "отображает данные в реальном времени через веб-скрейпинг"
+          ]
         }
       }
     },
