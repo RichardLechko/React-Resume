@@ -23,6 +23,7 @@
       "greeting": "Hey, I'm Richard",
       "location": "Based in Chicago, IL",
       "description": "I am a web developer specializing in creating responsive, user-friendly applications and designing seamless experiences tailored to meet project goals.",
+      "highlightedProfession": "web developer",
       "resume": {
         "title": "Resume",
         "subtitle": "Quick download or view available:",
@@ -407,6 +408,7 @@
       "greeting": "Привет, я Ричард",
       "location": "Живу в Чикаго, Иллинойс",
       "description": "Я веб-разработчик, специализирующийся на создании адаптивных, удобных приложений и проектировании беспроблемных решений, учитывающих цели проекта.",
+      "highlightedProfession": "веб-разработчик",
       "resume": {
         "title": "Резюме",
         "subtitle": "Быстрая загрузка или просмотр:",

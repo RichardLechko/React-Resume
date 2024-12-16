@@ -47,11 +47,13 @@ const Personal = () => {
           <div className="personal-info-spotify">
             <p className="content-backdrop">
               {t("personal.description")
-                .split("web developer")
+                .split(/web developer|веб-разработчик/)
                 .map((part, index) => (
                   <React.Fragment key={index}>
                     {index > 0 && (
-                      <span className="highlight-text">web developer</span>
+                      <span className="highlight-text">
+                        {t("personal.highlightedProfession")}
+                      </span>
                     )}
                     {part}
                   </React.Fragment>

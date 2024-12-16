@@ -996,35 +996,59 @@ nav {
   font-family: GeistSansBold;
   width: 60%;
   margin: 2rem auto 10rem auto;
-  border-radius: 1rem;
-  padding: 2rem;
+  border-radius: 1.5rem; /* Slightly larger border radius */
+  padding: 2.5rem; /* Increased padding */
   background: linear-gradient(
     145deg,
     var(--nav-background),
     color-mix(in srgb, var(--nav-background) 90%, var(--secondary))
   );
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08), 0 8px 12px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
   color: var(--text-color);
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden; /* For pseudo-element effects */
+}
+
+#personal .personal-resume-content::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  transform: rotate(-45deg);
+  z-index: 1;
+  pointer-events: none;
 }
 
 #personal .personal-resume-content h2 {
   font-size: clamp(2rem, 4vw, 3rem);
   text-align: center;
   color: var(--text-color);
+  letter-spacing: -0.05em; /* Tighter letter spacing */
+  margin-bottom: 1rem;
 }
 
 #personal .personal-resume-content p {
-  margin: 1rem 0rem;
+  margin: 1rem 0;
   text-align: center;
   color: var(--text-color);
+  opacity: 0.8;
+  font-size: 1.1rem;
 }
 
 #personal .personal-resume-content div {
   display: flex;
   margin: auto;
-  gap: 3rem;
+  gap: 2rem; /* Slightly reduced gap */
   justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 #personal .personal-resume-content div a {
@@ -1083,29 +1107,41 @@ nav {
 #personal .personal-resume-content div a::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
+  top: -50%;
+  left: -50%;
   width: 200%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.15);
-  transform: skewX(-45deg);
-  transition: left 0.4s ease;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: all 0.4s ease;
+  opacity: 0;
   z-index: 1;
 }
 
 #personal .personal-resume-content div a:hover::before {
-  left: 100%;
+  opacity: 1;
+  transform: rotate(0deg);
 }
-
 #personal .personal-resume-content div a:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   z-index: 2;
 }
 
 #personal .personal-resume-content div a span {
+  display: flex;
+  align-items: center;
   position: relative;
-  z-index: 2;
+  z-index: 3;
+}
+
+#personal .personal-resume-content div a svg {
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+#personal .personal-resume-content div a:hover svg {
+  transform: scale(1.2) rotate(10deg);
 }
 
 .highlight-text {
