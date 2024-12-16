@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useScroll } from "./ScrollToTop.js";
+import { useTranslation } from "./language/LanguageContext";
+import LanguageSelector from "./language/LanguageSelector";
 
 const Widgets = () => {
+  const { t, language } = useTranslation();
   const { scrollToTop } = useScroll();
 
   useEffect(() => {
@@ -10,8 +13,9 @@ const Widgets = () => {
 
   const projects = [
     {
-      linkText: "DePaul x Northern Trust Competition",
-      text: "A finance application developed for the Northern Trust x DePaul University competition. This project got us 3rd place in the competition.",
+      /* linkText: "DePaul x Northern Trust Competition", */
+      linkText: t("projects.projects-list.northern-trust.linkText"),
+      text: t("projects.projects-list.northern-trust.text"),
       techStack: ["React", "JS", "Tailwind", "Node.js", "Express"],
       live: true,
       liveLink: "https://depaul-northern-trust-hackathon.vercel.app/",
@@ -19,8 +23,8 @@ const Widgets = () => {
       isPrivate: false,
     },
     {
-      linkText: "Freedom Butchers Freelance Work",
-      text: "A full-fledged e-commerce site developed for a small local business called 'Freedom Butchers'.",
+      linkText: t("projects.projects-list.freedom-butchers.linkText"),
+      text: t("projects.projects-list.freedom-butchers.text"),
       techStack: ["Astro", "Node.js", "Express", "SCSS", "Docker", "ShadCN"],
       live: true,
       liveLink: "https://freedombutchers.vercel.app/",
@@ -28,8 +32,8 @@ const Widgets = () => {
       isPrivate: false,
     },
     {
-      linkText: "DePaul Cloud Club Research",
-      text: "Collaborating with graduate students on a cloud project, enhancing frontend skills and contributing to innovative solutions.",
+      linkText: t("projects.projects-list.cloud-project.linkText"),
+      text: t("projects.projects-list.cloud-project.text"),
       techStack: [
         "Next.js",
         "SCSS",
@@ -45,8 +49,8 @@ const Widgets = () => {
       isPrivate: true,
     },
     {
-      linkText: "MMA Scheduler",
-      text: "This MMA software provides a comprehensive platform for scheduling and tracking MMA events, including fighter details, match dates, and categories. It aggregates and displays real-time data through web scraping, enabling users to stay updated with upcoming fights and results.",
+      linkText: t("projects.projects-list.mma.linkText"),
+      text: t("projects.projects-list.mma.text"),
       techStack: [
         "Next.js",
         "SCSS",
@@ -68,9 +72,9 @@ const Widgets = () => {
   ];
 
   return (
-    <div id="projects" className="projects-container">
+    <div id="projects" className="projects-container" lang={language}>
       <h1 className="projects-title">
-        <span className="content-backdrop">Projects</span>
+        <span className="content-backdrop">{t("projects.title-name")}</span>
       </h1>
 
       <section className="projects-content">
@@ -95,8 +99,10 @@ const WidgetsCard = ({
   inDevelopment,
   isPrivate,
 }) => {
+  const { t, language } = useTranslation();
+
   return (
-    <div className="project-card">
+    <div className="project-card" lang={language}>
       <div className="project-tech-stack">
         {techStack.map((tech, index) => (
           <span key={index} className="tech-tag">
@@ -111,7 +117,9 @@ const WidgetsCard = ({
         <p>{text}</p>
       </div>
 
-      {inDevelopment && <p className="development-badge">*In Development*</p>}
+      {inDevelopment && (
+        <p className="development-badge">{t("projects.development")}</p>
+      )}
 
       <div className="project-links">
         {!isPrivate && (
@@ -121,7 +129,7 @@ const WidgetsCard = ({
             rel="noopener noreferrer"
             className="project-link-button"
           >
-            {live ? "View Site" : "View Repo"}
+            {t("projects.view-site")}
           </a>
         )}
       </div>

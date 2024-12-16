@@ -1,64 +1,57 @@
 import React, { useState, useEffect } from "react";
-import { FaDownload } from "react-icons/fa6";
+import { FaDownload } from "react-icons/fa";
+import { useTranslation } from "./language/LanguageContext";
 
 const Personal = () => {
+  const { t, language } = useTranslation();
   const [currentTime, setCurrentTime] = useState("");
-  const [isSameTimezone, setIsSameTimezone] = useState(false);
 
+  // Time update logic
   useEffect(() => {
     const updateTime = () => {
-      const cstOffset = -6;
-      const userOffset = new Date().getTimezoneOffset() / 60;
-      const isInSameTimezone = userOffset === cstOffset;
-
-      setIsSameTimezone(isInSameTimezone);
-
-      const options = { hour: "2-digit", minute: "2-digit", hour12: true };
-      const now = new Date().toLocaleTimeString("en-US", options);
-      setCurrentTime(now);
+      const now = new Date();
+      const timeString = now.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      setCurrentTime(timeString);
     };
 
     updateTime();
-    const intervalId = setInterval(updateTime, 60000);
+    const timeInterval = setInterval(updateTime, 60000);
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(timeInterval);
   }, []);
 
   return (
-    <section id="personal">
-      <div className="personal-content">
-        <div>
-          <h1 className="content-backdrop">
-            Hey, I'm Richard Lechko (letch·koh)👋
-          </h1>
-          <div className="personal-info content-backdrop">
+    <section id="personal" lang={language}>
+      <div className="personal-wrapper">
+        <div className="personal-content">
+          <div className={"personal-left lang-${language}"}>
+            <h1>
+              <span className={`personal-header lang-${language}`}>
+                {t("personal.greeting")}
+              </span>
+              <span role="img" aria-label="wave" className="wave">
+                👋
+              </span>
+            </h1>
+
             <div className="personal-based-in-and-time">
               <p>
-                Based in Chicago, IL <span className="time-arrow">→</span>
-                <span
-                  className="time-display"
-                  onMouseEnter={() => setIsSameTimezone(true)}
-                  onMouseLeave={() => setIsSameTimezone(false)}
-                >
-                  {currentTime} CST (UTC-06)
-                </span>
-              </p>
-            </div>
-
-            <div className="personal-info-spotify">
-              <p className="content-backdrop">
-                I am a web developer specializing in creating responsive,
-                user-friendly applications and designing seamless experiences
-                tailored to meet project goals.
+                {t("personal.location")} <span className="time-arrow">→</span>
+                <span className="time-display">{currentTime} CST (UTC-06)</span>
               </p>
             </div>
           </div>
+          <div className="personal-info-spotify">
+            <p className="content-backdrop">{t("personal.description")}</p>
+          </div>
         </div>
       </div>
-
       <div className="personal-resume-content">
-        <h2>Resume</h2>
-        <p>Quick download or view available:</p>
+        <h2>{t("personal.resume.title")}</h2>
+        <p>{t("personal.resume.subtitle")}</p>
         <div>
           <a
             href="/resumes/Richard_Lechko_Resume.docx"
@@ -67,7 +60,7 @@ const Personal = () => {
             rel="noopener noreferrer"
           >
             <span>
-              <FaDownload /> <span>DOCX</span>
+              <FaDownload /> <span>{t("personal.resume.downloadDOCX")}</span>
             </span>
           </a>
           <a
@@ -77,7 +70,7 @@ const Personal = () => {
             rel="noopener noreferrer"
           >
             <span>
-              <FaDownload /> <span>PDF</span>
+              <FaDownload /> <span>{t("personal.resume.downloadPDF")}</span>
             </span>
           </a>
           <a
@@ -85,7 +78,7 @@ const Personal = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span>View</span>
+            <span>{t("personal.resume.view")}</span>
           </a>
         </div>
       </div>

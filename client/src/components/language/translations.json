@@ -1,0 +1,760 @@
+{
+  "en": {
+    "lang-selector": {
+      "en": "EN",
+      "ru": "RU"
+    },
+    "navItems": {
+      "personal": "Home",
+      "projects": "Projects",
+      "work": "Work",
+      "education": "Education",
+      "skills": "Skills",
+      "contact": "Contact"
+    },
+    "externalLinks": {
+      "blog": "Blog"
+    },
+    "socialLinks": {
+      "github": "Visit my GitHub profile",
+      "linkedin": "Visit my LinkedIn profile"
+    },
+    "personal": {
+      "greeting": "Hey, I'm Richard",
+      "location": "Based in Chicago, IL",
+      "description": "I am a web developer specializing in creating responsive, user-friendly applications and designing seamless experiences tailored to meet project goals.",
+      "resume": {
+        "title": "Resume",
+        "subtitle": "Quick download or view available:",
+        "downloadDOCX": "DOCX",
+        "downloadPDF": "PDF",
+        "view": "View"
+      }
+    },
+    "projects": {
+      "title-name": "Projects",
+      "view-site": "View Site",
+      "development": "In Development",
+      "projects-list": {
+        "northern-trust": {
+          "linkText": "DePaul x Northern Trust Competition",
+          "text": "A finance application developed for the Northern Trust x DePaul University competition. This project got us 3rd place in the competition."
+        },
+        "freedom-butchers": {
+          "linkText": "Freedom Butchers Freelance Work",
+          "text": "A full-fledged e-commerce site developed for a small local business called 'Freedom Butchers'."
+        },
+        "cloud-project": {
+          "linkText": "DePaul Cloud Club Research",
+          "text": "Collaborating with graduate students on a cloud project, enhancing frontend skills and contributing to innovative solutions."
+        },
+        "mma": {
+          "linkText": "MMA Scheduler",
+          "text": "This MMA software provides a comprehensive platform for scheduling and tracking MMA events, including fighter details, match dates, and categories. It aggregates and displays real-time data through web scraping, enabling users to stay updated with upcoming fights and results."
+        }
+      }
+    },
+    "work": {
+      "title-name": "Work",
+      "work-list": {
+        "hendrickson": {
+          "companyName": "Hendrickson",
+          "position": "IT Intern",
+          "address": "Woodridge, Illinois",
+          "startTime": "11/2024",
+          "endTime": "Present",
+          "descriptions": [
+            "Assistance in processing and analyzing data to determine key performance indicators (KPIs) and creating dashboards in PowerBI.",
+            "Participation in data analysis sessions to provide insights that support decision-making."
+          ]
+        },
+        "rl-it-firm": {
+          "companyName": "RL IT Firm",
+          "position": "Frontend Engineer",
+          "address": "Orland Park, Illinois",
+          "startTime": "12/2022",
+          "endTime": "Present",
+          "descriptions": [
+            "Development of a full-featured application for a local business using Astro, ShadCN, and Tailwind.",
+            "Ensuring an optimal user experience through responsive design and testing."
+          ]
+        }
+      }
+    },
+    "education": {
+      "heading": "Education",
+      "current_program": "Current Program",
+      "current_program_description_1": "Full-time student at",
+      "current_program_description_2": "DePaul University",
+      "bachelor_degree": "Bachelor of Science in Information Technology",
+      "expected_graduation": "Expected Graduation",
+      "expected_graduation_date": "06/2026",
+      "gpa_achievements": "GPA & Achievements",
+      "major_gpa": "Major GPA",
+      "deans_list": "3-time Dean's List Student",
+      "organizations_heading": "Organizations & Activities",
+      "organizations": {
+        "depaul_computer_sci_society": {
+          "name": "DePaul Computer Science Society",
+          "startDate": "09/2022",
+          "endDate": "Present",
+          "description": "Engaged in various tech projects and networking events."
+        },
+        "depaul_uiux_association": {
+          "name": "DePaul UI/UX Association",
+          "startDate": "01/2024",
+          "endDate": "Present",
+          "description": "Worked on design sprints and user research initiatives."
+        },
+        "depaul_cloud_club": {
+          "name": "DePaul Cloud Club",
+          "startDate": "10/2024",
+          "endDate": "Present",
+          "description": "Explored cloud computing technologies and hosted workshops."
+        }
+      }
+    },
+    "publications": {
+      "title": "Publications",
+      "publication": {
+        "title": "Fractional Reserve Banking and Its Evil Actions"
+      }
+    },
+    "coursework": {
+      "title-name": "Coursework",
+      "coursework-list": {
+        "data-structures": {
+          "title": "Data Structures I & II",
+          "description": [
+            "Data Structures",
+            "Java",
+            "Recursion",
+            "Efficiency",
+            "Problem Solving"
+          ],
+          "tags": [
+            "Algorithm Design",
+            "Complexity Analysis",
+            "Data Organization"
+          ]
+        },
+        "computer-systems": {
+          "title": "Computer Systems I",
+          "description": [
+            "Machine-level Programming",
+            "Architecture",
+            "Assembly Language",
+            "C Programming",
+            "Debuggers"
+          ],
+          "tags": [
+            "Low-Level Programming",
+            "Systems Engineering",
+            "Debugging Tools"
+          ]
+        },
+        "discrete-math": {
+          "title": "Discrete Math I & II",
+          "description": [
+            "Combinatorics",
+            "Probability",
+            "Graph Theory",
+            "Logic",
+            "Set Theory"
+          ],
+          "tags": [
+            "Mathematical Proofs",
+            "Combinatorial Optimization",
+            "Logic Puzzles"
+          ]
+        },
+        "cms": {
+          "title": "Content Management Systems",
+          "description": [
+            "CMSs",
+            "Enterprise Digital Media",
+            "Web Content Publication",
+            "Database-Driven Website",
+            "Open-Source Software"
+          ],
+          "tags": [
+            "Web Content Management",
+            "Digital Publishing",
+            "System Integration"
+          ]
+        },
+        "server-side-web-dev": {
+          "title": "Server-Side Web Development",
+          "description": [
+            "Server-Side Web Application",
+            "MVC Architectures",
+            "API Development",
+            "Code Libraries",
+            "Comparative Analysis"
+          ],
+          "tags": [
+            "Back-End Development",
+            "Web Application Architecture",
+            "API Design"
+          ]
+        },
+        "databases": {
+          "title": "Introduction to Databases",
+          "description": [
+            "Desktop Databases",
+            "ER Diagrams",
+            "SQL Queries",
+            "Forms and Reports",
+            "Database Integration"
+          ],
+          "tags": ["Database Management", "SQL Programming", "Data Modeling"]
+        },
+        "ui-ux": {
+          "title": "User-Centered Web Design",
+          "description": [
+            "Interactive Design",
+            "Information Navigation",
+            "HTML & CSS",
+            "Standards Compliance",
+            "Dynamic Content"
+          ],
+          "tags": ["UX/UI Design", "Responsive Design", "Web Accessibility"]
+        },
+        "web-dev": {
+          "title": "Web Development I",
+          "description": [
+            "Framework-Based",
+            "Interactive",
+            "Dynamic",
+            "Web Development",
+            "Object-Based"
+          ],
+          "tags": [
+            "Web Frameworks",
+            "Front-End Development",
+            "Dynamic Interfaces"
+          ]
+        },
+        "networks": {
+          "title": "Applied Networks and Security",
+          "description": [
+            "Networking Technologies",
+            "Security Measures",
+            "Client/Server Configuration",
+            "Network Administration",
+            "Lab Component"
+          ],
+          "tags": ["Network Security", "IP Protocols", "Cyber Defense"]
+        },
+        "intro-to-cs": {
+          "title": "Intro to CS",
+          "description": [
+            "Python",
+            "Recursion",
+            "Programming",
+            "Namespaces",
+            "Webscraping"
+          ],
+          "tags": ["Programming Concepts", "Scripting Languages", "Automation"]
+        },
+        "web-scripting": {
+          "title": "Interactive Web Scripting",
+          "description": [
+            "jQuery",
+            "DOM Manipulation",
+            "JavaScript",
+            "Advanced Scripting"
+          ],
+          "tags": ["Front-End Scripting", "DOM Interaction", "Web Animation"]
+        },
+        "data-analysis": {
+          "title": "Data Analysis",
+          "description": [
+            "Statistics",
+            "Data Science",
+            "Sampling & Distributions",
+            "Confidence Intervals",
+            "Hypothesis Testing"
+          ],
+          "tags": [
+            "Quantitative Analysis",
+            "Statistical Methods",
+            "Predictive Modeling"
+          ]
+        }
+      }
+    },
+    "skills": {
+      "title-name": "Skills",
+      "skills-list": {
+        "react": {
+          "description": "JavaScript Library"
+        },
+        "redux": {
+          "description": "State Management"
+        },
+        "git": {
+          "description": "Version Control"
+        },
+        "jest": {
+          "description": "Testing Framework"
+        },
+        "typescript": {
+          "description": "JavaScript but better"
+        },
+        "figma": {
+          "description": "Design Tool"
+        },
+        "supabase": {
+          "description": "Backend tool"
+        },
+        "nextjs": {
+          "description": "React Framework"
+        },
+        "postgresql": {
+          "description": "Relational Database"
+        },
+        "aws": {
+          "description": "Cloud Services"
+        },
+        "nodejs": {
+          "description": "JavaScript Runtime"
+        },
+        "sass": {
+          "description": "CSS Preprocessor"
+        }
+      }
+    },
+    "contact-form": {
+      "form-labels": {
+        "name": {
+          "placeholder": "Your name"
+        },
+        "email": {
+          "placeholder": "Your email"
+        },
+        "subject": {
+          "placeholder": "Subject"
+        },
+        "message": {
+          "placeholder": "Your message..."
+        },
+        "submit": {
+          "text": "Send Message"
+        }
+      },
+      "sections": {
+        "main-heading": {
+          "text": "Let's start our collaboration!"
+        },
+        "contact-info-heading": {
+          "text": "Contact Information"
+        }
+      },
+      "contact-info": {
+        "location": {
+          "title": "Location",
+          "description": "Chicago, IL"
+        },
+        "email": {
+          "title": "Email"
+        }
+      }
+    },
+    "footer": {
+      "title": {
+        "text": "Richard Lechko"
+      },
+      "copyright": {
+        "prefix": "Richard Lechko",
+        "suffix": "All Rights Reserved"
+      },
+      "last-updated": {
+        "prefix": "Last updated:"
+      }
+    }
+  },
+  "ru": {
+    "lang-selector": {
+      "en": "EN",
+      "ru": "RU"
+    },
+    "navItems": {
+      "personal": "Главная",
+      "projects": "Проекты",
+      "work": "Работа",
+      "education": "Образование",
+      "skills": "Навыки",
+      "contact": "Контакт"
+    },
+    "externalLinks": {
+      "blog": "Блог"
+    },
+    "socialLinks": {
+      "github": "Посетить мой профиль на GitHub",
+      "linkedin": "Посетить мой профиль LinkedIn"
+    },
+    "personal": {
+      "greeting": "Привет, я Ричард",
+      "location": "Живу в Чикаго, Иллинойс",
+      "description": "Я веб-разработчик, специализирующийся на создании адаптивных, удобных приложений и проектировании беспроблемных решений, учитывающих цели проекта.",
+      "resume": {
+        "title": "Резюме",
+        "subtitle": "Быстрая загрузка или просмотр:",
+        "downloadDOCX": "DOCX",
+        "downloadPDF": "PDF",
+        "view": "Просмотр"
+      }
+    },
+    "projects": {
+      "title-name": "Проекты",
+      "view-site": "Посмотреть сайт",
+      "development": "В разработке",
+      "projects-list": {
+        "northern-trust": {
+          "linkText": "Соревнование DePaul x Northern Trust",
+          "text": "Финансовое приложение, разработанное для соревнования Northern Trust x DePaul University. Этот проект принес нам 3-е место в соревновании."
+        },
+        "freedom-butchers": {
+          "linkText": "Фриланс проект для Freedom Butchers",
+          "text": "Полноценный сайт электронной коммерции, разработанный для небольшого локального бизнеса под названием 'Freedom Butchers'."
+        },
+        "cloud-project": {
+          "linkText": "Исследование Cloud Club DePaul",
+          "text": "Сотрудничество с аспирантами над облачным проектом, улучшение навыков фронтенда и участие в разработке инновационных решений."
+        },
+        "mma": {
+          "linkText": "Планировщик MMA",
+          "text": "Это программное обеспечение MMA предоставляет всеобъемлющую платформу для планирования и отслеживания мероприятий MMA, включая информацию о бойцах, даты матчей и категории. Оно агрегирует и отображает данные в реальном времени через веб-скрейпинг, позволяя пользователям оставаться в курсе предстоящих боев и результатов."
+        }
+      }
+    },
+    "work": {
+      "title-name": "Работа",
+      "work-list": {
+        "hendrickson": {
+          "companyName": "Hendrickson",
+          "position": "Стажёр в IT",
+          "address": "Вудридж, Иллинойс",
+          "startTime": "11/2024",
+          "endTime": "Настоящее время",
+          "descriptions": [
+            "Помощь в обработке и анализе данных для определения ключевых показателей (KPI) и создание дашбордов в PowerBI.",
+            "Участие в сессиях анализа данных для предоставления информации, способствующей принятию решений."
+          ]
+        },
+        "rl-it-firm": {
+          "companyName": "RL IT Firm",
+          "position": "Frontend инженер",
+          "address": "Орланд Парк, Иллинойс",
+          "startTime": "12/2022",
+          "endTime": "Настоящее время",
+          "descriptions": [
+            "Разработка полнофункционального приложения для местного бизнеса с использованием Astro, ShadCN и Tailwind.",
+            "Обеспечение оптимального пользовательского опыта через адаптивный дизайн и тестирование."
+          ]
+        }
+      }
+    },
+    "education": {
+      "heading": "Образование",
+      "current_program": "Текущая программа",
+      "current_program_description_1": "Очный студент в",
+      "current_program_description_2": "DePaul University",
+      "bachelor_degree": "Бакалавр наук по информационным технологиям",
+      "expected_graduation": "Ожидаемая дата окончания",
+      "expected_graduation_date": "06/2026",
+      "gpa_achievements": "Средний балл и достижения",
+      "major_gpa": "Средний балл по специальности",
+      "deans_list": "Студент, попадающий в список Декана 3 раза",
+      "organizations_heading": "Организации и мероприятия",
+      "organizations": {
+        "depaul_computer_sci_society": {
+          "name": "Общество компьютерных наук DePaul",
+          "startDate": "09/2022",
+          "endDate": "Настоящее время",
+          "description": "Участвовал в различных технических проектах и мероприятиях по сетям."
+        },
+        "depaul_uiux_association": {
+          "name": "Ассоциация UI/UX DePaul",
+          "startDate": "01/2024",
+          "endDate": "Настоящее время",
+          "description": "Работал над дизайновыми спринтами и инициативами по изучению пользователей."
+        },
+        "depaul_cloud_club": {
+          "name": "Клуб облачных технологий DePaul",
+          "startDate": "10/2024",
+          "endDate": "Настоящее время",
+          "description": "Исследовал облачные технологии и проводил воркшопы."
+        }
+      }
+    },
+    "publications": {
+      "title": "Публикации",
+      "publication": {
+        "title": "Депозитное Банковское Деяние и Его Злодейские Действия"
+      }
+    },
+    "coursework": {
+      "title-name": "Курсовая работа",
+      "coursework-list": {
+        "data-structures": {
+          "title": "Структуры Данных I & II",
+          "description": [
+            "Структуры данных",
+            "Java",
+            "Рекурсия",
+            "Эффективность",
+            "Решение проблем"
+          ],
+          "tags": [
+            "Проектирование алгоритмов",
+            "Анализ сложности",
+            "Организация данных"
+          ]
+        },
+        "computer-systems": {
+          "title": "Компьютерные Системы I",
+          "description": [
+            "Программирование на уровне машины",
+            "Архитектура",
+            "Язык ассемблера",
+            "Программирование на C",
+            "Отладчики"
+          ],
+          "tags": [
+            "Низкоуровневое программирование",
+            "Системная инженерия",
+            "Инструменты отладки"
+          ]
+        },
+        "discrete-math": {
+          "title": "Дискретная Математика I & II",
+          "description": [
+            "Комбинаторика",
+            "Вероятность",
+            "Теория графов",
+            "Логика",
+            "Теория множеств"
+          ],
+          "tags": [
+            "Математические доказательства",
+            "Комбинаторная оптимизация",
+            "Логические головоломки"
+          ]
+        },
+        "cms": {
+          "title": "Системы Управления Контентом",
+          "description": [
+            "СУК",
+            "Корпоративные цифровые медиа",
+            "Публикация веб-контента",
+            "Веб-сайт на основе базы данных",
+            "Программное обеспечение с открытым исходным кодом"
+          ],
+          "tags": [
+            "Управление веб-контентом",
+            "Цифровое издательство",
+            "Интеграция систем"
+          ]
+        },
+        "server-side-web-dev": {
+          "title": "Веб-разработка на стороне сервера",
+          "description": [
+            "Веб-приложение на стороне сервера",
+            "Архитектуры MVC",
+            "Разработка API",
+            "Библиотеки кода",
+            "Сравнительный анализ"
+          ],
+          "tags": [
+            "Разработка backend",
+            "Архитектура веб-приложений",
+            "Проектирование API"
+          ]
+        },
+        "databases": {
+          "title": "Введение в Базы Данных",
+          "description": [
+            "Настольные базы данных",
+            "ER-диаграммы",
+            "SQL-запросы",
+            "Формы и отчеты",
+            "Интеграция базы данных"
+          ],
+          "tags": [
+            "Управление базами данных",
+            "SQL-программирование",
+            "Моделирование данных"
+          ]
+        },
+        "ui-ux": {
+          "title": "Веб-дизайн, Ориентированный на Пользователя",
+          "description": [
+            "Интерактивный дизайн",
+            "Навигация по информации",
+            "HTML и CSS",
+            "Соответствие стандартам",
+            "Динамический контент"
+          ],
+          "tags": ["Дизайн UX/UI", "Адаптивный дизайн", "Веб-доступность"]
+        },
+        "web-dev": {
+          "title": "Веб-разработка I",
+          "description": [
+            "На основе фреймворка",
+            "Интерактивный",
+            "Динамический",
+            "Веб-разработка",
+            "Объектно-ориентированный"
+          ],
+          "tags": [
+            "Веб-фреймворки",
+            "Разработка frontend",
+            "Динамические интерфейсы"
+          ]
+        },
+        "networks": {
+          "title": "Прикладные Сети и Безопасность",
+          "description": [
+            "Сетевые технологии",
+            "Меры безопасности",
+            "Конфигурация клиент/сервер",
+            "Сетевое администрирование",
+            "Лабораторный компонент"
+          ],
+          "tags": ["Сетевая безопасность", "IP-протоколы", "Киберзащита"]
+        },
+        "intro-to-cs": {
+          "title": "Введение в Computer Science",
+          "description": [
+            "Python",
+            "Рекурсия",
+            "Программирование",
+            "Пространства имен",
+            "Веб-скрейпинг"
+          ],
+          "tags": [
+            "Концепции программирования",
+            "Скриптовые языки",
+            "Автоматизация"
+          ]
+        },
+        "web-scripting": {
+          "title": "Интерактивные Веб-скрипты",
+          "description": [
+            "jQuery",
+            "Манипуляция DOM",
+            "JavaScript",
+            "Продвинутые скрипты"
+          ],
+          "tags": ["Frontend-скриптинг", "Взаимодействие с DOM", "Веб-анимация"]
+        },
+        "data-analysis": {
+          "title": "Анализ Данных",
+          "description": [
+            "Статистика",
+            "Наука о данных",
+            "Выборка и распределения",
+            "Доверительные интервалы",
+            "Проверка гипотез"
+          ],
+          "tags": [
+            "Количественный анализ",
+            "Статистические методы",
+            "Прогностическое моделирование"
+          ]
+        }
+      }
+    },
+    "skills": {
+      "title-name": "Навыки",
+      "skills-list": {
+        "react": {
+          "description": "Библиотека JavaScript"
+        },
+        "redux": {
+          "description": "Управление состоянием"
+        },
+        "git": {
+          "description": "Контроль версий"
+        },
+        "jest": {
+          "description": "Тестовый фреймворк"
+        },
+        "typescript": {
+          "description": "JavaScript, но улучшенный"
+        },
+        "figma": {
+          "description": "Инструмент дизайна"
+        },
+        "supabase": {
+          "description": "Инструмент Backend"
+        },
+        "nextjs": {
+          "description": "React Фреймворк"
+        },
+        "postgresql": {
+          "description": "Реляционная база данных"
+        },
+        "aws": {
+          "description": "Облачные сервисы"
+        },
+        "nodejs": {
+          "description": "Среда выполнения JavaScript"
+        },
+        "sass": {
+          "description": "CSS-препроцессор"
+        }
+      }
+    },
+    "contact-form": {
+      "form-labels": {
+        "name": {
+          "placeholder": "Ваше имя"
+        },
+        "email": {
+          "placeholder": "Ваш email"
+        },
+        "subject": {
+          "placeholder": "Тема"
+        },
+        "message": {
+          "placeholder": "Ваше сообщение..."
+        },
+        "submit": {
+          "text": "Отправить сообщение"
+        }
+      },
+      "sections": {
+        "main-heading": {
+          "text": "Давайте начнем сотрудничество!"
+        },
+        "contact-info-heading": {
+          "text": "Контактная информация"
+        }
+      },
+      "contact-info": {
+        "location": {
+          "title": "Местоположение",
+          "description": "Чикаго, Иллинойс"
+        },
+        "email": {
+          "title": "Электронная почта"
+        }
+      }
+    },
+    "footer": {
+      "title": {
+        "text": "Ричард Лечко"
+      },
+      "copyright": {
+        "prefix": "Ричард Лечко",
+        "suffix": "Все права защищены"
+      },
+      "last-updated": {
+        "prefix": "Последнее обновление:"
+      }
+    }
+  }
+}

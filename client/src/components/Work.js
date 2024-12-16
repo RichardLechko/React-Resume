@@ -1,56 +1,92 @@
 import React, { useRef } from "react";
+import { useTranslation } from "./language/LanguageContext";
 
-const workExperiences = [
-  {
-    companyName: "Hendrickson",
-    position: "IT Intern",
-    address: "Woodridge, IL",
-    startTime: "11/2024",
-    endTime: "Present",
-    descriptions: [
-      "Assist in processing and reporting data to determine KPIs while creating PowerBI dashboards.",
-      "Participate in data analysis sessions to provide insights that drive decision-making.",
-    ],
-    logo: "/work-images/hendrickson-logo.png",
-    tools: [
-      "PowerBi",
-      "KPIs",
-      "SQL",
-      "Microsoft Products",
-      "VPNs",
-      "QAD",
-      "ERP Systems",
-    ],
-  },
-  {
-    companyName: "RL IT Firm",
-    position: "Frontend Engineer",
-    address: "Orland Park, IL",
-    startTime: "12/2022",
-    endTime: "Present",
-    descriptions: [
-      "Develop a full-stack application for a local business using Astro, ShadCN, and Tailwind.",
-      "Ensure optimal viewing experiences through responsive design and user testing.",
-    ],
-    logo: "/work-images/rl-it-firm-logo.png",
-    tools: [
-      "Astro",
-      "Tailwind",
-      "React",
-      "Consulting",
-      "SASS",
-      "TypeScript",
-      "Node.js",
-      "ShadCN",
-    ],
-  },
-];
+const Work = () => {
+  const itemsRef = useRef([]);
+  const { t, language } = useTranslation();
+
+  const workExperiences = [
+    {
+      companyName: t("work.work-list.hendrickson.companyName"),
+      position: t("work.work-list.hendrickson.position"),
+      address: t("work.work-list.hendrickson.address"),
+      startTime: t("work.work-list.hendrickson.startTime"),
+      endTime: t("work.work-list.hendrickson.endTime"),
+      descriptions: [
+        t("work.work-list.hendrickson.descriptions.0"),
+        t("work.work-list.hendrickson.descriptions.1"),
+      ],
+      logo: "/work-images/hendrickson-logo.png",
+      tools: [
+        "PowerBi",
+        "KPIs",
+        "SQL",
+        "Microsoft Products",
+        "VPNs",
+        "QAD",
+        "ERP Systems",
+      ],
+    },
+    {
+      companyName: t("work.work-list.rl-it-firm.companyName"),
+      position: t("work.work-list.rl-it-firm.position"),
+      address: t("work.work-list.rl-it-firm.address"),
+      startTime: t("work.work-list.rl-it-firm.startTime"),
+      endTime: t("work.work-list.rl-it-firm.endTime"),
+      descriptions: [
+        t("work.work-list.rl-it-firm.descriptions.0"),
+        t("work.work-list.rl-it-firm.descriptions.1"),
+      ],
+      logo: "/work-images/rl-it-firm-logo.png",
+      tools: [
+        "Astro",
+        "Tailwind",
+        "React",
+        "Consulting",
+        "SASS",
+        "TypeScript",
+        "Node.js",
+        "ShadCN",
+      ],
+    },
+  ];
+
+  return (
+    <section id="work" className="work-section" lang={language}>
+      <div className="work-container">
+        <h1>
+          <span className="content-backdrop">{t("work.title-name")}</span>
+        </h1>
+        <div className="work-content">
+          <div className="work-left">
+            <div className="work-left-inner"></div>
+          </div>
+          <div className="work-right">
+            <div className="work-right-inner"></div>
+            <div className="work-experiences">
+              {workExperiences.map((experience, index) => (
+                <Company
+                  key={index}
+                  {...experience}
+                  ref={(el) => (itemsRef.current[index] = el)}
+                  className="work-experience-item"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Company = React.forwardRef(
   (
     { companyName, position, startTime, endTime, descriptions, logo, tools },
     ref
   ) => {
+    const { t, language } = useTranslation();
+
     return (
       <div ref={ref} className="company-container">
         <div className="company-info">
@@ -58,7 +94,7 @@ const Company = React.forwardRef(
             <div className="company-logo">
               <img
                 src={logo}
-                alt={`${companyName} logo`}
+                alt={`${t(companyName)} logo`}
                 className="company-logo-img"
               />
             </div>
@@ -66,11 +102,11 @@ const Company = React.forwardRef(
 
           <div className="company-header">
             <p className="company-duration">
-              <span className="start-time">{startTime}</span> -{" "}
-              <span className="end-time">{endTime}</span>
+              <span className="start-time">{t(startTime)}</span> -{" "}
+              <span className="end-time">{t(endTime)}</span>
             </p>
-            <h2 className="company-name">{companyName}</h2>
-            <h3 className="company-position">{position}</h3>
+            <h2 className="company-name">{t(companyName)}</h2>
+            <h3 className="company-position">{t(position)}</h3>
           </div>
 
           <div className="company-content">
@@ -95,37 +131,5 @@ const Company = React.forwardRef(
     );
   }
 );
-
-const Work = () => {
-  const itemsRef = useRef([]);
-
-  return (
-    <section id="work" className="work-section">
-      <div className="work-container">
-        <h1>
-          <span className="content-backdrop">Work</span>
-        </h1>
-        <div className="work-content">
-          <div className="work-left">
-            <div className="work-left-inner"></div>
-          </div>
-          <div className="work-right">
-            <div className="work-right-inner"></div>
-            <div className="work-experiences">
-              {workExperiences.map((experience, index) => (
-                <Company
-                  key={index}
-                  {...experience}
-                  ref={(el) => (itemsRef.current[index] = el)}
-                  className="work-experience-item"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 export default Work;

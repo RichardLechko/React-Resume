@@ -1,160 +1,194 @@
 import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-
-const coursework = [
-  {
-    title: "Data Structures I & II",
-    description: [
-      "Data Structures",
-      "Java",
-      "Recursion",
-      "Efficiency",
-      "Problem Solving",
-    ],
-    tags: ["Algorithm Design", "Complexity Analysis", "Data Organization"],
-  },
-  {
-    title: "Computer Systems I",
-    description: [
-      "Machine-level Programming",
-      "Architecture",
-      "Assembly Language",
-      "C Programming",
-      "Debuggers",
-    ],
-    tags: ["Low-Level Programming", "Systems Engineering", "Debugging Tools"],
-  },
-  {
-    title: "Discrete Math I & II",
-    description: [
-      "Combinatorics",
-      "Probability",
-      "Graph Theory",
-      "Logic",
-      "Set Theory",
-    ],
-    tags: [
-      "Mathematical Proofs",
-      "Combinatorial Optimization",
-      "Logic Puzzles",
-    ],
-  },
-  {
-    title: "Content Management Systems",
-    description: [
-      "CMSs",
-      "Enterprise Digital Media",
-      "Web Content Publication",
-      "Database-Driven Website",
-      "Open-Source Software",
-    ],
-    tags: [
-      "Web Content Management",
-      "Digital Publishing",
-      "System Integration",
-    ],
-  },
-  {
-    title: "Server-Side Web Development",
-    description: [
-      "Server-Side Web Application",
-      "MVC Architectures",
-      "API Development",
-      "Code Libraries",
-      "Comparative Analysis",
-    ],
-    tags: [
-      "Back-End Development",
-      "Web Application Architecture",
-      "API Design",
-    ],
-  },
-  {
-    title: "Introduction to Databases",
-    description: [
-      "Desktop Databases",
-      "ER Diagrams",
-      "SQL Queries",
-      "Forms and Reports",
-      "Database Integration",
-    ],
-    tags: ["Database Management", "SQL Programming", "Data Modeling"],
-  },
-  {
-    title: "User-Centered Web Design",
-    description: [
-      "Interactive Design",
-      "Information Navigation",
-      "HTML & CSS",
-      "Standards Compliance",
-      "Dynamic Content",
-    ],
-    tags: ["UX/UI Design", "Responsive Design", "Web Accessibility"],
-  },
-  {
-    title: "Web Development I",
-    description: [
-      "Framework-Based",
-      "Interactive",
-      "Dynamic",
-      "Web Development",
-      "Object-Based",
-    ],
-    tags: ["Web Frameworks", "Front-End Development", "Dynamic Interfaces"],
-  },
-  {
-    title: "Applied Networks and Security",
-    description: [
-      "Networking Technologies",
-      "Security Measures",
-      "Client/Server Configuration",
-      "Network Administration",
-      "Lab Component",
-    ],
-    tags: ["Network Security", "IP Protocols", "Cyber Defense"],
-  },
-  {
-    title: "Intro to CS",
-    description: [
-      "Python",
-      "Recursion",
-      "Programming",
-      "Namespaces",
-      "Webscraping",
-    ],
-    tags: ["Programming Concepts", "Scripting Languages", "Automation"],
-  },
-  {
-    title: "Interactive Web Scripting",
-    description: [
-      "jQuery",
-      "DOM Manipulation",
-      "JavaScript",
-      "Advanced Scripting",
-    ],
-    tags: ["Front-End Scripting", "DOM Interaction", "Web Animation"],
-  },
-  {
-    title: "Data Analysis",
-    description: [
-      "Statistics",
-      "Data Science",
-      "Sampling & Distributions",
-      "Confidence Intervals",
-      "Hypothesis Testing",
-    ],
-    tags: [
-      "Quantitative Analysis",
-      "Statistical Methods",
-      "Predictive Modeling",
-    ],
-  },
-];
+import { useTranslation } from "./language/LanguageContext"; // Import useTranslation
 
 const Coursework = () => {
   const sliderRef = useRef(null);
   const [isUserInteracting, setIsUserInteracting] = useState(false);
+  const { t, language } = useTranslation();
+
+  const coursework = [
+    {
+      title: t("coursework.coursework-list.data-structures.title"),
+      description: [
+        t("coursework.coursework-list.data-structures.description.0"),
+        t("coursework.coursework-list.data-structures.description.1"),
+        t("coursework.coursework-list.data-structures.description.2"),
+        t("coursework.coursework-list.data-structures.description.3"),
+        t("coursework.coursework-list.data-structures.description.4"),
+      ],
+      tags: [
+        t("coursework.coursework-list.data-structures.tags.0"),
+        t("coursework.coursework-list.data-structures.tags.1"),
+        t("coursework.coursework-list.data-structures.tags.2"),
+      ],
+    },
+    {
+      title: t("coursework.coursework-list.computer-systems.title"),
+      description: [
+        t("coursework.coursework-list.computer-systems.description.0"),
+        t("coursework.coursework-list.computer-systems.description.1"),
+        t("coursework.coursework-list.computer-systems.description.2"),
+        t("coursework.coursework-list.computer-systems.description.3"),
+        t("coursework.coursework-list.computer-systems.description.4"),
+      ],
+      tags: [
+        t("coursework.coursework-list.computer-systems.tags.0"),
+        t("coursework.coursework-list.computer-systems.tags.1"),
+        t("coursework.coursework-list.computer-systems.tags.2"),
+      ],
+    },
+    {
+      title: t("coursework.coursework-list.discrete-math.title"),
+      description: [
+        t("coursework.coursework-list.discrete-math.description.0"),
+        t("coursework.coursework-list.discrete-math.description.1"),
+        t("coursework.coursework-list.discrete-math.description.2"),
+        t("coursework.coursework-list.discrete-math.description.3"),
+        t("coursework.coursework-list.discrete-math.description.4"),
+      ],
+      tags: [
+        t("coursework.coursework-list.discrete-math.tags.0"),
+        t("coursework.coursework-list.discrete-math.tags.1"),
+        t("coursework.coursework-list.discrete-math.tags.2"),
+      ],
+    },
+    {
+      title: t("coursework.coursework-list.cms.title"),
+      description: [
+        t("coursework.coursework-list.cms.description.0"),
+        t("coursework.coursework-list.cms.description.1"),
+        t("coursework.coursework-list.cms.description.2"),
+        t("coursework.coursework-list.cms.description.3"),
+        t("coursework.coursework-list.cms.description.4"),
+      ],
+      tags: [
+        t("coursework.coursework-list.cms.tags.0"),
+        t("coursework.coursework-list.cms.tags.1"),
+        t("coursework.coursework-list.cms.tags.2"),
+      ],
+    },
+    {
+      title: t("coursework.coursework-list.server-side-web-dev.title"),
+      description: [
+        t("coursework.coursework-list.server-side-web-dev.description.0"),
+        t("coursework.coursework-list.server-side-web-dev.description.1"),
+        t("coursework.coursework-list.server-side-web-dev.description.2"),
+        t("coursework.coursework-list.server-side-web-dev.description.3"),
+        t("coursework.coursework-list.server-side-web-dev.description.4"),
+      ],
+      tags: [
+        t("coursework.coursework-list.server-side-web-dev.tags.0"),
+        t("coursework.coursework-list.server-side-web-dev.tags.1"),
+        t("coursework.coursework-list.server-side-web-dev.tags.2"),
+      ],
+    },
+    {
+      title: t("coursework.coursework-list.databases.title"),
+      description: [
+        t("coursework.coursework-list.databases.description.0"),
+        t("coursework.coursework-list.databases.description.1"),
+        t("coursework.coursework-list.databases.description.2"),
+        t("coursework.coursework-list.databases.description.3"),
+        t("coursework.coursework-list.databases.description.4"),
+      ],
+      tags: [
+        t("coursework.coursework-list.databases.tags.0"),
+        t("coursework.coursework-list.databases.tags.1"),
+        t("coursework.coursework-list.databases.tags.2"),
+      ],
+    },
+    {
+      title: t("coursework.coursework-list.ui-ux.title"),
+      description: [
+        t("coursework.coursework-list.ui-ux.description.0"),
+        t("coursework.coursework-list.ui-ux.description.1"),
+        t("coursework.coursework-list.ui-ux.description.2"),
+        t("coursework.coursework-list.ui-ux.description.3"),
+        t("coursework.coursework-list.ui-ux.description.4"),
+      ],
+      tags: [
+        t("coursework.coursework-list.ui-ux.tags.0"),
+        t("coursework.coursework-list.ui-ux.tags.1"),
+        t("coursework.coursework-list.ui-ux.tags.2"),
+      ],
+    },
+    {
+      title: t("coursework.coursework-list.web-dev.title"),
+      description: [
+        t("coursework.coursework-list.web-dev.description.0"),
+        t("coursework.coursework-list.web-dev.description.1"),
+        t("coursework.coursework-list.web-dev.description.2"),
+        t("coursework.coursework-list.web-dev.description.3"),
+        t("coursework.coursework-list.web-dev.description.4"),
+      ],
+      tags: [
+        t("coursework.coursework-list.web-dev.tags.0"),
+        t("coursework.coursework-list.web-dev.tags.1"),
+        t("coursework.coursework-list.web-dev.tags.2"),
+      ],
+    },
+    {
+      title: t("coursework.coursework-list.networks.title"),
+      description: [
+        t("coursework.coursework-list.networks.description.0"),
+        t("coursework.coursework-list.networks.description.1"),
+        t("coursework.coursework-list.networks.description.2"),
+        t("coursework.coursework-list.networks.description.3"),
+        t("coursework.coursework-list.networks.description.4"),
+      ],
+      tags: [
+        t("coursework.coursework-list.networks.tags.0"),
+        t("coursework.coursework-list.networks.tags.1"),
+        t("coursework.coursework-list.networks.tags.2"),
+      ],
+    },
+    {
+      title: t("coursework.coursework-list.intro-to-cs.title"),
+      description: [
+        t("coursework.coursework-list.intro-to-cs.description.0"),
+        t("coursework.coursework-list.intro-to-cs.description.1"),
+        t("coursework.coursework-list.intro-to-cs.description.2"),
+        t("coursework.coursework-list.intro-to-cs.description.3"),
+        t("coursework.coursework-list.intro-to-cs.description.4"),
+      ],
+      tags: [
+        t("coursework.coursework-list.intro-to-cs.tags.0"),
+        t("coursework.coursework-list.intro-to-cs.tags.1"),
+        t("coursework.coursework-list.intro-to-cs.tags.2"),
+      ],
+    },
+    {
+      title: t("coursework.coursework-list.web-scripting.title"),
+      description: [
+        t("coursework.coursework-list.web-scripting.description.0"),
+        t("coursework.coursework-list.web-scripting.description.1"),
+        t("coursework.coursework-list.web-scripting.description.2"),
+        t("coursework.coursework-list.web-scripting.description.3"),
+      ],
+      tags: [
+        t("coursework.coursework-list.web-scripting.tags.0"),
+        t("coursework.coursework-list.web-scripting.tags.1"),
+        t("coursework.coursework-list.web-scripting.tags.2"),
+      ],
+    },
+    {
+      title: t("coursework.coursework-list.data-analysis.title"),
+      description: [
+        t("coursework.coursework-list.data-analysis.description.0"),
+        t("coursework.coursework-list.data-analysis.description.1"),
+        t("coursework.coursework-list.data-analysis.description.2"),
+        t("coursework.coursework-list.data-analysis.description.3"),
+        t("coursework.coursework-list.data-analysis.description.4"),
+      ],
+      tags: [
+        t("coursework.coursework-list.data-analysis.tags.0"),
+        t("coursework.coursework-list.data-analysis.tags.1"),
+        t("coursework.coursework-list.data-analysis.tags.2"),
+      ],
+    },
+  ];
 
   const settings = {
     dots: true,
@@ -183,9 +217,9 @@ const Coursework = () => {
   }, [isUserInteracting]);
 
   return (
-    <div className="coursework-container">
+    <div className="coursework-container" lang={language}>
       <h1 className="coursework-title">
-        <span className="content-backdrop">Coursework</span>
+        <span className="content-backdrop">{t("coursework.title-name")}</span>
       </h1>
       <Slider
         {...settings}

@@ -1,17 +1,22 @@
-const publicationsData = [
-  {
-    title: "Fractional Reserve Banking and Its Evil Actions",
-    authors: "Lechko, Richard, Block, Walter",
-    isbn: "9798327075924",
-    link: "https://a.co/d/64La0PL",
-  },
-];
+import React from "react";
+import { useTranslation } from "./language/LanguageContext"; // Import useTranslation
 
 const Publications = () => {
+  const { t, language } = useTranslation();
+
+  const publicationsData = [
+    {
+      title: t("publications.publication.title"),
+      authors: "Lechko, Richard, Block, Walter",
+      isbn: "9798327075924",
+      link: "https://a.co/d/64La0PL",
+    },
+  ];
+
   return (
-    <section id="publications" className="publications-section">
+    <section id="publications" className="publications-section" lang={language}>
       <h1 className="publications-title">
-        <span className="content-backdrop">Publications</span>
+        <span className="content-backdrop">{t("publications.title")}</span>
       </h1>
       <div className="publications-list">
         {publicationsData.map((publication, index) => (
@@ -25,7 +30,7 @@ const Publications = () => {
               {publication.title}
             </a>
             <p className="publication-authors">{publication.authors}</p>
-            <p className="publication-isbn">ISBN: {publication.isbn}</p>
+            <p className="publication-isbn">{publication.isbn}</p>
           </div>
         ))}
       </div>

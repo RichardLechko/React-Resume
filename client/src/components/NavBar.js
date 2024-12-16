@@ -2,6 +2,8 @@ import React, { useState, useEffect, memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import icons from "./icons";
 import ThemeToggle from "./ThemeToggle";
+import { useTranslation } from "./language/LanguageContext";
+import LanguageSelector from "./language/LanguageSelector";
 
 const NavItemExternal = memo(
   ({ path, sectionName, shouldOpenInNewTab, onNavigate }) => (
@@ -30,36 +32,37 @@ const SocialMediaLink = memo(({ icon, link, ariaLabel }) => (
   </a>
 ));
 
-const NAV_ITEMS = [
-  { id: "personal", name: "Home" },
-  { id: "projects", name: "Projects" },
-  { id: "work", name: "Work" },
-  { id: "education", name: "Education" },
-  { id: "skills", name: "Skills" },
-  { id: "contact", name: "Contact" },
-];
-
-const MOBILE_NAV_ITEMS = [...NAV_ITEMS];
-
-const SOCIAL_LINKS = [
-  {
-    icon: <icons.ImGithub />,
-    link: "https://github.com/richardlechko",
-    ariaLabel: "Visit my GitHub profile",
-  },
-  {
-    icon: <icons.FaLinkedin />,
-    link: "https://www.linkedin.com/in/richard-lechko",
-    ariaLabel: "Visit my LinkedIn profile",
-  },
-];
-
 const NavBar = ({ refs }) => {
+  const { t, language } = useTranslation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isHamburgerMenu, setIsHamburgerMenu] = useState(false);
   const [sidebarStyle, setSidebarStyle] = useState({ left: "-250px" });
   const [activeSection, setActiveSection] = useState("");
   const navigate = useNavigate();
+
+  const NAV_ITEMS = [
+    { id: "personal", name: t("navItems.personal") },
+    { id: "projects", name: t("navItems.projects") },
+    { id: "work", name: t("navItems.work") },
+    { id: "education", name: t("navItems.education") },
+    { id: "skills", name: t("navItems.skills") },
+    { id: "contact", name: t("navItems.contact") },
+  ];
+
+  const MOBILE_NAV_ITEMS = [...NAV_ITEMS];
+
+  const SOCIAL_LINKS = [
+    {
+      icon: <icons.ImGithub />,
+      link: "https://github.com/richardlechko",
+      ariaLabel: t("socialLinks.github"),
+    },
+    {
+      icon: <icons.FaLinkedin />,
+      link: "https://www.linkedin.com/in/richard-lechko",
+      ariaLabel: t("socialLinks.linkedin"),
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -156,7 +159,7 @@ const NavBar = ({ refs }) => {
   );
 
   return (
-    <div className="navbar-container">
+    <div className="navbar-container" lang={language}>
       {isSidebarOpen && (
         <div
           className="sidebar-overlay"
@@ -166,7 +169,9 @@ const NavBar = ({ refs }) => {
 
       <nav>
         <div className="navbar-content">
-          <div className="navbar-logo">Richard Lechko</div>
+          <div className="navbar-language-support">
+            <LanguageSelector />
+          </div>
 
           {!isHamburgerMenu ? (
             <ul className="desktop-navbar">
@@ -188,7 +193,7 @@ const NavBar = ({ refs }) => {
                   <ThemeToggle />
                   <NavItemExternal
                     path="https://public-notes-page-react.vercel.app/"
-                    sectionName="Blog"
+                    sectionName={t("externalLinks.blog")}
                     shouldOpenInNewTab
                     isHamburgerMenu={isHamburgerMenu}
                     onNavigate={handleExternalNavigation}

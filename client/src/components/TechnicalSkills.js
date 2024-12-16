@@ -4,122 +4,105 @@ import { BiLogoRedux, BiLogoGit, BiLogoAws } from "react-icons/bi";
 import { SiJest, SiTypescript, SiSupabase, SiPostgresql } from "react-icons/si";
 import { FaFigma, FaSass } from "react-icons/fa";
 import { RiNextjsLine } from "react-icons/ri";
-
-const icons = {
-  DiReact,
-  DiNodejs,
-  DiGithubBadge,
-  BiLogoRedux,
-  BiLogoGit,
-  BiLogoAws,
-  SiJest,
-  SiTypescript,
-  SiSupabase,
-  SiPostgresql,
-  FaFigma,
-  RiNextjsLine,
-  FaSass,
-};
-
-const skillsData = [
-  {
-    skills: [
-      {
-        iconName: "DiReact",
-        name: "React",
-        description: "JavaScript Library",
-        hoverColor: "#61DAFB",
-        darkHoverColor: "#1E90FF",
-      },
-      {
-        iconName: "BiLogoRedux",
-        name: "Redux",
-        description: "State Management",
-        hoverColor: "#764ABC",
-        darkHoverColor: "#A052C6",
-      },
-      {
-        iconName: "BiLogoGit",
-        name: "Git",
-        description: "Version Control",
-        hoverColor: "#F05033",
-        darkHoverColor: "#FF6347",
-      },
-      {
-        iconName: "SiJest",
-        name: "Jest",
-        description: "Testing Framework",
-        hoverColor: "#99424F",
-        darkHoverColor: "#D3003F",
-      },
-      {
-        iconName: "SiTypescript",
-        name: "TypeScript",
-        description: "JavaScript but better",
-        hoverColor: "#3178C6",
-        darkHoverColor: "#004B87",
-      },
-      {
-        iconName: "FaFigma",
-        name: "Figma",
-        description: "Design Tool",
-        hoverColor: "#F24E1E",
-        darkHoverColor: "#D95B0D",
-      },
-      {
-        iconName: "SiSupabase",
-        name: "Supabase",
-        description: "Backend tool",
-        hoverColor: "#3ECF8E",
-        darkHoverColor: "#2CA67B",
-      },
-      {
-        iconName: "RiNextjsLine",
-        name: "Next.js",
-        description: "React Framework",
-        hoverColor: "#0070f3",
-        darkHoverColor: "#1a73e8",
-      },
-      {
-        iconName: "SiPostgresql",
-        name: "PostgreSQL",
-        description: "Relational Database",
-        hoverColor: "#336791",
-        darkHoverColor: "#154360",
-      },
-      {
-        iconName: "BiLogoAws",
-        name: "AWS",
-        description: "Cloud Services",
-        hoverColor: "#FF9900",
-        darkHoverColor: "#FFA500",
-      },
-      {
-        iconName: "DiNodejs",
-        name: "Node.js",
-        description: "JavaScript Runtime",
-        hoverColor: "#83CD29",
-        darkHoverColor: "#5F7B1E",
-      },
-
-      {
-        iconName: "FaSass",
-        name: "Sass",
-        description: "CSS Preprocessor",
-        hoverColor: "#CC6699",
-        darkHoverColor: "#C37D9D",
-      },
-    ],
-  },
-];
+import { useTranslation } from "./language/LanguageContext";
 
 const TechnicalSkills = React.forwardRef((props, ref) => {
+  const { t, language } = useTranslation();
+  const icons = {
+    DiReact,
+    DiNodejs,
+    DiGithubBadge,
+    BiLogoRedux,
+    BiLogoGit,
+    BiLogoAws,
+    SiJest,
+    SiTypescript,
+    SiSupabase,
+    SiPostgresql,
+    FaFigma,
+    RiNextjsLine,
+    FaSass,
+  };
+
+  const skillsData = [
+    {
+      skills: [
+        {
+          iconName: "DiReact",
+          name: "React",
+          description: t("skills.skills-list.react.description"),
+        },
+        {
+          iconName: "BiLogoRedux",
+          name: "Redux",
+          description: t("skills.skills-list.redux.description"),
+        },
+        {
+          iconName: "BiLogoGit",
+          name: "Git",
+          description: t("skills.skills-list.git.description"),
+        },
+        {
+          iconName: "SiJest",
+          name: "Jest",
+          description: t("skills.skills-list.jest.description"),
+        },
+        {
+          iconName: "SiTypescript",
+          name: "TypeScript",
+          description: t("skills.skills-list.typescript.description"),
+        },
+        {
+          iconName: "FaFigma",
+          name: "Figma",
+          description: t("skills.skills-list.figma.description"),
+        },
+        {
+          iconName: "SiSupabase",
+          name: "Supabase",
+          description: t("skills.skills-list.supabase.description"),
+        },
+        {
+          iconName: "RiNextjsLine",
+          name: "Next.js",
+          description: t("skills.skills-list.nextjs.description"),
+        },
+        {
+          iconName: "SiPostgresql",
+          name: "PostgreSQL",
+          description: t("skills.skills-list.postgresql.description"),
+        },
+        {
+          iconName: "BiLogoAws",
+          name: "AWS",
+          description: t("skills.skills-list.aws.description"),
+        },
+        {
+          iconName: "DiNodejs",
+          name: "Node.js",
+          description: t("skills.skills-list.nodejs.description"),
+        },
+
+        {
+          iconName: "FaSass",
+          name: "Sass",
+          description: t("skills.skills-list.sass.description"),
+        },
+      ],
+    },
+  ];
+
   return (
-    <section id="skills" ref={ref} className="technical-skills-section">
+    <section
+      id="skills"
+      ref={ref}
+      className="technical-skills-section"
+      lang={language}
+    >
       <div className="technical-skills-container">
         <header className="technical-skills-header">
           <h1 className="technical-skills-title">
-            <span className="content-backdrop">Skills</span>
+            <span className="content-backdrop">{t("skills.title-name")}</span>
           </h1>
         </header>
 
@@ -127,41 +110,25 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
           fallback={<div className="loading-skills">Loading skills...</div>}
         >
           <div className="skills-list">
-            {skillsData[0].skills.map(
-              ({ iconName, name, description, hoverColor, darkHoverColor }) => {
-                const IconComponent = icons[iconName];
-                const [isHovered, setIsHovered] = useState(false);
-
-                return (
-                  <div
-                    key={name}
-                    className="skill-item"
-                    style={{
-                      "--hover-color": hoverColor,
-                      "--dark-hover-color": darkHoverColor,
-                    }}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                  >
-                    <div className="skill-content">
-                      <div className="skill-icon-container">
-                        <span className="skill-icon">
-                          <IconComponent />
-                        </span>
-                      </div>
-
-                      <div className="skill-description-container">
-                        <h2 className="skill-name">{name}</h2>
-                        <p className="skill-description">{description}</p>
-                      </div>
+            {skillsData[0].skills.map(({ iconName, name, description }) => {
+              const IconComponent = icons[iconName];
+              return (
+                <div key={name} className="skill-item">
+                  <div className="skill-content">
+                    <div className="skill-icon-container">
+                      <span className="skill-icon">
+                        <IconComponent />
+                      </span>
                     </div>
 
-                    <div className="skill-divider" />
-                    <div className="skill-divider" />
+                    <div className="skill-description-container">
+                      <h2 className="skill-name">{name}</h2>
+                      <p className="skill-description">{description}</p>
+                    </div>
                   </div>
-                );
-              }
-            )}
+                </div>
+              );
+            })}
           </div>
         </Suspense>
       </div>

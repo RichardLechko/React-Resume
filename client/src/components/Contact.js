@@ -1,9 +1,11 @@
 import { FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import { useScroll } from "./ScrollToTop.js";
+import { useTranslation } from "./language/LanguageContext";
 
 const Contact = () => {
   const { scrollToTop } = useScroll();
+  const { t, language } = useTranslation();
 
   useEffect(() => {
     scrollToTop();
@@ -74,9 +76,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact-section">
+    <section id="contact" className="contact-section" lang={language}>
       <h1 className="contact-heading">
-        <span className="content-backdrop">Let's start our collaboration!</span>
+        <span className="content-backdrop">
+          {t("contact-form.sections.main-heading.text")}
+        </span>
       </h1>
 
       <form className="contact-form" onSubmit={handleSubmit}>
@@ -89,7 +93,7 @@ const Contact = () => {
               value={formData.name}
               onChange={handleChange}
               className="contact-input"
-              placeholder="Your name"
+              placeholder={t("contact-form.form-labels.name.placeholder")}
               required
             />
             <div className="left-border"></div>
@@ -105,7 +109,7 @@ const Contact = () => {
               value={formData.email}
               onChange={handleChange}
               className={`contact-input ${errors.email ? "error" : ""}`}
-              placeholder="Your email"
+              placeholder={t("contact-form.form-labels.email.placeholder")}
               required
             />
             {errors.email && (
@@ -126,7 +130,7 @@ const Contact = () => {
               value={formData.subject}
               onChange={handleChange}
               className="contact-input"
-              placeholder="Subject"
+              placeholder={t("contact-form.form-labels.subject.placeholder")}
               required
             />
             <div className="left-border"></div>
@@ -142,7 +146,7 @@ const Contact = () => {
               value={formData.message}
               onChange={handleChange}
               className="contact-textarea"
-              placeholder="Your message..."
+              placeholder={t("contact-form.form-labels.message.placeholder")}
               required
             />
             <div className="left-border"></div>
@@ -155,7 +159,7 @@ const Contact = () => {
               <input
                 type="submit"
                 className="contact-submit"
-                value="Send Message"
+                value={t("contact-form.form-labels.submit.text")}
               />
             </div>
           </div>
@@ -170,20 +174,26 @@ const Contact = () => {
 
       <div className="contact-info">
         <h1 className="contact-info-heading">
-          <span className="content-backdrop">Contact Information</span>
+          <span className="content-backdrop">
+            {t("contact-form.sections.contact-info-heading.text")}
+          </span>
         </h1>
         <div className="contact-info-group">
           <div className="info-item">
             <FaMapMarkerAlt className="info-icon" />
             <div>
-              <h2 className="info-title">Location</h2>
-              <p>Chicago, IL</p>
+              <h2 className="info-title">
+                {t("contact-form.contact-info.location.title")}
+              </h2>
+              <p>{t("contact-form.contact-info.location.description")}</p>
             </div>
           </div>
           <div className="info-item">
             <FaEnvelope className="info-icon" />
             <div>
-              <h2 className="info-title">Email</h2>
+              <h2 className="info-title">
+                {t("contact-form.contact-info.email.title")}
+              </h2>
               <p>
                 <a href="mailto:richardlechko@gmail.com" className="info-link">
                   richardlechko@gmail.com
