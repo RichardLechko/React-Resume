@@ -2676,10 +2676,13 @@ footer p {
     padding: 1rem;
   }
   #personal .personal-resume-content div {
-    gap: 0.8rem;
+    gap: 1rem;
   }
   #personal:lang(ru) .personal-resume-content div a {
     margin: auto;
+  }
+  #personal .personal-resume-content div a {
+    margin: 0;
   }
   #personal .personal-resume-content h2 {
     font-size: 2.5rem;
@@ -2760,7 +2763,8 @@ footer p {
     width: 80%;
   }
   .coursework-card {
-    width: 480px;
+    white-space: nowrap;
+    width: 450px;
   }
   #contact h1 {
     font-size: 3.4rem;
@@ -2827,20 +2831,7 @@ footer p {
   }
 
   #personal .personal-resume-content {
-    padding: 1rem 0rem 1rem 0rem;
-  }
-  #personal .personal-resume-content div {
-    padding: 0;
-    margin: 0;
-    gap: 0rem;
-  }
-
-  #personal .personal-resume-content h2 {
-    font-size: 2.1rem;
-  }
-
-  #personal .personal-resume-content p {
-    font-size: 0.8rem;
+    width: 80%;
   }
   #personal:lang(ru) .personal-left h1 {
     font-size: 2.8rem;
@@ -2992,14 +2983,8 @@ footer p {
     font-size: 1.8rem;
   }
 
-  #personal .personal-resume-content div {
-    gap: 0.3rem;
-  }
-  #personal .personal-resume-content div a {
-    font-weight: 700;
-    font-family: GeistSans;
-    font-size: 1rem;
-    padding: 1rem 1rem;
+  #personal .personal-resume-content {
+    width: 100%;
   }
 
   #personal .personal-wrapper {
@@ -3083,7 +3068,7 @@ footer p {
     width: 100%;
   }
   .coursework-card {
-    width: 100%;
+    /* width: 400px; */
     padding: 0.5rem;
   }
   .coursework-slider {
@@ -3104,6 +3089,14 @@ footer p {
   .arrow {
     width: 30px;
     height: 30px;
+  }
+
+  .prev-arrow {
+    left: 5%;
+  }
+
+  .next-arrow {
+    right: 5%;
   }
 
   .slick-dots li button:before {
@@ -3169,10 +3162,6 @@ footer p {
     width: 100%;
   }
 
-  #personal .personal-resume-content {
-    width: 80%;
-  }
-
   #personal .personal-left h1,
   #personal .personal-based-in-and-time,
   #personal .personal-info-spotify {
@@ -3187,15 +3176,24 @@ footer p {
     margin-top: 2rem;
     align-items: center;
     justify-content: center;
+    text-align: center;
     display: flex;
-
     flex-direction: column;
   }
 
   #personal .personal-resume-content div a {
-    margin: 0;
+    align-items: center;
+    margin: auto;
     text-align: center;
-    width: 150px;
+    width: 200px;
+  }
+
+  /* Add these new rules */
+  #personal .personal-resume-content div a span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* This adds space between the icon and text */
   }
 
   #personal .personal-resume-content h2 {
@@ -3226,6 +3224,7 @@ footer p {
   .coursework-card-description li:lang(ru) {
     font-size: 0.6rem;
     padding: 0.3rem 1.5rem 0.3rem 1.5rem;
+    white-space: nowrap;
   }
 
   .coursework-tag:lang(ru) {
@@ -3280,8 +3279,19 @@ footer p {
   .coursework-slider {
     padding: 0;
   }
+  .coursework-card {
+    white-space: normal;
+    width: 95%;
+  }
   .coursework-card-title {
     font-size: 1.2rem;
+  }
+  .prev-arrow {
+    left: 5%;
+  }
+
+  .next-arrow {
+    right: 5%;
   }
   .coursework-tag {
     font-size: 0.7rem;
@@ -3479,6 +3489,10 @@ footer p {
     font-size: 0.5rem;
     padding: 0.2rem 0.3rem;
   }
+  .coursework-card-description li:lang(ru) {
+    font-size: 0.6rem;
+    white-space: normal;
+  }
   footer h1 {
     font-size: 1.5rem;
   }
@@ -3557,9 +3571,11 @@ footer p {
   #work:lang(ru) .company-container {
     padding: 0.8rem;
   }
-  #work:lang(ru) .company-header {
-    margin-left: -1rem;
+  #work .company-header:lang(ru) {
+    margin-left: -0.5rem;
+    white-space: nowrap;
   }
+
   .organizations-heading {
     font-size: 1.2rem;
   }

@@ -85,28 +85,38 @@ const Company = React.forwardRef(
     { companyName, position, startTime, endTime, descriptions, logo, tools },
     ref
   ) => {
-    const { t } = useTranslation();
+    const { t, language } = useTranslation();
 
     return (
-      <div ref={ref} className="company-container">
-        <div className="company-info">
-          <div className="company-logo-container">
-            <div className="company-logo">
+      <div ref={ref} className="company-container" lang={language}>
+        <div className="company-info" lang={language}>
+          <div className="company-logo-container" lang={language}>
+            <div className="company-logo" lang={language}>
               <img
                 src={logo}
                 alt={`${t(companyName)} logo`}
                 className="company-logo-img"
+                lang={language}
               />
             </div>
           </div>
 
-          <div className="company-header">
-            <p className="company-duration">
-              <span className="start-time">{t(startTime)}</span> -{" "}
-              <span className="end-time">{t(endTime)}</span>
+          <div className="company-header" lang={language}>
+            <p className="company-duration" lang={language}>
+              <span className="start-time" lang={language}>
+                {t(startTime)}
+              </span>{" "}
+              -{" "}
+              <span className="end-time" lang={language}>
+                {t(endTime)}
+              </span>
             </p>
-            <h2 className="company-name">{t(companyName)}</h2>
-            <h3 className="company-position">{t(position)}</h3>
+            <h2 className="company-name" lang={language}>
+              {t(companyName)}
+            </h2>
+            <h3 className="company-position" lang={language}>
+              {t(position)}
+            </h3>
           </div>
 
           <div className="company-content">
