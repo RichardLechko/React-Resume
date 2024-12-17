@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import { DiReact, DiNodejs, DiGithubBadge } from "react-icons/di";
 import { BiLogoRedux, BiLogoGit, BiLogoAws } from "react-icons/bi";
 import {
