@@ -20,7 +20,7 @@
       "linkedin": "Visit my LinkedIn profile"
     },
     "personal": {
-      "greeting": "Hey, I'm Richard",
+      "greeting": "Richard Lechko",
       "location": "Based in Chicago, IL",
       "description": "I am a web developer specializing in creating responsive, user-friendly applications and designing seamless experiences tailored to meet project goals.",
       "highlightedProfession": "web developer",
@@ -355,23 +355,7 @@
       }
     },
     "contact-form": {
-      "form-labels": {
-        "name": {
-          "placeholder": "Your name"
-        },
-        "email": {
-          "placeholder": "Your email"
-        },
-        "subject": {
-          "placeholder": "Subject"
-        },
-        "message": {
-          "placeholder": "Your message..."
-        },
-        "submit": {
-          "text": "Send Message"
-        }
-      },
+      
       "sections": {
         "main-heading": {
           "text": "Let's start our collaboration!"
@@ -424,7 +408,7 @@
       "linkedin": "Посетить мой профиль LinkedIn"
     },
     "personal": {
-      "greeting": "Привет, я Ричард",
+      "greeting": "Ричард Лечко",
       "location": "Живу в Чикаго, Иллинойс",
       "description": "Я веб-разработчик, специализирующийся на создании адаптивных, удобных приложений и проектировании беспроблемных решений, учитывающих цели проекта.",
       "highlightedProfession": "веб-разработчик",

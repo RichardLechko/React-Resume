@@ -119,6 +119,14 @@ const Company = React.forwardRef(
             </h3>
           </div>
 
+          <div className="company-tools">
+            {tools.map((tool, index) => (
+              <span key={index} className="company-tool">
+                {tool}
+              </span>
+            ))}
+          </div>
+
           <div className="company-content">
             <ul className="company-descriptions">
               {descriptions.map((desc, index) => (
@@ -154,17 +162,9 @@ const Company = React.forwardRef(
                         )}
                       </React.Fragment>
                     ))}
-                </li>
+               </li>
               ))}
             </ul>
-
-            <div className="company-tools">
-              {tools.map((tool, index) => (
-                <span key={index} className="company-tool">
-                  {tool}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </div>

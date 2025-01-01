@@ -36,10 +36,6 @@ const MainPage = ({
           <Education />
         </section>
 
-        <section id="publications" ref={publicationsRef}>
-          <Publications />
-        </section>
-
         <section id="relevantCoursework">
           <Coursework />
         </section>

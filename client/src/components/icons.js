@@ -1,9 +1,14 @@
-import { FaLinkedin } from "react-icons/fa";
-import { ImGithub } from "react-icons/im";
+import { LuGithub } from "react-icons/lu";
+import { BiSolidCoffee, BiNotepad } from "react-icons/bi";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { MdOutlineEmail } from "react-icons/md";
 
 const icons = {
-  FaLinkedin,
-  ImGithub,
+  FaLinkedinIn,
+  LuGithub,
+  BiSolidCoffee,
+  BiNotepad,
+  MdOutlineEmail
 };
 
 export default icons;

@@ -38,82 +38,21 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
   const skillsData = [
     {
       skills: [
-        {
-          iconName: "DiReact",
-          name: "React",
-          description: t("skills.skills-list.react.description"),
-        },
-        {
-          iconName: "BiLogoRedux",
-          name: "Redux",
-          description: t("skills.skills-list.redux.description"),
-        },
-        {
-          iconName: "BiLogoGit",
-          name: "Git",
-          description: t("skills.skills-list.git.description"),
-        },
-        {
-          iconName: "SiJest",
-          name: "Jest",
-          description: t("skills.skills-list.jest.description"),
-        },
-        {
-          iconName: "SiTypescript",
-          name: "TypeScript",
-          description: t("skills.skills-list.typescript.description"),
-        },
-        {
-          iconName: "FaFigma",
-          name: "Figma",
-          description: t("skills.skills-list.figma.description"),
-        },
-        {
-          iconName: "SiSupabase",
-          name: "Supabase",
-          description: t("skills.skills-list.supabase.description"),
-        },
-        {
-          iconName: "RiNextjsLine",
-          name: "Next.js",
-          description: t("skills.skills-list.nextjs.description"),
-        },
-        {
-          iconName: "SiPostgresql",
-          name: "PostgreSQL",
-          description: t("skills.skills-list.postgresql.description"),
-        },
-        {
-          iconName: "BiLogoAws",
-          name: "AWS",
-          description: t("skills.skills-list.aws.description"),
-        },
-        {
-          iconName: "DiNodejs",
-          name: "Node.js",
-          description: t("skills.skills-list.nodejs.description"),
-        },
-
-        {
-          iconName: "FaSass",
-          name: "Sass",
-          description: t("skills.skills-list.sass.description"),
-        },
-        {
-          iconName: "AiFillHtml5",
-          name: "HTML",
-          description: t("skills.skills-list.html.description"),
-        },
-        {
-          iconName: "SiCypress",
-          name: "Cypress",
-          description: t("skills.skills-list.cypress.description"),
-        },
-        {
-          iconName: "SiMongodb",
-          name: "MongoDB",
-          description: t("skills.skills-list.mongodb.description"),
-        },
+        { iconName: "DiReact", name: "React" },
+        { iconName: "BiLogoRedux", name: "Redux" },
+        { iconName: "BiLogoGit", name: "Git" },
+        { iconName: "SiJest", name: "Jest" },
+        { iconName: "SiTypescript", name: "TypeScript" },
+        { iconName: "FaFigma", name: "Figma" },
+        { iconName: "SiSupabase", name: "Supabase" },
+        { iconName: "RiNextjsLine", name: "Next.js" },
+        { iconName: "SiPostgresql", name: "PostgreSQL" },
+        { iconName: "BiLogoAws", name: "AWS" },
+        { iconName: "DiNodejs", name: "Node.js" },
+        { iconName: "FaSass", name: "Sass" },
+        { iconName: "AiFillHtml5", name: "HTML" },
+        { iconName: "SiCypress", name: "Cypress" },
+        { iconName: "SiMongodb", name: "MongoDB" },
       ],
     },
   ];
@@ -136,7 +75,7 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
           fallback={<div className="loading-skills">Loading skills...</div>}
         >
           <div className="skills-list">
-            {skillsData[0].skills.map(({ iconName, name, description }) => {
+            {skillsData[0].skills.map(({ iconName, name }) => {
               const IconComponent = icons[iconName];
               return (
                 <div key={name} className="skill-item">
@@ -146,11 +85,7 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
                         <IconComponent />
                       </span>
                     </div>
-
-                    <div className="skill-description-container">
-                      <h2 className="skill-name">{name}</h2>
-                      <p className="skill-description">{description}</p>
-                    </div>
+                    <h2 className="skill-name">{name}</h2>
                   </div>
                 </div>
               );
