@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { useTranslation } from "./language/LanguageContext"; // Import useTranslation
+import { useTranslation } from "./language/LanguageContext";
 
 const Coursework = () => {
   const sliderRef = useRef(null);

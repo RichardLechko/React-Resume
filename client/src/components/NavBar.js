@@ -10,6 +10,20 @@ const NavBar = ({ refs }) => {
   const [isHamburgerMenu, setIsHamburgerMenu] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const navigate = useNavigate();
+    const [hasInteracted, setHasInteracted] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
+
+    const handleToggle = () => {
+  if (isSidebarOpen) {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsSidebarOpen(false);
+      setIsClosing(false);
+    }, 300); // Match animation duration
+  } else {
+    setIsSidebarOpen(true);
+  }
+};
 
   const NAV_ITEMS = [
     { id: "personal", name: t("navItems.personal") },
@@ -40,7 +54,7 @@ const NavBar = ({ refs }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      const isSmallScreen = window.innerWidth <= 1024;
+      const isSmallScreen = window.innerWidth <= 768;
       setIsHamburgerMenu(isSmallScreen);
       if (!isSmallScreen && isSidebarOpen) setIsSidebarOpen(false);
     };
@@ -110,8 +124,8 @@ const NavBar = ({ refs }) => {
                 <ThemeToggle />
                 <button
                   className="hamburger-menu-button"
-                  onClick={() => setIsSidebarOpen(prev => !prev)}
-                  aria-label="Toggle navigation menu"
+                 onClick={handleToggle}
+                aria-label="Toggle navigation menu"
                 >
                   &#9776;
                 </button>
@@ -122,7 +136,7 @@ const NavBar = ({ refs }) => {
       </nav>
 
       {isHamburgerMenu && isSidebarOpen && (
-        <div className="mobile-sidebar" style={{ left: isSidebarOpen ? "0px" : "-250px", transition: "left 0.3s ease" }}>
+        <div className={`mobile-sidebar ${isSidebarOpen ? 'open' : ''} ${isClosing ? 'closing' : ''}`}>
           <ul className="mobile-nav-items">
             {NAV_ITEMS.map(({ id, name }) => (
               <li key={id} className="mobile-nav-item">
