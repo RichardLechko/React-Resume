@@ -2551,6 +2551,12 @@ footer p {
     white-space: normal;
   }
 
+  #projects .project-links {
+      flex-direction: row;
+
+      gap: 0.5rem;
+  }
+
   
   footer h1 {
     font-size: 1.5rem;
@@ -2579,7 +2585,7 @@ footer p {
     height: 350px;
   }
   .coursework-container:lang(ru) h1 span {
-      font-size: 2rem;
+      font-size: 1.8rem;
   }
   .coursework-card-title {
     font-size: 1rem;
@@ -2614,15 +2620,27 @@ footer p {
   
   
   #projects .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 
   #projects .project-title {
       font-size: 0.8rem;
   }
 
+  #projects .project-card {
+      padding: 0.5rem;
+  }
+
+  #projects .tech-tag {
+      padding: 0.2rem 0.4rem;
+  }
+
   #projects .project-description {
       font-size: 0.7rem;
+  }
+
+  #projects .development-badge {
+      font-size: 0.5rem;
   }
 
   #personal .personal-resume-content div a {
@@ -2635,6 +2653,17 @@ footer p {
 
   #personal .personal-resume-content h2 {
     font-size: 1.4rem;
+  }
+
+  #personal .personal-resume-content p {
+      font-size: 0.8rem;
+  }
+
+  #personal {
+      margin-top: -12rem;
+      padding-top: -1rem;
+      margin-bottom: 0;
+      padding-bottom: 0;
   }
 
 
@@ -2678,7 +2707,10 @@ footer p {
   }
 
   #personal .personal-header {
-      font-size: 2.4rem;
+      font-size: 2.1rem;
+      white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   }
 
   #personal .personal-based-in-and-time p {
