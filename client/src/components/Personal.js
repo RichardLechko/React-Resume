@@ -130,7 +130,7 @@ const Personal = () => {
         </span>
         </a>
         <a
-        href="/resumes/Richard_Lechko_Resume.pdf"
+        href="https://docs.google.com/document/d/12ke-YdVWSkEmpOzMdeuCNOntx9kS8yK3oAMHtpThupI/edit?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
         >
