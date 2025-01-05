@@ -115,7 +115,7 @@ body {
 #personal,
 #projects,
 #work,
-#education,
+
 #publications,
 #skills,
 #contact {
@@ -124,6 +124,12 @@ body {
   color: var(--text-color);
   padding-top: 10rem;
   margin-top: -10rem;
+}
+
+#education {
+    margin-bottom: 12rem;
+    padding-top: 14rem;
+    margin-top: -12rem;
 }
 
 #personal h1,
@@ -1787,8 +1793,8 @@ footer p {
 .skills-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
-  width: 100%;
+  gap: 2rem;
+  width: 60%;
   margin: auto;
   justify-content: center;
 }
@@ -2119,6 +2125,10 @@ footer p {
 
   #projects .project-title {
       font-size: 1.25rem;
+  }
+
+  .skills-list {
+      width: 100%;
   }
   
 }
