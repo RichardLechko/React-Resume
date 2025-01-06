@@ -8,11 +8,16 @@ import {
   SiPostgresql,
   SiCypress,
   SiMongodb,
+  SiDocker,
+  SiJavascript,
+  SiAstro,
+  SiRedis
 } from "react-icons/si";
 import { FaFigma, FaSass } from "react-icons/fa";
 import { RiNextjsLine } from "react-icons/ri";
 import { useTranslation } from "./language/LanguageContext";
 import { AiFillHtml5 } from "react-icons/ai";
+import { FaGolang } from "react-icons/fa6";
 
 const TechnicalSkills = React.forwardRef((props, ref) => {
   const { t, language } = useTranslation();
@@ -33,6 +38,11 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
     AiFillHtml5,
     SiCypress,
     SiMongodb,
+      SiDocker,
+      SiJavascript,
+      SiAstro,
+      FaGolang,
+      SiRedis
   };
 
   const skillsData = [
@@ -49,10 +59,16 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
         { iconName: "SiPostgresql", name: "PostgreSQL" },
         { iconName: "BiLogoAws", name: "AWS" },
         { iconName: "DiNodejs", name: "Node.js" },
-        { iconName: "FaSass", name: "Sass" },
+        { iconName: "FaSass", name: "SCSS" },
         { iconName: "AiFillHtml5", name: "HTML" },
         { iconName: "SiCypress", name: "Cypress" },
         { iconName: "SiMongodb", name: "MongoDB" },
+          { iconName: "SiDocker", name: "Docker" },
+          { iconName: "SiAstro", name: "Astro" },
+          { iconName: "SiJavascript", name: "JavaScript" },
+          { iconName: "FaGolang", name: "Go" },
+          { iconName: "SiRedis", name: "Redis" },
+          
       ],
     },
   ];

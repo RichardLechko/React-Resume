@@ -116,7 +116,7 @@ body {
 #projects,
 #work,
 
-#publications,
+
 #skills,
 #contact {
   margin-bottom: 10rem;
@@ -136,7 +136,7 @@ body {
 #projects h1,
 #work h1,
 #education h1,
-#publications h1,
+
 #relevantCoursework h1,
 #skills h1,
 #contact h1 {
@@ -266,8 +266,7 @@ nav {
 
 .mobile-sidebar {
   position: fixed;
-  left: -250px;
-  width: 300px;
+  right: -250px;
   top: 96px;
   padding-top: 2rem;
   height: 100vh;
@@ -299,19 +298,19 @@ nav {
 
 @keyframes slideIn {
   from {
-    left: -250px;
+    right: -250px;
   }
   to {
-    left: 0;
+    right: 0;
   }
 }
 
 @keyframes slideOut {
   from {
-    left: 0;
+    right: 0;
   }
   to {
-    left: -250px;
+    right: -250px;
   }
 }
 
@@ -995,18 +994,9 @@ nav {
   outline-offset: 3px;
 }
 
-#personal .personal-resume-content div a:nth-child(1) {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-#personal .personal-resume-content div a:nth-child(2) {
-  background: linear-gradient(135deg, #ef4444, #b91c1c);
-  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-#personal .personal-resume-content div a:nth-child(3) {
-  background: linear-gradient(135deg, #10b981, #059669);
+#personal .personal-resume-content div a {
+  background-color: var(--primary);
+  color: #f5f5f5;
   transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
@@ -2043,7 +2033,7 @@ footer p {
    #projects h1,
   #work h1,
   #education h1,
-  #publications h1,
+
   #relevantCoursework h1,
   #skills h1 {
     font-size: 3rem;
@@ -2229,7 +2219,6 @@ footer p {
     width: 200px;
   }
 
-  /* Add these new rules */
   #personal .personal-resume-content div a span {
     display: flex;
     align-items: center;
@@ -2252,20 +2241,22 @@ footer p {
       top: 0;
       max-width: 100%;
       border-radius: 0;
-      margin: 0;
+      margin: auto;
   }
+  .nav-ul-li, .mobile-nav-items > * {
+      width: 200px !important;
+      margin: auto;
+  }
+  
   .container {
     max-width: 475px;
   }
   .mobile-sidebar {
-    width: 200px;
+    width: 400px;
+   
   }
   .work-experiences {
     width: 100%;
-  }
-  .mobile-nav-item .nav-ul-li:lang(ru) {
-    font-size: 0.8rem;
-    width: 110px;
   }
 
   .language-selector, .language-selector-toggle, .language-selector-dropdown {
@@ -2362,10 +2353,6 @@ footer p {
       padding: 0.4rem 0.3rem;
       font-size: 0.5rem;
   }
-  
-
-  
-  
 
   .coursework-slider {
     padding: 0;
@@ -2397,7 +2384,7 @@ footer p {
   #projects h1,
   #education h1,
   #work h1,
-  #publications h1,
+  
   #relevantCoursework h1,
   #skills h1 {
     font-size: 2.3rem;
@@ -2464,25 +2451,10 @@ footer p {
   .container {
     max-width: 335px;
   }
-  .mobile-sidebar {
+  .mobile-sidebar, .sidebar-overlay {
     top: 96px;
   }
-  .sidebar-overlay {
-    top: 96px;
-  }
-  .mobile-nav-item {
-    font-size: 0.8rem;
-  }
-
-  .nav-ul-li {
-    padding: 0.5rem 0rem 0.5rem 0rem !important;
-  }
-
-  
-
- 
- 
-
+   
   .company-info {
     grid-template-areas:
       "logo header"
@@ -2552,6 +2524,22 @@ footer p {
   
   
 
+  #personal {
+      
+      margin: 0;
+      padding-bottom: 0 !important;
+  }
+
+  #projects, #work, #education, #relevantCoursework, #skills, #contact {
+      margin-top: -8rem !important;
+      padding-top: 7rem !important;
+  }
+
+  
+  .main-page-container {
+      margin: 0 auto 0 auto;
+  }
+
    .coursework-tag:lang(ru) {
     font-size: 0.5rem;
     padding: 0.2rem 0.3rem;
@@ -2560,14 +2548,22 @@ footer p {
     font-size: 0.6rem;
     white-space: normal;
   }
-
+i
   #projects .project-links {
       flex-direction: row;
 
       gap: 0.5rem;
   }
 
-  
+  .skill-item {
+      padding: 0.1rem 0.4rem;
+  }
+
+  .skill-icon svg {
+      width: 20px;
+      height: 20px;
+  }
+
   footer h1 {
     font-size: 1.5rem;
   }
@@ -2630,7 +2626,12 @@ footer p {
   
   
   #projects .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  #projects .projects-grid-inner {
+      gap: 20px;
   }
 
   #projects .project-title {
@@ -2645,6 +2646,11 @@ footer p {
       padding: 0.2rem 0.4rem;
   }
 
+  #projects .project-links {
+      flex-direction: row;
+      gap: 10px;
+  }
+
   #projects .project-description {
       font-size: 0.7rem;
   }
@@ -2657,6 +2663,10 @@ footer p {
     width: 120px;
     height: 40px;
     margin: 0rem auto 0rem auto;
+  }
+
+  #personal .personal-resume-content div {
+      gap: 6px;
   }
 
  
@@ -2682,17 +2692,24 @@ footer p {
     max-width: 290px;
   }
   .mobile-sidebar {
-    width: 160px;
-    top: 74px;
+    width: 250px;
   }
 
+  .mobile-sidebar,
   .sidebar-overlay {
-    top: 74px;
+    top: 70px;
    
   }
 
   .mobile-nav-items {
-    padding-left: 1rem;
+      display: flex;
+      padding: 0;
+      width: 150px !important;
+      margin: 3rem auto auto auto;
+  }
+
+  .nav-ul-li {
+      width: 150px !important;
   }
 
   .theme-toggle, .hamburger-menu-button, .language-selector-toggle {
@@ -2748,6 +2765,14 @@ footer p {
       font-size: 0.6rem;
   }
 
+  #work .work-experiences {
+      gap: 20px;
+  }
+
+  #work .company-description-item {
+      font-size: 11.5px;
+  }
+
 }
 
 @media (max-width: 375px) {
@@ -2757,9 +2782,7 @@ footer p {
   .slick-dots {
     gap: 0;
 } 
-  #projects .projects-grid-inner {
-    gap: 1.5rem;
-  }
+ 
 
   .coursework-container:lang(ru) h1 span {
       font-size: 1.7rem;
@@ -2781,6 +2804,11 @@ footer p {
   #work .company-description-item:lang(ru) {
       font-size: 0.75rem;
   }
+
+  #work .company-description-item {
+      font-size: 11px;
+  }
+
 
   
   .container {
@@ -2829,7 +2857,7 @@ footer p {
 
 @media (max-width: 320px) {
   .mobile-sidebar {
-    width: 150px;
+    width: 200px;
   }
 }
 
