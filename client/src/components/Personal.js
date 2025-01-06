@@ -3,6 +3,7 @@ import { FaDownload } from "react-icons/fa";
 import { useTranslation } from "./language/LanguageContext";
 import icons from "./icons";
 import { BiSolidCoffee } from "react-icons/bi";
+import { AiOutlineEye } from "react-icons/ai";
 
 const Personal = () => {
     const { t, language } = useTranslation();
@@ -134,7 +135,7 @@ const Personal = () => {
         target="_blank"
         rel="noopener noreferrer"
         >
-        <span>{t("personal.resume.view")}</span>
+        <AiOutlineEye /><span>{t("personal.resume.view")}</span>
         </a>
         </div>
         </div>

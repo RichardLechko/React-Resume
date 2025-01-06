@@ -22,7 +22,7 @@
     "personal": {
       "greeting": "Richard Lechko",
       "location": "Based in Chicago, IL",
-      "description": "I am a web developer specializing in creating responsive, user-friendly applications and designing seamless experiences tailored to meet project goals.",
+      "description": "I am a web developer specializing in creating responsive and user-friendly applications.",
       "highlightedProfession": "web developer",
       "resume": {
         "title": "Resume",
@@ -410,7 +410,7 @@
     "personal": {
       "greeting": "Ричард Лечко",
       "location": "Живу в Чикаго, Иллинойс",
-      "description": "Я веб-разработчик, специализирующийся на создании адаптивных, удобных приложений и проектировании беспроблемных решений, учитывающих цели проекта.",
+      "description": "Я веб-разработчик, специализирующийся на создании адаптивных и удобных для пользователя приложений.",
       "highlightedProfession": "веб-разработчик",
       "resume": {
         "title": "Резюме",
