@@ -191,7 +191,6 @@ nav {
 }
 
 .desktop-navbar {
-  font-family: "JetBrains Mono", serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -205,9 +204,14 @@ nav {
 }
 
 .external-links,
-.desktop-nav-items {
+.desktop-nav-items,
+.theme-toggle,
+.hamburger-menu-button,
+.language-selector > *{
    list-style-type: none;
-   font-size: 1.1rem;
+   font-size: 1rem;
+   font-size: 1rem;
+   font-family: "JetBrains Mono", serif;
 }
 
 .sidebar-overlay {
@@ -297,7 +301,7 @@ nav {
   align-items: center;
   justify-content: center;
   color: var(--nav-text);
-  font-size: 1.2rem;
+  
   background: var(--nav-item-bg);
   position: relative;
   overflow: hidden;
@@ -446,7 +450,7 @@ nav {
 
 .language-selector-dropdown {
   position: absolute;
-  top: 110%;
+  top: 130%;
   left: 0;
   width: 100%;
   border-radius: 6px;
@@ -472,7 +476,7 @@ nav {
   width: 100%;
   padding: 0.3rem 0.7rem;
   cursor: pointer;
-  gap: 8px;
+  
   margin: 0;
   height: 40px;
   box-sizing: border-box;
@@ -577,26 +581,19 @@ nav {
 /* BORDER */
 
 .navbar-container,
-.language-selector-toggle,
+.language-selector > *,
 .nav-ul-li,
 .theme-toggle,
 .hamburger-menu-button,
-
 #personal .personal-resume-content,
 #personal .personal-resume-content div a,
 #personal .icon-link,
-
 #projects .project-card,
 #projects .project-link-button,
-
 #work .company-container,
-
 #education .education-card,
-
 #relevantCoursework .coursework-card,
-
 .skill-item,
-
 .contact-info {
     border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
 }
@@ -1999,7 +1996,8 @@ footer p {
   }
 
   #projects .project-links {
-      gap: 10px;
+      gap: 5px;
+      margin-left: 1rem;
   }
 
   #projects .project-tech-stack {
@@ -2294,11 +2292,6 @@ i
       padding: 0.2rem 0.4rem;
   }
 
-  #projects .project-links {
-      flex-direction: row;
-      gap: 10px;
-  }
-
   #projects .project-description {
       font-size: 0.7rem;
   }
@@ -2311,6 +2304,10 @@ i
     width: 120px;
     height: 40px;
     margin: 0rem auto 0rem auto;
+  }
+
+  #personal .personal-resume-content div {
+      gap: 5px;
   }
 
 
