@@ -10,7 +10,31 @@ const Widgets = () => {
 
   useEffect(() => {
     scrollToTop();
+
+    // Add intersection observer for fade-in animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    // Observe all project cards
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach((card, index) => {
+      card.classList.add('fade-in-hidden');
+      // Add a stagger effect
+      card.style.animationDelay = `${index * 0.1}s`;
+      observer.observe(card);
+    });
+
+    return () => observer.disconnect();
   }, [scrollToTop]);
+
   const projects = [
     {
       linkText: t("projects.projects-list.northern-trust.linkText"),
@@ -25,7 +49,7 @@ const Widgets = () => {
     {
       linkText: t("projects.projects-list.freedom-butchers.linkText"),
       text: t("projects.projects-list.freedom-butchers.text"),
-      techStack: ["Astro", "Node.js", "Express", "SCSS", "Docker", "ShadCN"],
+      techStack: ["Astro", "NodeJS", "Express", "SCSS", "ShadCN"],
       live: true,
       liveLink: "https://freedombutchers.vercel.app/",
       sourceLink: "https://github.com/RichardLechko/superior-sphere",
@@ -75,10 +99,12 @@ const Widgets = () => {
   ];
 
   return (
-    <div id="projects" className="projects-container" lang={language}>
-      <h1 className="projects-title">
-        <span className="content-backdrop">{t("projects.title-name")}</span>
-      </h1>
+    <main id="projects" className="projects-container" lang={language}>
+      <header>
+        <h1 className="projects-title">
+          <span className="content-backdrop">{t("projects.title-name")}</span>
+        </h1>
+      </header>
 
       <section className="projects-content">
         <div className="projects-grid">
@@ -89,7 +115,7 @@ const Widgets = () => {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 
@@ -105,48 +131,46 @@ const WidgetsCard = ({
   const { t, language } = useTranslation();
 
   return (
-    <div className="project-card" lang={language}>
-      <div className="project-header">
-        <div className="project-tech-stack">
+    <article className="project-card" lang={language}>
+      <header className="project-header">
+        <nav className="project-tech-stack" aria-label="Technologies used">
           {techStack.map((tech, index) => (
-            <span key={index} className="tech-tag">
+            <small key={index} className="tech-tag">
               {tech}
-            </span>
+            </small>
           ))}
-        </div>
+        </nav>
         
         {!isPrivate && !inDevelopment && (
-          <div className="project-links">
+          <nav className="project-links" aria-label="Project links">
             {sourceLink && (
               <a
                 href={sourceLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-link-button"
-                aria-label="View Source Code"
-              >
+                aria-label="View Source Code">
                 <LuChevronsLeftRight size={20} />
               </a>
             )}
             {liveLink && (
-              <a
+             <a 
                 href={liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-link-button"
-                aria-label="View Live Site"
-              >
+                aria-label="View Live Site">
                 <LuMousePointerClick size={20} />
               </a>
             )}
-          </div>
+          </nav>
         )}
         {inDevelopment && (
-          <p className="development-badge">{t("projects.development")}</p>
+          <small className="development-badge">{t("projects.development")}</small>
         )}
-      </div>
+      </header>
 
-      <div className="project-title">{linkText}</div>
+      <h2 className="project-title">{linkText}</h2>
 
       <div className="project-description">
         <p>
@@ -179,7 +203,7 @@ const WidgetsCard = ({
                   ? t("projects.projects-list.mma.highlightedText")
                   : []
                 ).includes(part) ? (
-                  <span className="highlight-text">{part}</span>
+                  <strong className="highlight-text">{part}</strong>
                 ) : (
                   part
                 )}
@@ -187,7 +211,7 @@ const WidgetsCard = ({
             ))}
         </p>
       </div>
-    </div>
+    </article>
   );
 };
 

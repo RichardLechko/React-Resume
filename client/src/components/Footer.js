@@ -3,19 +3,22 @@ import { useTranslation } from "./language/LanguageContext";
 
 const Footer = () => {
   const { t } = useTranslation();
+  
   return (
     <footer className="footer">
       <div className="footer-container">
-        <h1 className="footer-title">{t("footer.title.text")}</h1>
-
-        <p className="footer-copy">
+        <header>
+          <h2 className="footer-title">{t("footer.title.text")}</h2>
+        </header>
+        
+        <small className="footer-copy">
           &copy; {new Date().getFullYear()} {t("footer.copyright.prefix")} |{" "}
           {t("footer.copyright.suffix")}
-        </p>
-
-        <p className="footer-updated">
+        </small>
+        
+        <time className="footer-updated" dateTime={new Date().toISOString()}>
           {t("footer.last-updated.prefix")} {new Date().toLocaleDateString()}
-        </p>
+        </time>
       </div>
     </footer>
   );

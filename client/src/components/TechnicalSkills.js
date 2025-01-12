@@ -74,7 +74,7 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
   ];
 
   return (
-    <section
+    <main
       id="skills"
       ref={ref}
       className="technical-skills-section"
@@ -88,28 +88,37 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
         </header>
 
         <Suspense
-          fallback={<div className="loading-skills">Loading skills...</div>}
+          fallback={
+            <p className="loading-skills" role="status" aria-live="polite">
+              Loading skills...
+            </p>
+          }
         >
-          <div className="skills-list">
+          <section className="skills-list" role="list">
             {skillsData[0].skills.map(({ iconName, name }) => {
               const IconComponent = icons[iconName];
               return (
-                <div key={name} className="skill-item">
+                <article 
+                  key={name} 
+                  className="skill-item" 
+                  role="listitem"
+                >
                   <div className="skill-content">
-                    <div className="skill-icon-container">
-                      <span className="skill-icon">
-                        <IconComponent />
-                      </span>
-                    </div>
+                    <figure className="skill-icon-container">
+                      <IconComponent 
+                        aria-hidden="true" 
+                        className="skill-icon"
+                      />
+                    </figure>
                     <h2 className="skill-name">{name}</h2>
                   </div>
-                </div>
+                </article>
               );
             })}
-          </div>
+          </section>
         </Suspense>
       </div>
-    </section>
+    </main>
   );
 });
 

@@ -13,33 +13,68 @@ const Contact = () => {
   }, [scrollToTop]);
 
   return (
-    <section id="contact" className="contact-section" lang={language}>
-      <h1 className="contact-heading">
-        <span className="content-backdrop">Get in touch</span>
-      </h1>
+    <main id="contact" className="contact-section" lang={language}>
+      <header>
+        <h1 className="contact-heading">
+          <span className="content-backdrop">Get in touch</span>
+        </h1>
+      </header>
 
-      <div className="contact-info">
-        <p className="location-text">Based in <span className="location-text-name">Chicago, Illinois</span></p>
+      <section className="contact-info">
+        <address>
+          <p className="location-text">
+            Based in <strong className="location-text-name">Chicago, Illinois</strong>
+          </p>
+        </address>
 
-        <div className="social-links">
-          <a href="https://github.com/RichardLechko" target="_blank" rel="noopener noreferrer" className="social-item">
-            <icons.LuGithub />
+        <nav className="social-links" aria-label="Social media links">
+          <a 
+            href="https://github.com/RichardLechko" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="social-item"
+            aria-label="GitHub Profile"
+          >
+            <icons.LuGithub aria-hidden="true" />
           </a>
-          <a href="https://www.linkedin.com/in/richard-lechko/" target="_blank" rel="noopener noreferrer" className="social-item">
-            <icons.FaLinkedinIn />
+          <a 
+            href="https://www.linkedin.com/in/richard-lechko/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="social-item"
+            aria-label="LinkedIn Profile"
+          >
+            <icons.FaLinkedinIn aria-hidden="true" />
           </a>
-          <a href="https://public-notes-page-react.vercel.app/" target="_blank" rel="noopener noreferrer" className="social-item">
-            <icons.BiNotepad />
+          <a 
+            href="https://public-notes-page-react.vercel.app/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="social-item"
+            aria-label="Personal Blog"
+          >
+            <icons.BiNotepad aria-hidden="true" />
           </a>
-          <a href="https://ko-fi.com/richardlechko" target="_blank" rel="noopener noreferrer" className="social-item">
-            <icons.BiSolidCoffee />
+          <a 
+            href="https://ko-fi.com/richardlechko" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="social-item"
+            aria-label="Support on Ko-fi"
+          >
+            <icons.BiSolidCoffee aria-hidden="true" />
           </a>
-<a href="mailto:richardlechko@gmail.com" className="social-item">
-  <icons.MdOutlineEmail />
-</a>
-        </div>
-      </div>
-    </section>
-  );};
+          <a 
+            href="mailto:richardlechko@gmail.com" 
+            className="social-item"
+            aria-label="Send Email"
+          >
+            <icons.MdOutlineEmail aria-hidden="true" />
+          </a>
+        </nav>
+      </section>
+    </main>
+  );
+};
 
 export default Contact;

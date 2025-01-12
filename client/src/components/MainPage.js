@@ -4,7 +4,6 @@ const Personal = React.lazy(() => import("./Personal.js"));
 const TechnicalSkills = React.lazy(() => import("./TechnicalSkills.js"));
 const Work = React.lazy(() => import("./Work.js"));
 const Education = React.lazy(() => import("./Education.js"));
-const Publications = React.lazy(() => import("./Publications.js"));
 const Coursework = React.lazy(() => import("./Coursework.js"));
 const Contact = React.lazy(() => import("./Contact.js"));
 const Projects = React.lazy(() => import("./Widgets.js"));

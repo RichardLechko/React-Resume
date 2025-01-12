@@ -1,9 +1,34 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useTranslation } from "./language/LanguageContext";
 
 const Work = () => {
   const itemsRef = useRef([]);
   const { t, language } = useTranslation();
+
+    useEffect(() => {
+    
+
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    const cards = document.querySelectorAll('.company-container');
+    cards.forEach((card, index) => {
+      card.classList.add('fade-in-hidden');
+      card.style.animationDelay = `${index * 0.1}s`;
+      observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const workExperiences = [
     {
@@ -52,31 +77,32 @@ const Work = () => {
   ];
 
   return (
-    <section id="work" className="work-section">
-      <div className="work-container">
+    <main id="work" className="work-section">
+      <header className="work-container">
         <h1>
           <span className="content-backdrop">{t("work.title-name")}</span>
         </h1>
-        <div className="work-content">
-          <div className="work-left">
-            <div className="work-left-inner"></div>
+      </header>
+      
+      <div className="work-content">
+        <aside className="work-left">
+          <div className="work-left-inner"></div>
+        </aside>
+        <section className="work-right">
+          <div className="work-right-inner"></div>
+          <div className="work-experiences">
+            {workExperiences.map((experience, index) => (
+              <Company
+                key={index}
+                {...experience}
+                ref={(el) => (itemsRef.current[index] = el)}
+                className="work-experience-item"
+              />
+            ))}
           </div>
-          <div className="work-right">
-            <div className="work-right-inner"></div>
-            <div className="work-experiences">
-              {workExperiences.map((experience, index) => (
-                <Company
-                  key={index}
-                  {...experience}
-                  ref={(el) => (itemsRef.current[index] = el)}
-                  className="work-experience-item"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+        </section>
       </div>
-    </section>
+    </main>
   );
 };
 
@@ -88,46 +114,35 @@ const Company = React.forwardRef(
     const { t, language } = useTranslation();
 
     return (
-      <div ref={ref} className="company-container" lang={language}>
-        <div className="company-info" lang={language}>
-          <div className="company-logo-container" lang={language}>
-            <div className="company-logo" lang={language}>
-              <img
-                src={logo}
-                alt={`${t(companyName)} logo`}
-                className="company-logo-img"
-                lang={language}
-              />
-            </div>
-          </div>
+      <article ref={ref} className="company-container" lang={language}>
+        <div className="company-info">
+          <figure className="company-logo-container">
+            <img
+              src={logo}
+              alt={`${t(companyName)} logo`}
+              className="company-logo-img"
+            />
+          </figure>
 
-          <div className="company-header" lang={language}>
-            <p className="company-duration" lang={language}>
-              <span className="start-time" lang={language}>
-                {t(startTime)}
-              </span>{" "}
-              -{" "}
-              <span className="end-time" lang={language}>
-                {t(endTime)}
-              </span>
-            </p>
-            <h2 className="company-name" lang={language}>
-              {t(companyName)}
-            </h2>
-            <h3 className="company-position" lang={language}>
-              {t(position)}
-            </h3>
-          </div>
+          <header className="company-header">
+            <time className="company-duration">
+              <span className="start-time">{t(startTime)}</span>
+              {" - "}
+              <span className="end-time">{t(endTime)}</span>
+            </time>
+            <h2 className="company-name">{t(companyName)}</h2>
+            <h3 className="company-position">{t(position)}</h3>
+          </header>
 
-          <div className="company-tools">
+          <nav className="company-tools">
             {tools.map((tool, index) => (
-              <span key={index} className="company-tool">
+              <small key={index} className="company-tool">
                 {tool}
-              </span>
+              </small>
             ))}
-          </div>
+          </nav>
 
-          <div className="company-content">
+          <section className="company-content">
             <ul className="company-descriptions">
               {descriptions.map((desc, index) => (
                 <li key={index} className="company-description-item">
@@ -136,13 +151,9 @@ const Company = React.forwardRef(
                       new RegExp(
                         `(${
                           companyName.includes("Hendrickson")
-                            ? t(
-                                "work.work-list.hendrickson.highlightedText"
-                              ).join("|")
+                            ? t("work.work-list.hendrickson.highlightedText").join("|")
                             : companyName.includes("RL IT Firm")
-                            ? t(
-                                "work.work-list.rl-it-firm.highlightedText"
-                              ).join("|")
+                            ? t("work.work-list.rl-it-firm.highlightedText").join("|")
                             : ""
                         })`,
                         "g"
@@ -156,18 +167,18 @@ const Company = React.forwardRef(
                           ? t("work.work-list.rl-it-firm.highlightedText")
                           : []
                         ).includes(part) ? (
-                          <span className="highlight-text">{part}</span>
+                          <strong className="highlight-text">{part}</strong>
                         ) : (
                           part
                         )}
                       </React.Fragment>
                     ))}
-               </li>
+                </li>
               ))}
             </ul>
-          </div>
+          </section>
         </div>
-      </div>
+      </article>
     );
   }
 );

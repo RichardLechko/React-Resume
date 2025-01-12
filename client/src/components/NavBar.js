@@ -19,7 +19,7 @@ const NavBar = ({ refs }) => {
     setTimeout(() => {
       setIsSidebarOpen(false);
       setIsClosing(false);
-    }, 300); // Match animation duration
+    }, 200);
   } else {
     setIsSidebarOpen(true);
   }
