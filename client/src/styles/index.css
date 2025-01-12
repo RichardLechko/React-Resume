@@ -1960,6 +1960,10 @@ footer p {
         flex-direction: row;
     }
 
+    .skills-list {
+        width: 70%;
+    }
+
 
   h1 {
     font-size: 3.5rem;
