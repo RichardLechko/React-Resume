@@ -55,7 +55,7 @@ const Personal = () => {
     const resumeLinks = [
         { href: "/resumes/Richard_Lechko_Resume.docx", Icon: FaDownload, text: "downloadDOCX", download: true },
         { href: "/resumes/Richard_Lechko_Resume.pdf", Icon: FaDownload, text: "downloadPDF", download: true },
-        { href: "https://docs.google.com/document/d/12ke-YdVWSkEmpOzMdeuCNOntx9kS8yK3oAMHtpThupI/edit?usp=sharing", 
+        { href: "https://docs.google.com/document/d/1qnp6U9z-i9OZwFpPzvO9RNwxxwZW9G8FNOcfpdUqMXA/edit?usp=sharing", 
           Icon: AiOutlineEye, text: "view", download: false }
     ];
 

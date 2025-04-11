@@ -60,6 +60,14 @@
           "linkText": "MMA Scheduler",
           "text": "This MMA software provides a comprehensive platform for scheduling and tracking MMA events, including fighter details, match dates, and categories. It aggregates and displays real-time data through web scraping, enabling users to stay updated with upcoming fights and results.",
           "highlightedText": ["displays real-time data through web scraping"]
+        },
+        "scarlet-hacks": {
+          "linkText": "ScarletHacks 2025 Hackathon",
+          "text": "A zero food waste marketplace designed and deployed for the ScarletHacks 2025 Hackathon hosted by IIT. The complete project is available online.",
+          "highlightedText": [
+            "zero food waste marketplace",
+            "ScarletHacks 2025"
+          ]
         }
       }
     },
@@ -355,7 +363,6 @@
       }
     },
     "contact-form": {
-      
       "sections": {
         "main-heading": {
           "text": "Let's start our collaboration!"
@@ -446,6 +453,14 @@
           "highlightedText": [
             "агрегирует",
             "отображает данные в реальном времени через веб-скрейпинг"
+          ]
+        },
+        "scarlet-hacks": {
+          "linkText": "Хакатон ScarletHacks 2025",
+          "text": "Маркетплейс с нулевыми пищевыми отходами, разработанный и развернутый для хакатона ScarletHacks 2025, организованного IIT. Полная версия проекта доступна онлайн.",
+          "highlightedText": [
+            "маркетплейс с нулевыми пищевыми отходами",
+            "ScarletHacks 2025"
           ]
         }
       }

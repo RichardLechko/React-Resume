@@ -12,21 +12,24 @@ const Widgets = () => {
     scrollToTop();
 
     // Add intersection observer for fade-in animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
 
     // Observe all project cards
-    const cards = document.querySelectorAll('.project-card');
+    const cards = document.querySelectorAll(".project-card");
     cards.forEach((card, index) => {
-      card.classList.add('fade-in-hidden');
+      card.classList.add("fade-in-hidden");
       // Add a stagger effect
       card.style.animationDelay = `${index * 0.1}s`;
       observer.observe(card);
@@ -42,7 +45,8 @@ const Widgets = () => {
       techStack: ["React", "JS", "Tailwind", "Node.js", "Express"],
       live: true,
       liveLink: "https://depaul-northern-trust-hackathon.vercel.app/",
-      sourceLink: "https://github.com/RichardLechko/depaul-northern-trust-hackathon",
+      sourceLink:
+        "https://github.com/RichardLechko/depaul-northern-trust-hackathon",
       inDevelopment: false,
       isPrivate: false,
     },
@@ -78,16 +82,12 @@ const Widgets = () => {
       linkText: t("projects.projects-list.mma.linkText"),
       text: t("projects.projects-list.mma.text"),
       techStack: [
-        "Next.js",
+        "Astro",
         "SCSS",
         "ShadCN",
         "Go",
-          "AWS",
         "TypeScript",
-        "Redux",
         "Supabase",
-        "Cypress",
-        "Jest",
         "Docker",
       ],
       live: false,
@@ -95,6 +95,23 @@ const Widgets = () => {
       liveLink: "",
       inDevelopment: true,
       isPrivate: true,
+    },
+    {
+      linkText: t("projects.projects-list.scarlet-hacks.linkText"),
+      text: t("projects.projects-list.scarlet-hacks.text"),
+      techStack: [
+        "Next.js",
+        "JavaScript",
+        "Supabase",
+        "Anthropic AI",
+        "Node.js",
+        "Tailwind"
+      ],
+      live: true,
+      liveLink: "https://iit-hackathon.vercel.app/",
+      sourceLink: "https://github.com/RichardLechko/scarlet-hacks-2025",
+      inDevelopment: false,
+      isPrivate: false,
     },
   ];
 
@@ -140,7 +157,7 @@ const WidgetsCard = ({
             </small>
           ))}
         </nav>
-        
+
         {!isPrivate && !inDevelopment && (
           <nav className="project-links" aria-label="Project links">
             {sourceLink && (
@@ -149,24 +166,28 @@ const WidgetsCard = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-link-button"
-                aria-label="View Source Code">
+                aria-label="View Source Code"
+              >
                 <LuChevronsLeftRight size={20} />
               </a>
             )}
             {liveLink && (
-             <a 
+              <a
                 href={liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-link-button"
-                aria-label="View Live Site">
+                aria-label="View Live Site"
+              >
                 <LuMousePointerClick size={20} />
               </a>
             )}
           </nav>
         )}
         {inDevelopment && (
-          <small className="development-badge">{t("projects.development")}</small>
+          <small className="development-badge">
+            {t("projects.development")}
+          </small>
         )}
       </header>
 
@@ -179,13 +200,23 @@ const WidgetsCard = ({
               new RegExp(
                 `(${
                   linkText.includes("Northern Trust")
-                    ? t("projects.projects-list.northern-trust.highlightedText").join("|")
+                    ? t(
+                        "projects.projects-list.northern-trust.highlightedText"
+                      ).join("|")
                     : linkText.includes("Freedom Butchers")
-                    ? t("projects.projects-list.freedom-butchers.highlightedText").join("|")
+                    ? t(
+                        "projects.projects-list.freedom-butchers.highlightedText"
+                      ).join("|")
                     : linkText.includes("Cloud Club")
-                    ? t("projects.projects-list.cloud-project.highlightedText").join("|")
+                    ? t(
+                        "projects.projects-list.cloud-project.highlightedText"
+                      ).join("|")
                     : linkText.includes("MMA")
                     ? t("projects.projects-list.mma.highlightedText").join("|")
+                    : linkText.includes("ScarletHacks")
+                    ? t(
+                        "projects.projects-list.scarlet-hacks.highlightedText"
+                      ).join("|")
                     : ""
                 })`,
                 "g"
@@ -201,6 +232,8 @@ const WidgetsCard = ({
                   ? t("projects.projects-list.cloud-project.highlightedText")
                   : linkText.includes("MMA")
                   ? t("projects.projects-list.mma.highlightedText")
+                  : linkText.includes("ScarletHacks")
+                  ? t("projects.projects-list.scarlet-hacks.highlightedText")
                   : []
                 ).includes(part) ? (
                   <strong className="highlight-text">{part}</strong>
