@@ -1,3 +1,4 @@
+// client/src/components/TechnicalSkills.js
 import React, { Suspense } from "react";
 import { DiReact, DiNodejs, DiGithubBadge } from "react-icons/di";
 import { BiLogoRedux, BiLogoGit, BiLogoAws } from "react-icons/bi";
@@ -18,6 +19,7 @@ import { RiNextjsLine } from "react-icons/ri";
 import { useTranslation } from "./language/LanguageContext";
 import { AiFillHtml5 } from "react-icons/ai";
 import { FaGolang } from "react-icons/fa6";
+import styles from "./TechnicalSkills.module.css";
 
 const TechnicalSkills = React.forwardRef((props, ref) => {
   const { t, language } = useTranslation();
@@ -38,11 +40,11 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
     AiFillHtml5,
     SiCypress,
     SiMongodb,
-      SiDocker,
-      SiJavascript,
-      SiAstro,
-      FaGolang,
-      SiRedis
+    SiDocker,
+    SiJavascript,
+    SiAstro,
+    FaGolang,
+    SiRedis
   };
 
   const skillsData = [
@@ -63,12 +65,11 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
         { iconName: "AiFillHtml5", name: "HTML" },
         { iconName: "SiCypress", name: "Cypress" },
         { iconName: "SiMongodb", name: "MongoDB" },
-          { iconName: "SiDocker", name: "Docker" },
-          { iconName: "SiAstro", name: "Astro" },
-          { iconName: "SiJavascript", name: "JavaScript" },
-          { iconName: "FaGolang", name: "Go" },
-          { iconName: "SiRedis", name: "Redis" },
-          
+        { iconName: "SiDocker", name: "Docker" },
+        { iconName: "SiAstro", name: "Astro" },
+        { iconName: "SiJavascript", name: "JavaScript" },
+        { iconName: "FaGolang", name: "Go" },
+        { iconName: "SiRedis", name: "Redis" },
       ],
     },
   ];
@@ -81,36 +82,36 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
       lang={language}
     >
       <div className="technical-skills-container">
-        <header className="technical-skills-header">
-          <h1 className="technical-skills-title">
+        <header className={styles.technicalSkillsHeader}>
+          <h1 className={styles.technicalSkillsTitle}>
             <span className="content-backdrop">{t("skills.title-name")}</span>
           </h1>
         </header>
 
         <Suspense
           fallback={
-            <p className="loading-skills" role="status" aria-live="polite">
+            <p className={styles.loadingSkills} role="status" aria-live="polite">
               Loading skills...
             </p>
           }
         >
-          <section className="skills-list" role="list">
+          <section className={styles.skillsList} role="list">
             {skillsData[0].skills.map(({ iconName, name }) => {
               const IconComponent = icons[iconName];
               return (
                 <article 
                   key={name} 
-                  className="skill-item" 
+                  className={styles.skillItem} 
                   role="listitem"
                 >
-                  <div className="skill-content">
-                    <figure className="skill-icon-container">
+                  <div className={styles.skillContent}>
+                    <figure className={styles.skillIconContainer}>
                       <IconComponent 
                         aria-hidden="true" 
-                        className="skill-icon"
+                        className={styles.skillIcon}
                       />
                     </figure>
-                    <h2 className="skill-name">{name}</h2>
+                    <h2 className={styles.skillName}>{name}</h2>
                   </div>
                 </article>
               );

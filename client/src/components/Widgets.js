@@ -1,8 +1,9 @@
+// client/src/components/Widgets.js
 import React, { useEffect } from "react";
 import { useScroll } from "./ScrollToTop.js";
 import { useTranslation } from "./language/LanguageContext";
 import { LuChevronsLeftRight, LuMousePointerClick } from "react-icons/lu";
-import LanguageSelector from "./language/LanguageSelector";
+import styles from "./Widgets.module.css";
 
 const Widgets = () => {
   const { t, language } = useTranslation();
@@ -126,7 +127,7 @@ const Widgets = () => {
 
       <section className="projects-content">
         <div className="projects-grid">
-          <div className="projects-grid-inner">
+          <div className={styles.projectsGridInner}>
             {projects.map((project, index) => (
               <WidgetsCard key={index} {...project} />
             ))}
@@ -149,24 +150,24 @@ const WidgetsCard = ({
   const { t, language } = useTranslation();
 
   return (
-    <article className="project-card" lang={language}>
-      <header className="project-header">
-        <nav className="project-tech-stack" aria-label="Technologies used">
+    <article className={`${styles.projectCard} project-card`} lang={language}>
+      <header className={styles.projectHeader}>
+        <nav className={styles.projectTechStack} aria-label="Technologies used">
           {techStack.map((tech, index) => (
-            <small key={index} className="tech-tag">
+            <small key={index} className={styles.techTag}>
               {tech}
             </small>
           ))}
         </nav>
 
         {!isPrivate && !inDevelopment && (
-          <nav className="project-links" aria-label="Project links">
+          <nav className={styles.projectLinks} aria-label="Project links">
             {sourceLink && (
               <a
                 href={sourceLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="project-link-button"
+                className={styles.projectLinkButton}
                 aria-label="View Source Code"
               >
                 <LuChevronsLeftRight size={20} />
@@ -177,7 +178,7 @@ const WidgetsCard = ({
                 href={liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="project-link-button"
+                className={styles.projectLinkButton}
                 aria-label="View Live Site"
               >
                 <LuMousePointerClick size={20} />
@@ -186,15 +187,15 @@ const WidgetsCard = ({
           </nav>
         )}
         {inDevelopment && (
-          <small className="development-badge">
+          <small className={styles.developmentBadge}>
             {t("projects.development")}
           </small>
         )}
       </header>
 
-      <h2 className="project-title">{linkText}</h2>
+      <h2 className={styles.projectTitle}>{linkText}</h2>
 
-      <div className="project-description">
+      <div className={styles.projectDescription}>
         <p>
           {text
             .split(

@@ -1,8 +1,10 @@
+// client/src/components/NavBar.js
 import React, { useState, useEffect, memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import { useTranslation } from "./language/LanguageContext";
 import LanguageSelector from "./language/LanguageSelector";
+import styles from "./NavBar.module.css";
 
 const NavBar = ({ refs }) => {
   const { t, language } = useTranslation();
@@ -10,20 +12,20 @@ const NavBar = ({ refs }) => {
   const [isHamburgerMenu, setIsHamburgerMenu] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const navigate = useNavigate();
-    const [hasInteracted, setHasInteracted] = useState(false);
-    const [isClosing, setIsClosing] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
-    const handleToggle = () => {
-  if (isSidebarOpen) {
-    setIsClosing(true);
-    setTimeout(() => {
-      setIsSidebarOpen(false);
-      setIsClosing(false);
-    }, 200);
-  } else {
-    setIsSidebarOpen(true);
-  }
-};
+  const handleToggle = () => {
+    if (isSidebarOpen) {
+      setIsClosing(true);
+      setTimeout(() => {
+        setIsSidebarOpen(false);
+        setIsClosing(false);
+      }, 200);
+    } else {
+      setIsSidebarOpen(true);
+    }
+  };
 
   const NAV_ITEMS = [
     { id: "personal", name: t("navItems.personal") },
@@ -77,9 +79,9 @@ const NavBar = ({ refs }) => {
   }, [refs, navigate, isHamburgerMenu]);
 
   const NavItem = useCallback(({ sectionId, sectionName }) => (
-    <div className="nav-item-stable-wrapper">
+    <div className={styles.navItemStableWrapper}>
       <div
-        className={`nav-ul-li ${activeSection === sectionId && !isSidebarOpen ? "active" : ""}`}
+        className={`${styles.navUlLi} ${activeSection === sectionId && !isSidebarOpen ? styles.active : ""}`}
         role="button"
         onClick={() => handleNavClick(sectionId)}
         tabIndex="0"
@@ -92,25 +94,25 @@ const NavBar = ({ refs }) => {
   ), [activeSection, isSidebarOpen, handleNavClick]);
 
   return (
-    <div className="navbar-container" lang={language}>
-      {isSidebarOpen && <div className="sidebar-overlay" onClick={() => setIsSidebarOpen(false)} />}
+    <div className={styles.navbarContainer} lang={language}>
+      {isSidebarOpen && <div className={styles.sidebarOverlay} onClick={() => setIsSidebarOpen(false)} />}
 
       <nav>
-        <div className="navbar-content">
+        <div className={styles.navbarContent}>
           <div className="navbar-language-support">
             <LanguageSelector />
           </div>
 
           {!isHamburgerMenu && (
-            <ul className="desktop-navbar">
-              <li className="nav-item-wrapper">
-                <div className="desktop-nav-items">
+            <ul className={styles.desktopNavbar}>
+              <li className={styles.navItemWrapper}>
+                <div className={styles.desktopNavItems}>
                   {NAV_ITEMS.map(({ id, name }) => (
                     <NavItem key={id} sectionId={id} sectionName={name} />
                   ))}
                 </div>
               </li>
-              <li className="external-links">
+              <li className={styles.externalLinks}>
                 <div className="theme-toggle-and-blog">
                   <ThemeToggle />
                 </div>
@@ -118,14 +120,14 @@ const NavBar = ({ refs }) => {
             </ul>
           )}
 
-          <div className="navbar-actions">
+          <div className={styles.navbarActions}>
             {isHamburgerMenu && (
               <>
                 <ThemeToggle />
                 <button
-                  className="hamburger-menu-button"
-                 onClick={handleToggle}
-                aria-label="Toggle navigation menu"
+                  className={styles.hamburgerMenuButton}
+                  onClick={handleToggle}
+                  aria-label="Toggle navigation menu"
                 >
                   &#9776;
                 </button>
@@ -136,8 +138,8 @@ const NavBar = ({ refs }) => {
       </nav>
 
       {isHamburgerMenu && isSidebarOpen && (
-        <div className={`mobile-sidebar ${isSidebarOpen ? 'open' : ''} ${isClosing ? 'closing' : ''}`}>
-          <ul className="mobile-nav-items">
+        <div className={`${styles.mobileSidebar} ${isSidebarOpen ? styles.open : ''} ${isClosing ? styles.closing : ''}`}>
+          <ul className={styles.mobileNavItems}>
             {NAV_ITEMS.map(({ id, name }) => (
               <li key={id} className="mobile-nav-item">
                 <NavItem sectionId={id} sectionName={name} />

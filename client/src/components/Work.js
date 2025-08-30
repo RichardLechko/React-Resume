@@ -1,14 +1,13 @@
+// client/src/components/Work.js
 import React, { useRef, useEffect } from "react";
 import { useTranslation } from "./language/LanguageContext";
+import styles from "./Work.module.css";
 
 const Work = () => {
   const itemsRef = useRef([]);
   const { t, language } = useTranslation();
 
   useEffect(() => {
-
-
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -105,7 +104,7 @@ const Work = () => {
         </aside>
         <section className="work-right">
           <div className="work-right-inner"></div>
-          <div className="work-experiences">
+          <div className={styles.workExperiences}>
             {workExperiences.map((experience, index) => (
               <Company
                 key={index}
@@ -123,72 +122,80 @@ const Work = () => {
 
 const Company = React.forwardRef(
   (
-    { companyName, position, startTime, endTime, descriptions, logo, tools },
+    { companyName, position, address, startTime, endTime, descriptions, logo, tools },
     ref
   ) => {
     const { t, language } = useTranslation();
 
     return (
-      <article ref={ref} className="company-container" lang={language}>
-        <div className="company-info">
-          <figure className="company-logo-container">
+      <article ref={ref} className={`${styles.companyContainer} company-container`} lang={language}>
+        <div className={styles.companyInfo}>
+          <figure className={styles.companyLogoContainer}>
             <img
               src={logo}
               alt={`${t(companyName)} logo`}
-              className="company-logo-img"
+              className={styles.companyLogoImg}
             />
           </figure>
 
-          <header className="company-header">
-            <time className="company-duration">
+          <header className={styles.companyHeader}>
+            <time className={styles.companyDuration}>
               <span className="start-time">{t(startTime)}</span>
               {" - "}
               <span className="end-time">{t(endTime)}</span>
             </time>
-            <h2 className="company-name">{t(companyName)}</h2>
-            <h3 className="company-position">{t(position)}</h3>
+            <h2 className={styles.companyName}>{t(companyName)}</h2>
+            <h3 className={styles.companyPosition}>{t(position)}</h3>
+            <p className={styles.companyAddress}>{t(address)}</p>
           </header>
 
-          <nav className="company-tools">
+          <nav className={styles.companyTools}>
             {tools.map((tool, index) => (
-              <small key={index} className="company-tool">
+              <small key={index} className={styles.companyTool}>
                 {tool}
               </small>
             ))}
           </nav>
 
-          <section className="company-content">
-            <ul className="company-descriptions">
-              {descriptions.map((desc, index) => (
-                <li key={index} className="company-description-item">
-                  {desc
-                    .split(
-                      new RegExp(
-                        `(${companyName.includes("Hendrickson")
-                          ? t("work.work-list.hendrickson.highlightedText").join("|")
-                          : companyName.includes("RL IT Firm")
-                            ? t("work.work-list.rl-it-firm.highlightedText").join("|")
+          <section className={styles.companyContent}>
+            <ul className={styles.companyDescriptions}>
+              {descriptions.map((desc, index) => {
+                const parts = desc
+                  .split(
+                    new RegExp(
+                      `(${companyName.includes("Hendrickson")
+                        ? t("work.work-list.hendrickson.highlightedText").join("|")
+                        : companyName.includes("RL IT Firm")
+                          ? t("work.work-list.rl-it-firm.highlightedText").join("|")
+                          : companyName.includes("Preferred Risk")
+                            ? t("work.work-list.preferred-risk-administrators.highlightedText").join("|")
                             : ""
-                        })`,
-                        "g"
-                      )
+                      })`,
+                      "g"
                     )
-                    .map((part, index) => (
-                      <React.Fragment key={index}>
-                        {(companyName.includes("Hendrickson")
-                          ? t("work.work-list.hendrickson.highlightedText")
-                          : companyName.includes("RL IT Firm")
-                            ? t("work.work-list.rl-it-firm.highlightedText")
+                  )
+                  .map((part, index) => (
+                    <React.Fragment key={index}>
+                      {(companyName.includes("Hendrickson")
+                        ? t("work.work-list.hendrickson.highlightedText")
+                        : companyName.includes("RL IT Firm")
+                          ? t("work.work-list.rl-it-firm.highlightedText")
+                          : companyName.includes("Preferred Risk")
+                            ? t("work.work-list.preferred-risk-administrators.highlightedText")
                             : []
-                        ).includes(part) ? (
-                          <strong className="highlight-text">{part}</strong>
-                        ) : (
-                          part
-                        )}
-                      </React.Fragment>
-                    ))}
-                </li>
-              ))}
+                      ).includes(part) ? (
+                        <strong className="highlight-text">{part}</strong>
+                      ) : (
+                        part
+                      )}
+                    </React.Fragment>
+                  ));
+                return (
+                  <li key={index} className={styles.companyDescriptionItem}>
+                    {parts}
+                  </li>
+                );
+              })}
             </ul>
           </section>
         </div>

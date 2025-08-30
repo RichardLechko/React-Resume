@@ -1,13 +1,12 @@
-import React, { useEffect} from "react";
+// client/src/components/Education.js
+import React, { useEffect } from "react";
 import { useTranslation } from "./language/LanguageContext";
+import styles from "./Education.module.css";
 
 const Education = () => {
   const { t, language } = useTranslation();
 
-     useEffect(() => {
-    
-
-    
+  useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -37,37 +36,37 @@ const Education = () => {
         </h1>
       </header>
 
-      <section className="education-grid">
-        <article className="education-card">
+      <section className={styles.educationGrid}>
+        <article className={`${styles.educationCard} education-card`}>
           <header className="education-header">
-            <h2 className="education-subheading">
+            <h2 className={styles.educationSubheading}>
               {t("education.current_program")}
             </h2>
           </header>
 
-          <div className="education-details">
-            <p className="education-text">
+          <div className={styles.educationDetails}>
+            <p className={styles.educationText}>
               {t("education.current_program_description_1")}{" "}
-      <strong>
-             <a 
-                className="education-link"
-                href="https://www.depaul.edu"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="DePaul University website"
-              >
-                {t("education.current_program_description_2")}
-              </a>
-      </strong>
+              <strong>
+                <a 
+                  className={styles.educationLink}
+                  href="https://www.depaul.edu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="DePaul University website"
+                >
+                  {t("education.current_program_description_2")}
+                </a>
+              </strong>
             </p>
-            <p className="education-text">
-              <strong className="education-highlight">
+            <p className={styles.educationText}>
+              <strong className={styles.educationHighlight}>
                 {t("education.bachelor_degree")}
               </strong>
             </p>
-            <p className="education-grad-text">
+            <p className={styles.educationGradText}>
               {t("education.expected_graduation")}:{" "}
-              <strong className="education-highlight">
+              <strong className={styles.educationHighlight}>
                 {t("education.expected_graduation_date")}
               </strong>
             </p>

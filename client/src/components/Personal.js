@@ -1,9 +1,11 @@
+// client/src/components/Personal.js
 import React, { useState, useEffect } from "react";
 import { FaDownload } from "react-icons/fa";
 import { useTranslation } from "./language/LanguageContext";
 import icons from "./icons";
 import { BiSolidCoffee } from "react-icons/bi";
 import { AiOutlineEye } from "react-icons/ai";
+import styles from "./Personal.module.css";
 
 const Personal = () => {
     const { t, language } = useTranslation();
@@ -61,18 +63,18 @@ const Personal = () => {
 
     return (
         <section id="personal" lang={language}>
-            <div className="personal-wrapper">
-                <div className="personal-content">
-                    <header className="personal-left lang-${language}">
+            <div className={styles.personalWrapper}>
+                <div className={`${styles.personalContent} personal-content`}>
+                    <header className={`${styles.personalLeft} lang-${language}`}>
                         <h1>
                             <span className={`personal-header lang-${language}`}>
                                 {t("personal.greeting")}
                             </span>
                         </h1>
-                        <div className="personal-based-in-and-time">
+                        <div className={styles.personalBasedInAndTime}>
                             <p>
                                 <small>
-                                    {t("personal.location")} <span className="time-arrow">→</span>
+                                    {t("personal.location")} <span className={styles.timeArrow}>→</span>
                                     <time className="time-display"><strong className="highlight-text">{currentTime} CST (UTC-06)</strong></time>
                                 </small>
                             </p>
@@ -80,9 +82,9 @@ const Personal = () => {
                     </header>
 
                     <nav className="external-links" aria-label="Social Links">
-                        <ul className="links-container">
+                        <ul className={styles.linksContainer}>
                             {socialLinks.map(({ href, Icon, label }) => (
-                                <li key={href} className="link-wrapper">
+                                <li key={href} className={styles.linkWrapper}>
                                     <a
                                         href={href}
                                         target="_blank"
@@ -95,7 +97,7 @@ const Personal = () => {
                         </ul>
                     </nav>
 
-                    <article className="personal-info-spotify">
+                    <article className={styles.personalInfoSpotify}>
                         <p className="content-backdrop">
                             {t("personal.description")
                                 .split(/web developer|веб-разработчик/)
@@ -114,7 +116,7 @@ const Personal = () => {
                 </div>
             </div>
 
-            <aside className="personal-resume-content">
+            <aside className={`${styles.personalResumeContent} personal-resume-content`}>
                 <h2>{t("personal.resume.title")}</h2>
                 <p>{t("personal.resume.subtitle")}</p>
                 <div role="group" aria-label="Resume download options">

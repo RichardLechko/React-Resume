@@ -1,0 +1,171 @@
+/* client/src/components/Widgets.module.css */
+
+.projectsGridInner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.projectCard {
+  width: 100%;
+  padding: 1rem 6px 1rem 6px;
+  background: var(--nav-background);
+  border-radius: 6px;
+  box-shadow: var(--elevation-1);
+  transition: box-shadow 0.3s ease-in-out;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+.projectTechStack {
+  display: flex;
+  justify-content: flex-start; 
+  flex-wrap: wrap;
+  gap: 2px;
+  max-width: 70%;
+  padding-top: 4px;
+  margin: 0;
+}
+
+.projectLinks {
+  display: flex;
+  justify-content: flex-start;
+  gap: 4px;
+  margin: -4px 0 0 0;
+}
+
+.projectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.developmentBadge {
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: -0.05rem;
+  align-self: flex-start;
+}
+
+.techTag {
+  font-size: 10px;
+  padding: 1px 2px;
+  background: var(--nav-item-bg);
+  border-radius: 4px;
+  letter-spacing: -0.05rem;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+.projectLinkButton {
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  display: flex;
+  background: var(--button-bg);
+  color: var(--button-text);
+  box-shadow: var(--elevation-2);
+  transition: box-shadow 0.4s ease-in-out;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+.projectLinkButton:hover {
+  box-shadow: var(--elevation-3);
+  transition: box-shadow 0.5s ease-in-out;
+}
+
+.projectLinkButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.projectTitle {
+  font-size: 16px;
+  letter-spacing: -0.05rem;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.projectDescription p {
+  line-height: 1.4;
+  font-size: 12px;
+}
+
+/* Media Queries */
+@media (min-width: 640px) {
+  .projectCard {
+    padding: 1rem;
+  }
+
+  .developmentBadge {
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+
+  .projectTechStack {
+    max-width: 75%;
+    gap: 6px;
+  }
+
+  .techTag {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+
+  .projectLinks {
+    gap: 10px;
+  }
+
+  .projectLinkButton {
+    padding: 0.4rem 0.65rem;
+  }
+
+  .projectLinkButton svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .projectTitle {
+    font-size: 20px;
+  }
+
+  .projectDescription p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .projectsGridInner {
+    gap: 24px;
+  }
+
+  .projectLinks {
+    gap: 14px;
+  }
+
+  .projectLinkButton {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .projectLinkButton svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .projectTechStack {
+    max-width: 100%;
+  }
+
+  .techTag,
+  .projectTitle,
+  .projectDescription p {
+    letter-spacing: normal;
+  }
+
+  .projectTitle {
+    font-size: 24px;
+  }
+
+  .projectDescription p {
+    font-size: 16px;
+  }
+}

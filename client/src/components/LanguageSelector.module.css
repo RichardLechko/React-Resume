@@ -1,0 +1,173 @@
+/* client/src/components/language/LanguageSelector.module.css */
+
+.languageSelector {
+  position: relative;
+  width: 100px;
+  z-index: 100;
+}
+
+.languageSelectorToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--nav-item-bg);
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--elevation-1);
+  transition: box-shadow 0.3s ease-in-out;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+  font-size: 0.8rem;
+  font-family: "JetBrains Mono", serif;
+}
+
+.languageSelectorToggle::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.languageSelectorToggle:hover::before {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.languageSelectorContent {
+  display: flex;
+  align-items: center;
+}
+
+.languageName {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.dropdownArrow {
+  display: flex;
+  align-items: center;
+}
+
+.dropdownArrow svg {
+  color: var(--text-color);
+  flex-shrink: 0;
+}
+
+.dropdownArrow.open {
+  transform: rotate(180deg);
+}
+
+.languageSelectorDropdown {
+  position: absolute;
+  top: 130%;
+  left: 0;
+  width: 100%;
+  border-radius: 6px;
+  background-color: var(--nav-background);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: dropdown-slide 0.2s ease forwards;
+  box-shadow: var(--elevation-1);
+  transition: box-shadow 0.3s ease-in-out;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+@keyframes dropdown-slide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.languageSelectorDropdown li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  margin: 0;
+  height: 40px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.languageSelectorDropdown li::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.languageSelectorDropdown li:hover::before {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Media Queries */
+@media (min-width: 769px) {
+  .languageSelector {
+    width: 70px;
+    margin-right: -1rem;
+  }
+
+  .languageSelectorToggle {
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    font-size: 0.7rem;
+  }
+
+  .languageSelectorDropdown {
+    height: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .languageSelector {
+    width: 90px;
+    margin: 0;
+  }
+
+  .languageSelectorToggle {
+    height: 37px;
+    font-size: 0.9rem;
+  }
+
+  .languageSelectorDropdown {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .languageSelector {
+    width: 100px;
+  }
+
+  .languageSelectorToggle {
+    font-size: 1.2rem;
+  }
+
+  .languageSelectorDropdown {
+    font-size: 1.2rem;
+  }
+}

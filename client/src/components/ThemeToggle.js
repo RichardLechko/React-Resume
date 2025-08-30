@@ -1,5 +1,7 @@
+// client/src/components/ThemeToggle.js
 import React, { useState, useEffect } from "react";
 import { FiSun, FiMoon } from "react-icons/fi";
+import styles from "./ThemeToggle.module.css";
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(() => {
@@ -19,7 +21,7 @@ const ThemeToggle = () => {
 
   return (
     <button
-      className={`theme-toggle ${theme}`}
+      className={`${styles.themeToggle} ${theme}`}
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
     >

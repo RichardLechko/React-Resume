@@ -1,6 +1,8 @@
+// client/src/components/language/LanguageSelector.js
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "./LanguageContext";
 import ReactCountryFlag from "react-country-flag";
+import styles from "../LanguageSelector.module.css";
 
 const LanguageSelector = () => {
   const { language, setLanguage, t } = useTranslation();
@@ -32,24 +34,24 @@ const LanguageSelector = () => {
   const currentLanguage = languages.find((lang) => lang.code === language);
 
   return (
-    <div className="language-selector" ref={dropdownRef}>
+    <div className={styles.languageSelector} ref={dropdownRef}>
       <button
-        className="language-selector-toggle"
+        className={styles.languageSelectorToggle}
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
-        <div className="language-selector-content">
+        <div className={styles.languageSelectorContent}>
           <ReactCountryFlag
             countryCode={currentLanguage.flag}
             svg
             style={{ marginRight: "8px" }}
           />
-          <span className="language-name">
+          <span className={styles.languageName}>
             {t(`lang-selector.${language}`)}
           </span>
         </div>
-        <div className={`dropdown-arrow ${isOpen ? "open" : ""}`}>
+        <div className={`${styles.dropdownArrow} ${isOpen ? styles.open : ""}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -62,7 +64,7 @@ const LanguageSelector = () => {
       </button>
 
       {isOpen && (
-        <ul className="language-selector-dropdown" id="dropdown">
+        <ul className={styles.languageSelectorDropdown} id="dropdown">
           {languages
             .filter((lang) => lang.code !== language)
             .map((lang) => (

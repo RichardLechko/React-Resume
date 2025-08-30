@@ -4,7 +4,6 @@ const Personal = React.lazy(() => import("./Personal.js"));
 const TechnicalSkills = React.lazy(() => import("./TechnicalSkills.js"));
 const Work = React.lazy(() => import("./Work.js"));
 const Education = React.lazy(() => import("./Education.js"));
-const Coursework = React.lazy(() => import("./Coursework.js"));
 const Contact = React.lazy(() => import("./Contact.js"));
 const Projects = React.lazy(() => import("./Widgets.js"));
 
@@ -12,7 +11,6 @@ const MainPage = ({
   personalRef,
   workRef,
   educationRef,
-  publicationsRef,
   skillsRef,
   contactRef,
   projectsRef,
@@ -33,10 +31,6 @@ const MainPage = ({
 
         <section id="education" ref={educationRef}>
           <Education />
-        </section>
-
-        <section id="relevantCoursework">
-          <Coursework />
         </section>
 
         <section id="skills" ref={skillsRef}>

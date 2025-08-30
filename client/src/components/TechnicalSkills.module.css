@@ -1,0 +1,112 @@
+/* client/src/components/TechnicalSkills.module.css */
+
+.technicalSkillsHeader {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.technicalSkillsTitle {
+  color: var(--text-color);
+  margin: 0;
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.skillItem {
+  background: var(--nav-background);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  box-shadow: var(--elevation-1);
+  transition: box-shadow 0.3s ease-in-out;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+.skillContent {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.skillIconContainer {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.skillIcon {
+  color: var(--text-color);
+  width: 12px;
+  height: 12px;
+}
+
+.skillName {
+  color: var(--text-color);
+  margin: 0;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.loadingSkills {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+/* Media Queries */
+@media (min-width: 640px) {
+  .skillItem {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .skillIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .skillsList {
+    gap: 12px;
+  }
+
+  .skillName {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .skillsList {
+    width: 60%;
+    gap: 24px 16px;
+    margin: auto;
+  }
+
+  .skillIcon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .skillName {
+    font-size: 16px;
+  }
+
+  .skillItem {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .skillsList {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .skillsList {
+    width: 70%;
+  }
+}

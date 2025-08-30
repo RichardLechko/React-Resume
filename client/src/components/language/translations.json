@@ -480,6 +480,18 @@
     "work": {
       "title-name": "Работа",
       "work-list": {
+        "preferred-risk-administrators": {
+          "companyName": "Preferred Risk",
+          "position": "Стажёр Full Stack разработчика",
+          "address": "Бедфорд Парк, Иллинойс",
+          "startTime": "08/2025",
+          "endTime": "Настоящее время",
+          "descriptions": [
+            "Разработка веб-приложений с использованием React/Next.js фронтенда и .NET Core бэкенда для страховых платформ.",
+            "Сотрудничество с кросс-функциональными командами по архитектуре микросервисов и разработке новых функций."
+          ],
+          "highlightedText": ["C#", "React", "Nextjs", "JavaScript", "Tailwind"]
+        },
         "hendrickson": {
           "companyName": "Hendrickson",
           "position": "Стажёр в IT",
