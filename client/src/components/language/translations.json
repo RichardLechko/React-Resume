@@ -74,12 +74,24 @@
     "work": {
       "title-name": "Work",
       "work-list": {
+        "preferred-risk-administrators": {
+          "companyName": "Preferred Risk",
+          "position": "Full Stack Developer Intern",
+          "address": "Bedford Park, Illinois",
+          "startTime": "08/2025",
+          "endTime": "Present",
+          "descriptions": [
+            "Develop web applications using React/Next.js frontend and .NET Core backend for insurance platforms.",
+            "Collaborate with cross-functional teams on microservices architecture and new feature development."
+          ],
+          "highlightedText": ["C#", "React", "Nextjs", "JavaScript", "Tailwind"]
+        },
         "hendrickson": {
           "companyName": "Hendrickson",
           "position": "IT Intern",
           "address": "Woodridge, Illinois",
           "startTime": "11/2024",
-          "endTime": "Present",
+          "endTime": "08/2025",
           "descriptions": [
             "Assistance in processing and analyzing data to determine key performance indicators (KPIs) and creating dashboards in PowerBI.",
             "Participation in data analysis sessions to provide insights that support decision-making."

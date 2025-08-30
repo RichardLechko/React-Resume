@@ -5,10 +5,10 @@ const Work = () => {
   const itemsRef = useRef([]);
   const { t, language } = useTranslation();
 
-    useEffect(() => {
-    
+  useEffect(() => {
 
-    
+
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -31,6 +31,21 @@ const Work = () => {
   }, []);
 
   const workExperiences = [
+    {
+      companyName: t("work.work-list.preferred-risk-administrators.companyName"),
+      position: t("work.work-list.preferred-risk-administrators.position"),
+      address: t("work.work-list.preferred-risk-administrators.address"),
+      startTime: t("work.work-list.preferred-risk-administrators.startTime"),
+      endTime: t("work.work-list.preferred-risk-administrators.endTime"),
+      descriptions: [
+        t("work.work-list.preferred-risk-administrators.descriptions.0"),
+        t("work.work-list.preferred-risk-administrators.descriptions.1"),
+      ],
+      logo: "/work-images/pris-logo-v2.png",
+      tools: [
+        "C#", "React", "Nextjs", "JavaScript", "Tailwind"
+      ],
+    },
     {
       companyName: t("work.work-list.hendrickson.companyName"),
       position: t("work.work-list.hendrickson.position"),
@@ -83,7 +98,7 @@ const Work = () => {
           <span className="content-backdrop">{t("work.title-name")}</span>
         </h1>
       </header>
-      
+
       <div className="work-content">
         <aside className="work-left">
           <div className="work-left-inner"></div>
@@ -149,10 +164,9 @@ const Company = React.forwardRef(
                   {desc
                     .split(
                       new RegExp(
-                        `(${
-                          companyName.includes("Hendrickson")
-                            ? t("work.work-list.hendrickson.highlightedText").join("|")
-                            : companyName.includes("RL IT Firm")
+                        `(${companyName.includes("Hendrickson")
+                          ? t("work.work-list.hendrickson.highlightedText").join("|")
+                          : companyName.includes("RL IT Firm")
                             ? t("work.work-list.rl-it-firm.highlightedText").join("|")
                             : ""
                         })`,
@@ -164,8 +178,8 @@ const Company = React.forwardRef(
                         {(companyName.includes("Hendrickson")
                           ? t("work.work-list.hendrickson.highlightedText")
                           : companyName.includes("RL IT Firm")
-                          ? t("work.work-list.rl-it-firm.highlightedText")
-                          : []
+                            ? t("work.work-list.rl-it-firm.highlightedText")
+                            : []
                         ).includes(part) ? (
                           <strong className="highlight-text">{part}</strong>
                         ) : (
