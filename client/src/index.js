@@ -22,6 +22,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-serviceWorkerRegistration.register();
-reportWebVitals();
