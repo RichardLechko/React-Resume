@@ -38,15 +38,27 @@ const NavBar = ({ refs }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-      for (const [id, ref] of Object.entries(refs)) {
-        if (ref.current) {
-          const { offsetTop, offsetHeight } = ref.current;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(id);
+      const scrollPosition = window.scrollY + 150;
+      let currentSection = "";
+
+      // Define sections in the correct order they appear on page
+      const sectionOrder = ["personal", "projects", "work", "education", "skills", "contact"];
+
+      for (let i = sectionOrder.length - 1; i >= 0; i--) {
+        const sectionId = sectionOrder[i];
+        const ref = refs[sectionId];
+
+        if (ref?.current) {
+          const { offsetTop } = ref.current;
+          if (scrollPosition >= offsetTop) {
+            currentSection = sectionId;
             break;
           }
         }
+      }
+
+      if (currentSection) {
+        setActiveSection(currentSection);
       }
     };
 

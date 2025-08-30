@@ -10,26 +10,55 @@
   margin: 0;
 }
 
-.skillsList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
+.skillsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
-.skillItem {
+.skillsCategory {
   background: var(--nav-background);
-  border-radius: 4px;
-  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  padding: 1.5rem;
   box-shadow: var(--elevation-1);
   transition: box-shadow 0.3s ease-in-out;
   border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
 }
 
-.skillContent {
+.categoryHeader {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid color-mix(in srgb, var(--text-color) 15%, transparent);
+}
+
+.categoryTitle {
+  color: var(--text-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skillItem {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  background: var(--card-background);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  box-shadow: var(--elevation-1);
+  transition: all 0.2s ease;
+  border: 1px solid color-mix(in srgb, var(--secondary) 20%, transparent);
+}
+
+.skillItem:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--elevation-2);
 }
 
 .skillIconContainer {
@@ -40,15 +69,15 @@
 
 .skillIcon {
   color: var(--text-color);
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
 }
 
 .skillName {
   color: var(--text-color);
   margin: 0;
-  font-size: 12px;
-  font-weight: 300;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .loadingSkills {
@@ -60,29 +89,25 @@
 
 /* Media Queries */
 @media (min-width: 640px) {
-  .skillItem {
-    padding: 0.6rem 0.8rem;
+  .skillsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
-
+  
   .skillIcon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .skillsList {
-    gap: 12px;
+    width: 24px;
+    height: 24px;
   }
 
   .skillName {
-    font-size: 14px;
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .skillsList {
-    width: 60%;
-    gap: 24px 16px;
-    margin: auto;
+  .skillsContainer {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
   }
 
   .skillIcon {
@@ -90,23 +115,13 @@
     height: 26px;
   }
 
-  .skillName {
-    font-size: 16px;
-  }
-
-  .skillItem {
-    padding: 1rem;
+  .categoryTitle {
+    font-size: 1.375rem;
   }
 }
 
 @media (min-width: 1280px) {
-  .skillsList {
-    width: 60%;
-  }
-}
-
-@media (min-width: 1440px) {
-  .skillsList {
-    width: 70%;
+  .skillsContainer {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

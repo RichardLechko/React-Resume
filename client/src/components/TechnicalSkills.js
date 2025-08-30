@@ -49,29 +49,40 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
 
   const skillsData = [
     {
+      category: "Frontend",
       skills: [
         { iconName: "DiReact", name: "React" },
-        { iconName: "BiLogoRedux", name: "Redux" },
+        { iconName: "RiNextjsLine", name: "Next.js" },
+        { iconName: "SiJavascript", name: "JavaScript" },
+        { iconName: "SiTypescript", name: "TypeScript" },
+        { iconName: "AiFillHtml5", name: "HTML" },
+        { iconName: "FaSass", name: "SCSS" },
+        { iconName: "SiAstro", name: "Astro" },
+        { iconName: "BiLogoRedux", name: "Redux" }
+      ]
+    },
+    {
+      category: "Backend & Database",
+      skills: [
+        { iconName: "DiNodejs", name: "Node.js" },
+        { iconName: "FaGolang", name: "Go" },
+        { iconName: "SiPostgresql", name: "PostgreSQL" },
+        { iconName: "SiMongodb", name: "MongoDB" },
+        { iconName: "SiSupabase", name: "Supabase" },
+        { iconName: "SiRedis", name: "Redis" }
+      ]
+    },
+    {
+      category: "Tools & DevOps",
+      skills: [
         { iconName: "BiLogoGit", name: "Git" },
         { iconName: "SiJest", name: "Jest" },
-        { iconName: "SiTypescript", name: "TypeScript" },
-        { iconName: "FaFigma", name: "Figma" },
-        { iconName: "SiSupabase", name: "Supabase" },
-        { iconName: "RiNextjsLine", name: "Next.js" },
-        { iconName: "SiPostgresql", name: "PostgreSQL" },
-        { iconName: "BiLogoAws", name: "AWS" },
-        { iconName: "DiNodejs", name: "Node.js" },
-        { iconName: "FaSass", name: "SCSS" },
-        { iconName: "AiFillHtml5", name: "HTML" },
         { iconName: "SiCypress", name: "Cypress" },
-        { iconName: "SiMongodb", name: "MongoDB" },
         { iconName: "SiDocker", name: "Docker" },
-        { iconName: "SiAstro", name: "Astro" },
-        { iconName: "SiJavascript", name: "JavaScript" },
-        { iconName: "FaGolang", name: "Go" },
-        { iconName: "SiRedis", name: "Redis" },
-      ],
-    },
+        { iconName: "BiLogoAws", name: "AWS" },
+        { iconName: "FaFigma", name: "Figma" }
+      ]
+    }
   ];
 
   return (
@@ -95,27 +106,31 @@ const TechnicalSkills = React.forwardRef((props, ref) => {
             </p>
           }
         >
-          <section className={styles.skillsList} role="list">
-            {skillsData[0].skills.map(({ iconName, name }) => {
-              const IconComponent = icons[iconName];
-              return (
-                <article 
-                  key={name} 
-                  className={styles.skillItem} 
-                  role="listitem"
-                >
-                  <div className={styles.skillContent}>
-                    <figure className={styles.skillIconContainer}>
-                      <IconComponent 
-                        aria-hidden="true" 
-                        className={styles.skillIcon}
-                      />
-                    </figure>
-                    <h2 className={styles.skillName}>{name}</h2>
-                  </div>
-                </article>
-              );
-            })}
+          <section className={styles.skillsContainer}>
+            {skillsData.map(({ category, skills }) => (
+              <article key={category} className={styles.skillsCategory}>
+                <header className={styles.categoryHeader}>
+                  <h2 className={styles.categoryTitle}>{category}</h2>
+                </header>
+                
+                <div className={styles.skillsList} role="list">
+                  {skills.map(({ iconName, name }) => {
+                    const IconComponent = icons[iconName];
+                    return (
+                      <div key={name} className={styles.skillItem} role="listitem">
+                        <figure className={styles.skillIconContainer}>
+                          <IconComponent 
+                            aria-hidden="true" 
+                            className={styles.skillIcon}
+                          />
+                        </figure>
+                        <h3 className={styles.skillName}>{name}</h3>
+                      </div>
+                    );
+                  })}
+                </div>
+              </article>
+            ))}
           </section>
         </Suspense>
       </div>

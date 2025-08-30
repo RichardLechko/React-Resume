@@ -129,6 +129,17 @@ body {
   z-index: 1;
 }
 
+#personal,
+#projects,
+#work,
+#education,
+#skills,
+#contact {
+  padding-top: 7rem;
+  margin-top: -7rem;
+  margin-bottom: 5rem;
+}
+
 .container {
   width: 100%;
   max-width: 280px;
@@ -375,6 +386,16 @@ address {
 }
 
 @media (min-width: 1024px) {
+  #personal,
+  #projects,
+  #work,
+  #education,
+  #skills,
+  #contact {
+    padding-top: 10rem;
+    margin-top: -10rem;
+    margin-bottom: 12rem;
+  }
   .container {
     max-width: 800px;
   }
@@ -410,6 +431,23 @@ address {
 
   .main-page-container {
     padding-top: 5rem;
+  }
+
+  #personal,
+  #projects,
+  #work,
+  #education,
+  #skills,
+  #contact {
+    padding-top: 14rem;
+    margin-top: -14rem;
+    margin-bottom: 10rem;
+  }
+
+  #education {
+    padding-top: 20rem;
+    margin-top: -15rem;
+    margin-bottom: 15rem;
   }
 }
 

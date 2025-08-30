@@ -84,7 +84,7 @@
             "Develop web applications using React/Next.js frontend and .NET Core backend for insurance platforms.",
             "Collaborate with cross-functional teams on microservices architecture and new feature development."
           ],
-          "highlightedText": ["C#", "React", "Nextjs", "JavaScript", "Tailwind"]
+          "highlightedText": ["C#", "React", "Next.js", "JavaScript", "Tailwind", ".NET Core"]
         },
         "hendrickson": {
           "companyName": "Hendrickson",
@@ -490,7 +490,7 @@
             "Разработка веб-приложений с использованием React/Next.js фронтенда и .NET Core бэкенда для страховых платформ.",
             "Сотрудничество с кросс-функциональными командами по архитектуре микросервисов и разработке новых функций."
           ],
-          "highlightedText": ["C#", "React", "Nextjs", "JavaScript", "Tailwind"]
+          "highlightedText": ["C#", "React", "Next.js", "JavaScript", "Tailwind", ".NET Core"]
         },
         "hendrickson": {
           "companyName": "Hendrickson",
