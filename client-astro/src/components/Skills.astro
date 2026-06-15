@@ -1,0 +1,89 @@
+---
+import { Icon } from 'astro-icon/components';
+import { useTranslations, type Lang } from '../i18n';
+import styles from '../styles/Skills.module.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+type Skill = { icon: string; name: string };
+type Group = { categoryKey: string; skills: Skill[] };
+
+const SKILL_GROUPS: Group[] = [
+  {
+    categoryKey: 'frontend',
+    skills: [
+      { icon: 'devicon:react', name: 'React' },
+      { icon: 'ri:nextjs-line', name: 'Next.js' },
+      { icon: 'simple-icons:javascript', name: 'JavaScript' },
+      { icon: 'simple-icons:typescript', name: 'TypeScript' },
+      { icon: 'ant-design:html5-filled', name: 'HTML' },
+      { icon: 'fa6-brands:sass', name: 'SCSS' },
+      { icon: 'simple-icons:tailwindcss', name: 'Tailwind' },
+      { icon: 'simple-icons:astro', name: 'Astro' },
+      { icon: 'bx:bxl-redux', name: 'Redux' },
+    ],
+  },
+  {
+    categoryKey: 'backendDb',
+    skills: [
+      { icon: 'devicon:nodejs', name: 'Node.js' },
+      { icon: 'simple-icons:express', name: 'Express' },
+      { icon: 'fa6-brands:golang', name: 'Go' },
+      { icon: 'simple-icons:python', name: 'Python' },
+      { icon: 'simple-icons:flask', name: 'Flask' },
+      { icon: 'simple-icons:sharp', name: 'C#' },
+      { icon: 'simple-icons:dotnet', name: '.NET Core' },
+      { icon: 'fa6-solid:database', name: 'SQL' },
+      { icon: 'simple-icons:postgresql', name: 'PostgreSQL' },
+      { icon: 'simple-icons:mysql', name: 'MySQL' },
+      { icon: 'simple-icons:mongodb', name: 'MongoDB' },
+      { icon: 'simple-icons:supabase', name: 'Supabase' },
+      { icon: 'simple-icons:redis', name: 'Redis' },
+    ],
+  },
+  {
+    categoryKey: 'toolsDevops',
+    skills: [
+      { icon: 'bx:bxl-git', name: 'Git' },
+      { icon: 'simple-icons:jest', name: 'Jest' },
+      { icon: 'simple-icons:cypress', name: 'Cypress' },
+      { icon: 'simple-icons:docker', name: 'Docker' },
+      { icon: 'bx:bxl-aws', name: 'AWS' },
+      { icon: 'simple-icons:datadog', name: 'Datadog' },
+      { icon: 'simple-icons:caddy', name: 'Caddy' },
+      { icon: 'fa6-brands:figma', name: 'Figma' },
+    ],
+  },
+];
+---
+<main id="skills" class="technical-skills-section" lang={lang}>
+  <div class="technical-skills-container">
+    <header class={styles.technicalSkillsHeader}>
+      <h1 class={styles.technicalSkillsTitle}>
+        <span class="content-backdrop">{t('skills.title')}</span>
+      </h1>
+    </header>
+
+    <section class={styles.skillsContainer}>
+      {SKILL_GROUPS.map(({ categoryKey, skills }) => (
+        <article class={styles.skillsCategory}>
+          <header class={styles.categoryHeader}>
+            <h2 class={styles.categoryTitle}>{t(`skills.categories.${categoryKey}`)}</h2>
+          </header>
+          <div class={styles.skillsList} role="list">
+            {skills.map(({ icon, name }) => (
+              <div class={styles.skillItem} role="listitem">
+                <figure class={styles.skillIconContainer}>
+                  <Icon name={icon} aria-hidden="true" class={styles.skillIcon} />
+                </figure>
+                <h3 class={styles.skillName}>{name}</h3>
+              </div>
+            ))}
+          </div>
+        </article>
+      ))}
+    </section>
+  </div>
+</main>
