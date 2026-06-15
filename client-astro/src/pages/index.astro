@@ -1,17 +1,32 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NavBar from '../components/NavBar.astro';
+import Personal from '../components/Personal.astro';
+import Projects from '../components/Projects.astro';
+import Work from '../components/Work.astro';
+import Education from '../components/Education.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 
+const lang = 'en' as const;
 ---
+<BaseLayout lang={lang}>
+  <NavBar lang={lang} />
+  <main class="container main-page-container">
+    <Personal lang={lang} />
+    <Projects lang={lang} />
+    <Work lang={lang} />
+    <Education lang={lang} />
+    <Skills lang={lang} />
+    <Contact lang={lang} />
+  </main>
+  <Footer lang={lang} />
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <script>
+    import '../scripts/clock';
+    import '../scripts/fade-in';
+    import '../scripts/nav-active';
+    import '../scripts/nav-hamburger';
+  </script>
+</BaseLayout>

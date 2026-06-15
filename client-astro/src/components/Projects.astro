@@ -8,6 +8,15 @@ import styles from '../styles/Projects.module.css';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+const projectItems = projects.map((p) => {
+  const base = `projects.items.${p.id}`;
+  return {
+    ...p,
+    name: t(`${base}.name`) as string,
+    description: t(`${base}.description`) as string,
+  };
+});
 ---
 <main id="projects" class="projects-container" lang={lang}>
   <header>
@@ -19,39 +28,34 @@ const t = useTranslations(lang);
   <section class="projects-content">
     <div class="projects-grid">
       <div class={styles.projectsGridInner}>
-        {projects.map((p) => {
-          const base = `projects.items.${p.id}`;
-          const name = t<string>(`${base}.name`);
-          const description = t<string>(`${base}.description`);
-          return (
-            <article class={`${styles.projectCard} project-card fade-on-scroll`} lang={lang}>
-              <header class={styles.projectHeader}>
-                <nav class={styles.projectTechStack} aria-label="Technologies used">
-                  {p.techStack.map((tech) => <small class={styles.techTag}>{tech}</small>)}
+        {projectItems.map((p) => (
+          <article class={`${styles.projectCard} project-card fade-on-scroll`} lang={lang}>
+            <header class={styles.projectHeader}>
+              <nav class={styles.projectTechStack} aria-label="Technologies used">
+                {p.techStack.map((tech) => <small class={styles.techTag}>{tech}</small>)}
+              </nav>
+              {!p.isPrivate && !p.inDevelopment && (
+                <nav class={styles.projectLinks} aria-label="Project links">
+                  {p.sourceLink && (
+                    <a href={p.sourceLink} target="_blank" rel="noopener noreferrer" class={styles.projectLinkButton} aria-label={t('common.viewSource') as string}>
+                      <Icon name="lucide:chevrons-left-right" />
+                    </a>
+                  )}
+                  {p.liveLink && (
+                    <a href={p.liveLink} target="_blank" rel="noopener noreferrer" class={styles.projectLinkButton} aria-label={t('common.viewLive') as string}>
+                      <Icon name="lucide:mouse-pointer-click" />
+                    </a>
+                  )}
                 </nav>
-                {!p.isPrivate && !p.inDevelopment && (
-                  <nav class={styles.projectLinks} aria-label="Project links">
-                    {p.sourceLink && (
-                      <a href={p.sourceLink} target="_blank" rel="noopener noreferrer" class={styles.projectLinkButton} aria-label={t<string>('common.viewSource')}>
-                        <Icon name="lucide:chevrons-left-right" />
-                      </a>
-                    )}
-                    {p.liveLink && (
-                      <a href={p.liveLink} target="_blank" rel="noopener noreferrer" class={styles.projectLinkButton} aria-label={t<string>('common.viewLive')}>
-                        <Icon name="lucide:mouse-pointer-click" />
-                      </a>
-                    )}
-                  </nav>
-                )}
-                {p.inDevelopment && <small class={styles.developmentBadge}>{t<string>('projects.inDevelopment')}</small>}
-              </header>
-              <h2 class={styles.projectTitle}>{name}</h2>
-              <div class={styles.projectDescription}>
-                <p><Highlight text={description} /></p>
-              </div>
-            </article>
-          );
-        })}
+              )}
+              {p.inDevelopment && <small class={styles.developmentBadge}>{t('projects.inDevelopment') as string}</small>}
+            </header>
+            <h2 class={styles.projectTitle}>{p.name}</h2>
+            <div class={styles.projectDescription}>
+              <p><Highlight text={p.description} /></p>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>

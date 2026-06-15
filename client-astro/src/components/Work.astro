@@ -7,6 +7,18 @@ import styles from '../styles/Work.module.css';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+const workItems = workExperiences.map((exp) => {
+  const base = `work.items.${exp.id}`;
+  return {
+    ...exp,
+    company: t(`${base}.company`) as string,
+    position: t(`${base}.position`) as string,
+    address: t(`${base}.address`) as string,
+    descriptions: t(`${base}.descriptions`) as string[],
+    endLabel: exp.isCurrent ? t('common.present') as string : exp.endDate ?? '',
+  };
+});
 ---
 <main id="work" class="work-section" lang={lang}>
   <header class="work-container">
@@ -18,43 +30,35 @@ const t = useTranslations(lang);
     <section class="work-right">
       <div class="work-right-inner"></div>
       <div class={styles.workExperiences}>
-        {workExperiences.map((exp) => {
-          const base = `work.items.${exp.id}`;
-          const company = t<string>(`${base}.company`);
-          const position = t<string>(`${base}.position`);
-          const address = t<string>(`${base}.address`);
-          const descriptions = t<string[]>(`${base}.descriptions`);
-          const endLabel = exp.isCurrent ? t<string>('common.present') : exp.endDate ?? '';
-          return (
-            <article class={`${styles.companyContainer} company-container fade-on-scroll`} lang={lang}>
-              <div class={styles.companyInfo}>
-                <figure class={styles.companyLogoContainer}>
-                  <img src={exp.logo} alt={`${company} logo`} class={styles.companyLogoImg} />
-                </figure>
-                <header class={styles.companyHeader}>
-                  <time class={styles.companyDuration}>
-                    <span class="start-time">{exp.startDate}</span>{' - '}<span class="end-time">{endLabel}</span>
-                  </time>
-                  <h2 class={styles.companyName}>{company}</h2>
-                  <h3 class={styles.companyPosition}>{position}</h3>
-                  <p class={styles.companyAddress}>{address}</p>
-                </header>
-                <nav class={styles.companyTools}>
-                  {exp.tools.map((tool) => <small class={styles.companyTool}>{tool}</small>)}
-                </nav>
-                <section class={styles.companyContent}>
-                  <ul class={styles.companyDescriptions}>
-                    {(Array.isArray(descriptions) ? descriptions : []).map((desc) => (
-                      <li class={styles.companyDescriptionItem}>
-                        <Highlight text={desc} />
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              </div>
-            </article>
-          );
-        })}
+        {workItems.map((exp) => (
+          <article class={`${styles.companyContainer} company-container fade-on-scroll`} lang={lang}>
+            <div class={styles.companyInfo}>
+              <figure class={styles.companyLogoContainer}>
+                <img src={exp.logo} alt={`${exp.company} logo`} class={styles.companyLogoImg} />
+              </figure>
+              <header class={styles.companyHeader}>
+                <time class={styles.companyDuration}>
+                  <span class="start-time">{exp.startDate}</span>{' - '}<span class="end-time">{exp.endLabel}</span>
+                </time>
+                <h2 class={styles.companyName}>{exp.company}</h2>
+                <h3 class={styles.companyPosition}>{exp.position}</h3>
+                <p class={styles.companyAddress}>{exp.address}</p>
+              </header>
+              <nav class={styles.companyTools}>
+                {exp.tools.map((tool) => <small class={styles.companyTool}>{tool}</small>)}
+              </nav>
+              <section class={styles.companyContent}>
+                <ul class={styles.companyDescriptions}>
+                  {(Array.isArray(exp.descriptions) ? exp.descriptions : []).map((desc) => (
+                    <li class={styles.companyDescriptionItem}>
+                      <Highlight text={desc} />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   </div>
