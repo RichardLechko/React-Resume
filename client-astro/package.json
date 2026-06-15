@@ -25,6 +25,7 @@
     "@iconify-json/material-symbols": "^1.2.78",
     "@iconify-json/ri": "^1.2.10",
     "@iconify-json/simple-icons": "^1.2.86",
-    "cross-env": "^10.1.0"
+    "cross-env": "^10.1.0",
+    "typescript": "^6.0.3"
   }
 }
