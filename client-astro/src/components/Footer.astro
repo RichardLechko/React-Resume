@@ -1,0 +1,23 @@
+---
+import { useTranslations, type Lang } from '../i18n';
+import styles from '../styles/Footer.module.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+const buildDate = new Date().toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US');
+---
+<footer class={styles.footer}>
+  <div class={styles.footerContainer}>
+    <header>
+      <h2 class="footer-title">{t('footer.name')}</h2>
+    </header>
+    <small class="footer-copy">
+      &copy; {year} {t('footer.name')} | {t('footer.copyrightSuffix')}
+    </small>
+    <time class="footer-updated" datetime={new Date().toISOString()}>
+      {t('footer.lastUpdated')} {buildDate}
+    </time>
+  </div>
+</footer>
