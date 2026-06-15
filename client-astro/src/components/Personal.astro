@@ -1,0 +1,73 @@
+---
+import { Icon } from 'astro-icon/components';
+import { useTranslations, type Lang } from '../i18n';
+import Highlight from './Highlight.astro';
+import styles from '../styles/Personal.module.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const socialLinks = [
+  { href: 'https://github.com/RichardLechko', icon: 'lucide:github', label: 'GitHub Profile' },
+  { href: 'https://www.linkedin.com/in/richard-lechko/', icon: 'fa6-brands:linkedin-in', label: 'LinkedIn Profile' },
+  { href: 'https://ko-fi.com/richardlechko', icon: 'bx:bxs-coffee', label: 'Support on Ko-fi' },
+];
+
+const resumeLinks = [
+  { href: '/resumes/Richard_Lechko_Resume.docx', icon: 'fa6-solid:download', textKey: 'downloadDOCX', download: true },
+  { href: '/resumes/Richard_Lechko_Resume.pdf', icon: 'fa6-solid:download', textKey: 'downloadPDF', download: true },
+  { href: 'https://docs.google.com/document/d/1qnp6U9z-i9OZwFpPzvO9RNwxxwZW9G8FNOcfpdUqMXA/edit?usp=sharing', icon: 'ant-design:eye-outlined', textKey: 'view', download: false },
+];
+---
+<section id="personal" lang={lang}>
+  <div class={styles.personalWrapper}>
+    <div class={`${styles.personalContent} personal-content fade-on-scroll`}>
+      <header class={`${styles.personalLeft} lang-${lang}`}>
+        <h1>
+          <span class={`personal-header lang-${lang}`}>{t('personal.greeting')}</span>
+        </h1>
+        <div class={styles.personalBasedInAndTime}>
+          <p>
+            <small>
+              {t('personal.location')} <span class={styles.timeArrow}>→</span>
+              <time class="time-display" data-clock>
+                <strong class="highlight-text">-- : -- CST (UTC-06)</strong>
+              </time>
+            </small>
+          </p>
+        </div>
+      </header>
+
+      <nav class="external-links" aria-label="Social Links">
+        <ul class={styles.linksContainer}>
+          {socialLinks.map(({ href, icon, label }) => (
+            <li class={styles.linkWrapper}>
+              <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                <Icon name={icon} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <article class={styles.personalInfoSpotify}>
+        <p class="content-backdrop">
+          <Highlight text={t<string>('personal.tagline')} />
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <aside class={`${styles.personalResumeContent} personal-resume-content fade-on-scroll`}>
+    <h2>{t('personal.resume.title')}</h2>
+    <p>{t('personal.resume.subtitle')}</p>
+    <div role="group" aria-label="Resume download options">
+      {resumeLinks.map(({ href, icon, textKey, download }) => (
+        <a href={href} download={download} target="_blank" rel="noopener noreferrer">
+          <span><Icon name={icon} /> <span>{t(`personal.resume.${textKey}`)}</span></span>
+        </a>
+      ))}
+    </div>
+  </aside>
+</section>
