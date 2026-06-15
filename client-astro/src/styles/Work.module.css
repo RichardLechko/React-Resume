@@ -1,0 +1,191 @@
+/* client/src/components/Work.module.css */
+
+.workExperiences {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  margin: auto;
+}
+
+.companyContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 6px 1rem 6px;
+  background-color: var(--nav-background);
+  border-radius: 6px;
+  box-shadow: var(--elevation-1);
+  transition: box-shadow 0.3s ease-in-out;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+.companyInfo {
+  display: grid;
+  grid-template-areas:
+    "logo company-details company-details"
+    "tools tools tools"
+    "content content content";
+  grid-template-columns: 70px 1fr;
+  gap: 1.5rem;
+}
+
+.companyLogoContainer {
+  grid-area: logo;
+  width: 80px;
+  max-width: 80px;
+  aspect-ratio: 1;
+}
+
+.companyLogo {
+  width: 100%;
+  height: 100%;
+}
+
+.companyLogoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.companyHeader {
+  grid-area: company-details;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.companyTools {
+  grid-area: tools;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin: 0;
+}
+
+.companyTool {
+  font-size: 10px;
+  padding: 1px 2px;
+  background: var(--nav-item-bg);
+  border-radius: 4px;
+  letter-spacing: -0.05rem;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+.companyDuration {
+  color: var(--text-color);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.companyName, .companyPosition, .companyAddress {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.companyName {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.companyPosition {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.companyAddress {
+  color: var(--text-color);
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.companyContent {
+  grid-area: content;
+  width: 100%;
+}
+
+.companyDescriptions {
+  list-style-type: none;
+  padding-left: 0rem;
+  display: flex;
+  gap: 0.4rem;
+  flex-direction: column;
+  margin: 0;
+}
+
+.companyDescriptionItem {
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: -0.025rem;
+}
+
+/* Media Queries */
+@media (min-width: 640px) {
+  .companyContainer {
+    padding: 1rem;
+  }
+
+  .companyTools {
+    gap: 6px;
+  }
+
+  .companyTool {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+
+  .companyDescriptionItem {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .companyInfo {
+    grid-template-areas:
+      "logo company-details tools"
+      "content content content";
+    grid-template-columns: 70px 1fr auto;
+  }
+
+  .companyTools {
+    grid-area: tools;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-self: start;
+    margin-top: -6px;
+  }
+
+  .workExperiences {
+    gap: 24px;
+  }
+
+  .companyDescriptionItem,
+  .companyPosition,
+  .companyDuration {
+    font-size: 16px;
+  }
+
+  .companyName {
+    font-size: 24px;
+  }
+
+  .companyLogoContainer {
+    width: 100px;
+    max-width: 100px;
+  }
+
+  .companyInfo {
+    grid-template-columns: 90px 220px auto;
+  }
+}

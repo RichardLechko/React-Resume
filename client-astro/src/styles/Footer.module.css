@@ -1,0 +1,28 @@
+/* client/src/components/Footer.module.css */
+
+.footer {
+  width: 100vw;
+  margin-left: calc((100% - 100vw) / 2);
+  margin-top: 5rem;
+  background-color: var(--nav-background);
+  color: var(--text-color);
+  position: relative;
+  padding: 3rem 0rem;
+  overflow: hidden;
+}
+
+.footerContainer {
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer p {
+  position: relative;
+  line-height: 1.6;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}

@@ -1,0 +1,189 @@
+.personalWrapper {
+  width: 100%;
+}
+
+.personalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.personalLeft {
+  text-align: center;
+  width: 100%;
+}
+
+.personalBasedInAndTime {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
+.personalBasedInAndTime p small {
+  font-size: 16px;
+}
+
+.personalBasedInAndTime p small strong {
+  font-size: 14px;
+}
+
+.personalBasedInAndTime p small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  flex-direction: column;
+}
+
+.timeArrow {
+  margin-bottom: 5px;
+  color: var(--accent-color);
+  transform: rotate(90deg);
+}
+
+.linksContainer {
+  display: flex;
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkWrapper a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.linkWrapper a:hover {
+  background-color: var(--button-hover);
+}
+
+.linkWrapper a::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg) translateX(-200%);
+  transition: transform 0.5s ease;
+}
+
+.linkWrapper a:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+.personalInfoSpotify {
+  margin: 0;
+  text-align: center;
+}
+
+.personalResumeContent {
+  margin: 1rem auto;
+  padding: 1rem 6px 1rem 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 8px;
+  background-color: var(--nav-background);
+  color: var(--text-color);
+  text-align: center;
+  box-shadow: var(--elevation-1);
+  transition: box-shadow 0.3s ease-in-out;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+.personalResumeContent > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: auto;
+  align-items: center;
+}
+
+.personalResumeContent a {
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 150px;
+  font-size: 16px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  letter-spacing: -0.025rem;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: var(--elevation-2);
+  transition: box-shadow 0.4s ease-in-out;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+.personalResumeContent a span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.personalResumeContent a:hover {
+  background-color: var(--button-hover);
+  box-shadow: var(--elevation-3);
+  transition: box-shadow 0.5s ease-in-out;
+}
+
+/* Media Queries */
+@media (min-width: 640px) {
+  .personalBasedInAndTime p small {
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  .timeArrow {
+    transform: rotate(0deg);
+  }
+
+  .linkWrapper a {
+    width: 40px;
+    height: 40px;
+  }
+
+  .linkWrapper a svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .personalResumeContent a {
+    width: 225px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .personalResumeContent {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .personalResumeContent > div {
+    flex-direction: row;
+  }
+}
