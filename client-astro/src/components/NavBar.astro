@@ -1,0 +1,68 @@
+---
+import { useTranslations, type Lang } from '../i18n';
+import LanguageSelector from './LanguageSelector.astro';
+import styles from '../styles/NavBar.module.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const navItems = [
+  { id: 'personal', name: t('nav.personal') },
+  { id: 'projects', name: t('nav.projects') },
+  { id: 'work', name: t('nav.work') },
+  { id: 'education', name: t('nav.education') },
+  { id: 'skills', name: t('nav.skills') },
+  { id: 'contact', name: t('nav.contact') },
+];
+---
+<div class={styles.navbarContainer} lang={lang} data-navbar>
+  <nav>
+    <div class={styles.navbarContent}>
+      <div class="navbar-language-support">
+        <LanguageSelector lang={lang} />
+      </div>
+
+      <ul class={styles.desktopNavbar}>
+        <li class={styles.navItemWrapper}>
+          <div class={styles.desktopNavItems}>
+            {navItems.map(({ id, name }) => (
+              <div class={styles.navItemStableWrapper}>
+                <a
+                  class={styles.navUlLi}
+                  href={`#${id}`}
+                  data-nav-link={id}
+                >
+                  <span>{name}</span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </li>
+      </ul>
+
+      <div class={styles.navbarActions}>
+        <button
+          class={styles.hamburgerMenuButton}
+          type="button"
+          aria-label="Toggle navigation menu"
+          data-hamburger
+        >
+          &#9776;
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class={styles.mobileSidebar} data-mobile-sidebar>
+    <ul class={styles.mobileNavItems}>
+      {navItems.map(({ id, name }) => (
+        <li class="mobile-nav-item">
+          <a class={styles.navUlLi} href={`#${id}`} data-nav-link={id} data-mobile-link>
+            <span>{name}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
