@@ -1,0 +1,41 @@
+---
+import { useTranslations, type Lang } from '../i18n';
+import styles from '../styles/Education.module.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<main id="education" class="education" lang={lang}>
+  <header>
+    <h1 class="education-heading">
+      <span class="content-backdrop">{t('education.title')}</span>
+    </h1>
+  </header>
+
+  <section class={styles.educationGrid}>
+    <article class={`${styles.educationCard} education-card fade-on-scroll`}>
+      <header class="education-header">
+        <h2 class={styles.educationSubheading}>{t('education.cardTitle')}</h2>
+      </header>
+
+      <div class={styles.educationDetails}>
+        <p class={styles.educationText}>
+          {t('education.schoolPrefix')}{' '}
+          <strong>
+            <a class={styles.educationLink} href="https://www.depaul.edu" target="_blank" rel="noopener noreferrer" aria-label="DePaul University website">
+              {t('education.schoolName')}
+            </a>
+          </strong>
+        </p>
+        <p class={styles.educationText}>
+          <strong class={styles.educationHighlight}>{t('education.degree')}</strong>
+        </p>
+        <p class={styles.educationGradText}>
+          {t('education.graduationLabel')}:{' '}
+          <strong class={styles.educationHighlight}>{t('education.graduationDate')}</strong>
+        </p>
+      </div>
+    </article>
+  </section>
+</main>
