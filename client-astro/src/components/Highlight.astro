@@ -1,0 +1,21 @@
+---
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+
+type Part = { kind: 'text' | 'highlight'; value: string };
+const parts: Part[] = [];
+const re = /\[\[([^\]]+)\]\]/g;
+let last = 0;
+let m: RegExpExecArray | null;
+while ((m = re.exec(text)) !== null) {
+  if (m.index > last) parts.push({ kind: 'text', value: text.slice(last, m.index) });
+  parts.push({ kind: 'highlight', value: m[1] });
+  last = m.index + m[0].length;
+}
+if (last < text.length) parts.push({ kind: 'text', value: text.slice(last) });
+---
+{parts.map((p) => p.kind === 'highlight'
+  ? <strong class="highlight-text">{p.value}</strong>
+  : <Fragment>{p.value}</Fragment>)}
