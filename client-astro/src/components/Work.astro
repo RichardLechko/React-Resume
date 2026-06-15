@@ -1,0 +1,61 @@
+---
+import { useTranslations, type Lang } from '../i18n';
+import workExperiences from '../data/work';
+import Highlight from './Highlight.astro';
+import styles from '../styles/Work.module.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<main id="work" class="work-section" lang={lang}>
+  <header class="work-container">
+    <h1><span class="content-backdrop">{t('work.title')}</span></h1>
+  </header>
+
+  <div class="work-content">
+    <aside class="work-left"><div class="work-left-inner"></div></aside>
+    <section class="work-right">
+      <div class="work-right-inner"></div>
+      <div class={styles.workExperiences}>
+        {workExperiences.map((exp) => {
+          const base = `work.items.${exp.id}`;
+          const company = t<string>(`${base}.company`);
+          const position = t<string>(`${base}.position`);
+          const address = t<string>(`${base}.address`);
+          const descriptions = t<string[]>(`${base}.descriptions`);
+          const endLabel = exp.isCurrent ? t<string>('common.present') : exp.endDate ?? '';
+          return (
+            <article class={`${styles.companyContainer} company-container fade-on-scroll`} lang={lang}>
+              <div class={styles.companyInfo}>
+                <figure class={styles.companyLogoContainer}>
+                  <img src={exp.logo} alt={`${company} logo`} class={styles.companyLogoImg} />
+                </figure>
+                <header class={styles.companyHeader}>
+                  <time class={styles.companyDuration}>
+                    <span class="start-time">{exp.startDate}</span>{' - '}<span class="end-time">{endLabel}</span>
+                  </time>
+                  <h2 class={styles.companyName}>{company}</h2>
+                  <h3 class={styles.companyPosition}>{position}</h3>
+                  <p class={styles.companyAddress}>{address}</p>
+                </header>
+                <nav class={styles.companyTools}>
+                  {exp.tools.map((tool) => <small class={styles.companyTool}>{tool}</small>)}
+                </nav>
+                <section class={styles.companyContent}>
+                  <ul class={styles.companyDescriptions}>
+                    {(Array.isArray(descriptions) ? descriptions : []).map((desc) => (
+                      <li class={styles.companyDescriptionItem}>
+                        <Highlight text={desc} />
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  </div>
+</main>
