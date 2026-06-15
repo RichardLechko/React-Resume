@@ -1,0 +1,40 @@
+---
+import { Icon } from 'astro-icon/components';
+import { useTranslations, type Lang } from '../i18n';
+import styles from '../styles/Contact.module.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<main id="contact" class="contact-section" lang={lang}>
+  <header>
+    <h1 class={styles.contactHeading}>
+      <span class="content-backdrop">{t('contact.title')}</span>
+    </h1>
+  </header>
+
+  <section class={styles.contactInfo}>
+    <address>
+      <p class={styles.locationText}>
+        {t('contact.locationPrefix')}{' '}
+        <strong class={styles.locationTextName}>{t('contact.locationCity')}</strong>
+      </p>
+    </address>
+
+    <nav class={styles.socialLinks} aria-label="Social media links">
+      <a href="https://github.com/RichardLechko" target="_blank" rel="noopener noreferrer" class={styles.socialItem} aria-label="GitHub Profile">
+        <Icon name="lucide:github" aria-hidden="true" />
+      </a>
+      <a href="https://www.linkedin.com/in/richard-lechko/" target="_blank" rel="noopener noreferrer" class={styles.socialItem} aria-label="LinkedIn Profile">
+        <Icon name="fa6-brands:linkedin-in" aria-hidden="true" />
+      </a>
+      <a href="https://ko-fi.com/richardlechko" target="_blank" rel="noopener noreferrer" class={styles.socialItem} aria-label="Support on Ko-fi">
+        <Icon name="bx:bxs-coffee" aria-hidden="true" />
+      </a>
+      <a href="mailto:richardlechko@gmail.com" class={styles.socialItem} aria-label="Send Email">
+        <Icon name="material-symbols:mail-outline" aria-hidden="true" />
+      </a>
+    </nav>
+  </section>
+</main>
