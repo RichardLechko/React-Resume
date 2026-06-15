@@ -10,16 +10,16 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
         <header>
-          <h2 className="footer-title">{t("footer.title.text")}</h2>
+          <h2 className="footer-title">{t("footer.name")}</h2>
         </header>
-        
+
         <small className="footer-copy">
-          &copy; {new Date().getFullYear()} {t("footer.copyright.prefix")} |{" "}
-          {t("footer.copyright.suffix")}
+          &copy; {new Date().getFullYear()} {t("footer.name")} |{" "}
+          {t("footer.copyrightSuffix")}
         </small>
-        
+
         <time className="footer-updated" dateTime={new Date().toISOString()}>
-          {t("footer.last-updated.prefix")} {new Date().toLocaleDateString()}
+          {t("footer.lastUpdated")} {new Date().toLocaleDateString()}
         </time>
       </div>
     </footer>

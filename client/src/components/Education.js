@@ -7,20 +7,21 @@ const Education = () => {
   const { t, language } = useTranslation();
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    const cards = document.querySelectorAll('.education-card');
+    const cards = document.querySelectorAll(".education-card");
     cards.forEach((card, index) => {
-      card.classList.add('fade-in-hidden');
+      card.classList.add("fade-in-hidden");
       card.style.animationDelay = `${index * 0.1}s`;
       observer.observe(card);
     });
@@ -32,7 +33,7 @@ const Education = () => {
     <main className="education" lang={language}>
       <header>
         <h1 className="education-heading">
-          <span className="content-backdrop">{t("education.heading")}</span>
+          <span className="content-backdrop">{t("education.title")}</span>
         </h1>
       </header>
 
@@ -40,34 +41,34 @@ const Education = () => {
         <article className={`${styles.educationCard} education-card`}>
           <header className="education-header">
             <h2 className={styles.educationSubheading}>
-              {t("education.current_program")}
+              {t("education.cardTitle")}
             </h2>
           </header>
 
           <div className={styles.educationDetails}>
             <p className={styles.educationText}>
-              {t("education.current_program_description_1")}{" "}
+              {t("education.schoolPrefix")}{" "}
               <strong>
-                <a 
+                <a
                   className={styles.educationLink}
                   href="https://www.depaul.edu"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="DePaul University website"
                 >
-                  {t("education.current_program_description_2")}
+                  {t("education.schoolName")}
                 </a>
               </strong>
             </p>
             <p className={styles.educationText}>
               <strong className={styles.educationHighlight}>
-                {t("education.bachelor_degree")}
+                {t("education.degree")}
               </strong>
             </p>
             <p className={styles.educationGradText}>
-              {t("education.expected_graduation")}:{" "}
+              {t("education.graduationLabel")}:{" "}
               <strong className={styles.educationHighlight}>
-                {t("education.expected_graduation_date")}
+                {t("education.graduationDate")}
               </strong>
             </p>
           </div>

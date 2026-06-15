@@ -17,7 +17,6 @@
   box-sizing: border-box;
 }
 
-html,
 body {
   overflow-x: hidden;
 }
@@ -153,6 +152,7 @@ body {
 html {
   font-size: 16px;
   line-height: 1.5;
+  scroll-behavior: smooth;
 }
 
 body {

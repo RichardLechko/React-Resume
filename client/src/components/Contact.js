@@ -1,5 +1,4 @@
 // client/src/components/Contact.js
-import { FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
 import icons from "./icons.js";
 import React, { useEffect } from "react";
 import { useScroll } from "./ScrollToTop.js";
@@ -18,56 +17,50 @@ const Contact = () => {
     <main id="contact" className="contact-section" lang={language}>
       <header>
         <h1 className={styles.contactHeading}>
-          <span className="content-backdrop">Get in touch</span>
+          <span className="content-backdrop">{t("contact.title")}</span>
         </h1>
       </header>
 
       <section className={styles.contactInfo}>
         <address>
           <p className={styles.locationText}>
-            Based in <strong className={styles.locationTextName}>Chicago, Illinois</strong>
+            {t("contact.locationPrefix")}{" "}
+            <strong className={styles.locationTextName}>
+              {t("contact.locationCity")}
+            </strong>
           </p>
         </address>
 
         <nav className={styles.socialLinks} aria-label="Social media links">
-          <a 
-            href="https://github.com/RichardLechko" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://github.com/RichardLechko"
+            target="_blank"
+            rel="noopener noreferrer"
             className={styles.socialItem}
             aria-label="GitHub Profile"
           >
             <icons.LuGithub aria-hidden="true" />
           </a>
-          <a 
-            href="https://www.linkedin.com/in/richard-lechko/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://www.linkedin.com/in/richard-lechko/"
+            target="_blank"
+            rel="noopener noreferrer"
             className={styles.socialItem}
             aria-label="LinkedIn Profile"
           >
             <icons.FaLinkedinIn aria-hidden="true" />
           </a>
-          <a 
-            href="https://public-notes-page-react.vercel.app/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className={styles.socialItem}
-            aria-label="Personal Blog"
-          >
-            <icons.BiNotepad aria-hidden="true" />
-          </a>
-          <a 
-            href="https://ko-fi.com/richardlechko" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://ko-fi.com/richardlechko"
+            target="_blank"
+            rel="noopener noreferrer"
             className={styles.socialItem}
             aria-label="Support on Ko-fi"
           >
             <icons.BiSolidCoffee aria-hidden="true" />
           </a>
-          <a 
-            href="mailto:richardlechko@gmail.com" 
+          <a
+            href="mailto:richardlechko@gmail.com"
             className={styles.socialItem}
             aria-label="Send Email"
           >

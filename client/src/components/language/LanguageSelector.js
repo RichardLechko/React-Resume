@@ -48,7 +48,7 @@ const LanguageSelector = () => {
             style={{ marginRight: "8px" }}
           />
           <span className={styles.languageName}>
-            {t(`lang-selector.${language}`)}
+            {t(`langSelector.${language}`)}
           </span>
         </div>
         <div className={`${styles.dropdownArrow} ${isOpen ? styles.open : ""}`}>
@@ -77,7 +77,7 @@ const LanguageSelector = () => {
                   svg
                   style={{ marginRight: "8px" }}
                 />
-                {t(`lang-selector.${lang.code}`)}
+                {t(`langSelector.${lang.code}`)}
               </li>
             ))}
         </ul>

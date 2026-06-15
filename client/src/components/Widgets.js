@@ -2,6 +2,8 @@
 import React, { useEffect } from "react";
 import { useScroll } from "./ScrollToTop.js";
 import { useTranslation } from "./language/LanguageContext";
+import { renderHighlighted } from "../utils/highlight";
+import projects from "../data/projects";
 import { LuChevronsLeftRight, LuMousePointerClick } from "react-icons/lu";
 import styles from "./Widgets.module.css";
 
@@ -12,7 +14,6 @@ const Widgets = () => {
   useEffect(() => {
     scrollToTop();
 
-    // Add intersection observer for fade-in animation
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -22,16 +23,12 @@ const Widgets = () => {
           }
         });
       },
-      {
-        threshold: 0.1,
-      }
+      { threshold: 0.1 }
     );
 
-    // Observe all project cards
     const cards = document.querySelectorAll(".project-card");
     cards.forEach((card, index) => {
       card.classList.add("fade-in-hidden");
-      // Add a stagger effect
       card.style.animationDelay = `${index * 0.1}s`;
       observer.observe(card);
     });
@@ -39,97 +36,19 @@ const Widgets = () => {
     return () => observer.disconnect();
   }, [scrollToTop]);
 
-  const projects = [
-    {
-      linkText: t("projects.projects-list.northern-trust.linkText"),
-      text: t("projects.projects-list.northern-trust.text"),
-      techStack: ["React", "JS", "Tailwind", "Node.js", "Express"],
-      live: true,
-      liveLink: "https://depaul-northern-trust-hackathon.vercel.app/",
-      sourceLink:
-        "https://github.com/RichardLechko/depaul-northern-trust-hackathon",
-      inDevelopment: false,
-      isPrivate: false,
-    },
-    {
-      linkText: t("projects.projects-list.freedom-butchers.linkText"),
-      text: t("projects.projects-list.freedom-butchers.text"),
-      techStack: ["Astro", "NodeJS", "Express", "SCSS", "ShadCN"],
-      live: true,
-      liveLink: "https://freedombutchers.vercel.app/",
-      sourceLink: "https://github.com/RichardLechko/superior-sphere",
-      inDevelopment: false,
-      isPrivate: false,
-    },
-    {
-      linkText: t("projects.projects-list.cloud-project.linkText"),
-      text: t("projects.projects-list.cloud-project.text"),
-      techStack: [
-        "Next.js",
-        "SCSS",
-        "Node.js",
-        "Docker",
-        "Express",
-        "TypeScript",
-        "Django",
-      ],
-      live: false,
-      liveLink: "",
-      sourceLink: "https://github.com/RichardLechko/depaul-cloud-project",
-      inDevelopment: true,
-      isPrivate: true,
-    },
-    {
-      linkText: t("projects.projects-list.mma.linkText"),
-      text: t("projects.projects-list.mma.text"),
-      techStack: [
-        "Astro",
-        "SCSS",
-        "ShadCN",
-        "Go",
-        "TypeScript",
-        "Supabase",
-        "Docker",
-        "Selenium",
-      ],
-      live: true,
-      sourceLink: "",
-      liveLink: "https://mma-scheduler.vercel.app/",
-      inDevelopment: false,
-      isPrivate: false,
-    },
-    {
-      linkText: t("projects.projects-list.scarlet-hacks.linkText"),
-      text: t("projects.projects-list.scarlet-hacks.text"),
-      techStack: [
-        "Next.js",
-        "JavaScript",
-        "Supabase",
-        "Anthropic AI",
-        "Node.js",
-        "Tailwind"
-      ],
-      live: true,
-      liveLink: "https://iit-hackathon.vercel.app/",
-      sourceLink: "https://github.com/RichardLechko/scarlet-hacks-2025",
-      inDevelopment: false,
-      isPrivate: false,
-    },
-  ];
-
   return (
     <main id="projects" className="projects-container" lang={language}>
       <header>
         <h1 className="projects-title">
-          <span className="content-backdrop">{t("projects.title-name")}</span>
+          <span className="content-backdrop">{t("projects.title")}</span>
         </h1>
       </header>
 
       <section className="projects-content">
         <div className="projects-grid">
           <div className={styles.projectsGridInner}>
-            {projects.map((project, index) => (
-              <WidgetsCard key={index} {...project} />
+            {projects.map((project) => (
+              <WidgetsCard key={project.id} project={project} />
             ))}
           </div>
         </div>
@@ -138,16 +57,10 @@ const Widgets = () => {
   );
 };
 
-const WidgetsCard = ({
-  linkText,
-  text,
-  techStack,
-  liveLink,
-  sourceLink,
-  inDevelopment,
-  isPrivate,
-}) => {
+const WidgetsCard = ({ project }) => {
   const { t, language } = useTranslation();
+  const base = `projects.items.${project.id}`;
+  const { techStack, liveLink, sourceLink, inDevelopment, isPrivate } = project;
 
   return (
     <article className={`${styles.projectCard} project-card`} lang={language}>
@@ -168,7 +81,7 @@ const WidgetsCard = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.projectLinkButton}
-                aria-label="View Source Code"
+                aria-label={t("common.viewSource")}
               >
                 <LuChevronsLeftRight size={20} />
               </a>
@@ -179,7 +92,7 @@ const WidgetsCard = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.projectLinkButton}
-                aria-label="View Live Site"
+                aria-label={t("common.viewLive")}
               >
                 <LuMousePointerClick size={20} />
               </a>
@@ -188,63 +101,15 @@ const WidgetsCard = ({
         )}
         {inDevelopment && (
           <small className={styles.developmentBadge}>
-            {t("projects.development")}
+            {t("projects.inDevelopment")}
           </small>
         )}
       </header>
 
-      <h2 className={styles.projectTitle}>{linkText}</h2>
+      <h2 className={styles.projectTitle}>{t(`${base}.name`)}</h2>
 
       <div className={styles.projectDescription}>
-        <p>
-          {text
-            .split(
-              new RegExp(
-                `(${
-                  linkText.includes("Northern Trust")
-                    ? t(
-                        "projects.projects-list.northern-trust.highlightedText"
-                      ).join("|")
-                    : linkText.includes("Freedom Butchers")
-                    ? t(
-                        "projects.projects-list.freedom-butchers.highlightedText"
-                      ).join("|")
-                    : linkText.includes("Cloud Club")
-                    ? t(
-                        "projects.projects-list.cloud-project.highlightedText"
-                      ).join("|")
-                    : linkText.includes("MMA")
-                    ? t("projects.projects-list.mma.highlightedText").join("|")
-                    : linkText.includes("ScarletHacks")
-                    ? t(
-                        "projects.projects-list.scarlet-hacks.highlightedText"
-                      ).join("|")
-                    : ""
-                })`,
-                "g"
-              )
-            )
-            .map((part, index) => (
-              <React.Fragment key={index}>
-                {(linkText.includes("Northern Trust")
-                  ? t("projects.projects-list.northern-trust.highlightedText")
-                  : linkText.includes("Freedom Butchers")
-                  ? t("projects.projects-list.freedom-butchers.highlightedText")
-                  : linkText.includes("Cloud Club")
-                  ? t("projects.projects-list.cloud-project.highlightedText")
-                  : linkText.includes("MMA")
-                  ? t("projects.projects-list.mma.highlightedText")
-                  : linkText.includes("ScarletHacks")
-                  ? t("projects.projects-list.scarlet-hacks.highlightedText")
-                  : []
-                ).includes(part) ? (
-                  <strong className="highlight-text">{part}</strong>
-                ) : (
-                  part
-                )}
-              </React.Fragment>
-            ))}
-        </p>
+        <p>{renderHighlighted(t(`${base}.description`))}</p>
       </div>
     </article>
   );

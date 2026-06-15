@@ -28,12 +28,12 @@ const NavBar = ({ refs }) => {
   };
 
   const NAV_ITEMS = [
-    { id: "personal", name: t("navItems.personal") },
-    { id: "projects", name: t("navItems.projects") },
-    { id: "work", name: t("navItems.work") },
-    { id: "education", name: t("navItems.education") },
-    { id: "skills", name: t("navItems.skills") },
-    { id: "contact", name: t("navItems.contact") },
+    { id: "personal", name: t("nav.personal") },
+    { id: "projects", name: t("nav.projects") },
+    { id: "work", name: t("nav.work") },
+    { id: "education", name: t("nav.education") },
+    { id: "skills", name: t("nav.skills") },
+    { id: "contact", name: t("nav.contact") },
   ];
 
   useEffect(() => {
@@ -125,9 +125,7 @@ const NavBar = ({ refs }) => {
                 </div>
               </li>
               <li className={styles.externalLinks}>
-                <div className="theme-toggle-and-blog">
-                  <ThemeToggle />
-                </div>
+                <ThemeToggle />
               </li>
             </ul>
           )}
