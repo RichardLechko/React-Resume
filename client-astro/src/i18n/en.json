@@ -1,0 +1,119 @@
+{
+  "common": {
+    "present": "Present",
+    "viewSource": "View Source Code",
+    "viewLive": "View Live Site"
+  },
+  "langSelector": {
+    "en": "EN",
+    "ru": "RU"
+  },
+  "nav": {
+    "personal": "Home",
+    "projects": "Projects",
+    "work": "Work",
+    "education": "Education",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "personal": {
+    "greeting": "Richard Lechko",
+    "location": "Based in Chicago, IL",
+    "tagline": "Software Engineer with experience building [[full-stack web applications]] and [[backend services]].",
+    "resume": {
+      "title": "Resume",
+      "subtitle": "Quick download or view available:",
+      "downloadDOCX": "DOCX",
+      "downloadPDF": "PDF",
+      "view": "View"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "inDevelopment": "In Development",
+    "items": {
+      "mma": {
+        "name": "MMA Scheduler",
+        "description": "An MMA platform that aggregates and [[displays real-time data through web scraping]], with a custom event calendar, fighter database, and search/filtering for event discovery."
+      },
+      "scarlet_hacks": {
+        "name": "ScarletHacks 2025 Hackathon",
+        "description": "A [[zero food waste marketplace]] designed and deployed for the [[ScarletHacks 2025]] hackathon hosted by IIT. The complete project is available online."
+      },
+      "northern_trust": {
+        "name": "DePaul x Northern Trust Competition",
+        "description": "A finance application built for the [[Northern Trust x DePaul University competition]] featuring a currency converter, portfolio simulator, and an LSTM-based exchange-rate predictor. Earned [[3rd place]]."
+      },
+      "freedom_butchers": {
+        "name": "Freedom Butchers Freelance Work",
+        "description": "A [[full-fledged e-commerce site]] developed for a small local business called 'Freedom Butchers'."
+      },
+      "cloud_project": {
+        "name": "DePaul Cloud Club Research",
+        "description": "Collaborating with graduate students on a [[cloud project]], enhancing frontend skills and contributing to [[innovative solutions]]."
+      }
+    }
+  },
+  "work": {
+    "title": "Work",
+    "items": {
+      "hendrickson_2025": {
+        "company": "Hendrickson",
+        "position": "IT Intern",
+        "address": "Woodridge, Illinois",
+        "descriptions": [
+          "Developed [[Python]] backend services and data pipelines supporting inventory forecasting and analytics workflows.",
+          "Designed [[REST APIs]] and data ingestion pipelines that integrated operational data into enterprise [[ERP systems]].",
+          "Collaborating with engineers and stakeholders on backend architecture and system improvements."
+        ]
+      },
+      "preferred_risk": {
+        "company": "Preferred Risk Administrators",
+        "position": "Full Stack Software Engineer Intern",
+        "address": "Bedford Park, Illinois",
+        "descriptions": [
+          "Developed web applications using [[React/Next.js]] frontend and [[.NET Core]] backend for insurance platforms.",
+          "Implemented [[Datadog]] observability across the company's primary production application, improving visibility into application errors and service performance.",
+          "Collaborated with cross-functional teams on microservices architecture and new feature development."
+        ]
+      },
+      "hendrickson_2024": {
+        "company": "Hendrickson",
+        "position": "IT Intern",
+        "address": "Woodridge, Illinois",
+        "descriptions": [
+          "Gathered, processed, and reported data to determine operational metrics and [[KPIs]].",
+          "Created dashboards using [[PowerBI]] for business process owners and supported data validation within the ERP data hub.",
+          "Supported data consolidation, cleansing, and harmonization efforts across enterprise systems."
+        ]
+      }
+    }
+  },
+  "education": {
+    "title": "Education",
+    "cardTitle": "Alma Mater",
+    "schoolPrefix": "Graduate of",
+    "schoolName": "DePaul University",
+    "degree": "Bachelor of Science in Information Technology",
+    "graduationLabel": "Graduated",
+    "graduationDate": "06/13/2026"
+  },
+  "skills": {
+    "title": "Skills",
+    "categories": {
+      "frontend": "Frontend",
+      "backendDb": "Backend & Database",
+      "toolsDevops": "Tools & DevOps"
+    }
+  },
+  "contact": {
+    "title": "Get in touch",
+    "locationPrefix": "Based in",
+    "locationCity": "Chicago, Illinois"
+  },
+  "footer": {
+    "name": "Richard Lechko",
+    "copyrightSuffix": "All Rights Reserved",
+    "lastUpdated": "Last updated:"
+  }
+}
