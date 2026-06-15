@@ -1,0 +1,29 @@
+---
+import { useTranslations, type Lang } from '../i18n';
+import styles from '../styles/LanguageSelector.module.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const links: { code: Lang; href: string; flag: string }[] = [
+  { code: 'en', href: '/', flag: '🇺🇸' },
+  { code: 'ru', href: '/ru/', flag: '🇷🇺' },
+];
+---
+<div class={styles.languageSelector}>
+  <ul class={styles.languageList}>
+    {links.map(({ code, href, flag }) => (
+      <li>
+        <a
+          href={href}
+          class={`${styles.languageItem} ${code === lang ? styles.active : ''}`}
+          aria-current={code === lang ? 'page' : undefined}
+        >
+          <span aria-hidden="true">{flag}</span>
+          <span>{t(`langSelector.${code}`)}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>

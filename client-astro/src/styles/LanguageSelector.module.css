@@ -171,3 +171,26 @@
     font-size: 1.2rem;
   }
 }
+
+.languageList {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.languageItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.active {
+  background: color-mix(in srgb, var(--text-color) 10%, transparent);
+  font-weight: 600;
+}
