@@ -1,0 +1,427 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+@font-face {
+  font-family: "GeistSans";
+  src: url("../fonts/Geist-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "GeistSansBold";
+  src: url("../fonts/Geist-Bold.woff2") format("woff2");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+:root {
+  --text-color: #2d3748;
+  --background-color: #ffffff;
+  --primary: #3b82f6;
+  --secondary: #4b5563;
+  --secondary-hover: #374151;
+  --accent-color: #d97706;
+  --background-color-rgb: rgb(255, 255, 255);
+
+  --depaul-color: #0057b7;
+
+  --nav-background: #f1f5f9;
+  --nav-item-bg: #cbd5e1;
+  --nav-item-active: #94a3b8;
+  --nav-item-selected: #64748b;
+  --nav-text-selected: #f8fafc;
+
+  --card-background: #e2e8ef;
+  --nav-text: #2d3748;
+  --scrollbar-thumb: #718096;
+  --scrollbar-track: #cbd5e0;
+  --scrollbar-hover: #4a5568;
+
+  --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 1px rgba(0, 0, 0, 0.12);
+  --elevation-2: 0 2px 4px -1px rgba(0, 0, 0, 0.14),
+    0 4px 5px 0 rgba(0, 0, 0, 0.12);
+  --elevation-3: 0 4px 8px -2px rgba(0, 0, 0, 0.14),
+    0 6px 10px 0 rgba(0, 0, 0, 0.12);
+  --elevation-4: 0 8px 12px -4px rgba(0, 0, 0, 0.14),
+    0 12px 17px 2px rgba(0, 0, 0, 0.12);
+  --elevation-5: 0 12px 16px -4px rgba(0, 0, 0, 0.14),
+    0 16px 24px 2px rgba(0, 0, 0, 0.12);
+
+  --button-text: #ffffff;
+  --button-bg: #3b82f6;
+  --button-hover: #2563eb;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-hover);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-page-container {
+  margin-top: 10rem !important;
+  position: relative;
+  z-index: 1;
+}
+
+#personal,
+#projects,
+#work,
+#education,
+#skills,
+#contact {
+  padding-top: 7rem;
+  margin-top: -7rem;
+  margin-bottom: 5rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* TYPOGRAPHY */
+/* TYPOGRAPHY */
+/* TYPOGRAPHY */
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  scroll-margin: 80px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  scroll-margin: 80px;
+  padding-bottom: 2px;
+  font-size: 1.375rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+li {
+  line-height: 1.6;
+}
+
+small {
+  line-height: 1.4;
+}
+
+small,
+time {
+  font-size: 0.75rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 700 !important;
+}
+
+address {
+  font-style: normal;
+  line-height: 1.6;
+}
+
+/* TYPOGRAPHY */
+/* TYPOGRAPHY */
+/* TYPOGRAPHY */
+
+/* HIGHLIGHTED TEXT */
+/* HIGHLIGHTED TEXT */
+/* HIGHLIGHTED TEXT */
+
+.highlight-text {
+  color: #4a90e2;
+  text-decoration: none;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  background: color-mix(in srgb, #4a90e2 10%, transparent);
+  transition: background 0.3s ease;
+  position: relative;
+  font-weight: 500;
+}
+
+.highlight-text::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    color-mix(in srgb, currentColor 15%, transparent) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+/* HIGHLIGHTED TEXT */
+/* HIGHLIGHTED TEXT */
+/* HIGHLIGHTED TEXT */
+
+/* FADE-IN ANIMATION */
+/* FADE-IN ANIMATION */
+/* FADE-IN ANIMATION */
+
+.fade-in-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FADE-IN ANIMATION */
+/* FADE-IN ANIMATION */
+/* FADE-IN ANIMATION */
+
+/* MEDIA QUERIES */
+/* MEDIA QUERIES */
+/* MEDIA QUERIES */
+
+@media (min-width: 375px) {
+  .container {
+    max-width: 335px;
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.375rem;
+  }
+  p {
+    font-size: 0.9375rem;
+  }
+}
+
+@media (min-width: 425px) {
+  .container {
+    max-width: 380px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.625rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+
+  @keyframes slideOut {
+    from {
+      right: 0;
+    }
+    to {
+      right: -300px;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 520px;
+  }
+  h1 {
+    font-size: 2.25rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.625rem;
+  }
+  p {
+    line-height: 1.7;
+  }
+
+  @keyframes slideOut {
+    from {
+      right: 0;
+    }
+    to {
+      right: -400px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 640px;
+  }
+  h1 {
+    font-size: 2.5rem; /* 40px */
+  }
+  h2 {
+    font-size: 2rem; /* 32px */
+  }
+  h3 {
+    font-size: 1.75rem; /* 28px */
+  }
+  small,
+  time {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+@media (min-width: 1024px) {
+  #personal,
+  #projects,
+  #work,
+  #education,
+  #skills,
+  #contact {
+    padding-top: 10rem;
+    margin-top: -10rem;
+    margin-bottom: 12rem;
+  }
+  .container {
+    max-width: 800px;
+  }
+
+  h1 {
+    font-size: 2.75rem;
+    line-height: 1.1;
+  }
+  h2 {
+    font-size: 2.25rem;
+  }
+  h3 {
+    font-size: 1.875rem;
+  }
+  p {
+    line-height: 1.8;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1100px;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+
+  .main-page-container {
+    padding-top: 5rem;
+  }
+
+  #personal,
+  #projects,
+  #work,
+  #education,
+  #skills,
+  #contact {
+    padding-top: 14rem;
+    margin-top: -14rem;
+    margin-bottom: 10rem;
+  }
+
+  #education {
+    padding-top: 20rem;
+    margin-top: -15rem;
+    margin-bottom: 15rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+  h2 {
+    font-size: 2.75rem;
+  }
+  h3 {
+    font-size: 2.25rem;
+  }
+  p {
+    font-size: 1.125rem;
+  }
+}
