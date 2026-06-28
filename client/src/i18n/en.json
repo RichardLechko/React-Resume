@@ -38,7 +38,7 @@
       },
       "scarlet_hacks": {
         "name": "ScarletHacks 2025 Hackathon",
-        "description": "A [[zero food waste marketplace]] designed and deployed for the [[ScarletHacks 2025]] hackathon hosted by IIT. The complete project is available online."
+        "description": "A [[zero food waste marketplace]] designed and deployed for the [[ScarletHacks 2025]] hackathon hosted by IIT."
       },
       "northern_trust": {
         "name": "DePaul x Northern Trust Competition",
@@ -46,11 +46,7 @@
       },
       "freedom_butchers": {
         "name": "Freedom Butchers Freelance Work",
-        "description": "A [[full-fledged e-commerce site]] developed for a small local business called 'Freedom Butchers'."
-      },
-      "cloud_project": {
-        "name": "DePaul Cloud Club Research",
-        "description": "Collaborating with graduate students on a [[cloud project]], enhancing frontend skills and contributing to [[innovative solutions]]."
+        "description": "A [[full-fledged e-commerce site]] built for a small local meat business."
       }
     }
   },

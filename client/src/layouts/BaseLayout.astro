@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import type { Lang } from '../i18n';
+import instrumentSansWoff2 from '@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2?url';
 
 interface Props {
   lang: Lang;
@@ -8,7 +9,17 @@ interface Props {
   description?: string;
 }
 
-const { lang, title = 'Richard Lechko — Portfolio', description = 'Software Engineer based in Chicago, IL.' } = Astro.props;
+const {
+  lang,
+  title = 'Richard Lechko — Software Engineer',
+  description = 'Software Engineer with experience building full-stack web applications and backend services. Based in Chicago, IL.',
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://richardlechko.com';
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const ogImage = `${siteUrl}/og-image.svg`;
+const ogLocale = lang === 'ru' ? 'ru_RU' : 'en_US';
+const ogAltLocale = lang === 'ru' ? 'en_US' : 'ru_RU';
 ---
 <!doctype html>
 <html lang={lang}>
@@ -16,10 +27,36 @@ const { lang, title = 'Richard Lechko — Portfolio', description = 'Software En
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#faf9f6" />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="preload" href={instrumentSansWoff2} as="font" type="font/woff2" crossorigin />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Richard Lechko — Software Engineer" />
+    <meta property="og:site_name" content="Richard Lechko" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogAltLocale} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Richard Lechko — Software Engineer" />
+
     <title>{title}</title>
   </head>
   <body>
+    <a href="#personal" class="skip-link">Skip to content</a>
     <slot />
   </body>
 </html>

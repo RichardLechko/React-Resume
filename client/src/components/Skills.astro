@@ -58,32 +58,28 @@ const SKILL_GROUPS: Group[] = [
   },
 ];
 ---
-<main id="skills" class="technical-skills-section" lang={lang}>
-  <div class="technical-skills-container">
-    <header class={styles.technicalSkillsHeader}>
-      <h1 class={styles.technicalSkillsTitle}>
-        <span class="content-backdrop">{t('skills.title')}</span>
-      </h1>
-    </header>
+<main id="skills" lang={lang}>
+  <header class={styles.technicalSkillsHeader}>
+    <h2 class={`${styles.technicalSkillsTitle} section-title`}>{t('skills.title')}</h2>
+  </header>
 
-    <section class={styles.skillsContainer}>
-      {SKILL_GROUPS.map(({ categoryKey, skills }) => (
-        <article class={styles.skillsCategory}>
-          <header class={styles.categoryHeader}>
-            <h2 class={styles.categoryTitle}>{t(`skills.categories.${categoryKey}`)}</h2>
-          </header>
-          <div class={styles.skillsList} role="list">
-            {skills.map(({ icon, name }) => (
-              <div class={styles.skillItem} role="listitem">
-                <figure class={styles.skillIconContainer}>
-                  <Icon name={icon} aria-hidden="true" class={styles.skillIcon} />
-                </figure>
-                <h3 class={styles.skillName}>{name}</h3>
-              </div>
-            ))}
-          </div>
-        </article>
-      ))}
-    </section>
-  </div>
+  <section class={styles.skillsContainer}>
+    {SKILL_GROUPS.map(({ categoryKey, skills }) => (
+      <article class={styles.skillsCategory}>
+        <header class={styles.categoryHeader}>
+          <h3 class={styles.categoryTitle}>{t(`skills.categories.${categoryKey}`)}</h3>
+        </header>
+        <div class={styles.skillsList} role="list">
+          {skills.map(({ icon, name }) => (
+            <div class={styles.skillItem} role="listitem">
+              <figure class={styles.skillIconContainer}>
+                <Icon name={icon} aria-hidden="true" class={styles.skillIcon} />
+              </figure>
+              <h4 class={styles.skillName}>{name}</h4>
+            </div>
+          ))}
+        </div>
+      </article>
+    ))}
+  </section>
 </main>

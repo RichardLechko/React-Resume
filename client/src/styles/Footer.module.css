@@ -4,11 +4,11 @@
   width: 100vw;
   margin-left: calc((100% - 100vw) / 2);
   margin-top: 5rem;
-  background-color: var(--nav-background);
-  color: var(--text-color);
+  color: var(--secondary);
   position: relative;
-  padding: 3rem 0rem;
+  padding: 2.5rem 1rem;
   overflow: hidden;
+  border-top: 1px solid var(--rule);
 }
 
 .footerContainer {

@@ -18,45 +18,39 @@ const projectItems = projects.map((p) => {
   };
 });
 ---
-<main id="projects" class="projects-container" lang={lang}>
+<main id="projects" lang={lang}>
   <header>
-    <h1 class="projects-title">
-      <span class="content-backdrop">{t('projects.title')}</span>
-    </h1>
+    <h2 class="section-title">{t('projects.title')}</h2>
   </header>
 
-  <section class="projects-content">
-    <div class="projects-grid">
-      <div class={styles.projectsGridInner}>
-        {projectItems.map((p) => (
-          <article class={`${styles.projectCard} project-card fade-on-scroll`} lang={lang}>
-            <header class={styles.projectHeader}>
-              <nav class={styles.projectTechStack} aria-label="Technologies used">
-                {p.techStack.map((tech) => <small class={styles.techTag}>{tech}</small>)}
-              </nav>
-              {!p.isPrivate && !p.inDevelopment && (
-                <nav class={styles.projectLinks} aria-label="Project links">
-                  {p.sourceLink && (
-                    <a href={p.sourceLink} target="_blank" rel="noopener noreferrer" class={styles.projectLinkButton} aria-label={t('common.viewSource') as string}>
-                      <Icon name="lucide:chevrons-left-right" />
-                    </a>
-                  )}
-                  {p.liveLink && (
-                    <a href={p.liveLink} target="_blank" rel="noopener noreferrer" class={styles.projectLinkButton} aria-label={t('common.viewLive') as string}>
-                      <Icon name="lucide:mouse-pointer-click" />
-                    </a>
-                  )}
-                </nav>
+  <div class={styles.projectsGridInner}>
+    {projectItems.map((p) => (
+      <article class={`${styles.projectCard} fade-on-scroll`} lang={lang}>
+        <header class={styles.projectHeader}>
+          <nav class={styles.projectTechStack} aria-label="Technologies used">
+            {p.techStack.map((tech) => <small class={styles.techTag}>{tech}</small>)}
+          </nav>
+          {!p.isPrivate && !p.inDevelopment && (
+            <nav class={styles.projectLinks} aria-label="Project links">
+              {p.sourceLink && (
+                <a href={p.sourceLink} target="_blank" rel="noopener noreferrer" class={styles.projectLinkButton} aria-label={t('common.viewSource') as string}>
+                  <Icon name="lucide:chevrons-left-right" />
+                </a>
               )}
-              {p.inDevelopment && <small class={styles.developmentBadge}>{t('projects.inDevelopment') as string}</small>}
-            </header>
-            <h2 class={styles.projectTitle}>{p.name}</h2>
-            <div class={styles.projectDescription}>
-              <p><Highlight text={p.description} /></p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+              {p.liveLink && (
+                <a href={p.liveLink} target="_blank" rel="noopener noreferrer" class={styles.projectLinkButton} aria-label={t('common.viewLive') as string}>
+                  <Icon name="lucide:mouse-pointer-click" />
+                </a>
+              )}
+            </nav>
+          )}
+          {p.inDevelopment && <small class={styles.developmentBadge}>{t('projects.inDevelopment') as string}</small>}
+        </header>
+        <h3 class={styles.projectTitle}>{p.name}</h3>
+        <div class={styles.projectDescription}>
+          <p><Highlight text={p.description} /></p>
+        </div>
+      </article>
+    ))}
+  </div>
 </main>

@@ -54,38 +54,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   border-radius: 8px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  transition: all 0.2s ease;
-  position: relative;
-  overflow: hidden;
+  background-color: transparent;
+  color: var(--text-color);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .linkWrapper a:hover {
-  background-color: var(--button-hover);
-}
-
-.linkWrapper a::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transform: rotate(45deg) translateX(-200%);
-  transition: transform 0.5s ease;
-}
-
-.linkWrapper a:hover::after {
-  transform: rotate(45deg) translateX(100%);
+  background-color: var(--accent-bg);
+  color: var(--accent-color);
+  transform: translateY(-1px);
 }
 
 .personalInfoSpotify {
@@ -94,18 +74,15 @@
 }
 
 .personalResumeContent {
-  margin: 1rem auto;
-  padding: 1rem 6px 1rem 6px;
+  margin: 2.5rem auto 1rem;
+  padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  border-radius: 8px;
-  background-color: var(--nav-background);
+  gap: 1.25rem;
+  border-radius: 12px;
+  background-color: var(--card-background);
   color: var(--text-color);
   text-align: center;
-  box-shadow: var(--elevation-1);
-  transition: box-shadow 0.3s ease-in-out;
-  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
 }
 
 .personalResumeContent > div {
@@ -124,17 +101,14 @@
   text-align: center;
   justify-content: center;
   width: 150px;
-  font-size: 16px;
-  padding: 0.5rem 1.5rem;
+  font-size: 0.9375rem;
+  padding: 0.625rem 1.5rem;
   border-radius: 6px;
-  letter-spacing: -0.025rem;
+  letter-spacing: -0.015em;
   background-color: var(--button-bg);
   color: var(--button-text);
   font-weight: 500;
-  transition: all 0.2s ease;
-  box-shadow: var(--elevation-2);
-  transition: box-shadow 0.4s ease-in-out;
-  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .personalResumeContent a span {
@@ -145,8 +119,7 @@
 
 .personalResumeContent a:hover {
   background-color: var(--button-hover);
-  box-shadow: var(--elevation-3);
-  transition: box-shadow 0.5s ease-in-out;
+  transform: translateY(-1px);
 }
 
 /* Media Queries */

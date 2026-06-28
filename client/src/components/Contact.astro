@@ -7,11 +7,9 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
-<main id="contact" class="contact-section" lang={lang}>
+<main id="contact" lang={lang}>
   <header>
-    <h1 class={styles.contactHeading}>
-      <span class="content-backdrop">{t('contact.title')}</span>
-    </h1>
+    <h2 class={`${styles.contactHeading} section-title`}>{t('contact.title')}</h2>
   </header>
 
   <section class={styles.contactInfo}>

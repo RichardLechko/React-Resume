@@ -22,24 +22,22 @@ const resumeLinks = [
 ---
 <section id="personal" lang={lang}>
   <div class={styles.personalWrapper}>
-    <div class={`${styles.personalContent} personal-content fade-on-scroll`}>
-      <header class={`${styles.personalLeft} lang-${lang}`}>
-        <h1>
-          <span class={`personal-header lang-${lang}`}>{t('personal.greeting')}</span>
-        </h1>
+    <div class={`${styles.personalContent} fade-on-scroll`}>
+      <header class={styles.personalLeft}>
+        <h1>{t('personal.greeting')}</h1>
         <div class={styles.personalBasedInAndTime}>
           <p>
             <small>
               {t('personal.location')} <span class={styles.timeArrow}>→</span>
               <time class="time-display" data-clock>
-                <strong class="highlight-text">-- : -- CST (UTC-06)</strong>
+                <strong class="highlight-text"></strong>
               </time>
             </small>
           </p>
         </div>
       </header>
 
-      <nav class="external-links" aria-label="Social Links">
+      <nav aria-label="Social Links">
         <ul class={styles.linksContainer}>
           {socialLinks.map(({ href, icon, label }) => (
             <li class={styles.linkWrapper}>
@@ -52,14 +50,14 @@ const resumeLinks = [
       </nav>
 
       <article class={styles.personalInfoSpotify}>
-        <p class="content-backdrop">
+        <p>
           <Highlight text={t('personal.tagline') as string} />
         </p>
       </article>
     </div>
   </div>
 
-  <aside class={`${styles.personalResumeContent} personal-resume-content fade-on-scroll`}>
+  <aside class={`${styles.personalResumeContent} fade-on-scroll`}>
     <h2>{t('personal.resume.title')}</h2>
     <p>{t('personal.resume.subtitle')}</p>
     <div role="group" aria-label="Resume download options">

@@ -17,48 +17,38 @@
 }
 
 .skillsCategory {
-  background: var(--nav-background);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: var(--elevation-1);
-  transition: box-shadow 0.3s ease-in-out;
-  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+  padding: 0;
 }
 
 .categoryHeader {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid color-mix(in srgb, var(--text-color) 15%, transparent);
+  border-bottom: 1px solid var(--rule);
 }
 
 .categoryTitle {
   color: var(--text-color);
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 500;
   margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+  color: var(--secondary);
 }
 
 .skillsList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+  gap: 0.5rem 1.25rem;
 }
 
 .skillItem {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  background: var(--card-background);
-  border-radius: 6px;
-  padding: 0.75rem 1rem;
-  box-shadow: var(--elevation-1);
-  transition: all 0.2s ease;
-  border: 1px solid color-mix(in srgb, var(--secondary) 20%, transparent);
-}
-
-.skillItem:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--elevation-2);
+  gap: 0.5rem;
+  min-width: 0;
+  background: transparent;
 }
 
 .skillIconContainer {
@@ -69,34 +59,29 @@
 
 .skillIcon {
   color: var(--text-color);
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
 }
 
 .skillName {
   color: var(--text-color);
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.9375rem;
   font-weight: 500;
-}
-
-.loadingSkills {
-  text-align: center;
-  padding: 2rem;
-  color: var(--text-color);
-  font-size: 0.9rem;
+  letter-spacing: -0.005em;
 }
 
 /* Media Queries */
 @media (min-width: 640px) {
   .skillsContainer {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 2.5rem 3rem;
   }
 
   .skillIcon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 
   .skillName {
@@ -107,21 +92,11 @@
 @media (min-width: 1024px) {
   .skillsContainer {
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+    gap: 3rem 3.5rem;
   }
 
   .skillIcon {
-    width: 26px;
-    height: 26px;
-  }
-
-  .categoryTitle {
-    font-size: 1.375rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .skillsContainer {
-    grid-template-columns: repeat(3, 1fr);
+    width: 22px;
+    height: 22px;
   }
 }

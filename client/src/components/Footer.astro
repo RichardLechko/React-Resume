@@ -5,19 +5,30 @@ import styles from '../styles/Footer.module.css';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const year = new Date().getFullYear();
-const buildDate = new Date().toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US');
+
+// Update this when the site's CONTENT meaningfully changes (new role, new
+// project, redesign). Build date stays out of it — that would lie every
+// time we redeploy a CSS tweak.
+const LAST_UPDATED_ISO = '2026-06-28';
+
+const lastUpdated = new Date(LAST_UPDATED_ISO).toLocaleDateString(
+  lang === 'ru' ? 'ru-RU' : 'en-US',
+  { year: 'numeric', month: 'long', day: 'numeric' },
+);
+const fallbackYear = new Date().getFullYear();
 ---
 <footer class={styles.footer}>
   <div class={styles.footerContainer}>
-    <header>
-      <h2 class="footer-title">{t('footer.name')}</h2>
-    </header>
-    <small class="footer-copy">
-      &copy; {year} {t('footer.name')} | {t('footer.copyrightSuffix')}
+    <small>
+      &copy; <span data-current-year>{fallbackYear}</span> {t('footer.name')} | {t('footer.copyrightSuffix')}
     </small>
-    <time class="footer-updated" datetime={new Date().toISOString()}>
-      {t('footer.lastUpdated')} {buildDate}
+    <time datetime={LAST_UPDATED_ISO}>
+      {t('footer.lastUpdated')} {lastUpdated}
     </time>
   </div>
 </footer>
+
+<script>
+  const el = document.querySelector<HTMLElement>('[data-current-year]');
+  if (el) el.textContent = String(new Date().getFullYear());
+</script>
